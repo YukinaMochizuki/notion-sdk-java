@@ -17,21 +17,14 @@ import tw.yukina.notion.sdk.model.parent.WorkspaceParent;
 import java.io.IOException;
 import java.util.Objects;
 
-public class BlockDeserializer extends JsonDeserializer<Block> {
+public class BlockDeserializer extends AbstractDeserializer<Block> {
     @Override
     public Block deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
 
-        if(Objects.equals(type, BlockType.PARAGRAPH.getField())){
-            ObjectCodec codec = jsonParser.getCodec();
-            return codec.treeToValue(node, ParagraphBlock.class);
-        }
-//        else if(Objects.equals(type, "workspace")){
-//            ObjectCodec codec = jsonParser.getCodec();
-//            return codec.treeToValue(node, WorkspaceParent.class);
-//        }
+        addAvailableType(BlockType.PARAGRAPH.getField(), ParagraphBlock.class);
 
-        throw JsonMappingException.from(jsonParser, "Error");
+        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }
 }
