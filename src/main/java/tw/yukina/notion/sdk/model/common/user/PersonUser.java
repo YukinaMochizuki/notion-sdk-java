@@ -1,20 +1,18 @@
 package tw.yukina.notion.sdk.model.common.user;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
 @Getter
 @Setter
-@Builder
-@ToString
+@ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Person {
-    private static final String EMAIL_FIELD = "email";
+@JsonDeserialize(using = JsonDeserializer.None.class)
+public class PersonUser extends User {
+    private static final String OBJECT_FIELD = "person";
 
-    @JsonProperty(EMAIL_FIELD)
-    private String email;
+    private Person person;
 }

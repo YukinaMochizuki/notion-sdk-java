@@ -2,29 +2,26 @@ package tw.yukina.notion.sdk.model.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.block.ParagraphBlock;
 import tw.yukina.notion.sdk.model.common.rich.mention.Mention;
 import tw.yukina.notion.sdk.model.common.rich.mention.MentionType;
 import tw.yukina.notion.sdk.model.common.rich.mention.PageMention;
 import tw.yukina.notion.sdk.model.common.rich.mention.UserMention;
+import tw.yukina.notion.sdk.model.common.user.Person;
+import tw.yukina.notion.sdk.model.common.user.PersonUser;
+import tw.yukina.notion.sdk.model.common.user.User;
+import tw.yukina.notion.sdk.model.common.user.UserType;
 
 import java.io.IOException;
-import java.util.Objects;
 
-public class MentionDeserializer extends AbstractDeserializer<Mention> {
+public class UserDeserializer extends AbstractDeserializer<User> {
     @Override
-    public Mention deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
+    public User deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
 
-        addAvailableType(MentionType.USER.getField(), UserMention.class);
-        addAvailableType(MentionType.PAGE.getField(), PageMention.class);
+        addAvailableType(UserType.PERSON.getField(), PersonUser.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }

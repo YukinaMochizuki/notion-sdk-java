@@ -1,7 +1,9 @@
 package tw.yukina.notion.sdk.model.common.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import tw.yukina.notion.sdk.model.deserializer.UserDeserializer;
 
 import java.net.URL;
 
@@ -9,7 +11,8 @@ import java.net.URL;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(exclude = {"avatar"})
+@JsonDeserialize(using = UserDeserializer.class)
 public class User {
     private static final String OBJECT_FIELD = "object";
     private static final String ID_FIELD = "id";
