@@ -1,13 +1,19 @@
 package tw.yukina.notion.sdk.model.common.rich;
 
+import com.fasterxml.jackson.databind.JsonMappingException;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.model.common.rich.mention.MentionType;
-import tw.yukina.notion.sdk.model.common.rich.mention.PageMention;
-import tw.yukina.notion.sdk.model.common.rich.mention.UserMention;
+import tw.yukina.notion.sdk.model.common.rich.mention.*;
+import tw.yukina.notion.sdk.model.common.unit.Database;
 import tw.yukina.notion.sdk.model.common.unit.Page;
 import tw.yukina.notion.sdk.model.common.user.Person;
 import tw.yukina.notion.sdk.model.common.user.PersonUser;
 import tw.yukina.notion.sdk.model.common.user.UserType;
+import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
+import tw.yukina.notion.sdk.model.property.Date;
+
+import java.io.IOException;
+import java.time.Instant;
+import java.time.ZonedDateTime;
 
 public class RichTextHelper {
 
@@ -31,13 +37,38 @@ public class RichTextHelper {
         pageMention.setPage(Page.builder().pageId(uuid).build());
         pageMention.setMentionType(MentionType.PAGE);
 
-        MentionText mentionText = new MentionText();
-        mentionText.setMention(pageMention);
-        mentionText.setAnnotations(createDefaultAnnotation());
-        mentionText.setPlainText(title);
-        mentionText.setType(TextType.MENTION);
+        return createDefaultMentionText(title, pageMention);
+    }
 
-        return mentionText;
+    @NotNull
+    public static MentionText createDatabaseMention(String title, String uuid){
+        DatabaseMention databaseMention = new DatabaseMention();
+        databaseMention.setDatabase(Database.builder().databaseId(uuid).build());
+        databaseMention.setMentionType(MentionType.DATABASE);
+
+        return createDefaultMentionText(title, databaseMention);
+    }
+
+    @NotNull
+    public static MentionText createDateMention(String start) throws Exception {
+
+        DateMention dateMention = new DateMention();
+        dateMention.setMentionType(MentionType.DATE);
+        dateMention.setDateTimeProperty(DateTimeDeserializer.parse(start)
+                .orElseThrow(() -> new Exception("The date " + start + " does not match any available formats")));
+
+        return createDefaultMentionText(start + " → ", dateMention);
+    }
+
+    @NotNull
+    public static MentionText createDateMention(String start, String end) throws Exception {
+
+        DateMention dateMention = new DateMention();
+        dateMention.setMentionType(MentionType.DATE);
+        dateMention.setDateTimeProperty(DateTimeDeserializer.parse(start, end)
+                .orElseThrow(() -> new Exception("The date " + start + " does not match any available formats")));
+
+        return createDefaultMentionText(start + " → " + end, dateMention);
     }
 
     @NotNull
@@ -52,12 +83,15 @@ public class RichTextHelper {
         userMention.setUser(personUser);
         userMention.setMentionType(MentionType.USER);
 
-        MentionText mentionText = new MentionText();
-        mentionText.setMention(userMention);
-        mentionText.setAnnotations(createDefaultAnnotation());
-        mentionText.setPlainText("@" + name);
-        mentionText.setType(TextType.MENTION);
+        return createDefaultMentionText("@" + name, userMention);
+    }
 
+    public static MentionText createDefaultMentionText(String plainText, Mention mention){
+        MentionText mentionText = new MentionText();
+        mentionText.setMention(mention);
+        mentionText.setAnnotations(createDefaultAnnotation());
+        mentionText.setPlainText(plainText);
+        mentionText.setType(TextType.MENTION);
         return mentionText;
     }
 

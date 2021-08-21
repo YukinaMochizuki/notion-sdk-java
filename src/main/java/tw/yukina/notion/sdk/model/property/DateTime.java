@@ -6,9 +6,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
+import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
@@ -20,16 +19,16 @@ import java.util.Objects;
 @EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class Date extends DateTimeProperty{
+public class DateTime extends DateTimeProperty{
     private static final String START_FIELD = "start";
     private static final String END_FIELD = "end";
 
     @JsonProperty(START_FIELD)
-    private LocalDate start;
+    private ZonedDateTime start;
 
     @JsonProperty(END_FIELD)
     @Nullable
-    private LocalDate end;
+    private ZonedDateTime end;
 
     @Override
     public String startToString() {

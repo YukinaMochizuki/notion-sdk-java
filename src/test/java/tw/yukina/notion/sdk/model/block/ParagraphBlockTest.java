@@ -87,4 +87,47 @@ class ParagraphBlockTest extends ModelTest {
         assertEquals(block, pageMentionBlock);
         response.close();
     }
+
+    @Test
+    void dateMentionTest() throws Exception {
+        Response response = getResponse(BASE_URL + "/blocks/265b6f6de7a14ae69fb200b3cc0266ca");
+        Block block = readValueUseCommonObjectMapper(response, Block.class);
+        Block dateTimeMentionBlock = getDateMentionBlock("265b6f6d-e7a1-4ae6-9fb2-00b3cc0266ca", "2021-08-10T12:50:00.000+08:00");
+        assertEquals(block, dateTimeMentionBlock);
+
+        response = getResponse(BASE_URL + "/blocks/d4c872078afe4c7fa0f8a2a5990f872f");
+        block = readValueUseCommonObjectMapper(response, Block.class);
+        Block dateMentionBlock = getDateMentionBlock("d4c87207-8afe-4c7f-a0f8-a2a5990f872f", "2021-08-21");
+        assertEquals(block, dateMentionBlock);
+
+        response = getResponse(BASE_URL + "/blocks/4c41de3c60ba4b688af5b97fc204e92f");
+        block = readValueUseCommonObjectMapper(response, Block.class);
+        Block dateIncludeEndMentionBlock =
+                getDateMentionBlock("4c41de3c-60ba-4b68-8af5-b97fc204e92f",
+                        "2021-08-10", "2021-08-12");
+        assertEquals(block, dateIncludeEndMentionBlock);
+
+        response = getResponse(BASE_URL + "/blocks/32e5453b489d4a05bb21c3d6aa4b41a3");
+        block = readValueUseCommonObjectMapper(response, Block.class);
+        Block dateTimeIncludeEndMentionBlock =
+                getDateMentionBlock("32e5453b-489d-4a05-bb21-c3d6aa4b41a3",
+                        "2021-08-10T00:00:00.000+08:00", "2021-08-28T00:00:00.000+08:00");
+        assertEquals(block, dateTimeIncludeEndMentionBlock);
+    }
+
+    Block getDateMentionBlock(String id, String start) throws Exception {
+        RichText text = RichTextHelper.createDateMention(start);
+        Block dateMentionBlock = BlockHelper.createDefaultParagraph(text);
+        dateMentionBlock.setId(id);
+
+        return dateMentionBlock;
+    }
+
+    Block getDateMentionBlock(String id, String start, String end) throws Exception {
+        RichText text = RichTextHelper.createDateMention(start, end);
+        Block dateMentionBlock = BlockHelper.createDefaultParagraph(text);
+        dateMentionBlock.setId(id);
+
+        return dateMentionBlock;
+    }
 }

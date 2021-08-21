@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.property.Date;
+import tw.yukina.notion.sdk.model.property.DateTimeProperty;
 
 @Getter
 @Setter
@@ -19,5 +19,5 @@ public class DateMention extends Mention{
     private static final String DATE_FIELD = "date";
 
     @JsonProperty(DATE_FIELD)
-    private Date date;
+    private DateTimeProperty dateTimeProperty;
 }
