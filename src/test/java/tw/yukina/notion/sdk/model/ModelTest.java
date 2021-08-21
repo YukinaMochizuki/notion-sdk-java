@@ -9,7 +9,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeAll;
-import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.deserializer.ZonedDateTimeDeserializer;
 
 import java.io.IOException;

@@ -15,7 +15,7 @@ import java.time.ZonedDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(exclude = {"createdTime", "lastEditedTime"})
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = BlockDeserializer.class)
 public class Block {

@@ -10,16 +10,20 @@ import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.block.ParagraphBlock;
 import tw.yukina.notion.sdk.model.common.rich.mention.Mention;
+import tw.yukina.notion.sdk.model.common.rich.mention.MentionType;
+import tw.yukina.notion.sdk.model.common.rich.mention.UserMention;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class MentionDeserializer extends JsonDeserializer<Mention> {
+public class MentionDeserializer extends AbstractDeserializer<Mention> {
     @Override
     public Mention deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
 
-        throw JsonMappingException.from(jsonParser, "Error");
+        addAvailableType(MentionType.USER.getField(), UserMention.class);
+
+        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }
 }

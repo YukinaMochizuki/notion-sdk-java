@@ -34,4 +34,12 @@ public class Annotation {
     @JsonProperty(CODE_FIELD)
     private boolean isCode;
 
+    public void setAllDefault(){
+        isBold = false;
+        isItalic = false;
+        isStrikethrough = false;
+        isUnderline = false;
+        isCode = false;
+    }
+
 }
