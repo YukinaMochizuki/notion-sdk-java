@@ -3,7 +3,11 @@ package tw.yukina.notion.sdk.model.common.rich;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.rich.mention.MentionType;
 import tw.yukina.notion.sdk.model.common.rich.mention.PageMention;
+import tw.yukina.notion.sdk.model.common.rich.mention.UserMention;
 import tw.yukina.notion.sdk.model.common.unit.Page;
+import tw.yukina.notion.sdk.model.common.user.Person;
+import tw.yukina.notion.sdk.model.common.user.PersonUser;
+import tw.yukina.notion.sdk.model.common.user.UserType;
 
 public class RichTextHelper {
 
@@ -21,7 +25,8 @@ public class RichTextHelper {
         return text;
     }
 
-    public static MentionText createPageMention(String uuid){
+    @NotNull
+    public static MentionText createPageMention(String title, String uuid){
         PageMention pageMention = new PageMention();
         pageMention.setPage(Page.builder().pageId(uuid).build());
         pageMention.setMentionType(MentionType.PAGE);
@@ -29,6 +34,29 @@ public class RichTextHelper {
         MentionText mentionText = new MentionText();
         mentionText.setMention(pageMention);
         mentionText.setAnnotations(createDefaultAnnotation());
+        mentionText.setPlainText(title);
+        mentionText.setType(TextType.MENTION);
+
+        return mentionText;
+    }
+
+    @NotNull
+    public static MentionText createPersonMention(String name, String uuid){
+        PersonUser personUser = new PersonUser();
+        personUser.setPerson(new Person());
+        personUser.setId(uuid);
+        personUser.setName(name);
+        personUser.setUserType(UserType.PERSON);
+
+        UserMention userMention = new UserMention();
+        userMention.setUser(personUser);
+        userMention.setMentionType(MentionType.USER);
+
+        MentionText mentionText = new MentionText();
+        mentionText.setMention(userMention);
+        mentionText.setAnnotations(createDefaultAnnotation());
+        mentionText.setPlainText("@" + name);
+        mentionText.setType(TextType.MENTION);
 
         return mentionText;
     }

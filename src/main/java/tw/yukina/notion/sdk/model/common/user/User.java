@@ -3,11 +3,13 @@ package tw.yukina.notion.sdk.model.common.user;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import tw.yukina.notion.sdk.model.ObjectType;
 import tw.yukina.notion.sdk.model.deserializer.UserDeserializer;
 
 import java.net.URL;
 
 @Getter
+@Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,7 +23,7 @@ public class User {
     private static final String AVATAR_URL_FIELD = "avatar_url";
 
     @JsonProperty(OBJECT_FIELD)
-    private String object;
+    private ObjectType objectType = ObjectType.USER;
 
     @JsonProperty(ID_FIELD)
     private String id;
