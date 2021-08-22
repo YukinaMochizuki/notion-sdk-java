@@ -1,7 +1,5 @@
 package tw.yukina.notion.sdk.model.block;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
@@ -16,7 +14,6 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(exclude = {"createdTime", "lastEditedTime"})
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = BlockDeserializer.class)
 public class Block {
 
@@ -27,7 +24,7 @@ public class Block {
     private static final String LAST_EDITED_TIME_FIELD = "last_edited_time";
     private static final String HAS_CHILDREN_FIELD = "has_children";
 
-    @JsonIgnore
+    @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.BLOCK;
 
     @JsonProperty(ID_FIELD)
@@ -43,5 +40,5 @@ public class Block {
     private ZonedDateTime lastEditedTime;
 
     @JsonProperty(HAS_CHILDREN_FIELD)
-    private Boolean hasChildren;
+    private Boolean hasChildren = false;
 }

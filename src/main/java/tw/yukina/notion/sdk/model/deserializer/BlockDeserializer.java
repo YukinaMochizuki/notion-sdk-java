@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.block.BlockType;
 import tw.yukina.notion.sdk.model.block.ParagraphBlock;
+import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
+import tw.yukina.notion.sdk.model.block.heading.HeadingThreeBlock;
+import tw.yukina.notion.sdk.model.block.heading.HeadingTwoBlock;
 
 import java.io.IOException;
 
@@ -17,6 +20,10 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         String type = node.get("type").asText();
 
         addAvailableType(BlockType.PARAGRAPH.getField(), ParagraphBlock.class);
+
+        addAvailableType(BlockType.HEADING_1.getField(), HeadingOneBlock.class);
+        addAvailableType(BlockType.HEADING_2.getField(), HeadingTwoBlock.class);
+        addAvailableType(BlockType.HEADING_3.getField(), HeadingThreeBlock.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }

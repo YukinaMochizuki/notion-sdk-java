@@ -1,6 +1,8 @@
 package tw.yukina.notion.sdk.model.block;
 
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.block.heading.Heading;
+import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
 

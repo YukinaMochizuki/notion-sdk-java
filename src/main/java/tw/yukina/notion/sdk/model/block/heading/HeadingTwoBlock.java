@@ -1,10 +1,11 @@
-package tw.yukina.notion.sdk.model.block;
+package tw.yukina.notion.sdk.model.block.heading;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import tw.yukina.notion.sdk.model.block.Block;
 
 @Getter
 @Setter
@@ -12,10 +13,12 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class ParagraphBlock extends Block{
-    private static final String PARAGRAPH_FIELD = "paragraph";
+public class HeadingTwoBlock extends Block implements HeadingBlock {
+    private static final String HEADING_ONE_FIELD = "heading_2";
 
-    @JsonProperty(PARAGRAPH_FIELD)
-    private Paragraph paragraph;
+    @JsonProperty(HEADING_ONE_FIELD)
+    private Heading heading;
+
 }

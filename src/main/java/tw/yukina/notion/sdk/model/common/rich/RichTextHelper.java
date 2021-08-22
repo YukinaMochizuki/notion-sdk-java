@@ -9,6 +9,11 @@ import tw.yukina.notion.sdk.model.common.user.PersonUser;
 import tw.yukina.notion.sdk.model.common.user.UserType;
 import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
 
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class RichTextHelper {
 
     @NotNull
@@ -23,6 +28,11 @@ public class RichTextHelper {
         text.setType(TextType.TEXT);
 
         return text;
+    }
+
+    @NotNull
+    public static List<RichText> createDefaultArrayText(String content){
+        return new ArrayList<>(Collections.singleton(createDefaultText(content)));
     }
 
     @NotNull
@@ -108,5 +118,13 @@ public class RichTextHelper {
         Annotation annotation = new Annotation();
         annotation.setAllDefault();
         return annotation;
+    }
+
+    public static void setLinkToText(@NotNull Text text, URL url){
+        Link link = new Link();
+        link.setUrl(url);
+
+        text.setHref(url);
+        text.getTextObject().setLink(link);
     }
 }
