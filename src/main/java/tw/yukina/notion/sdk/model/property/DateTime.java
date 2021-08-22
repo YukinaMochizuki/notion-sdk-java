@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
-import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
 
 import java.time.ZonedDateTime;
 import java.util.Objects;

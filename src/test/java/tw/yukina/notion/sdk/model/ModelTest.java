@@ -59,7 +59,6 @@ public class ModelTest {
     public ObjectMapper getCommonObjectMapper(){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
-//        objectMapper.registerModule(new JavaTimeModule());
 
         return objectMapper;
     }

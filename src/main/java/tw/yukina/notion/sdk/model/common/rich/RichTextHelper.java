@@ -1,6 +1,5 @@
 package tw.yukina.notion.sdk.model.common.rich;
 
-import com.fasterxml.jackson.databind.JsonMappingException;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.rich.mention.*;
 import tw.yukina.notion.sdk.model.common.unit.Database;
@@ -9,11 +8,6 @@ import tw.yukina.notion.sdk.model.common.user.Person;
 import tw.yukina.notion.sdk.model.common.user.PersonUser;
 import tw.yukina.notion.sdk.model.common.user.UserType;
 import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
-import tw.yukina.notion.sdk.model.property.Date;
-
-import java.io.IOException;
-import java.time.Instant;
-import java.time.ZonedDateTime;
 
 public class RichTextHelper {
 
