@@ -7,10 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import tw.yukina.notion.sdk.model.common.rich.MentionText;
-import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.common.rich.Text;
-import tw.yukina.notion.sdk.model.common.rich.TextType;
+import tw.yukina.notion.sdk.model.common.rich.*;
 import tw.yukina.notion.sdk.model.common.rich.mention.Mention;
 import tw.yukina.notion.sdk.model.parent.PageParent;
 import tw.yukina.notion.sdk.model.parent.Parent;
@@ -27,6 +24,7 @@ public class RichTextDeserializer extends AbstractDeserializer<RichText> {
 
         addAvailableType(TextType.TEXT.getField(), Text.class);
         addAvailableType(TextType.MENTION.getField(), MentionText.class);
+        addAvailableType(TextType.EQUATION.getField(), EquationText.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }

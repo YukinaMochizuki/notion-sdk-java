@@ -86,6 +86,20 @@ public class RichTextHelper {
         return createDefaultMentionText("@" + name, userMention);
     }
 
+    @NotNull
+    public static EquationText createEquationText(String expression){
+        Equation equation = new Equation();
+        equation.setExpression(expression);
+
+        EquationText equationText = new EquationText();
+        equationText.setEquation(equation);
+        equationText.setAnnotations(createDefaultAnnotation());
+        equationText.setPlainText(expression);
+        equationText.setType(TextType.EQUATION);
+        return equationText;
+    }
+
+    @NotNull
     public static MentionText createDefaultMentionText(String plainText, Mention mention){
         MentionText mentionText = new MentionText();
         mentionText.setMention(mention);
