@@ -24,4 +24,30 @@ public class ListBlockTest extends ModelTest {
         assertEquals(block, bulletedListBlock);
         response.close();
     }
+
+    @Test
+    void numberedListTest() throws IOException {
+        Response response = getResponse( BASE_URL + "/blocks/6e9f306c7cfe4dff9347bd2f93f358e8");
+        Block block = readValueUseCommonObjectMapper(response, Block.class);
+
+        Block numberedListBlock = ListBlockHelper
+                .createDefaultNumberedList(RichTextHelper.createDefaultArrayText("The one"));
+        numberedListBlock.setId("6e9f306c-7cfe-4dff-9347-bd2f93f358e8");
+
+        assertEquals(block, numberedListBlock);
+        response.close();
+    }
+
+    @Test
+    void toggleListTest() throws IOException {
+        Response response = getResponse( BASE_URL + "/blocks/353fe62adf4542349c3d95ee6a37ac6e");
+        Block block = readValueUseCommonObjectMapper(response, Block.class);
+
+        Block toggleBlock = ListBlockHelper
+                .createDefaultToggle(RichTextHelper.createDefaultArrayText("Toggle"));
+        toggleBlock.setId("353fe62a-df45-4234-9c3d-95ee6a37ac6e");
+
+        assertEquals(block, toggleBlock);
+        response.close();
+    }
 }
