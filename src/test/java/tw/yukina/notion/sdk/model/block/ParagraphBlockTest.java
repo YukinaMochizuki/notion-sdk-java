@@ -116,7 +116,7 @@ class ParagraphBlockTest extends ModelTest {
     }
 
     @Test
-    void EquationTest() throws IOException {
+    void equationTest() throws IOException {
         Response response = getResponse(BASE_URL + "/blocks/e3b0f6306962422cb4b20cc88f6324a4");
         Block block = readValueUseCommonObjectMapper(response, Block.class);
 
