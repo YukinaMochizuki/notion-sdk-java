@@ -7,6 +7,7 @@ import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
 
 import java.util.Collections;
+import java.util.List;
 
 public class BlockHelper {
 
@@ -33,5 +34,19 @@ public class BlockHelper {
         paragraphBlock.setParagraph(paragraph);
 
         return paragraphBlock;
+    }
+
+    @NotNull
+    public static TodoBlock createDefaultTodoBlock(List<RichText> texts, boolean checked){
+        Todo todo = new Todo();
+        todo.setTexts(texts);
+        todo.setChecked(checked);
+
+        TodoBlock todoBlock = new TodoBlock();
+        todoBlock.setHasChildren(false);
+        todoBlock.setType(BlockType.TO_DO);
+        todoBlock.setTodo(todo);
+
+        return todoBlock;
     }
 }

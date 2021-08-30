@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.block.BlockType;
 import tw.yukina.notion.sdk.model.block.ParagraphBlock;
+import tw.yukina.notion.sdk.model.block.TodoBlock;
 import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
 import tw.yukina.notion.sdk.model.block.heading.HeadingThreeBlock;
 import tw.yukina.notion.sdk.model.block.heading.HeadingTwoBlock;
@@ -31,6 +32,8 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         addAvailableType(BlockType.BULLETED_LIST_ITEM.getField(), BulletedListBlock.class);
         addAvailableType(BlockType.NUMBERED_LIST_ITEM.getField(), NumberedListBlock.class);
         addAvailableType(BlockType.TOGGLE.getField(), ToggleBlock.class);
+
+        addAvailableType(BlockType.TO_DO.getField(), TodoBlock.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }
