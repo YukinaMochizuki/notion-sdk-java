@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
-import tw.yukina.notion.sdk.model.property.Date;
-import tw.yukina.notion.sdk.model.property.DateTime;
-import tw.yukina.notion.sdk.model.property.DateTimeProperty;
-import tw.yukina.notion.sdk.model.property.DateTimeType;
+import tw.yukina.notion.sdk.model.page.property.Date;
+import tw.yukina.notion.sdk.model.page.property.DateTime;
+import tw.yukina.notion.sdk.model.page.property.DateTimeProperty;
+import tw.yukina.notion.sdk.model.page.property.DateTimeType;
 
 import java.io.IOException;
 import java.time.LocalDate;

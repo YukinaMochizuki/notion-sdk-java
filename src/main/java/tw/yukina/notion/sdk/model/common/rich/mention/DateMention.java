@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.property.DateTimeProperty;
+import tw.yukina.notion.sdk.model.page.property.DateTimeProperty;
 
 @Getter
 @Setter

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import tw.yukina.notion.sdk.model.ObjectType;
-import tw.yukina.notion.sdk.model.parent.Parent;
+import tw.yukina.notion.sdk.model.common.parent.Parent;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.time.ZonedDateTime;

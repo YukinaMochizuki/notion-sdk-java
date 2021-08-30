@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.Color;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.heading.HeadingBlockHelper;
-import tw.yukina.notion.sdk.model.block.heading.HeadingTwoBlock;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
 import tw.yukina.notion.sdk.model.common.rich.Text;
@@ -19,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HeadingBlockTest extends ModelTest {
     @Test
-    void HeadingOneTest() throws IOException {
+    void headingOneTest() throws IOException {
         Response response = getResponse( BASE_URL + "/blocks/9bda6b90679641eb973e1a1361546e4d");
         Block block = readValueUseCommonObjectMapper(response, Block.class);
 
@@ -39,7 +38,7 @@ public class HeadingBlockTest extends ModelTest {
     }
 
     @Test
-    void HeadingTwoTest() throws IOException {
+    void headingTwoTest() throws IOException {
         Response response = getResponse( BASE_URL + "/blocks/cf33ab7ed8b541b4a516e0578c69b97d");
         Block block = readValueUseCommonObjectMapper(response, Block.class);
 
@@ -66,7 +65,8 @@ public class HeadingBlockTest extends ModelTest {
     }
 
     @Test
-    void HeadingThreeTest() throws IOException {
+    @SuppressWarnings("SpellCheckingInspection")
+    void headingThreeTest() throws IOException {
         Response response = getResponse( BASE_URL + "/blocks/d8f0c658c822454bbcfddc5fa1ff79c0");
         Block block = readValueUseCommonObjectMapper(response, Block.class);
 

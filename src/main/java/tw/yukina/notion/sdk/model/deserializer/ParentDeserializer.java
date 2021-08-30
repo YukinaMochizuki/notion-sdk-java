@@ -4,10 +4,10 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import tw.yukina.notion.sdk.model.parent.PageParent;
-import tw.yukina.notion.sdk.model.parent.Parent;
-import tw.yukina.notion.sdk.model.parent.ParentType;
-import tw.yukina.notion.sdk.model.parent.WorkspaceParent;
+import tw.yukina.notion.sdk.model.common.parent.PageParent;
+import tw.yukina.notion.sdk.model.common.parent.Parent;
+import tw.yukina.notion.sdk.model.common.parent.ParentType;
+import tw.yukina.notion.sdk.model.common.parent.WorkspaceParent;
 
 import java.io.IOException;
 
