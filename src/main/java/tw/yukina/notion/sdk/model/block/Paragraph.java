@@ -1,6 +1,6 @@
 package tw.yukina.notion.sdk.model.block;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
@@ -24,5 +24,6 @@ public class Paragraph {
 
     @Nullable
     @JsonProperty(CHILDREN_FIELD)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Block> children;
 }

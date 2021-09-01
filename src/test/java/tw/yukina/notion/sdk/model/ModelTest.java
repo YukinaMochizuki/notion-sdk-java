@@ -10,6 +10,7 @@ import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.BeforeAll;
 import tw.yukina.notion.sdk.model.deserializer.ZonedDateTimeDeserializer;
+import tw.yukina.notion.sdk.model.serializer.ZonedDateTimeSerializer;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -48,6 +49,7 @@ public class ModelTest {
 
         objectMapperModule = new SimpleModule();
         objectMapperModule.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
+        objectMapperModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
     }
 
     public Response getResponse(@NotNull String url) throws IOException {
@@ -66,5 +68,9 @@ public class ModelTest {
 
     public <T> T readValueUseCommonObjectMapper(@NotNull Response response, @NotNull Class<T> valueType) throws IOException {
         return getCommonObjectMapper().readValue(Objects.requireNonNull(response.body()).string(), valueType);
+    }
+
+    public <T> T readValueUseCommonObjectMapper(@NotNull String tree, @NotNull Class<T> valueType) throws IOException {
+        return getCommonObjectMapper().readValue(tree, valueType);
     }
 }
