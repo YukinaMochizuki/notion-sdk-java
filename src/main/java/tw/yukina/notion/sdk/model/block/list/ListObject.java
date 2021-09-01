@@ -1,6 +1,7 @@
 package tw.yukina.notion.sdk.model.block.list;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
@@ -26,5 +27,6 @@ public class ListObject {
 
     @Nullable
     @JsonProperty(CHILDREN_FIELD)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private List<Block> children;
 }

@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.model.block;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.Color;
@@ -13,6 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,7 +22,9 @@ public class HeadingBlockTest extends ModelTest {
     @Test
     void headingOneTest() throws IOException {
         Response response = getResponse( BASE_URL + "/blocks/9bda6b90679641eb973e1a1361546e4d");
-        Block block = readValueUseCommonObjectMapper(response, Block.class);
+        String tree = Objects.requireNonNull(response.body()).string();
+        JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
+        Block block = readValueUseCommonObjectMapper(tree, Block.class);
 
         List<RichText> texts = new ArrayList<>();
         texts.add(RichTextHelper.createDefaultText("Heading 1 "));
@@ -31,16 +35,22 @@ public class HeadingBlockTest extends ModelTest {
         texts.add(richText);
 
         Block headingOneBlock = HeadingBlockHelper.createDefaultHeadingOne(texts);
-        headingOneBlock.setId("9bda6b90-6796-41eb-973e-1a1361546e4d");
+        headingOneBlock.setId(block.getId());
+        headingOneBlock.setCreatedTime(block.getCreatedTime());
+        headingOneBlock.setLastEditedTime(block.getLastEditedTime());
+        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(headingOneBlock);
 
         assertEquals(block, headingOneBlock);
+        assertEquals(responseJsonNode, serializedJsonNode);
         response.close();
     }
 
     @Test
     void headingTwoTest() throws IOException {
         Response response = getResponse( BASE_URL + "/blocks/cf33ab7ed8b541b4a516e0578c69b97d");
-        Block block = readValueUseCommonObjectMapper(response, Block.class);
+        String tree = Objects.requireNonNull(response.body()).string();
+        JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
+        Block block = readValueUseCommonObjectMapper(tree, Block.class);
 
         List<RichText> richTexts = RichTextHelper.createDefaultArrayText("Heading ");
 
@@ -59,16 +69,23 @@ public class HeadingBlockTest extends ModelTest {
         richTexts.add(text2);
 
         Block headingTwoBlock = HeadingBlockHelper.createDefaultHeadingTwo(richTexts);
-        headingTwoBlock.setId("cf33ab7e-d8b5-41b4-a516-e0578c69b97d");
+        headingTwoBlock.setId(block.getId());
+        headingTwoBlock.setCreatedTime(block.getCreatedTime());
+        headingTwoBlock.setLastEditedTime(block.getLastEditedTime());
+        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(headingTwoBlock);
 
         assertEquals(block, headingTwoBlock);
+        assertEquals(responseJsonNode, serializedJsonNode);
+        response.close();
     }
 
     @Test
     @SuppressWarnings("SpellCheckingInspection")
     void headingThreeTest() throws IOException {
         Response response = getResponse( BASE_URL + "/blocks/d8f0c658c822454bbcfddc5fa1ff79c0");
-        Block block = readValueUseCommonObjectMapper(response, Block.class);
+        String tree = Objects.requireNonNull(response.body()).string();
+        JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
+        Block block = readValueUseCommonObjectMapper(tree, Block.class);
 
         List<RichText> richTexts = RichTextHelper.createDefaultArrayText("Heading 3 ");
 
@@ -83,8 +100,13 @@ public class HeadingBlockTest extends ModelTest {
         richTexts.add(text2);
 
         Block headingThreeBlock = HeadingBlockHelper.createDefaultHeadingThree(richTexts);
-        headingThreeBlock.setId("d8f0c658-c822-454b-bcfd-dc5fa1ff79c0");
+        headingThreeBlock.setId(block.getId());
+        headingThreeBlock.setCreatedTime(block.getCreatedTime());
+        headingThreeBlock.setLastEditedTime(block.getLastEditedTime());
+        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(headingThreeBlock);
 
         assertEquals(block, headingThreeBlock);
+        assertEquals(responseJsonNode, serializedJsonNode);
+        response.close();
     }
 }
