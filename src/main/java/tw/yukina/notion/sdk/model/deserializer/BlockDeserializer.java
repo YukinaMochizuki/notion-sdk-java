@@ -4,10 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.block.BlockType;
-import tw.yukina.notion.sdk.model.block.ParagraphBlock;
-import tw.yukina.notion.sdk.model.block.TodoBlock;
+import tw.yukina.notion.sdk.model.block.*;
 import tw.yukina.notion.sdk.model.block.file.FileBlock;
 import tw.yukina.notion.sdk.model.block.file.ImageBlock;
 import tw.yukina.notion.sdk.model.block.file.PDFBlock;
@@ -42,6 +39,8 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         addAvailableType(BlockType.IMAGE.getField(), ImageBlock.class);
         addAvailableType(BlockType.PDF.getField(), PDFBlock.class);
         addAvailableType(BlockType.VIDEO.getField(), VideoBlock.class);
+
+        addAvailableType(BlockType.CHILD_PAGE.getField(), ChildPageBlock.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }

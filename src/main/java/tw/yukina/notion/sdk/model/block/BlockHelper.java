@@ -1,8 +1,6 @@
 package tw.yukina.notion.sdk.model.block;
 
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.model.block.heading.Heading;
-import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
 
@@ -48,5 +46,17 @@ public class BlockHelper {
         todoBlock.setTodo(todo);
 
         return todoBlock;
+    }
+
+    @NotNull
+    public static ChildPageBlock createDefaultChildPageBlock(String title){
+        ChildPage childPage = new ChildPage();
+        childPage.setTitle(title);
+
+        ChildPageBlock childPageBlock = new ChildPageBlock();
+        childPageBlock.setType(BlockType.CHILD_PAGE);
+        childPageBlock.setChildPage(childPage);
+
+        return childPageBlock;
     }
 }

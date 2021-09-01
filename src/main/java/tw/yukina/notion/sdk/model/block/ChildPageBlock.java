@@ -12,9 +12,9 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class ParagraphBlock extends Block{
-    private static final String PARAGRAPH_FIELD = "paragraph";
+public class ChildPageBlock extends Block {
+    private static final String CHILD_PAGE_FIELD = "child_page";
 
-    @JsonProperty(PARAGRAPH_FIELD)
-    private Paragraph paragraph;
+    @JsonProperty(CHILD_PAGE_FIELD)
+    private ChildPage childPage;
 }
