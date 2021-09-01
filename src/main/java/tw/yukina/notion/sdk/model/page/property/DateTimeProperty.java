@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.model.page.property;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
@@ -13,6 +14,8 @@ import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = DateTimeDeserializer.class)
 public abstract class DateTimeProperty {
+
+    @JsonIgnore
     private DateTimeType dateTimeType;
 
     public abstract String startToString();
