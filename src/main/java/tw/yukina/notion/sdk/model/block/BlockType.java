@@ -12,6 +12,12 @@ public enum BlockType {
     TO_DO("to_do"),
     TOGGLE("toggle"),
     CHILD_PAGE("child_page"),
+    EMBED("embed"),
+    IMAGE("image"),
+    VIDEO("video"),
+    FILE("file"),
+    PDF("pdf"),
+    BOOKMARK("bookmark"),
     UNSUPPORTED("unsupported");
 
     private final String field;

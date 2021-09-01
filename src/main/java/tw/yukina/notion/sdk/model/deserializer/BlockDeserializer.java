@@ -8,6 +8,10 @@ import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.block.BlockType;
 import tw.yukina.notion.sdk.model.block.ParagraphBlock;
 import tw.yukina.notion.sdk.model.block.TodoBlock;
+import tw.yukina.notion.sdk.model.block.file.FileBlock;
+import tw.yukina.notion.sdk.model.block.file.ImageBlock;
+import tw.yukina.notion.sdk.model.block.file.PDFBlock;
+import tw.yukina.notion.sdk.model.block.file.VideoBlock;
 import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
 import tw.yukina.notion.sdk.model.block.heading.HeadingThreeBlock;
 import tw.yukina.notion.sdk.model.block.heading.HeadingTwoBlock;
@@ -32,8 +36,12 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         addAvailableType(BlockType.BULLETED_LIST_ITEM.getField(), BulletedListBlock.class);
         addAvailableType(BlockType.NUMBERED_LIST_ITEM.getField(), NumberedListBlock.class);
         addAvailableType(BlockType.TOGGLE.getField(), ToggleBlock.class);
-
         addAvailableType(BlockType.TO_DO.getField(), TodoBlock.class);
+
+        addAvailableType(BlockType.FILE.getField(), FileBlock.class);
+        addAvailableType(BlockType.IMAGE.getField(), ImageBlock.class);
+        addAvailableType(BlockType.PDF.getField(), PDFBlock.class);
+        addAvailableType(BlockType.VIDEO.getField(), VideoBlock.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }
