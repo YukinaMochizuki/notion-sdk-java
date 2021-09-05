@@ -44,7 +44,6 @@ public class ModelTest {
         okHttpClient = new OkHttpClient();
         requestBuilder = new Request.Builder()
                 .addHeader("Authorization", properties.getProperty("Notion.test.token"))
-//                .addHeader("Notion-Version", "2021-05-13");
                 .addHeader("Notion-Version", "2021-08-16");
 
         objectMapperModule = new SimpleModule();

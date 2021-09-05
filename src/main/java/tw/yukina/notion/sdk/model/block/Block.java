@@ -23,6 +23,7 @@ public class Block {
     private static final String CREATED_TIME_FIELD = "created_time";
     private static final String LAST_EDITED_TIME_FIELD = "last_edited_time";
     private static final String HAS_CHILDREN_FIELD = "has_children";
+    private static final String ARCHIVED_FIELD = "archived";
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.BLOCK;
@@ -41,4 +42,7 @@ public class Block {
 
     @JsonProperty(HAS_CHILDREN_FIELD)
     private Boolean hasChildren = false;
+
+    @JsonProperty(ARCHIVED_FIELD)
+    private Boolean archived = false;
 }
