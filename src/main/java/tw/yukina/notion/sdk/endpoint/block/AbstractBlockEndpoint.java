@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.AbstractEndpoint;
 import tw.yukina.notion.sdk.model.block.Block;
+import tw.yukina.notion.sdk.model.endpoint.BlockList;
 
 public abstract class AbstractBlockEndpoint extends AbstractEndpoint {
 
@@ -13,6 +14,10 @@ public abstract class AbstractBlockEndpoint extends AbstractEndpoint {
 
     public static Block toBlock(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) throws JsonProcessingException {
         return objectMapper.readValue(objectNode.toString(), Block.class);
+    }
+
+    public static BlockList toBlockList(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) throws JsonProcessingException {
+        return objectMapper.readValue(objectNode.toString(), BlockList.class);
     }
 
     public static void preparePostBlock(@NotNull ObjectNode block){

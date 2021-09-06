@@ -7,7 +7,8 @@ public enum ObjectType {
     PAGE("page"),
     BLOCK("block"),
     USER("user"),
-    WORKSPACE("workspace");
+    WORKSPACE("workspace"),
+    LIST("list");
 
     private final String field;
 
