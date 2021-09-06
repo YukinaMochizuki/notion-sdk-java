@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class BlockList extends ListObject {
+public class ResponseBlockList extends ResponseList {
 
     private static final String RESULTS_FIELD = "results";
 

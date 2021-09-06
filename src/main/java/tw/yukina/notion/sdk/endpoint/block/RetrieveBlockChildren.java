@@ -8,7 +8,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.endpoint.BlockList;
+import tw.yukina.notion.sdk.model.endpoint.ResponseBlockList;
 
 import java.io.IOException;
 
@@ -16,10 +16,10 @@ import static tw.yukina.notion.sdk.Configuration.BASE_URL;
 
 public class RetrieveBlockChildren extends AbstractBlockEndpoint {
 
-    public static BlockList callValue(@NotNull String uuid,
-                                      @NotNull OkHttpClient okHttpClient,
-                                      @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+    public static ResponseBlockList callValue(@NotNull String uuid,
+                                              @NotNull OkHttpClient okHttpClient,
+                                              @NotNull Request.Builder builder,
+                                              @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
 
         ObjectNode objectNode = callTree(uuid, okHttpClient, builder, objectMapper);
         return toBlockList(objectNode, objectMapper);

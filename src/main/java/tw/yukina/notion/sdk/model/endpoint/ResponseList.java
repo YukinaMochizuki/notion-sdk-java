@@ -10,7 +10,7 @@ import tw.yukina.notion.sdk.model.ObjectType;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class ListObject {
+public class ResponseList {
     private static final String OBJECT_FIELD = "object";
     private static final String NEXT_CURSOR_FIELD = "next_cursor";
     private static final String HAS_MORE_FIELD = "has_more";
