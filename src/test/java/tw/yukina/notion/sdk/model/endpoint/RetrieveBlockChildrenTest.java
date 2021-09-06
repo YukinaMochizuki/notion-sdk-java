@@ -20,15 +20,16 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RetrieveBlockChildrenTest extends ModelTest {
+
     @Test
     void callValueTest() throws IOException, NotionAPIException {
-        BlockList responseBlockList = RetrieveBlockChildren.callValue("a5277c2eb62c4d58ac2bb3c1df2e39d5", getOkHttpClient(),
+        ResponseBlockList responseBlockList = RetrieveBlockChildren.callValue("a5277c2eb62c4d58ac2bb3c1df2e39d5", getOkHttpClient(),
                 getRequestBuilder(), getCommonObjectMapper());
 
         JsonNode responseJsonNode = RetrieveBlockChildren.callTree("a5277c2eb62c4d58ac2bb3c1df2e39d5", getOkHttpClient(),
                 getRequestBuilder(), getCommonObjectMapper());
 
-        BlockList blockList = new BlockList();
+        ResponseBlockList blockList = new ResponseBlockList();
         List<Block> blocks = blockList.getBlocks();
 
         Block addBlock = BlockHelper.createDefaultParagraph("Text");
