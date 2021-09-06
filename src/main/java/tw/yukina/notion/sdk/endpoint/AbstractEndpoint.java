@@ -16,7 +16,10 @@ public abstract class AbstractEndpoint {
     @NotNull
     public static ObjectNode getObjectNode(@NotNull Response response, @NotNull ObjectMapper objectMapper)
             throws IOException, NotionAPIException {
-        return checkJsonErrorAndGetObjectNode(objectMapper.readTree(Objects.requireNonNull(response.body()).charStream()));
+        ObjectNode objectNode = checkJsonErrorAndGetObjectNode(objectMapper.readTree(Objects.requireNonNull(response.body()).charStream()));
+        response.close();
+
+        return objectNode;
     }
 
     @NotNull
