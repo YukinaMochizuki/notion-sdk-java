@@ -2,7 +2,7 @@ package tw.yukina.notion.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum Color {
+public enum TextColor {
     DEFAULT("default"),
     GRAY("gray"),
     BROWN("brown"),
@@ -25,7 +25,7 @@ public enum Color {
 
     private final String field;
 
-    Color(String field) {
+    TextColor(String field) {
         this.field = field;
     }
 

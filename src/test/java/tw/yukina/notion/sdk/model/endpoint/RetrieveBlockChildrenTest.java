@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.endpoint.block.RetrieveBlockChildren;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.Color;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.block.BlockHelper;
@@ -63,7 +63,7 @@ public class RetrieveBlockChildrenTest extends ModelTest {
 
         RichText richText = RichTextHelper.createDefaultText("!!");
         richText.getAnnotations().setBold(true);
-        richText.getAnnotations().setColor(Color.PINK);
+        richText.getAnnotations().setColor(TextColor.PINK);
         texts.add(richText);
 
         addBlock = HeadingBlockHelper.createDefaultHeadingOne(texts);

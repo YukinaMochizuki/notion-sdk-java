@@ -3,7 +3,7 @@ package tw.yukina.notion.sdk.model.common.rich;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import tw.yukina.notion.sdk.model.Color;
+import tw.yukina.notion.sdk.model.TextColor;
 
 @Getter
 @Setter
@@ -36,7 +36,7 @@ public class Annotation {
     private boolean isCode;
 
     @JsonProperty(COLOR_FIELD)
-    private Color color;
+    private TextColor color;
 
     public void setAllDefault(){
         isBold = false;
@@ -44,7 +44,7 @@ public class Annotation {
         isStrikethrough = false;
         isUnderline = false;
         isCode = false;
-        color = Color.DEFAULT;
+        color = TextColor.DEFAULT;
     }
 
 }

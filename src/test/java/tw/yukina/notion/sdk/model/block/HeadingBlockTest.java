@@ -3,7 +3,7 @@ package tw.yukina.notion.sdk.model.block;
 import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
-import tw.yukina.notion.sdk.model.Color;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.heading.HeadingBlockHelper;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
@@ -31,7 +31,7 @@ public class HeadingBlockTest extends ModelTest {
 
         RichText richText = RichTextHelper.createDefaultText("One");
         richText.getAnnotations().setUnderline(true);
-        richText.getAnnotations().setColor(Color.PINK);
+        richText.getAnnotations().setColor(TextColor.PINK);
         texts.add(richText);
 
         Block headingOneBlock = HeadingBlockHelper.createDefaultHeadingOne(texts);
@@ -60,12 +60,12 @@ public class HeadingBlockTest extends ModelTest {
 
         RichText text1 = RichTextHelper.createDefaultText("Two ");
         text1.getAnnotations().setItalic(true);
-        text1.getAnnotations().setColor(Color.ORANGE);
+        text1.getAnnotations().setColor(TextColor.ORANGE);
         richTexts.add(text1);
 
         RichText text2 = RichTextHelper.createDefaultText("code");
         text2.getAnnotations().setCode(true);
-        text2.getAnnotations().setColor(Color.GRAY);
+        text2.getAnnotations().setColor(TextColor.GRAY);
         richTexts.add(text2);
 
         Block headingTwoBlock = HeadingBlockHelper.createDefaultHeadingTwo(richTexts);
