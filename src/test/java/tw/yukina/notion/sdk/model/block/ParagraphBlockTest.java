@@ -70,7 +70,7 @@ class ParagraphBlockTest extends ModelTest {
 
         String uuid = "4640eada-22ca-47be-9093-07524a2e777b";
         String avatarUrl = "https://s3-us-west-2.amazonaws.com/public.notion-static.com/1978afb7-35bb-4111-9d2f-3c67c7d00b13/FB_IMG_1594677191662_(1).jpg";
-        MentionText mentionText = RichTextHelper.createPersonMention("知望月", uuid);
+        MentionText mentionText = RichTextHelper.createPersonMention("望月知", uuid);
         UserMention userMention = (UserMention) mentionText.getMention();
         PersonUser personUser = (PersonUser) userMention.getUser();
         personUser.setAvatar(new URL(avatarUrl));
@@ -96,7 +96,7 @@ class ParagraphBlockTest extends ModelTest {
 
         String uuid = "8140870d-e48d-4e3d-8496-1647c7810b11";
         String href = "https://www.notion.so/" + uuid.replace("-", "");
-        RichText text = RichTextHelper.createDatabaseMention("Test DB", uuid);
+        RichText text = RichTextHelper.createDatabaseMention("Project (Test DB)", uuid);
         text.setHref(new URL(href));
 
         Block pageMentionBlock = BlockHelper.createDefaultParagraph(text);
