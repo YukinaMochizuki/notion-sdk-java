@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class NumberProperty extends Property {
+public class NumberProperty extends DatabaseProperty {
 
     private static final String NUMBER_FIELD = "number";
 

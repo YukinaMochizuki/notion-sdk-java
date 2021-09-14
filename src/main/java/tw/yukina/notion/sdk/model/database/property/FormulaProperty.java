@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class FormulaProperty extends Property {
+public class FormulaProperty extends DatabaseProperty {
 
     private static final String FORMULA_FIELD = "formula";
 

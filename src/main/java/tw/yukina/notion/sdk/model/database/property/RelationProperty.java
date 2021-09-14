@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class RelationProperty extends Property {
+public class RelationProperty extends DatabaseProperty {
 
     private static final String RELATION_FIELD = "relation";
 

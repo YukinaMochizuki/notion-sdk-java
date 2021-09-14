@@ -4,14 +4,16 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
+import tw.yukina.notion.sdk.model.common.Property;
+import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.database.property.*;
 
 import java.io.IOException;
 
-public class DatabasePropertyDeserializer extends AbstractDeserializer<Property> {
+public class DatabasePropertyDeserializer extends AbstractDeserializer<DatabaseProperty> {
 
     @Override
-    public Property deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
+    public DatabaseProperty deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
 
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
@@ -30,9 +32,9 @@ public class DatabasePropertyDeserializer extends AbstractDeserializer<Property>
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }
 
-    private Property deserialize(JsonParser jsonParser, JsonNode node) throws JsonProcessingException {
+    private DatabaseProperty deserialize(JsonParser jsonParser, JsonNode node) throws JsonProcessingException {
 
-        Property property = new Property();
+        DatabaseProperty property = new DatabaseProperty();
         property.setType(jsonParser.getCodec().treeToValue(node.get("type"), PropertyType.class));
         property.setId(node.get("id").asText());
         property.setName(node.get("name").asText());

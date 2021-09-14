@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class SelectProperty extends Property {
+public class SelectProperty extends DatabaseProperty {
 
     private static final String SELECT_FIELD = "select";
 

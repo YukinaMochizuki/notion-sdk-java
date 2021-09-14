@@ -5,8 +5,6 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @ToString(callSuper = true)
@@ -14,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class MultiSelectProperty extends Property {
+public class MultiSelectProperty extends DatabaseProperty {
 
     private static final String MULTI_SELECT_FIELD = "multi_select";
 

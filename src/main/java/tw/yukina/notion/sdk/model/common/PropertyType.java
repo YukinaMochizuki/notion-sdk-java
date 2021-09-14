@@ -1,4 +1,4 @@
-package tw.yukina.notion.sdk.model.database.property;
+package tw.yukina.notion.sdk.model.common;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

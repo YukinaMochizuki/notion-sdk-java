@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class RollupProperty extends Property {
+public class RollupProperty extends DatabaseProperty {
 
     private static final String ROLLUP_FIELD = "rollup";
 

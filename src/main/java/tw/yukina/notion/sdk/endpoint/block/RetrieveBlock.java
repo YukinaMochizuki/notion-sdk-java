@@ -39,7 +39,7 @@ public class RetrieveBlock extends AbstractBlockEndpoint{
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder) throws IOException {
 
-        okhttp3.Request request = builder.url(BASE_URL + PATH + uuid).build();
+        Request request = builder.url(BASE_URL + PATH + uuid).build();
         Call call = okHttpClient.newCall(request);
 
         return call.execute();

@@ -7,7 +7,8 @@ import tw.yukina.notion.sdk.model.block.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.database.property.Property;
+import tw.yukina.notion.sdk.model.common.Property;
+import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -52,7 +53,7 @@ public class Database {
     private FileObject cover;
 
     @JsonProperty(PROPERTIES_FIELD)
-    private Map<String, Property> propertyMap;
+    private Map<String, DatabaseProperty> propertyMap;
 
     @JsonProperty(PARENT_FIELD)
     private Parent parent;
