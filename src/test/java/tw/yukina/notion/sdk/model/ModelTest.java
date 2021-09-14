@@ -26,13 +26,19 @@ public class ModelTest {
     private static OkHttpClient okHttpClient;
 
     @Getter
-    private static Request.Builder requestBuilder;
-
-    @Getter
     private static SimpleModule objectMapperModule;
 
     @BeforeAll
     static void setUp() {
+        okHttpClient = new OkHttpClient();
+
+        objectMapperModule = new SimpleModule();
+        objectMapperModule.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
+        objectMapperModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
+    }
+
+    public Request.Builder getRequestBuilder(){
+
         Properties properties = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
@@ -41,14 +47,9 @@ public class ModelTest {
             e.printStackTrace();
         }
 
-        okHttpClient = new OkHttpClient();
-        requestBuilder = new Request.Builder()
+        return new Request.Builder()
                 .addHeader("Authorization", properties.getProperty("Notion.test.token"))
                 .addHeader("Notion-Version", "2021-08-16");
-
-        objectMapperModule = new SimpleModule();
-        objectMapperModule.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
-        objectMapperModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
     }
 
     public Response getResponse(@NotNull String url) throws IOException {
