@@ -2,16 +2,17 @@ package tw.yukina.notion.sdk.model.endpoint;
 
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.endpoint.block.AppendBlockChildren;
+import tw.yukina.notion.sdk.endpoint.block.DeleteBlock;
+import tw.yukina.notion.sdk.endpoint.block.RetrieveBlockChildren;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.Template;
 import tw.yukina.notion.sdk.model.block.Block;
-import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppendBlockChildrenTest extends ModelTest {
 
-//    @Test
+    @Test
     void callValue() throws Exception {
         RequestChildrenBlockList requestChildrenBlockList = new RequestChildrenBlockList();
         requestChildrenBlockList.setBlocks(Template.getPageBlock());
@@ -31,5 +32,15 @@ public class AppendBlockChildrenTest extends ModelTest {
         }
 
         assertEquals(responseBlockList, testResponseBlockList);
+
+        for(int i = 0; i < responseBlockList.getBlocks().size(); i++)
+            DeleteBlock.callValue(testResponseBlockList.getBlocks().get(i).getId(),
+                    getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
+
+
+        responseBlockList = RetrieveBlockChildren.callValue("49a92380b1634d28bb580816bb9126b5",
+                getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
+
+        assertTrue(responseBlockList.getBlocks().isEmpty());
     }
 }
