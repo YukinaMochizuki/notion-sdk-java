@@ -14,10 +14,11 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class PageParent extends Parent {
+public class DatabaseParent extends Parent {
 
-    private static final String PAGE_ID_FIELD = "page_id";
+    private static final String DATABASE_ID_FIELD = "database_id";
 
-    @JsonProperty(PAGE_ID_FIELD)
-    private String pageId;
+    @JsonProperty(DATABASE_ID_FIELD)
+    private String id;
+
 }

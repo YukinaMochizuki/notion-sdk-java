@@ -1,4 +1,4 @@
-package tw.yukina.notion.sdk.model.page.property;
+package tw.yukina.notion.sdk.model.common.date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

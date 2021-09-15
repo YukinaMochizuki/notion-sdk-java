@@ -2,6 +2,7 @@ package tw.yukina.notion.sdk.model.database.property;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import tw.yukina.notion.sdk.model.common.SelectOption;
 
 import java.util.List;
 

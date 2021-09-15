@@ -1,6 +1,5 @@
-package tw.yukina.notion.sdk.model.common.rich.mention;
+package tw.yukina.notion.sdk.model.page.property;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -9,15 +8,16 @@ import tw.yukina.notion.sdk.model.common.date.DateTimeProperty;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class DateMention extends Mention{
+public class DateProperty extends PageProperty {
+
     private static final String DATE_FIELD = "date";
 
     @JsonProperty(DATE_FIELD)
     private DateTimeProperty dateTimeProperty;
+
 }

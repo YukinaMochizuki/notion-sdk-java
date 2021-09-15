@@ -14,7 +14,6 @@ import lombok.*;
 public class FileObject {
 
     private static final String TYPE_FIELD = "type";
-
     private static final String EXTERNAL_FIELD = "external";
 
     @JsonProperty(TYPE_FIELD)

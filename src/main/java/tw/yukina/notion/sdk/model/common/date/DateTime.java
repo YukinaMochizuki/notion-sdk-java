@@ -1,4 +1,4 @@
-package tw.yukina.notion.sdk.model.page.property;
+package tw.yukina.notion.sdk.model.common.date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,9 +7,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
-import tw.yukina.notion.sdk.model.serializer.LocalDateSerializer;
+import tw.yukina.notion.sdk.model.serializer.UserZonedDateTimeSerializer;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 @Getter
@@ -20,18 +20,18 @@ import java.util.Objects;
 @EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class Date extends DateTimeProperty{
+public class DateTime extends DateTimeProperty{
     private static final String START_FIELD = "start";
     private static final String END_FIELD = "end";
 
     @JsonProperty(START_FIELD)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate start;
+    @JsonSerialize(using = UserZonedDateTimeSerializer.class)
+    private ZonedDateTime start;
 
     @Nullable
     @JsonProperty(END_FIELD)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate end;
+    @JsonSerialize(using = UserZonedDateTimeSerializer.class)
+    private ZonedDateTime end;
 
     @Override
     public String startToString() {

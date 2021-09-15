@@ -2,15 +2,15 @@ package tw.yukina.notion.sdk.model.page.property;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum DateTimeType {
-    DATE("date"),
-    DATE_TIME("dateTime"),
-    DATE_INCLUDE_END("dateIncludeEnd"),
-    DATE_TIME_INCLUDE_END("dateTimeIncludeEnd");
+public enum  FormulaType {
+    STRING("string"),
+    NUMBER("number"),
+    BOOLEAN("boolean"),
+    DATE("date");
 
     private final String field;
 
-    DateTimeType(String field) {
+    FormulaType(String field) {
         this.field = field;
     }
 

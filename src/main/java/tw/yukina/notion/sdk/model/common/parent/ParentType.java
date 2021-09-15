@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum ParentType {
     PAGE("page_id"),
-    WORKSPACE("workspace");
+    WORKSPACE("workspace"),
+    DATABASE("database_id");
 
     private final String field;
 
