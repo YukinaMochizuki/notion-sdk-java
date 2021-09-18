@@ -13,7 +13,6 @@ import tw.yukina.notion.sdk.model.block.Block;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class BulletedListBlock extends Block implements ListBlock {
     private static final String BULLETED_LIST_FIELD = "bulleted_list_item";

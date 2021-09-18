@@ -11,7 +11,6 @@ import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = DateTimeDeserializer.class)
 public abstract class DateTimeProperty {
 

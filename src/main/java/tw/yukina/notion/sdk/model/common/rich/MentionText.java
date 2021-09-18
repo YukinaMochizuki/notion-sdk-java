@@ -13,7 +13,6 @@ import tw.yukina.notion.sdk.model.common.rich.mention.Mention;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class MentionText extends RichText{
     private static final String MENTION_FIELD = "mention";

@@ -11,7 +11,6 @@ import tw.yukina.notion.sdk.model.block.list.ListObject;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Todo extends ListObject {
     private static final String CHECKED_FIELD = "checked";
 

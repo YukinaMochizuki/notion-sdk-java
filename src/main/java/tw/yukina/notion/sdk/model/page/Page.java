@@ -3,11 +3,9 @@ package tw.yukina.notion.sdk.model.page;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import tw.yukina.notion.sdk.model.ObjectType;
-import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.block.file.FileObject;
+import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
-import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
 import java.time.ZonedDateTime;

@@ -10,7 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Equation {
 
     private static final String EXPRESSION_FIELD = "expression";

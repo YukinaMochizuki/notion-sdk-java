@@ -12,7 +12,6 @@ import java.time.ZonedDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class IconFileObject {
 
     private static final String URL_FIELD = "url";

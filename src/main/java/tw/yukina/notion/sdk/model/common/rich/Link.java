@@ -12,7 +12,6 @@ import java.net.URL;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Link {
     private static final String URL_FIELD = "url";
 

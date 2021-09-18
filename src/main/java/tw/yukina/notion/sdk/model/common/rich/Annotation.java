@@ -11,7 +11,6 @@ import tw.yukina.notion.sdk.model.TextColor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Annotation {
     private static final String BOLD_FIELD = "bold";
     private static final String ITALIC_FIELD = "italic";

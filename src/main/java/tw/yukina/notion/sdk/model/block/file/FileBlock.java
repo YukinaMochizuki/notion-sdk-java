@@ -13,7 +13,6 @@ import tw.yukina.notion.sdk.model.block.Block;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class FileBlock extends Block {
     private static final String FILE_FIELD = "file";

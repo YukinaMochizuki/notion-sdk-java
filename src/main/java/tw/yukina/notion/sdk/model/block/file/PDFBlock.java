@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import tw.yukina.notion.sdk.model.block.Block;
+import tw.yukina.notion.sdk.model.common.file.FileObject;
 
 @Getter
 @Setter
@@ -13,7 +14,6 @@ import tw.yukina.notion.sdk.model.block.Block;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class PDFBlock extends Block {
     private static final String PDF_FIELD = "pdf";

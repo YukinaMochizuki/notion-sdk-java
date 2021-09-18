@@ -3,11 +3,10 @@ package tw.yukina.notion.sdk.model.database;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import tw.yukina.notion.sdk.model.ObjectType;
-import tw.yukina.notion.sdk.model.block.file.FileObject;
+import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.common.Property;
 import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 
 import java.time.ZonedDateTime;
@@ -30,6 +29,7 @@ public class Database {
     private static final String COVER_FIELD = "cover";
     private static final String PROPERTIES_FIELD = "properties";
     private static final String PARENT_FIELD = "parent";
+    private static final String URL_FIELD = "url";
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.DATABASE;
@@ -57,4 +57,8 @@ public class Database {
 
     @JsonProperty(PARENT_FIELD)
     private Parent parent;
+
+    @JsonProperty(URL_FIELD)
+    private String url;
+
 }

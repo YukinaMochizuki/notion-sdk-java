@@ -14,7 +14,6 @@ import java.net.URL;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = RichTextDeserializer.class)
 public class RichText {
     private static final String PLAIN_TEXT_FIELD = "plain_text";

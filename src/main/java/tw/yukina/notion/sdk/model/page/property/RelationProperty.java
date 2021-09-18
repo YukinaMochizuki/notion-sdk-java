@@ -19,6 +19,6 @@ public class RelationProperty extends PageProperty {
     private static final String RELATION_FIELD = "relation";
 
     @JsonProperty(RELATION_FIELD)
-    private List<RelationObject> texts;
+    private List<RelationObject> relation;
 
 }

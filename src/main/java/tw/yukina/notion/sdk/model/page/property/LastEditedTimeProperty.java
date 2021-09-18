@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.common.date.DateTimeProperty;
 
 import java.time.ZonedDateTime;
 

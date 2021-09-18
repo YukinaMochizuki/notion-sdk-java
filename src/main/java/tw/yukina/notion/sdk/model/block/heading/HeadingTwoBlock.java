@@ -13,7 +13,6 @@ import tw.yukina.notion.sdk.model.block.Block;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class HeadingTwoBlock extends Block implements HeadingBlock {
     private static final String HEADING_ONE_FIELD = "heading_2";

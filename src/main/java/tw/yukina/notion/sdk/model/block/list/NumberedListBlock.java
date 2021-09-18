@@ -13,7 +13,6 @@ import tw.yukina.notion.sdk.model.block.Block;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class NumberedListBlock extends Block implements ListBlock {
     private static final String NUMBERED_LIST_FIELD = "numbered_list_item";

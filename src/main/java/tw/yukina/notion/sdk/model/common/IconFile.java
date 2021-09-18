@@ -1,11 +1,9 @@
 package tw.yukina.notion.sdk.model.common;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.block.file.ExternalObject;
 
 @Getter
 @Setter
