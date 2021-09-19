@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
+import java.net.URL;
+
 @Getter
 @Setter
 @ToString(callSuper = true)
@@ -17,6 +19,6 @@ public class UrlProperty extends PageProperty {
     private static final String URL_FIELD = "url";
 
     @JsonProperty(URL_FIELD)
-    private String url;
+    private URL url;
 
 }

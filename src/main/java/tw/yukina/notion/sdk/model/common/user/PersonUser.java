@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.model.common.user;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
@@ -12,7 +13,10 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = false)
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class PersonUser extends User {
-    private static final String OBJECT_FIELD = "person";
 
+    private static final String PERSON_FIELD = "person";
+
+    @JsonProperty(PERSON_FIELD)
     private Person person;
+
 }
