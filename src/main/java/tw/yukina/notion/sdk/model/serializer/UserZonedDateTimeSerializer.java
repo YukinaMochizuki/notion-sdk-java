@@ -12,6 +12,6 @@ import java.time.format.DateTimeFormatterBuilder;
 public class UserZonedDateTimeSerializer extends JsonSerializer<ZonedDateTime> {
     @Override
     public void serialize(ZonedDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeString(value.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")));
+        gen.writeString(value.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSxxx")));
     }
 }
