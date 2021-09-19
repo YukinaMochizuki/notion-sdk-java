@@ -18,4 +18,5 @@ public class Parent {
 
     @JsonProperty(TYPE_FIELD)
     private ParentType parentType;
+
 }
