@@ -1,11 +1,9 @@
-package tw.yukina.notion.sdk.model.block.file;
+package tw.yukina.notion.sdk.model.common.file;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.common.file.FileObject;
 
 @Getter
 @Setter
@@ -14,11 +12,11 @@ import tw.yukina.notion.sdk.model.common.file.FileObject;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class FileBlock extends Block {
+public class NotionSourceFile extends FileObject {
 
     private static final String FILE_FIELD = "file";
 
     @JsonProperty(FILE_FIELD)
-    private FileObject fileObject;
+    private NotionSourceFileObject notionSourceFileObject;
 
 }

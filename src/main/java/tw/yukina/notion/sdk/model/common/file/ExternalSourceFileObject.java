@@ -1,6 +1,5 @@
-package tw.yukina.notion.sdk.model.block.file;
+package tw.yukina.notion.sdk.model.common.file;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -12,8 +11,7 @@ import java.net.URL;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class ExternalObject {
+public class ExternalSourceFileObject {
 
     private static final String URL_FIELD = "url";
 
