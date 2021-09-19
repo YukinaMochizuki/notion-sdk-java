@@ -10,13 +10,13 @@ import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
 import java.time.ZonedDateTime;
 import java.util.Map;
+import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 public class Page {
 
     private static final String OBJECT_FIELD = "object";
@@ -42,22 +42,43 @@ public class Page {
     @JsonProperty(LAST_EDITED_TIME_FIELD)
     private ZonedDateTime lastEditedTime;
 
-    @JsonProperty(ARCHIVED_FIELD)
-    private boolean archived;
+    @JsonProperty(COVER_FIELD)
+    private FileObject cover;
 
     @JsonProperty(ICON_FIELD)
     private Icon icon;
 
-    @JsonProperty(COVER_FIELD)
-    private FileObject cover;
+    @JsonProperty(PARENT_FIELD)
+    private Parent parent;
+
+    @JsonProperty(ARCHIVED_FIELD)
+    private boolean archived;
 
     @JsonProperty(PROPERTIES_FIELD)
     private Map<String, PageProperty> propertyMap;
 
-    @JsonProperty(PARENT_FIELD)
-    private Parent parent;
-
     @JsonProperty(URL_FIELD)
     private String url;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Page page = (Page) o;
+        return archived == page.archived &&
+                objectType == page.objectType &&
+                Objects.equals(id, page.id) &&
+                Objects.equals(createdTime, page.createdTime) &&
+                Objects.equals(lastEditedTime, page.lastEditedTime) &&
+                Objects.equals(icon, page.icon) &&
+                Objects.equals(cover, page.cover) &&
+                propertyMap.equals(page.propertyMap) &&
+                Objects.equals(parent, page.parent) &&
+                Objects.equals(url, page.url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(objectType, id, createdTime, lastEditedTime, archived, icon, cover, propertyMap, parent, url);
+    }
 }
