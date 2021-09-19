@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.page.property.*;
+import tw.yukina.notion.sdk.model.page.property.rollup.RollupProperty;
 
 import java.io.IOException;
 
@@ -23,7 +24,7 @@ public class PagePropertyDeserializer extends AbstractDeserializer<PageProperty>
         addAvailableType(PropertyType.DATE.getField(), DateProperty.class);
         addAvailableType(PropertyType.FORMULA.getField(), FormulaProperty.class);
         addAvailableType(PropertyType.RELATION.getField(), RelationProperty.class);
-//        addAvailableType(PropertyType.ROLLUP.getField(), );
+        addAvailableType(PropertyType.ROLLUP.getField(), RollupProperty.class);
         addAvailableType(PropertyType.TITLE.getField(), TitleProperty.class);
         addAvailableType(PropertyType.PEOPLE.getField(), PeopleProperty.class);
         addAvailableType(PropertyType.FILES.getField(), FileProperty.class);
