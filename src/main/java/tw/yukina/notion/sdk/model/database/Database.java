@@ -12,13 +12,13 @@ import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 public class Database {
     private static final String OBJECT_FIELD = "object";
     private static final String ID_FIELD = "id";
@@ -61,4 +61,25 @@ public class Database {
     @JsonProperty(URL_FIELD)
     private String url;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Database database = (Database) o;
+        return objectType == database.objectType &&
+                Objects.equals(id, database.id) &&
+                Objects.equals(createdTime, database.createdTime) &&
+                Objects.equals(lastEditedTime, database.lastEditedTime) &&
+                Objects.equals(title, database.title) &&
+                Objects.equals(icon, database.icon) &&
+                Objects.equals(cover, database.cover) &&
+                propertyMap.equals(database.propertyMap) &&
+                Objects.equals(parent, database.parent) &&
+                Objects.equals(url, database.url);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(objectType, id, createdTime, lastEditedTime, title, icon, cover, propertyMap, parent, url);
+    }
 }
