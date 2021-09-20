@@ -25,4 +25,17 @@ public enum OptionColor {
         return field;
     }
 
+    public static OptionColor getEnum(String value) {
+        if (value == null || value.length() < 1) {
+            return null;
+        }
+
+        for (OptionColor t : values()) {
+            if (t.name().equalsIgnoreCase(value)) {
+                return t;
+            }
+        }
+
+        return null;
+    }
 }

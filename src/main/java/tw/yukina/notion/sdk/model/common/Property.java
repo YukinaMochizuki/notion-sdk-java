@@ -16,8 +16,8 @@ import lombok.*;
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class Property {
 
-    private static final String ID_FIELD = "id";
-    private static final String TYPE_FIELD = "type";
+    public static final String ID_FIELD = "id";
+    public static final String TYPE_FIELD = "type";
 
     @JsonProperty(ID_FIELD)
     private String id;
