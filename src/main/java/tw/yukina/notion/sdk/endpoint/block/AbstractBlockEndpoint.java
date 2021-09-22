@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.AbstractEndpoint;
+import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.endpoint.ResponseBlockList;
 
 public abstract class AbstractBlockEndpoint extends AbstractEndpoint {
 

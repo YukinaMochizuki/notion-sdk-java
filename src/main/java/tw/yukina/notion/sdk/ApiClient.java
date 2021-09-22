@@ -18,8 +18,8 @@ import tw.yukina.notion.sdk.endpoint.block.UpdateBlock;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.deserializer.ZonedDateTimeDeserializer;
-import tw.yukina.notion.sdk.model.endpoint.RequestChildrenBlockList;
-import tw.yukina.notion.sdk.model.endpoint.ResponseBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.RequestChildrenBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.serializer.ZonedDateTimeSerializer;
 
 import java.io.IOException;

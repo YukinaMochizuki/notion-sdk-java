@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.endpoint.RequestChildrenBlockList;
-import tw.yukina.notion.sdk.model.endpoint.ResponseBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.RequestChildrenBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 
 import java.io.IOException;
 

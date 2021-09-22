@@ -8,7 +8,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.endpoint.ResponseBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 
 import java.io.IOException;
 

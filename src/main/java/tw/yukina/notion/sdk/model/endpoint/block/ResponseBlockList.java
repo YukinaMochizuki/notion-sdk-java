@@ -1,8 +1,9 @@
-package tw.yukina.notion.sdk.model.endpoint;
+package tw.yukina.notion.sdk.model.endpoint.block;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import tw.yukina.notion.sdk.model.block.Block;
+import tw.yukina.notion.sdk.model.endpoint.ResponseList;
 
 import java.util.ArrayList;
 import java.util.List;
