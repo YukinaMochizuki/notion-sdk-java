@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.rich.mention.*;
 import tw.yukina.notion.sdk.model.common.unit.Database;
 import tw.yukina.notion.sdk.model.common.unit.Page;
-import tw.yukina.notion.sdk.model.common.user.Person;
+import tw.yukina.notion.sdk.model.common.user.PersonObject;
 import tw.yukina.notion.sdk.model.common.user.PersonUser;
 import tw.yukina.notion.sdk.model.common.user.UserType;
 import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
@@ -78,7 +78,7 @@ public class RichTextHelper {
     @NotNull
     public static MentionText createPersonMention(String name, String uuid){
         PersonUser personUser = new PersonUser();
-        personUser.setPerson(new Person());
+        personUser.setPerson(new PersonObject());
         personUser.setId(uuid);
         personUser.setName(name);
         personUser.setUserType(UserType.PERSON);

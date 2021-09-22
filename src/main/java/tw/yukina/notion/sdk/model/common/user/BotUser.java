@@ -12,11 +12,11 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class PersonUser extends User {
+public class BotUser extends User{
 
-    private static final String PERSON_FIELD = "person";
+    private static final String BOT_FIELD = "bot";
 
-    @JsonProperty(PERSON_FIELD)
-    private PersonObject person;
+    @JsonProperty(BOT_FIELD)
+    private BotObject bot;
 
 }

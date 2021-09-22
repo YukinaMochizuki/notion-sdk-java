@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Person {
+public class PersonObject {
     private static final String EMAIL_FIELD = "email";
 
     @JsonProperty(EMAIL_FIELD)
