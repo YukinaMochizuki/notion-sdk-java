@@ -1,7 +1,6 @@
-package tw.yukina.notion.sdk.model.endpoint;
+package tw.yukina.notion.sdk.endpoint.block;
 
 import org.junit.jupiter.api.Test;
-import tw.yukina.notion.sdk.endpoint.block.UpdateBlock;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.Block;
@@ -12,10 +11,10 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UpdateBlockTest extends ModelTest {
+class UpdateBlockTest extends ModelTest {
 
     @Test
-    void callValueTest() throws IOException, NotionAPIException {
+    void callValue() throws IOException, NotionAPIException {
         Block editBlock = BlockHelper.createDefaultParagraph("Edited");
 
         Block responseBlock = UpdateBlock.callValue("842ab92d84484f2f96b522fb0563794e", editBlock,

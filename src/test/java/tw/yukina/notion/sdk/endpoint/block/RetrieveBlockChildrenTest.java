@@ -1,4 +1,4 @@
-package tw.yukina.notion.sdk.model.endpoint;
+package tw.yukina.notion.sdk.endpoint.block;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
@@ -19,10 +19,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RetrieveBlockChildrenTest extends ModelTest {
+class RetrieveBlockChildrenTest extends ModelTest {
 
     @Test
-    void callValueTest() throws IOException, NotionAPIException {
+    void callValue() throws IOException, NotionAPIException {
         ResponseBlockList responseBlockList = RetrieveBlockChildren.callValue("a5277c2eb62c4d58ac2bb3c1df2e39d5", getOkHttpClient(),
                 getRequestBuilder(), getCommonObjectMapper());
 

@@ -1,7 +1,6 @@
-package tw.yukina.notion.sdk.model.endpoint;
+package tw.yukina.notion.sdk.endpoint.block;
 
 import org.junit.jupiter.api.Test;
-import tw.yukina.notion.sdk.endpoint.block.RetrieveBlock;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.Block;
@@ -12,10 +11,10 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RetrieveBlockTest extends ModelTest {
+class RetrieveBlockTest extends ModelTest {
 
     @Test
-    void callValueTest() throws IOException, NotionAPIException {
+    void callValue() throws IOException, NotionAPIException {
         Block block = RetrieveBlock.callValue("65d859d0c84d406398b902060a5b68d5", getOkHttpClient(),
                 getRequestBuilder(), getCommonObjectMapper());
 
