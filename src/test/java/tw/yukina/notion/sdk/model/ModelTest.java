@@ -37,6 +37,21 @@ public class ModelTest {
         objectMapperModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
     }
 
+    public Request.Builder getAnotherRequestBuilder(){
+
+        Properties properties = new Properties();
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
+            properties.load(resourceStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new Request.Builder()
+                .addHeader("Authorization", properties.getProperty("Notion.test.token2"))
+                .addHeader("Notion-Version", "2021-08-16");
+    }
+
     public Request.Builder getRequestBuilder(){
 
         Properties properties = new Properties();
@@ -53,7 +68,14 @@ public class ModelTest {
     }
 
     public Response getResponse(@NotNull String url) throws IOException {
-        okhttp3.Request request = getRequestBuilder().url(url).build();
+        okhttp3.Request request = getAnotherRequestBuilder().url(url).build();
+        Call call = getOkHttpClient().newCall(request);
+
+        return call.execute();
+    }
+
+    public Response getResponse(@NotNull String url, Request.Builder builder) throws IOException {
+        okhttp3.Request request = builder.url(url).build();
         Call call = getOkHttpClient().newCall(request);
 
         return call.execute();

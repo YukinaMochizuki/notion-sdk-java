@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
-import tw.yukina.notion.sdk.model.Template;
 import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
 import tw.yukina.notion.sdk.model.common.parent.ParentType;
+import tw.yukina.notion.sdk.model.template.project.Thing;
 
 import java.io.IOException;
 import java.util.*;
@@ -33,7 +33,7 @@ public class PageTest extends ModelTest {
         databaseParent.setId("31d2e694-db36-4822-98a4-7dfa29cde551");
         databaseParent.setParentType(ParentType.DATABASE);
         page.setParent(databaseParent);
-        page.setPropertyMap(Template.getPagePropertyTemplate(responseJsonNode));
+        page.setPropertyMap(Thing.getPageProperty(responseJsonNode));
 
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(page);
 

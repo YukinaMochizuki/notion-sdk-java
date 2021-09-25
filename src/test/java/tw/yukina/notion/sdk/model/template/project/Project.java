@@ -1,0 +1,120 @@
+package tw.yukina.notion.sdk.model.template.project;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import tw.yukina.notion.sdk.model.common.PropertyType;
+import tw.yukina.notion.sdk.model.common.parent.PageParent;
+import tw.yukina.notion.sdk.model.common.parent.ParentType;
+import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
+import tw.yukina.notion.sdk.model.database.property.MultiSelectObject;
+import tw.yukina.notion.sdk.model.database.property.SelectObject;
+import tw.yukina.notion.sdk.model.helper.JsonNodeHelper;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
+import tw.yukina.notion.sdk.model.helper.SelectOptionHelper;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public final class Project {
+
+    public static Map<String, DatabaseProperty> getCreateDatabaseProperty(){
+        Map<String, DatabaseProperty> propertyMap = new HashMap<>();
+
+        DatabaseProperty databaseProperty = new DatabaseProperty();
+        databaseProperty.setName("Name");
+        databaseProperty.setType(PropertyType.TITLE);
+        propertyMap.put("Name", databaseProperty);
+
+        databaseProperty = new DatabaseProperty();
+        databaseProperty.setName("Created");
+        databaseProperty.setType(PropertyType.CREATED_TIME);
+        propertyMap.put("Created", databaseProperty);
+
+        databaseProperty = new DatabaseProperty();
+        databaseProperty.setName("Last Edited");
+        databaseProperty.setType(PropertyType.LAST_EDITED_TIME);
+        propertyMap.put("Last Edited", databaseProperty);
+
+        tw.yukina.notion.sdk.model.database.property.SelectProperty selectProperty = new tw.yukina.notion.sdk.model.database.property.SelectProperty();
+        selectProperty.setName("Type");
+        selectProperty.setType(PropertyType.SELECT);
+        SelectObject selectObject = new SelectObject();
+        selectObject.setSelectOptions(new ArrayList<>());
+        selectProperty.setSelectObject(selectObject);
+        propertyMap.put("Type", selectProperty);
+
+        selectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Milestone", "Study Plan", "Interest", "Trivia"}));
+
+        tw.yukina.notion.sdk.model.database.property.MultiSelectProperty multiSelectProperty = new tw.yukina.notion.sdk.model.database.property.MultiSelectProperty();
+        multiSelectProperty.setName("Tags");
+        multiSelectProperty.setType(PropertyType.MULTI_SELECT);
+        MultiSelectObject multiSelectObject = new MultiSelectObject();
+        multiSelectObject.setSelectOptions(new ArrayList<>());
+        multiSelectProperty.setMultiSelectObject(multiSelectObject);
+        propertyMap.put("Tags", multiSelectProperty);
+
+        multiSelectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Tag1", "Tag2", "Tag3"}));
+
+        return propertyMap;
+    }
+
+    public static Database getDatabase(JsonNode responseJsonNode, Database responseDatabase){
+        Database database = new Database();
+        database.setId(responseDatabase.getId());
+        database.setCreatedTime(responseDatabase.getCreatedTime());
+        database.setLastEditedTime(responseDatabase.getLastEditedTime());
+        database.setTitle(RichTextHelper.createDefaultArrayText("Project (Test DB)"));
+        database.setUrl(responseDatabase.getUrl());
+
+        PageParent pageParent = new PageParent();
+        pageParent.setParentType(ParentType.PAGE);
+        pageParent.setPageId(JsonNodeHelper.getPageParentId(responseJsonNode));
+        database.setParent(pageParent);
+
+        Map<String, DatabaseProperty> propertyMap = new HashMap<>();
+        database.setPropertyMap(propertyMap);
+
+        DatabaseProperty databaseProperty = new DatabaseProperty();
+        databaseProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Name"));
+        databaseProperty.setName("Name");
+        databaseProperty.setType(PropertyType.TITLE);
+        propertyMap.put("Name", databaseProperty);
+
+        databaseProperty = new DatabaseProperty();
+        databaseProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Created"));
+        databaseProperty.setName("Created");
+        databaseProperty.setType(PropertyType.CREATED_TIME);
+        propertyMap.put("Created", databaseProperty);
+
+        databaseProperty = new DatabaseProperty();
+        databaseProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Last Edited"));
+        databaseProperty.setName("Last Edited");
+        databaseProperty.setType(PropertyType.LAST_EDITED_TIME);
+        propertyMap.put("Last Edited", databaseProperty);
+
+        tw.yukina.notion.sdk.model.database.property.SelectProperty selectProperty = new tw.yukina.notion.sdk.model.database.property.SelectProperty();
+        selectProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Type"));
+        selectProperty.setName("Type");
+        selectProperty.setType(PropertyType.SELECT);
+        SelectObject selectObject = new SelectObject();
+        selectObject.setSelectOptions(new ArrayList<>());
+        selectProperty.setSelectObject(selectObject);
+        propertyMap.put("Type", selectProperty);
+
+        selectObject.setSelectOptions(JsonNodeHelper.getSelectPropertyOptions(responseJsonNode, "Type"));
+
+        tw.yukina.notion.sdk.model.database.property.MultiSelectProperty multiSelectProperty = new tw.yukina.notion.sdk.model.database.property.MultiSelectProperty();
+        multiSelectProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Tags"));
+        multiSelectProperty.setName("Tags");
+        multiSelectProperty.setType(PropertyType.MULTI_SELECT);
+        MultiSelectObject multiSelectObject = new MultiSelectObject();
+        multiSelectObject.setSelectOptions(new ArrayList<>());
+        multiSelectProperty.setMultiSelectObject(multiSelectObject);
+        propertyMap.put("Tags", multiSelectProperty);
+
+        multiSelectObject.setSelectOptions(JsonNodeHelper.getMultiSelectPropertyOptions(responseJsonNode, "Tags"));
+
+        return database;
+    }
+}
