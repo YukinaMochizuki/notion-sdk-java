@@ -85,6 +85,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
                                 @NotNull Request.Builder builder) throws IOException {
 
         ObjectNode objectNode = getObjectNode(json);
+        prepareCreateProperties(objectNode);
 
         return call(objectNode.toString(), okHttpClient, builder);
     }
@@ -100,5 +101,4 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
 
         return call.execute();
     }
-
 }
