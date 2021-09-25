@@ -7,7 +7,7 @@ import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.heading.HeadingBlockHelper;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.common.rich.Text;
 
 import java.io.IOException;

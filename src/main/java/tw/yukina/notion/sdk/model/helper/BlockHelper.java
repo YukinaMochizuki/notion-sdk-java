@@ -1,13 +1,18 @@
-package tw.yukina.notion.sdk.model.block;
+package tw.yukina.notion.sdk.model.helper;
 
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.block.*;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.util.Collections;
 import java.util.List;
 
-public class BlockHelper {
+public final class BlockHelper {
+
+    private BlockHelper() {
+        throw new java.lang.UnsupportedOperationException("This is a utility class and cannot be instantiated");
+    }
 
     @NotNull
     public static ParagraphBlock createDefaultParagraph(String content){

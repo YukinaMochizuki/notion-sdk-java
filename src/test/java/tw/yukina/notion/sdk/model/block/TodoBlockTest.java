@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
-import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
+import tw.yukina.notion.sdk.model.helper.BlockHelper;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.io.IOException;
 import java.util.Objects;

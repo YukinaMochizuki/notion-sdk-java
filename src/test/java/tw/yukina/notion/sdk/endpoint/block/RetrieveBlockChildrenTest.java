@@ -7,11 +7,11 @@ import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.block.BlockHelper;
+import tw.yukina.notion.sdk.model.helper.BlockHelper;
 import tw.yukina.notion.sdk.model.block.heading.HeadingBlockHelper;
 import tw.yukina.notion.sdk.model.block.list.ListBlockHelper;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.common.rich.RichTextHelper;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,10 +24,10 @@ class RetrieveBlockChildrenTest extends ModelTest {
     @Test
     void callValue() throws IOException, NotionAPIException {
         ResponseBlockList responseBlockList = RetrieveBlockChildren.callValue("a5277c2eb62c4d58ac2bb3c1df2e39d5", getOkHttpClient(),
-                getRequestBuilder(), getCommonObjectMapper());
+                getAnotherRequestBuilder(), getCommonObjectMapper());
 
         JsonNode responseJsonNode = RetrieveBlockChildren.callTree("a5277c2eb62c4d58ac2bb3c1df2e39d5", getOkHttpClient(),
-                getRequestBuilder(), getCommonObjectMapper());
+                getAnotherRequestBuilder(), getCommonObjectMapper());
 
         ResponseBlockList blockList = new ResponseBlockList();
         List<Block> blocks = blockList.getBlocks();

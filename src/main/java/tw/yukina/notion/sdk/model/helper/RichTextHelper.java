@@ -1,6 +1,7 @@
-package tw.yukina.notion.sdk.model.common.rich;
+package tw.yukina.notion.sdk.model.helper;
 
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.rich.*;
 import tw.yukina.notion.sdk.model.common.rich.mention.*;
 import tw.yukina.notion.sdk.model.common.unit.Database;
 import tw.yukina.notion.sdk.model.common.unit.Page;
@@ -14,7 +15,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class RichTextHelper {
+public final class RichTextHelper {
+
+    private RichTextHelper() {
+        throw new java.lang.UnsupportedOperationException("This is a utility class and cannot be instantiated");
+    }
 
     @NotNull
     public static Text createDefaultText(String content){
