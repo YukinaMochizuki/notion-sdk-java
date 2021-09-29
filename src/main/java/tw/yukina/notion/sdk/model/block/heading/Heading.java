@@ -1,6 +1,5 @@
 package tw.yukina.notion.sdk.model.block.heading;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
@@ -13,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Heading {
     private static final String TEXT_FIELD = "text";
 

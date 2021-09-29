@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class TextObject {
     private static final String CONTENT_FIELD = "content";
     private static final String LINK_FIELD = "link";

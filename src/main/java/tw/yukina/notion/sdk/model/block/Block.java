@@ -13,7 +13,7 @@ import java.time.ZonedDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(exclude = {"createdTime", "lastEditedTime"})
+@EqualsAndHashCode
 @JsonDeserialize(using = BlockDeserializer.class)
 public class Block {
 
