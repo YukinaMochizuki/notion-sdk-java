@@ -2,6 +2,11 @@ package tw.yukina.notion.sdk.model;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 public enum OptionColor {
     DEFAULT("default"),
     GRAY("gray"),
@@ -15,6 +20,9 @@ public enum OptionColor {
     RED("red");
 
     private final String field;
+    private static final List<OptionColor> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
+    private static final int SIZE = VALUES.size();
+    private static final Random RANDOM = new Random();
 
     OptionColor(String field) {
         this.field = field;
@@ -37,5 +45,9 @@ public enum OptionColor {
         }
 
         return null;
+    }
+
+    public static OptionColor randomColor()  {
+        return VALUES.get(RANDOM.nextInt(SIZE));
     }
 }
