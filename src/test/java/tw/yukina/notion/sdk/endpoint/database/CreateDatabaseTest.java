@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CreateDatabaseTest extends ModelTest {
 
-//    @Test
+    @Test
     void createProjectDatabase() throws IOException, NotionAPIException {
 
         PageParent pageParent = new PageParent();
@@ -40,7 +40,7 @@ class CreateDatabaseTest extends ModelTest {
         assertEquals(responseJsonNode, serializedJsonNode);
     }
 
-//    @Test
+    @Test
     void createThingDatabase() throws IOException, NotionAPIException {
 
         PageParent pageParent = new PageParent();
@@ -50,12 +50,12 @@ class CreateDatabaseTest extends ModelTest {
         RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
         requestCreateDatabase.setParent(pageParent);
         requestCreateDatabase.setTitle(RichTextHelper.createDefaultArrayText("Thing (Test DB)"));
-        requestCreateDatabase.setProperties(Thing.getCreateDatabaseProperty("b104b583b1c543c884866a24a3d812c3"));
+        requestCreateDatabase.setProperties(Thing.getCreateDatabaseProperty("ccbf3a212d2d4375a4c2703852fac950"));
 
         Database responseDatabase = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
         JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabase);
 
-        Database database = Project.getDatabase(responseJsonNode, responseDatabase);
+        Database database = Thing.getDatabase(responseJsonNode, responseDatabase);
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(database);
 
         assertEquals(responseDatabase, database);

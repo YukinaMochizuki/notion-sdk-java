@@ -1,6 +1,7 @@
 package tw.yukina.notion.sdk.endpoint.page;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
@@ -12,7 +13,7 @@ import java.io.IOException;
 
 class CreatePageTest extends ModelTest {
 
-//    @Test
+    @Test
     void callValue() throws IOException, NotionAPIException {
 
         DatabaseParent databaseParent = new DatabaseParent();
