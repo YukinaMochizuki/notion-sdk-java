@@ -53,9 +53,9 @@ public final class Thing {
         relationProperty.setName("Related to Project (Test DB) (Property)");
         relationProperty.setType(PropertyType.RELATION);
         tw.yukina.notion.sdk.model.database.property.RelationObject relationObject = new tw.yukina.notion.sdk.model.database.property.RelationObject();
-        relationObject.setDatabaseId("b104b583-b1c5-43c8-8486-6a24a3d812c3");
-        relationObject.setSyncedPropertyName("Related to Thing (Test DB) (Related to Project (Test DB) (Property))");
-        relationObject.setSyncedPropertyId("E\\uE");
+        relationObject.setDatabaseId(JsonNodeHelper.getDatabaseRelationDatabaseId(responseJsonNode, "Related to Project (Test DB) (Property)"));
+        relationObject.setSyncedPropertyName(JsonNodeHelper.getDatabaseRelationSyncedPropertyName(responseJsonNode, "Related to Project (Test DB) (Property)"));
+        relationObject.setSyncedPropertyId(JsonNodeHelper.getDatabaseRelationSyncedPropertyId(responseJsonNode, "Related to Project (Test DB) (Property)"));
         relationProperty.setRelationObject(relationObject);
         propertyMap.put("Related to Project (Test DB) (Property)", relationProperty);
 
@@ -517,6 +517,7 @@ public final class Thing {
         textProperty.setTexts(texts);
         List<PageProperty> pageProperties = Collections.singletonList(textProperty);
         arrayRollupProperty.setPageProperties(pageProperties);
+        arrayRollupProperty.setRollupFunctionType(RollupFunctionType.SHOW_ORIGINAL);
         rollupProperty.setRollup(arrayRollupProperty);
         pagePropertyMap.put("Project Name", rollupProperty);
 

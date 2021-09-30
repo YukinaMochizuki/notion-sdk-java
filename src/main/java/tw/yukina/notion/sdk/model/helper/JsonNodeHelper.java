@@ -26,6 +26,18 @@ public final class JsonNodeHelper {
         return jsonNode.get("properties").get(propertyName).get("id").asText();
     }
 
+    public static String getDatabaseRelationDatabaseId(JsonNode jsonNode, String propertyName){
+        return jsonNode.get("properties").get(propertyName).get("relation").get("database_id").asText();
+    }
+
+    public static String getDatabaseRelationSyncedPropertyName(JsonNode jsonNode, String propertyName){
+        return jsonNode.get("properties").get(propertyName).get("relation").get("synced_property_name").asText();
+    }
+
+    public static String getDatabaseRelationSyncedPropertyId(JsonNode jsonNode, String propertyName){
+        return jsonNode.get("properties").get(propertyName).get("relation").get("synced_property_id").asText();
+    }
+
     public static List<SelectOption> getMultiSelectPropertyOptions(JsonNode jsonNode, String propertyName) {
 
         List<SelectOption> selectOptions = new ArrayList<>();
