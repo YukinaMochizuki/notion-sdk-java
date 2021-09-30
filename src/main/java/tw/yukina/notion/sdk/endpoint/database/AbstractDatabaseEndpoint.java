@@ -17,6 +17,10 @@ public abstract class AbstractDatabaseEndpoint extends AbstractEndpoint {
         return objectMapper.readValue(objectNode.toString(), Database.class);
     }
 
+    public static void prepareRequestUpdateDatabase(ObjectNode objectNode){
+        if(!objectNode.hasNonNull("title"))objectNode.remove("title");
+    }
+
     public static void prepareCreateProperties(ObjectNode objectNode){
         for(JsonNode jsonNode: objectNode.get("properties")) prepareCreateProperty((ObjectNode) jsonNode);
     }

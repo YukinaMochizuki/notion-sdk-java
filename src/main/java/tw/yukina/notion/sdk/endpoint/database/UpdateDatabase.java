@@ -85,6 +85,8 @@ public class UpdateDatabase extends AbstractDatabaseEndpoint {
                                 @NotNull Request.Builder builder) throws IOException {
 
         ObjectNode objectNode = getObjectNode(json);
+        prepareRequestUpdateDatabase(objectNode);
+        prepareCreateProperties(objectNode);
 
         return call(uuid, objectNode.toString(), okHttpClient, builder);
     }
