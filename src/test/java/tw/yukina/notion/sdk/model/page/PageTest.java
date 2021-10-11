@@ -17,7 +17,7 @@ public class PageTest extends ModelTest {
 
     @Test
     void databasePageTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/pages/e7eb4611798b4bcc9d6d3838dc84156b");
+        Response response = getResponse( BASE_URL + "/pages/e8df4eb760e047b88808974fb12b0ef3");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Page responsePage = readValueUseCommonObjectMapper(tree, Page.class);
@@ -30,7 +30,7 @@ public class PageTest extends ModelTest {
         page.setUrl(responsePage.getUrl());
 
         DatabaseParent databaseParent = new DatabaseParent();
-        databaseParent.setId("31d2e694-db36-4822-98a4-7dfa29cde551");
+        databaseParent.setId("cadfccdddfec4c82bbb11962bbeff38b");
         databaseParent.setParentType(ParentType.DATABASE);
         page.setParent(databaseParent);
         page.setPropertyMap(Thing.getPageProperty(responseJsonNode));

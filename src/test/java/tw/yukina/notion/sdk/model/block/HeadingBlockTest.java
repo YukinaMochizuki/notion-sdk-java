@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HeadingBlockTest extends ModelTest {
     @Test
     void headingOneTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/9bda6b90679641eb973e1a1361546e4d");
+        Response response = getResponse( BASE_URL + "/blocks/24f5d147619a4dbc88348250a1f4744e");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Block block = readValueUseCommonObjectMapper(tree, Block.class);
@@ -47,7 +47,7 @@ public class HeadingBlockTest extends ModelTest {
 
     @Test
     void headingTwoTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/cf33ab7ed8b541b4a516e0578c69b97d");
+        Response response = getResponse( BASE_URL + "/blocks/d8c81d20cb2941c7a4a9e658fdcdfc58");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Block block = readValueUseCommonObjectMapper(tree, Block.class);
@@ -55,7 +55,7 @@ public class HeadingBlockTest extends ModelTest {
         List<RichText> richTexts = RichTextHelper.createDefaultArrayText("Heading ");
 
         Text text = RichTextHelper.createDefaultText("2 ");
-        RichTextHelper.setLinkToText(text, new URL("http://www.google.com"));
+        RichTextHelper.setLinkToText(text, new URL("https://www.google.com"));
         richTexts.add(text);
 
         RichText text1 = RichTextHelper.createDefaultText("Two ");
@@ -82,7 +82,7 @@ public class HeadingBlockTest extends ModelTest {
     @Test
     @SuppressWarnings("SpellCheckingInspection")
     void headingThreeTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/d8f0c658c822454bbcfddc5fa1ff79c0");
+        Response response = getResponse( BASE_URL + "/blocks/7ea5d830f4354a8c814738c45dbbaa76");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Block block = readValueUseCommonObjectMapper(tree, Block.class);

@@ -14,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ChildPageTest extends ModelTest {
     @Test
     void childPageTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/64a9062337a74e0e85b1e76de5485740");
+        Response response = getResponse( BASE_URL + "/blocks/3ddec0b97fcb46fcae784afb2406ce90");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Block block = readValueUseCommonObjectMapper(tree, Block.class);
 
-        Block childPageBlock = BlockHelper.createDefaultChildPageBlock("Writable");
+        Block childPageBlock = BlockHelper.createDefaultChildPageBlock("Readonly Page");
         childPageBlock.setHasChildren(true);
         childPageBlock.setId(block.getId());
         childPageBlock.setCreatedTime(block.getCreatedTime());

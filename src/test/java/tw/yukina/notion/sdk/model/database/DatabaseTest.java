@@ -17,7 +17,7 @@ public class DatabaseTest extends ModelTest {
 
     @Test
     void databaseTest() throws IOException, NotionAPIException {
-        Response response = getResponse( BASE_URL + "/databases/9776c1e55a41463daa9a57a4d7ee25b2", getRequestBuilder());
+        Response response = getResponse( BASE_URL + "/databases/9dd0209dba4048c0872e428c8528565e", getRequestBuilder());
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Database responseDatabase = readValueUseCommonObjectMapper(tree, Database.class);

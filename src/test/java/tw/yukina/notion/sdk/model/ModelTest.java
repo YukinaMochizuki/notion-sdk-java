@@ -68,7 +68,7 @@ public class ModelTest {
     }
 
     public Response getResponse(@NotNull String url) throws IOException {
-        okhttp3.Request request = getAnotherRequestBuilder().url(url).build();
+        okhttp3.Request request = getRequestBuilder().url(url).build();
         Call call = getOkHttpClient().newCall(request);
 
         return call.execute();

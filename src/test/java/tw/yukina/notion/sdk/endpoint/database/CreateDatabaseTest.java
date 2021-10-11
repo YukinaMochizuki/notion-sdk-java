@@ -44,13 +44,13 @@ class CreateDatabaseTest extends ModelTest {
     void createThingDatabase() throws IOException, NotionAPIException {
 
         PageParent pageParent = new PageParent();
-        pageParent.setPageId("73f76d1a1510408dbca93acd5ff2914f");
+        pageParent.setPageId("7b6d965aa7a34305bab6b37ec515dd1f");
         pageParent.setParentType(ParentType.PAGE);
 
         RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
         requestCreateDatabase.setParent(pageParent);
         requestCreateDatabase.setTitle(RichTextHelper.createDefaultArrayText("Thing (Test DB)"));
-        requestCreateDatabase.setProperties(Thing.getCreateDatabaseProperty("ccbf3a212d2d4375a4c2703852fac950"));
+        requestCreateDatabase.setProperties(Thing.getCreateDatabaseProperty("fc0ad05fc61045378ba4c852ec930f82"));
 
         Database responseDatabase = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
         JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabase);
