@@ -41,6 +41,7 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         addAvailableType(BlockType.VIDEO.getField(), VideoBlock.class);
 
         addAvailableType(BlockType.CHILD_PAGE.getField(), ChildPageBlock.class);
+        addAvailableType(BlockType.CHILD_DATABASE.getField(), ChildDatabaseBlock.class);
 
         addAvailableType(BlockType.CALLOUT.getField(), CalloutBlock.class);
         addAvailableType(BlockType.QUOTE.getField(), QuoteBlock.class);

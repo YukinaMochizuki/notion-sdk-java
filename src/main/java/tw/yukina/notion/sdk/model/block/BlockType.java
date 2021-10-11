@@ -14,6 +14,7 @@ public enum BlockType {
     TO_DO("to_do"),
     TOGGLE("toggle"),
     CHILD_PAGE("child_page"),
+    CHILD_DATABASE("child_database"),
     EMBED("embed"),
     IMAGE("image"),
     VIDEO("video"),

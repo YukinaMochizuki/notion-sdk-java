@@ -30,4 +30,23 @@ public class ChildPageTest extends ModelTest {
         assertEquals(responseJsonNode, serializedJsonNode);
         response.close();
     }
+
+    @Test
+    void childDatabaseTest() throws IOException {
+        Response response = getResponse( BASE_URL + "/blocks/287e5fe937aa4fbd91073e9ebe6295a1");
+        String tree = Objects.requireNonNull(response.body()).string();
+        JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
+        Block block = readValueUseCommonObjectMapper(tree, Block.class);
+
+        Block childDatabaseBlock = BlockHelper.createDefaultDatabasePageBlock("Readonly Database");
+        childDatabaseBlock.setHasChildren(false);
+        childDatabaseBlock.setId(block.getId());
+        childDatabaseBlock.setCreatedTime(block.getCreatedTime());
+        childDatabaseBlock.setLastEditedTime(block.getLastEditedTime());
+        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(childDatabaseBlock);
+
+        assertEquals(block, childDatabaseBlock);
+        assertEquals(responseJsonNode, serializedJsonNode);
+        response.close();
+    }
 }

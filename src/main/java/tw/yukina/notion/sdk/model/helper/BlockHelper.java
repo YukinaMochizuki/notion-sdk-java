@@ -64,4 +64,16 @@ public final class BlockHelper {
 
         return childPageBlock;
     }
+
+    @NotNull
+    public static ChildDatabaseBlock createDefaultDatabasePageBlock(String title){
+        ChildPage childPage = new ChildPage();
+        childPage.setTitle(title);
+
+        ChildDatabaseBlock childDatabaseBlock = new ChildDatabaseBlock();
+        childDatabaseBlock.setType(BlockType.CHILD_DATABASE);
+        childDatabaseBlock.setChildPage(childPage);
+
+        return childDatabaseBlock;
+    }
 }
