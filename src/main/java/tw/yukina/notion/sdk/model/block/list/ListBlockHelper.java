@@ -2,6 +2,8 @@ package tw.yukina.notion.sdk.model.block.list;
 
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.block.BlockType;
+import tw.yukina.notion.sdk.model.block.Paragraph;
+import tw.yukina.notion.sdk.model.block.TextBlock;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
@@ -35,9 +37,9 @@ public class ListBlockHelper {
         return toggleBlock;
     }
 
-    public static <T extends ListBlock> void initDefaultListBlock(List<RichText> texts, T t){
-        ListObject listObject = new ListObject();
-        listObject.setTexts(texts);
-        t.setListObject(listObject);
+    public static <T extends TextBlock> void initDefaultListBlock(List<RichText> texts, T t){
+        Paragraph paragraph = new Paragraph();
+        paragraph.setRichTexts(texts);
+        t.setParagraph(paragraph);
     }
 }

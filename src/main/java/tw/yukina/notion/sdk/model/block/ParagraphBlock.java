@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class ParagraphBlock extends Block{
+public class ParagraphBlock extends Block implements TextBlock {
     private static final String PARAGRAPH_FIELD = "paragraph";
 
     @JsonProperty(PARAGRAPH_FIELD)

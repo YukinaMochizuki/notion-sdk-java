@@ -42,7 +42,7 @@ public final class BlockHelper {
     @NotNull
     public static TodoBlock createDefaultTodoBlock(List<RichText> texts, boolean checked){
         Todo todo = new Todo();
-        todo.setTexts(texts);
+        todo.setRichTexts(texts);
         todo.setChecked(checked);
 
         TodoBlock todoBlock = new TodoBlock();
