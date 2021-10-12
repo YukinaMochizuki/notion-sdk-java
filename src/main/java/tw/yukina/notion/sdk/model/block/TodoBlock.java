@@ -12,9 +12,21 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class TodoBlock extends Block {
+public class TodoBlock extends Block implements TextBlock{
     private static final String TO_DO_FIELD = "to_do";
 
     @JsonProperty(TO_DO_FIELD)
     private Todo todo;
+
+    @Override
+    public void setParagraph(Paragraph paragraph) {
+        if(todo == null) todo = new Todo();
+        todo.setRichTexts(paragraph.getRichTexts());
+        todo.setChildren(paragraph.getChildren());
+    }
+
+    @Override
+    public Paragraph getParagraph() {
+        return todo;
+    }
 }
