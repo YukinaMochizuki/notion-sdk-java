@@ -1,11 +1,11 @@
 package tw.yukina.notion.sdk.model.common.date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tw.yukina.notion.sdk.model.serializer.LocalDateSerializer;
 
@@ -19,7 +19,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class Date extends DateTimeProperty{
+public class Date extends DateTimeProperty {
     private static final String START_FIELD = "start";
     private static final String END_FIELD = "end";
 
@@ -31,6 +31,23 @@ public class Date extends DateTimeProperty{
     @JsonProperty(END_FIELD)
     @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate end;
+
+    @NotNull
+    public static Date of(LocalDate start){
+        Date date = new Date();
+        date.setDateTimeType(DateTimeType.DATE);
+        date.setStart(start);
+        return date;
+    }
+
+    @NotNull
+    public static Date of(LocalDate start, LocalDate end){
+        Date date = new Date();
+        date.setDateTimeType(DateTimeType.DATE);
+        date.setStart(start);
+        date.setEnd(end);
+        return date;
+    }
 
     @Override
     public String startToString() {

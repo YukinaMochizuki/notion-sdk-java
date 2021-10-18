@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.unit.Page;
 
 @Getter
@@ -18,4 +19,14 @@ public class PageMention extends Mention {
     private static final String PAGE_FIELD = "page";
 
     private Page page;
+
+    @NotNull
+    public static PageMention of(String pageId){
+        Page page = new Page();
+        page.setPageId(pageId);
+        PageMention pageMention = new PageMention();
+        pageMention.setMentionType(MentionType.PAGE);
+        pageMention.setPage(page);
+        return pageMention;
+    }
 }

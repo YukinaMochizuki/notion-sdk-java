@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.PropertyType;
 
 @Getter
 @Setter
@@ -19,4 +21,12 @@ public class CheckboxProperty extends PageProperty {
     @JsonProperty(CHECKBOX_FIELD)
     private boolean checkbox;
 
+    @NotNull
+    public static CheckboxProperty of(String id, boolean checkbox){
+        CheckboxProperty checkboxProperty = new CheckboxProperty();
+        checkboxProperty.setId(id);
+        checkboxProperty.setType(PropertyType.CHECKBOX);
+        checkboxProperty.setCheckbox(checkbox);
+        return checkboxProperty;
+    }
 }

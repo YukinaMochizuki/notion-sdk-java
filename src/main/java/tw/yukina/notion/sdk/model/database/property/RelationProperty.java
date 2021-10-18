@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.PropertyType;
 
 @Getter
 @Setter
@@ -22,4 +24,14 @@ public class RelationProperty extends DatabaseProperty {
     @JsonProperty(RELATION_FIELD)
     private RelationObject relationObject;
 
+    @NotNull
+    public static RelationProperty of(String name, String databaseId){
+        RelationObject relationObject = new RelationObject();
+        relationObject.setDatabaseId(databaseId);
+        RelationProperty relationProperty = new RelationProperty();
+        relationProperty.setName(name);
+        relationProperty.setType(PropertyType.RELATION);
+        relationProperty.setRelationObject(relationObject);
+        return relationProperty;
+    }
 }

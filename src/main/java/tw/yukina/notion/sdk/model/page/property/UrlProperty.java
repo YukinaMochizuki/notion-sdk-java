@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.PropertyType;
 
 import java.net.URL;
 
@@ -21,4 +23,11 @@ public class UrlProperty extends PageProperty {
     @JsonProperty(URL_FIELD)
     private URL url;
 
+    @NotNull
+    public static UrlProperty of(URL url){
+        UrlProperty urlProperty = new UrlProperty();
+        urlProperty.setType(PropertyType.URL);
+        urlProperty.setUrl(url);
+        return urlProperty;
+    }
 }

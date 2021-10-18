@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.PropertyType;
 
 @Getter
 @Setter
@@ -22,4 +24,14 @@ public class NumberProperty extends DatabaseProperty {
     @JsonProperty(NUMBER_FIELD)
     private NumberObject numberObject;
 
+    @NotNull
+    public static NumberProperty of(String name, NumberFormat numberFormat){
+        NumberObject numberObject = new NumberObject();
+        numberObject.setNumberFormat(numberFormat);
+        NumberProperty numberProperty = new NumberProperty();
+        numberProperty.setName(name);
+        numberProperty.setType(PropertyType.NUMBER);
+        numberProperty.setNumberObject(numberObject);
+        return numberProperty;
+    }
 }

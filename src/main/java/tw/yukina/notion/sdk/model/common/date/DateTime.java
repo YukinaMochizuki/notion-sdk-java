@@ -1,11 +1,11 @@
 package tw.yukina.notion.sdk.model.common.date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tw.yukina.notion.sdk.model.serializer.UserZonedDateTimeSerializer;
 
@@ -31,6 +31,23 @@ public class DateTime extends DateTimeProperty{
     @JsonProperty(END_FIELD)
     @JsonSerialize(using = UserZonedDateTimeSerializer.class)
     private ZonedDateTime end;
+
+    @NotNull
+    public static DateTime of(ZonedDateTime start) {
+        DateTime dateTime = new DateTime();
+        dateTime.setDateTimeType(DateTimeType.DATE_TIME);
+        dateTime.setStart(start);
+        return dateTime;
+    }
+
+    @NotNull
+    public static DateTime of(ZonedDateTime start, ZonedDateTime end) {
+        DateTime dateTime = new DateTime();
+        dateTime.setDateTimeType(DateTimeType.DATE_TIME);
+        dateTime.setStart(start);
+        dateTime.setEnd(end);
+        return dateTime;
+    }
 
     @Override
     public String startToString() {
