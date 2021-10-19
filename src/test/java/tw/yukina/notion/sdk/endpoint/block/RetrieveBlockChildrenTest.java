@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RetrieveBlockChildrenTest extends ModelTest {
 
     @Test
-    void callValue() throws IOException, NotionAPIException {
+    void callValue() {
         ResponseBlockList responseBlockList = RetrieveBlockChildren.callValue("a5277c2eb62c4d58ac2bb3c1df2e39d5", getOkHttpClient(),
                 getAnotherRequestBuilder(), getCommonObjectMapper());
 

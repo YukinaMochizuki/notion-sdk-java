@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UpdateDatabaseTest extends ModelTest {
 
     @Test
-    void callValue() throws IOException, NotionAPIException {
+    void callValue() {
         PageParent pageParent = new PageParent();
         pageParent.setPageId("73f76d1a1510408dbca93acd5ff2914f");
         pageParent.setParentType(ParentType.PAGE);

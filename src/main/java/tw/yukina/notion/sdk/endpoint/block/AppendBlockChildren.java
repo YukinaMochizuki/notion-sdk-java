@@ -21,7 +21,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     public static ResponseBlockList callValue(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList,
                                               @NotNull OkHttpClient okHttpClient,
                                               @NotNull Request.Builder builder,
-                                              @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                              @NotNull ObjectMapper objectMapper) {
 
         return toBlockList(callTree(uuid, requestChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -30,7 +30,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     public static ResponseBlockList callValue(@NotNull String uuid, @NotNull JsonNode json,
                                               @NotNull OkHttpClient okHttpClient,
                                               @NotNull Request.Builder builder,
-                                              @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                              @NotNull ObjectMapper objectMapper) {
 
         return toBlockList(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -39,7 +39,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     public static ResponseBlockList callValue(@NotNull String uuid, @NotNull String json,
                                               @NotNull OkHttpClient okHttpClient,
                                               @NotNull Request.Builder builder,
-                                              @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                              @NotNull ObjectMapper objectMapper) {
 
         return toBlockList(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -48,7 +48,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     public static ObjectNode callTree(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(uuid, requestChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -57,7 +57,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     public static ObjectNode callTree(@NotNull String uuid, @NotNull JsonNode json,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(uuid, json, okHttpClient, builder), objectMapper);
     }
@@ -66,7 +66,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     public static ObjectNode callTree(@NotNull String uuid, @NotNull String json,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(uuid, json, okHttpClient, builder), objectMapper);
     }
@@ -75,7 +75,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     public static Response call(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
-                                @NotNull ObjectMapper objectMapper) throws IOException {
+                                @NotNull ObjectMapper objectMapper) {
 
         return call(uuid, objectMapper.valueToTree(requestChildrenBlockList), okHttpClient, builder);
     }
@@ -83,7 +83,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     @NotNull
     public static Response call(@NotNull String uuid, @NotNull JsonNode json,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
         ObjectNode objectNode = getObjectNode(json);
         ArrayNode arrayNode = (ArrayNode) objectNode.get("children");
@@ -95,12 +95,16 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     @NotNull
     public static Response call(@NotNull String uuid, @NotNull String json,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
         RequestBody body = RequestBody.create(json, MEDIA_TYPE_JSON);
         Request request = builder.url(BASE_URL + PATH + uuid + "/children").patch(body).build();
         Call call = okHttpClient.newCall(request);
 
-        return call.execute();
+        try {
+            return call.execute();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

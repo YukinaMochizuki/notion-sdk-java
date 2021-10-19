@@ -20,7 +20,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     public static Database callValue(@NotNull RequestCreateDatabase requestCreateDatabase,
                                      @NotNull OkHttpClient okHttpClient,
                                      @NotNull Request.Builder builder,
-                                     @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                     @NotNull ObjectMapper objectMapper) {
 
         return toDatabase(callTree(requestCreateDatabase, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -29,7 +29,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     public static Database callValue(@NotNull JsonNode json,
                                  @NotNull OkHttpClient okHttpClient,
                                  @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                 @NotNull ObjectMapper objectMapper) {
 
         return toDatabase(callTree(json, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -38,7 +38,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     public static Database callValue(@NotNull String json,
                                  @NotNull OkHttpClient okHttpClient,
                                  @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                 @NotNull ObjectMapper objectMapper) {
 
         return toDatabase(callTree(json, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -47,7 +47,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     public static ObjectNode callTree(@NotNull RequestCreateDatabase requestCreateDatabase,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(requestCreateDatabase, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -56,7 +56,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     public static ObjectNode callTree(@NotNull JsonNode json,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(json, okHttpClient, builder), objectMapper);
     }
@@ -65,7 +65,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     public static ObjectNode callTree(@NotNull String json,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(json, okHttpClient, builder), objectMapper);
     }
@@ -74,7 +74,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     public static Response call(@NotNull RequestCreateDatabase requestCreateDatabase,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
-                                @NotNull ObjectMapper objectMapper) throws IOException {
+                                @NotNull ObjectMapper objectMapper) {
 
         return call(objectMapper.valueToTree(requestCreateDatabase), okHttpClient, builder);
     }
@@ -82,7 +82,7 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     @NotNull
     public static Response call(@NotNull JsonNode json,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
         ObjectNode objectNode = getObjectNode(json);
         prepareCreateProperties(objectNode);
@@ -93,12 +93,8 @@ public class CreateDatabase extends AbstractDatabaseEndpoint {
     @NotNull
     public static Response call(@NotNull String json,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
-        RequestBody body = RequestBody.create(json, MEDIA_TYPE_JSON);
-        Request request = builder.url(BASE_URL + PATH).post(body).build();
-        Call call = okHttpClient.newCall(request);
-
-        return call.execute();
+        return getResponse(json, okHttpClient, builder, PATH);
     }
 }

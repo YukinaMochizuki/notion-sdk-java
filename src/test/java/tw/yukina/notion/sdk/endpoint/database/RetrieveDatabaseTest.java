@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RetrieveDatabaseTest extends ModelTest {
 
     @Test
-    void callValue() throws IOException, NotionAPIException {
+    void callValue() {
 
         Database responseDatabase = RetrieveDatabase.callValue("9dd0209dba4048c0872e428c8528565e",
                 getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());

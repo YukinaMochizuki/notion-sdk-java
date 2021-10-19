@@ -18,7 +18,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     public static Block callValue(@NotNull String uuid, @NotNull Block block,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return toBlock(callTree(uuid, block, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -27,7 +27,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     public static Block callValue(@NotNull String uuid, @NotNull JsonNode json,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return toBlock(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -36,7 +36,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     public static Block callValue(@NotNull String uuid, @NotNull String json,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return toBlock(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -45,7 +45,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     public static ObjectNode callTree(@NotNull String uuid, @NotNull Block block,
                                          @NotNull OkHttpClient okHttpClient,
                                          @NotNull Request.Builder builder,
-                                         @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                         @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(uuid, block, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -54,7 +54,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     public static ObjectNode callTree(@NotNull String uuid, @NotNull JsonNode json,
                                          @NotNull OkHttpClient okHttpClient,
                                          @NotNull Request.Builder builder,
-                                         @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                         @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(uuid, json, okHttpClient, builder), objectMapper);
     }
@@ -63,7 +63,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     public static ObjectNode callTree(@NotNull String uuid, @NotNull String json,
                                          @NotNull OkHttpClient okHttpClient,
                                          @NotNull Request.Builder builder,
-                                         @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                         @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(uuid, json, okHttpClient, builder), objectMapper);
     }
@@ -72,7 +72,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     public static Response call(@NotNull String uuid, @NotNull Block block,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
-                                @NotNull ObjectMapper objectMapper) throws IOException {
+                                @NotNull ObjectMapper objectMapper) {
 
         return call(uuid, objectMapper.valueToTree(block), okHttpClient, builder);
     }
@@ -80,7 +80,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     @NotNull
     public static Response call(@NotNull String uuid, @NotNull JsonNode json,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
         ObjectNode objectNode = getObjectNode(json);
         preparePostBlock(objectNode);
@@ -91,12 +91,8 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     @NotNull
     public static Response call(@NotNull String uuid, @NotNull String json,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
-        RequestBody body = RequestBody.create(json, MEDIA_TYPE_JSON);
-        Request request = builder.url(BASE_URL + PATH + uuid).patch(body).build();
-        Call call = okHttpClient.newCall(request);
-
-        return call.execute();
+        return getResponse(uuid, json, okHttpClient, builder, PATH);
     }
 }

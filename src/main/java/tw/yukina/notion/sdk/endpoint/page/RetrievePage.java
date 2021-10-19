@@ -38,11 +38,15 @@ public class RetrievePage extends AbstractPageEndpoint {
     @NotNull
     public static Response call(@NotNull String uuid,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
         Request request = builder.url(BASE_URL + PATH + uuid).build();
         Call call = okHttpClient.newCall(request);
 
-        return call.execute();
+        try {
+            return call.execute();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class UpdateBlockTest extends ModelTest {
 
     @Test
-    void callValue() throws IOException, NotionAPIException {
+    void callValue() {
         Block editBlock = BlockHelper.createDefaultParagraph("Edited");
 
         Block responseBlock = UpdateBlock.callValue("842ab92d84484f2f96b522fb0563794e", editBlock,

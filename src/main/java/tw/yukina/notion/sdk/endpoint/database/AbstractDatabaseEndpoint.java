@@ -13,8 +13,12 @@ public abstract class AbstractDatabaseEndpoint extends AbstractEndpoint {
 
     public static final String PATH = "/databases/";
 
-    public static Database toDatabase(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) throws JsonProcessingException {
-        return objectMapper.readValue(objectNode.toString(), Database.class);
+    public static Database toDatabase(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
+        try {
+            return objectMapper.readValue(objectNode.toString(), Database.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void prepareRequestUpdateDatabase(ObjectNode objectNode){

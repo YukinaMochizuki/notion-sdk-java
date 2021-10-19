@@ -14,12 +14,20 @@ public abstract class AbstractBlockEndpoint extends AbstractEndpoint {
 
     public static final String PATH = "/blocks/";
 
-    public static Block toBlock(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) throws JsonProcessingException {
-        return objectMapper.readValue(objectNode.toString(), Block.class);
+    public static Block toBlock(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
+        try {
+            return objectMapper.readValue(objectNode.toString(), Block.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static ResponseBlockList toBlockList(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) throws JsonProcessingException {
-        return objectMapper.readValue(objectNode.toString(), ResponseBlockList.class);
+    public static ResponseBlockList toBlockList(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
+        try {
+            return objectMapper.readValue(objectNode.toString(), ResponseBlockList.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void preparePostBlocks(@NotNull ArrayNode arrayNode){

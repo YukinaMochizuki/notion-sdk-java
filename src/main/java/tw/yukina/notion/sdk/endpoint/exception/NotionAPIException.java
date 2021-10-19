@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 @Getter
 @Setter
 @ToString
-public class NotionAPIException extends Exception {
+public class NotionAPIException extends RuntimeException {
 
     private int status;
     private String code;

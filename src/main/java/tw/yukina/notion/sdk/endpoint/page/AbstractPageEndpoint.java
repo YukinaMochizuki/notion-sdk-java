@@ -11,8 +11,11 @@ public abstract class AbstractPageEndpoint extends AbstractBlockEndpoint {
 
     public static final String PATH = "/pages/";
 
-    public static Page toPage(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) throws JsonProcessingException {
-        return objectMapper.readValue(objectNode.toString(), Page.class);
+    public static Page toPage(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
+        try {
+            return objectMapper.readValue(objectNode.toString(), Page.class);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
-
 }

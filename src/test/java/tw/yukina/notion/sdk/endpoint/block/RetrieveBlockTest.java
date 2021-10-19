@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RetrieveBlockTest extends ModelTest {
 
     @Test
-    void callValue() throws IOException, NotionAPIException {
+    void callValue() {
         Block block = RetrieveBlock.callValue("65d859d0c84d406398b902060a5b68d5", getOkHttpClient(),
                 getAnotherRequestBuilder(), getCommonObjectMapper());
 

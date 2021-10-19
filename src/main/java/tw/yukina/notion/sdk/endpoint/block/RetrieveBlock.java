@@ -19,7 +19,7 @@ public class RetrieveBlock extends AbstractBlockEndpoint{
     public static Block callValue(@NotNull String uuid,
                                   @NotNull OkHttpClient okHttpClient,
                                   @NotNull Request.Builder builder,
-                                  @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                  @NotNull ObjectMapper objectMapper) {
 
         ObjectNode objectNode = callTree(uuid, okHttpClient, builder, objectMapper);
         return toBlock(objectNode, objectMapper);
@@ -29,7 +29,7 @@ public class RetrieveBlock extends AbstractBlockEndpoint{
     public static ObjectNode callTree(@NotNull String uuid,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws NotionAPIException, IOException {
+                                      @NotNull ObjectMapper objectMapper) {
 
         return getObjectNode(call(uuid, okHttpClient, builder), objectMapper);
     }
@@ -37,11 +37,15 @@ public class RetrieveBlock extends AbstractBlockEndpoint{
     @NotNull
     public static Response call(@NotNull String uuid,
                                 @NotNull OkHttpClient okHttpClient,
-                                @NotNull Request.Builder builder) throws IOException {
+                                @NotNull Request.Builder builder) {
 
         Request request = builder.url(BASE_URL + PATH + uuid).build();
         Call call = okHttpClient.newCall(request);
 
-        return call.execute();
+        try {
+            return call.execute();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
