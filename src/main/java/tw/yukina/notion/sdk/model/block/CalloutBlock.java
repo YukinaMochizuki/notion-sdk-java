@@ -13,21 +13,10 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class CalloutBlock extends Block implements TextBlock {
+public class CalloutBlock extends Block {
     private static final String CALLOUT_FIELD = "callout";
 
     @JsonProperty(CALLOUT_FIELD)
     private Callout callout;
 
-    @Override
-    public void setParagraph(Paragraph paragraph) {
-        if(callout == null) callout = new Callout();
-        callout.setRichTexts(paragraph.getRichTexts());
-        callout.setChildren(paragraph.getChildren());
-    }
-
-    @Override
-    public Paragraph getParagraph() {
-        return callout;
-    }
 }
