@@ -51,6 +51,11 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
+    public ResponseBlockList callValue(@NotNull String uuid, @NotNull String startCursor) {
+        return RetrieveBlockChildren.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper(), startCursor);
+    }
+
+    @Override
     public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList) {
         return AppendBlockChildren.callValue(uuid, requestChildrenBlockList, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
