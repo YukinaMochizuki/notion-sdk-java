@@ -1,7 +1,10 @@
 package tw.yukina.notion.sdk.model.database;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import tw.yukina.notion.sdk.model.NotionObject;
 import tw.yukina.notion.sdk.model.ObjectType;
 import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
@@ -19,11 +22,8 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Database {
-    private static final String OBJECT_FIELD = "object";
-    private static final String ID_FIELD = "id";
-    private static final String CREATED_TIME_FIELD = "created_time";
-    private static final String LAST_EDITED_TIME_FIELD = "last_edited_time";
+@JsonDeserialize(using = JsonDeserializer.None.class)
+public class Database extends NotionObject {
     private static final String TITLE_FIELD = "title";
     private static final String ICON_FIELD = "icon";
     private static final String COVER_FIELD = "cover";
@@ -33,15 +33,6 @@ public class Database {
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.DATABASE;
-
-    @JsonProperty(ID_FIELD)
-    private String id;
-
-    @JsonProperty(CREATED_TIME_FIELD)
-    private ZonedDateTime createdTime;
-
-    @JsonProperty(LAST_EDITED_TIME_FIELD)
-    private ZonedDateTime lastEditedTime;
 
     @JsonProperty(TITLE_FIELD)
     private List<RichText> title;
@@ -66,10 +57,10 @@ public class Database {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Database database = (Database) o;
-        return objectType == database.objectType &&
-                Objects.equals(id, database.id) &&
-                Objects.equals(createdTime, database.createdTime) &&
-                Objects.equals(lastEditedTime, database.lastEditedTime) &&
+        return getObjectType() == database.getObjectType() &&
+                Objects.equals(getId(), database.getId()) &&
+                Objects.equals(getCreatedTime(), database.getCreatedTime()) &&
+                Objects.equals(getLastEditedTime(), database.getLastEditedTime()) &&
                 Objects.equals(title, database.title) &&
                 Objects.equals(icon, database.icon) &&
                 Objects.equals(cover, database.cover) &&
@@ -80,6 +71,6 @@ public class Database {
 
     @Override
     public int hashCode() {
-        return Objects.hash(objectType, id, createdTime, lastEditedTime, title, icon, cover, propertyMap, parent, url);
+        return Objects.hash(getObjectType(), getId(), getCreatedTime(), getLastEditedTime(), title, icon, cover, propertyMap, parent, url);
     }
 }

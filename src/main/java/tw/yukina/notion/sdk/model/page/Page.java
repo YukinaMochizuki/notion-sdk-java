@@ -1,7 +1,10 @@
 package tw.yukina.notion.sdk.model.page;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import tw.yukina.notion.sdk.model.NotionObject;
 import tw.yukina.notion.sdk.model.ObjectType;
 import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
@@ -17,12 +20,9 @@ import java.util.Objects;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Page {
+@JsonDeserialize(using = JsonDeserializer.None.class)
+public class Page extends NotionObject {
 
-    private static final String OBJECT_FIELD = "object";
-    private static final String ID_FIELD = "id";
-    private static final String CREATED_TIME_FIELD = "created_time";
-    private static final String LAST_EDITED_TIME_FIELD = "last_edited_time";
     private static final String ARCHIVED_FIELD = "archived";
     private static final String ICON_FIELD = "icon";
     private static final String COVER_FIELD = "cover";
@@ -32,15 +32,6 @@ public class Page {
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.PAGE;
-
-    @JsonProperty(ID_FIELD)
-    private String id;
-
-    @JsonProperty(CREATED_TIME_FIELD)
-    private ZonedDateTime createdTime;
-
-    @JsonProperty(LAST_EDITED_TIME_FIELD)
-    private ZonedDateTime lastEditedTime;
 
     @JsonProperty(COVER_FIELD)
     private FileObject cover;
@@ -66,10 +57,10 @@ public class Page {
         if (o == null || getClass() != o.getClass()) return false;
         Page page = (Page) o;
         return archived == page.archived &&
-                objectType == page.objectType &&
-                Objects.equals(id, page.id) &&
-                Objects.equals(createdTime, page.createdTime) &&
-                Objects.equals(lastEditedTime, page.lastEditedTime) &&
+                getObjectType() == page.getObjectType() &&
+                Objects.equals(getId(), page.getId()) &&
+                Objects.equals(getCreatedTime(), page.getCreatedTime()) &&
+                Objects.equals(getLastEditedTime(), page.getLastEditedTime()) &&
                 Objects.equals(icon, page.icon) &&
                 Objects.equals(cover, page.cover) &&
                 propertyMap.equals(page.propertyMap) &&
@@ -79,6 +70,6 @@ public class Page {
 
     @Override
     public int hashCode() {
-        return Objects.hash(objectType, id, createdTime, lastEditedTime, archived, icon, cover, propertyMap, parent, url);
+        return Objects.hash(getObjectType(), getId(), getCreatedTime(), getLastEditedTime(), archived, icon, cover, propertyMap, parent, url);
     }
 }
