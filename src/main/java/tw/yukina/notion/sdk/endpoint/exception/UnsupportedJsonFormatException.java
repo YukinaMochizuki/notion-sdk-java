@@ -8,11 +8,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class UnsupportedResponseException extends RuntimeException {
+public class UnsupportedJsonFormatException extends RuntimeException {
 
     private JsonNode jsonNode;
 
-    public UnsupportedResponseException(JsonNode jsonNode){
+    public UnsupportedJsonFormatException(JsonNode jsonNode){
         this.jsonNode = jsonNode;
     }
 }

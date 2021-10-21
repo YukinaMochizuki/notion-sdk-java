@@ -7,7 +7,7 @@ import okhttp3.*;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.endpoint.exception.UnsupportedResponseException;
+import tw.yukina.notion.sdk.endpoint.exception.UnsupportedJsonFormatException;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -37,7 +37,7 @@ public abstract class AbstractEndpoint {
 
         if(jsonNode instanceof ObjectNode){
             objectNode = (ObjectNode) jsonNode;
-        } else throw new UnsupportedResponseException(jsonNode);
+        } else throw new UnsupportedJsonFormatException(jsonNode);
 
         return objectNode;
     }

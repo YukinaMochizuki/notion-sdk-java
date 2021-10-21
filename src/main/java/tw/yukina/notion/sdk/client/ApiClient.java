@@ -11,7 +11,7 @@ public interface ApiClient {
 
     ResponseBlockList retrieveBlockChildren(@NotNull String uuid);
 
-    ResponseBlockList callValue(@NotNull String uuid, @NotNull String startCursor);
+    ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor);
 
     ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList);
 
