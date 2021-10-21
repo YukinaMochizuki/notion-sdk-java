@@ -9,7 +9,7 @@ import okhttp3.OkHttpClient;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tw.yukina.notion.sdk.client.exception.NotionObjectNotFoundException;
+import tw.yukina.notion.sdk.client.exception.*;
 import tw.yukina.notion.sdk.client.proxy.ApiClientHandler;
 import tw.yukina.notion.sdk.model.deserializer.ZonedDateTimeDeserializer;
 import tw.yukina.notion.sdk.model.serializer.ZonedDateTimeSerializer;
@@ -62,7 +62,7 @@ public class ApiClientFactory {
     }
 
     public ApiClient buildWithoutProxy(){
-        LOGGER.info("Building Notion Api client in Api version " + NOTION_VERSION + "and without proxy");
+        LOGGER.info("Building Notion Api client in Api version " + NOTION_VERSION + " and without proxy");
         ApiClientImpl apiClient = new ApiClientImpl(token);
         settingClientInstance(apiClient);
         return apiClient;
@@ -97,14 +97,25 @@ public class ApiClientFactory {
 
 
     public ApiClientFactory objectMapperConfigure(@NotNull DeserializationFeature feature, boolean state){
-        LOGGER.info("Changing state of " + feature.name() + " to " + state);
+        LOGGER.info("Changing ObjectMapper state of " + feature.name() + " to " + state);
         objectMapper.configure(feature, state);
         return this;
     }
 
     public ApiClientFactory addDefaultExceptionDefine(){
+        notionExceptionWrapper.getExceptionDefine().put("invalid_json", NotionJsonDecodeException.class);
+        notionExceptionWrapper.getExceptionDefine().put("invalid_request_url", NotionBadRequestSettingException.class);
+        notionExceptionWrapper.getExceptionDefine().put("invalid_request", NotionBadRequestSettingException.class);
+        notionExceptionWrapper.getExceptionDefine().put("validation_error", NotonValidationFailureException.class);
+        notionExceptionWrapper.getExceptionDefine().put("missing_version", NotionBadRequestSettingException.class);
+        notionExceptionWrapper.getExceptionDefine().put("unauthorized", NotionUnauthorizedException.class);
+        notionExceptionWrapper.getExceptionDefine().put("restricted_resource", NotionRestrictedResourceException.class);
         notionExceptionWrapper.getExceptionDefine().put("object_not_found", NotionObjectNotFoundException.class);
-
+        notionExceptionWrapper.getExceptionDefine().put("conflict_error", NotionDataConflictException.class);
+        notionExceptionWrapper.getExceptionDefine().put("rate_limited", NotionRateLimitedException.class);
+        notionExceptionWrapper.getExceptionDefine().put("internal_server_error", NotionUnavailableException.class);
+        notionExceptionWrapper.getExceptionDefine().put("service_unavailable", NotionUnavailableException.class);
+        notionExceptionWrapper.getExceptionDefine().put("database_connection_unavailable", NotionUnavailableException.class);
         return this;
     }
 
