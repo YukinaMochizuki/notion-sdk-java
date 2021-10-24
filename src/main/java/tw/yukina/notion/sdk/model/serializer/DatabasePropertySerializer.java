@@ -13,14 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class DatabasePropertySerializer extends JsonSerializer<DatabaseProperty> {
+public class DatabasePropertySerializer extends AbstractSerializer<DatabaseProperty> {
 
     @Override
     public void serialize(DatabaseProperty value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
 
         gen.writeStartObject();
 
-        if(value.getType().getField().matches("title|rich_text|date|people|files|checkbox|url|email|phone_number|created_time|created_by|last_edited_time|last_edited_by")){
+        if(value.getType().getField().matches("title|rich_text|date|people|files|checkbox|url|email|" +
+                "phone_number|created_time|created_by|last_edited_time|last_edited_by")){
             packageEmptyObjectType(value, gen);
             gen.writeEndObject();
             return;
@@ -33,7 +34,7 @@ public class DatabasePropertySerializer extends JsonSerializer<DatabaseProperty>
         addAvailableType(PropertyType.ROLLUP.getField(), RollupProperty.class);
         addAvailableType(PropertyType.SELECT.getField(), SelectProperty.class);
 
-        typeSerialize(value, gen, (ObjectMapper) gen.getCodec());
+        typeSerializeRaw(value, gen, (ObjectMapper) gen.getCodec());
 
         gen.writeEndObject();
     }
@@ -46,22 +47,8 @@ public class DatabasePropertySerializer extends JsonSerializer<DatabaseProperty>
         gen.writeStringField(Property.TYPE_FIELD, value.getType().getField());
     }
 
-    private final List<TypeUnit<DatabaseProperty>> typeUnits = new ArrayList<>();
-
-    @SuppressWarnings({"rawtypes"})
-    public void typeSerialize(DatabaseProperty value, JsonGenerator gen, ObjectMapper mapper) throws IOException {
-        for(TypeUnit typeUnit: typeUnits){
-            if(Objects.equals(typeUnit.getType(), value.getType().getField())) {
-                gen.writeRaw(mapper.writeValueAsString(value));
-            };
-        }
-    }
-
-    public void addAvailableType(String type, Class<? extends DatabaseProperty> clazz){
-        typeUnits.add(new TypeUnit<>(type, clazz));
-    }
-
-    public JsonMappingException throwTypeNotFound(String type, JsonParser jsonParser) {
-        return JsonMappingException.from(jsonParser, "The type \"" + type + "\" does not match any available types");
+    @Override
+    protected boolean checkTypeEquals(TypeUnit<DatabaseProperty> typeUnit, DatabaseProperty value) {
+        return Objects.equals(typeUnit.getType(), value.getType().getField());
     }
 }

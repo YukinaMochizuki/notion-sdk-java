@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.query.DirectionEnum;
 
 @Getter
 @Setter

@@ -8,6 +8,7 @@ import lombok.ToString;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import tw.yukina.notion.sdk.model.common.query.DirectionEnum;
 
 @Getter
 @Setter
