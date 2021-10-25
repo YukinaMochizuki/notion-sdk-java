@@ -10,7 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import tw.yukina.notion.sdk.model.serializer.UserZonedDateTimeSerializer;
 
 import java.time.ZonedDateTime;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -57,6 +56,6 @@ public class DateTime extends DateTimeProperty{
     @Nullable
     @Override
     public String endToString() {
-        return Objects.requireNonNull(end).toString();
+        return end != null ? end.toString() : "";
     }
 }

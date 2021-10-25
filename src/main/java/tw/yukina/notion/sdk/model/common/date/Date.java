@@ -10,7 +10,6 @@ import org.jetbrains.annotations.Nullable;
 import tw.yukina.notion.sdk.model.serializer.LocalDateSerializer;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -54,9 +53,9 @@ public class Date extends DateTimeProperty {
         return start.toString();
     }
 
-    @Nullable
     @Override
     public String endToString() {
-        return Objects.requireNonNull(end).toString();
+        return end != null ? end.toString() : "";
     }
+
 }
