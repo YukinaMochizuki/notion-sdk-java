@@ -36,8 +36,7 @@ public class ApiClientHandler implements InvocationHandler {
         Object result;
         try {
             result = methods.get(method.getName()).invoke(target, args);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-
+        } catch (Exception e) {
             Throwable exception = getRootCause(e);
 
             if(exception instanceof NotionAPIException){
