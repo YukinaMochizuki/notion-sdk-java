@@ -27,10 +27,15 @@ public class DatabasePropertyFilterSerializer extends AbstractSerializer<Databas
         addAvailableType("MultiSelectPropertyFilter", MultiSelectPropertyFilter.class);
 
         addAvailableType("PeoplePropertyFilter", PeoplePropertyFilter.class);
+        addAvailableType("CreatedByPropertyFilter", CreatedByPropertyFilter.class);
+        addAvailableType("LastEditedByPropertyFilter", LastEditedTimePropertyFilter.class);
         addAvailableType("RelationPropertyFilter", RelationPropertyFilter.class);
 
+        addAvailableType("DatePropertyFilter", DatePropertyFilter.class);
+        addAvailableType("CreatedTimePropertyFilter", CreatedTimePropertyFilter.class);
+        addAvailableType("LastEditedTimePropertyFilter", LastEditedTimePropertyFilter.class);
+
         addAvailableType("CheckboxPropertyFilter", CheckboxPropertyFilter.class);
-//        addAvailableType("DatePropertyFilter", DatePropertyFilter.class);
         addAvailableType("FilesPropertyFilter", FilesPropertyFilter.class);
         addAvailableType("FormulaPropertyFilter", FormulaPropertyFilter.class);
     }

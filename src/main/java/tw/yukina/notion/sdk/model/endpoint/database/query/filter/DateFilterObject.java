@@ -1,12 +1,10 @@
 package tw.yukina.notion.sdk.model.endpoint.database.query.filter;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.common.date.DateTimeProperty;
-import tw.yukina.notion.sdk.model.serializer.LocalDateSerializer;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 @Getter
 @Setter
@@ -14,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class DateFilterObject {
 
     public static final String EQUALS_FIELD = "equals";
@@ -31,16 +30,16 @@ public class DateFilterObject {
     public static final String NEXT_YEAR_FIELD = "next_year";
 
     @JsonProperty(EQUALS_FIELD)
-    private DateTimeProperty equalDate;
+    private ZonedDateTime equalDate;
 
     @JsonProperty(BEFORE_FIELD)
-    private DateTimeProperty beforeDate;
+    private ZonedDateTime beforeDate;
 
     @JsonProperty(AFTER_FIELD)
-    private DateTimeProperty afterDate;
+    private ZonedDateTime afterDate;
 
     @JsonProperty(ON_OR_BEFORE_FIELD)
-    private DateTimeProperty onOrBeforeDate;
+    private ZonedDateTime onOrBeforeDate;
 
     @JsonProperty(IS_EMPTY_FIELD)
     private Boolean isEmpty;
@@ -49,7 +48,7 @@ public class DateFilterObject {
     private Boolean isNotEmpty;
 
     @JsonProperty(ON_OR_AFTER_FIELD)
-    private DateTimeProperty onOrAfterDate;
+    private ZonedDateTime onOrAfterDate;
 
     @JsonProperty(PAST_WEEK_FIELD)
     private Boolean enablePastWeekFilter;
