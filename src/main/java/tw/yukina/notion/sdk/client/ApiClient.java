@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.database.QueryDatabase;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.database.Database;
-import tw.yukina.notion.sdk.model.endpoint.block.RequestChildrenBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
@@ -21,7 +21,7 @@ public interface ApiClient {
 
     ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor);
 
-    ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList);
+    ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList);
 
     Block updateBlock(@NotNull String uuid, Block block);
 

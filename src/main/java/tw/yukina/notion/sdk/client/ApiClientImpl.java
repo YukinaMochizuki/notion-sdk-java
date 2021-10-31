@@ -18,7 +18,7 @@ import tw.yukina.notion.sdk.endpoint.page.RetrievePage;
 import tw.yukina.notion.sdk.endpoint.page.UpdatePage;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.database.Database;
-import tw.yukina.notion.sdk.model.endpoint.block.RequestChildrenBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
@@ -69,8 +69,8 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList) {
-        return AppendBlockChildren.callValue(uuid, requestChildrenBlockList, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList) {
+        return AppendBlockChildren.callValue(uuid, requestAppendChildrenBlockList, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override

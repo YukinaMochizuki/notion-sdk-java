@@ -132,9 +132,9 @@ public final class Thing {
         multiSelectProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Tags"));
         multiSelectProperty.setName("Tags");
         multiSelectProperty.setType(PropertyType.MULTI_SELECT);
-        MultiSelectObject multiSelectObject = new MultiSelectObject();
+        SelectObject multiSelectObject = new SelectObject();
         multiSelectObject.setSelectOptions(new ArrayList<>());
-        multiSelectProperty.setMultiSelectObject(multiSelectObject);
+        multiSelectProperty.setSelectObject(multiSelectObject);
         propertyMap.put("Tags", multiSelectProperty);
 
         multiSelectObject.setSelectOptions(JsonNodeHelper.getMultiSelectPropertyOptions(responseJsonNode, "Tags"));
@@ -268,9 +268,9 @@ public final class Thing {
         tw.yukina.notion.sdk.model.database.property.MultiSelectProperty multiSelectProperty = new tw.yukina.notion.sdk.model.database.property.MultiSelectProperty();
         multiSelectProperty.setName("Tags");
         multiSelectProperty.setType(PropertyType.MULTI_SELECT);
-        MultiSelectObject multiSelectObject = new MultiSelectObject();
+        SelectObject multiSelectObject = new SelectObject();
         multiSelectObject.setSelectOptions(new ArrayList<>());
-        multiSelectProperty.setMultiSelectObject(multiSelectObject);
+        multiSelectProperty.setSelectObject(multiSelectObject);
         propertyMap.put("Tags", multiSelectProperty);
 
         multiSelectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Index", "Coding", "Listener", "Outdated"}));

@@ -1,6 +1,5 @@
 package tw.yukina.notion.sdk.model.common.unit;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

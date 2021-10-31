@@ -6,8 +6,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.endpoint.block.RequestChildrenBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 
 import java.io.IOException;
@@ -18,12 +17,12 @@ import static tw.yukina.notion.sdk.Configuration.MEDIA_TYPE_JSON;
 public class AppendBlockChildren extends AbstractBlockEndpoint {
 
     @NotNull
-    public static ResponseBlockList callValue(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList,
+    public static ResponseBlockList callValue(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
                                               @NotNull OkHttpClient okHttpClient,
                                               @NotNull Request.Builder builder,
                                               @NotNull ObjectMapper objectMapper) {
 
-        return toBlockList(callTree(uuid, requestChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
+        return toBlockList(callTree(uuid, requestAppendChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
@@ -45,12 +44,12 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     }
 
     @NotNull
-    public static ObjectNode callTree(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList,
+    public static ObjectNode callTree(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
                                       @NotNull ObjectMapper objectMapper) {
 
-        return getObjectNode(call(uuid, requestChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
+        return getObjectNode(call(uuid, requestAppendChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
@@ -72,12 +71,12 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     }
 
     @NotNull
-    public static Response call(@NotNull String uuid, @NotNull RequestChildrenBlockList requestChildrenBlockList,
+    public static Response call(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
                                 @NotNull ObjectMapper objectMapper) {
 
-        return call(uuid, objectMapper.valueToTree(requestChildrenBlockList), okHttpClient, builder);
+        return call(uuid, objectMapper.valueToTree(requestAppendChildrenBlockList), okHttpClient, builder);
     }
 
     @NotNull

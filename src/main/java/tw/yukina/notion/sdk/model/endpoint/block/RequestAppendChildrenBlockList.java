@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-public class RequestChildrenBlockList {
+public class RequestAppendChildrenBlockList {
 
     private static final String CHILDREN_FIELD = "children";
 

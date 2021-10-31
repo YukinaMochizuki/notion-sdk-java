@@ -19,7 +19,7 @@ public class RetrievePage extends AbstractPageEndpoint {
     public static Page callValue(@NotNull String uuid,
                                  @NotNull OkHttpClient okHttpClient,
                                  @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) throws IOException, NotionAPIException {
+                                 @NotNull ObjectMapper objectMapper) throws NotionAPIException {
 
         ObjectNode objectNode = callTree(uuid, okHttpClient, builder, objectMapper);
         return toPage(objectNode, objectMapper);
@@ -29,7 +29,7 @@ public class RetrievePage extends AbstractPageEndpoint {
     public static ObjectNode callTree(@NotNull String uuid,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) throws NotionAPIException, IOException {
+                                      @NotNull ObjectMapper objectMapper) throws NotionAPIException {
 
         return getObjectNode(call(uuid, okHttpClient, builder), objectMapper);
     }

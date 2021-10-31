@@ -1,7 +1,7 @@
 package tw.yukina.notion.sdk.endpoint.block;
 
 import org.junit.jupiter.api.Test;
-import tw.yukina.notion.sdk.model.endpoint.block.RequestChildrenBlockList;
+import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.Block;
@@ -13,11 +13,11 @@ class AppendBlockChildrenTest extends ModelTest {
 
     @Test
     void callValue() throws Exception {
-        RequestChildrenBlockList requestChildrenBlockList = new RequestChildrenBlockList();
-        requestChildrenBlockList.setBlocks(BlockTemplate.getPageBlock());
+        RequestAppendChildrenBlockList requestAppendChildrenBlockList = new RequestAppendChildrenBlockList();
+        requestAppendChildrenBlockList.setBlocks(BlockTemplate.getPageBlock());
 
         ResponseBlockList responseBlockList = AppendBlockChildren.callValue("49a92380b1634d28bb580816bb9126b5",
-                requestChildrenBlockList, getOkHttpClient(), getAnotherRequestBuilder(), getCommonObjectMapper());
+                requestAppendChildrenBlockList, getOkHttpClient(), getAnotherRequestBuilder(), getCommonObjectMapper());
 
         ResponseBlockList testResponseBlockList = new ResponseBlockList();
         testResponseBlockList.setBlocks(BlockTemplate.getPageBlock());

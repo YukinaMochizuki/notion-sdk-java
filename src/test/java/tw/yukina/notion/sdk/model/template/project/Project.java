@@ -6,7 +6,6 @@ import tw.yukina.notion.sdk.model.common.parent.PageParent;
 import tw.yukina.notion.sdk.model.common.parent.ParentType;
 import tw.yukina.notion.sdk.model.database.Database;
 import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
-import tw.yukina.notion.sdk.model.database.property.MultiSelectObject;
 import tw.yukina.notion.sdk.model.database.property.SelectObject;
 import tw.yukina.notion.sdk.model.helper.JsonNodeHelper;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
@@ -49,9 +48,9 @@ public final class Project {
         tw.yukina.notion.sdk.model.database.property.MultiSelectProperty multiSelectProperty = new tw.yukina.notion.sdk.model.database.property.MultiSelectProperty();
         multiSelectProperty.setName("Tags");
         multiSelectProperty.setType(PropertyType.MULTI_SELECT);
-        MultiSelectObject multiSelectObject = new MultiSelectObject();
+        SelectObject multiSelectObject = new SelectObject();
         multiSelectObject.setSelectOptions(new ArrayList<>());
-        multiSelectProperty.setMultiSelectObject(multiSelectObject);
+        multiSelectProperty.setSelectObject(multiSelectObject);
         propertyMap.put("Tags", multiSelectProperty);
 
         multiSelectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Tag1", "Tag2", "Tag3"}));
@@ -108,9 +107,9 @@ public final class Project {
         multiSelectProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Tags"));
         multiSelectProperty.setName("Tags");
         multiSelectProperty.setType(PropertyType.MULTI_SELECT);
-        MultiSelectObject multiSelectObject = new MultiSelectObject();
+        SelectObject multiSelectObject = new SelectObject();
         multiSelectObject.setSelectOptions(new ArrayList<>());
-        multiSelectProperty.setMultiSelectObject(multiSelectObject);
+        multiSelectProperty.setSelectObject(multiSelectObject);
         propertyMap.put("Tags", multiSelectProperty);
 
         multiSelectObject.setSelectOptions(JsonNodeHelper.getMultiSelectPropertyOptions(responseJsonNode, "Tags"));
