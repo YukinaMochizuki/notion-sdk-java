@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.rich.RichText;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,4 +21,14 @@ public class ParagraphBlock extends Block implements TextBlock {
 
     @JsonProperty(PARAGRAPH_FIELD)
     private Paragraph paragraph;
+
+    @NotNull
+    public static ParagraphBlock of(List<RichText> richTexts){
+        Paragraph paragraph = new Paragraph();
+        paragraph.setRichTexts(richTexts);
+        ParagraphBlock paragraphBlock = new ParagraphBlock();
+        paragraphBlock.setParagraph(paragraph);
+        paragraphBlock.setType(BlockType.PARAGRAPH);
+        return paragraphBlock;
+    }
 }

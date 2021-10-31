@@ -12,7 +12,7 @@ import tw.yukina.notion.sdk.model.deserializer.IconDeserializer;
 @AllArgsConstructor
 @EqualsAndHashCode
 @JsonDeserialize(using = IconDeserializer.class)
-public class Icon {
+public abstract class Icon {
 
     private static final String TYPE_FIELD = "type";
 

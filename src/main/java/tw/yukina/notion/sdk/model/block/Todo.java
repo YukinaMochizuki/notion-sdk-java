@@ -2,6 +2,7 @@ package tw.yukina.notion.sdk.model.block;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -15,4 +16,8 @@ public class Todo extends Paragraph {
     @JsonProperty(CHECKED_FIELD)
     private boolean checked = false;
 
+    public Todo(@NotNull Paragraph paragraph){
+        this.setChildren(paragraph.getChildren());
+        this.setRichTexts(paragraph.getRichTexts());
+    }
 }

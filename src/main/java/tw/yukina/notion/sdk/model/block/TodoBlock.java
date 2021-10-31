@@ -1,9 +1,14 @@
 package tw.yukina.notion.sdk.model.block;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.common.rich.RichText;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,10 +17,42 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class TodoBlock extends Block {
+public class TodoBlock extends Block implements TextBlock {
     private static final String TO_DO_FIELD = "to_do";
 
     @JsonProperty(TO_DO_FIELD)
     private Todo todo;
 
+    @Override
+    public void setParagraph(Paragraph paragraph) {
+        this.todo.setRichTexts(paragraph.getRichTexts());
+        this.todo.setChildren(paragraph.getChildren());
+    }
+
+    @Override
+    @JsonIgnore
+    public Paragraph getParagraph() {
+        return todo;
+    }
+
+    @NotNull
+    public static TodoBlock of(List<RichText> richTexts){
+        Todo todo = new Todo();
+        todo.setRichTexts(richTexts);
+        TodoBlock todoBlock = new TodoBlock();
+        todoBlock.setTodo(todo);
+        todoBlock.setType(BlockType.TO_DO);
+        return todoBlock;
+    }
+
+    @NotNull
+    public static TodoBlock of(List<RichText> richTexts, boolean check){
+        Todo todo = new Todo();
+        todo.setRichTexts(richTexts);
+        todo.setChecked(check);
+        TodoBlock todoBlock = new TodoBlock();
+        todoBlock.setTodo(todo);
+        todoBlock.setType(BlockType.TO_DO);
+        return todoBlock;
+    }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -19,4 +20,11 @@ public class IconEmoji extends Icon {
     @JsonProperty(EMOJI_FIELD)
     private String emoji;
 
+    @NotNull
+    public static IconEmoji of(String emoji){
+        IconEmoji iconEmoji = new IconEmoji();
+        iconEmoji.setType("emoji");
+        iconEmoji.setEmoji(emoji);
+        return iconEmoji;
+    }
 }

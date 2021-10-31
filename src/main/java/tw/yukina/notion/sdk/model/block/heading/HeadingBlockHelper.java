@@ -33,7 +33,7 @@ public class HeadingBlockHelper {
         return headingThreeBlock;
     }
 
-    public static <T extends HeadingBlock> void initDefaultHeadingBlock(List<RichText> texts, T t){
+    public static <T extends HeadingBlock> void initDefaultHeadingBlock(List<RichText> texts, @NotNull T t){
         Heading heading = new Heading();
         heading.setTexts(texts);
         t.setHeading(heading);

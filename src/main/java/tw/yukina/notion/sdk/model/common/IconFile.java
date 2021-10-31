@@ -18,4 +18,9 @@ public class IconFile extends Icon {
 
     @JsonProperty(FILE_FIELD)
     private IconFileObject iconFileObject;
+    
+    public static IconFile of(){
+        // TODO: 10/31/21  
+        return null;
+    }
 }

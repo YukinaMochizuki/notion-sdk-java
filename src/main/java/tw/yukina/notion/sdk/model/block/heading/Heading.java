@@ -17,5 +17,4 @@ public class Heading {
 
     @JsonProperty(TEXT_FIELD)
     private List<RichText> texts;
-
 }

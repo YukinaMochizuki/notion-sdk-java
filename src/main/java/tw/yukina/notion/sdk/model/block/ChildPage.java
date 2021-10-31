@@ -14,5 +14,4 @@ public class ChildPage {
 
     @JsonProperty(TITLE_FIELD)
     private String title;
-
 }
