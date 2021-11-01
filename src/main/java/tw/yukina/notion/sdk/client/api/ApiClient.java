@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.client.api;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.database.QueryDatabase;
 import tw.yukina.notion.sdk.model.block.Block;
@@ -40,4 +41,6 @@ public interface ApiClient {
     Page RetrievePage(@NotNull String uuid);
 
     Page UpdatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage);
+
+    <T extends JsonNode> T serialize(Object fromValue);
 }

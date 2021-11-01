@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.client.api;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import lombok.AccessLevel;
@@ -116,5 +117,10 @@ public class ApiClientImpl implements ApiClient{
     @Override
     public Page UpdatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage) {
         return UpdatePage.callValue(uuid, requestUpdatePage, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+    }
+
+    @Override
+    public <T extends JsonNode> T serialize(Object fromValue) {
+        return getObjectMapper().valueToTree(fromValue);
     }
 }

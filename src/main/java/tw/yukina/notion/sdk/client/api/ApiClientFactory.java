@@ -1,9 +1,6 @@
 package tw.yukina.notion.sdk.client.api;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import okhttp3.OkHttpClient;
 import org.jetbrains.annotations.NotNull;
@@ -92,11 +89,18 @@ public class ApiClientFactory {
 
     public ApiClientFactory addDefaultObjectMapperConfigure(){
         objectMapperConfigure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapperConfigure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         return this;
     }
 
 
     public ApiClientFactory objectMapperConfigure(@NotNull DeserializationFeature feature, boolean state){
+        LOGGER.info("Changing ObjectMapper state of " + feature.name() + " to " + state);
+        objectMapper.configure(feature, state);
+        return this;
+    }
+
+    public ApiClientFactory objectMapperConfigure(@NotNull SerializationFeature feature, boolean state){
         LOGGER.info("Changing ObjectMapper state of " + feature.name() + " to " + state);
         objectMapper.configure(feature, state);
         return this;
