@@ -1,4 +1,4 @@
-package tw.yukina.notion.sdk.client;
+package tw.yukina.notion.sdk.client.api;
 
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.database.QueryDatabase;

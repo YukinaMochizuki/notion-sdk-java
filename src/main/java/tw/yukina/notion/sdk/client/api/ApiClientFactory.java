@@ -1,4 +1,4 @@
-package tw.yukina.notion.sdk.client;
+package tw.yukina.notion.sdk.client.api;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -9,8 +9,8 @@ import okhttp3.OkHttpClient;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tw.yukina.notion.sdk.client.exception.*;
-import tw.yukina.notion.sdk.client.proxy.ApiClientHandler;
+import tw.yukina.notion.sdk.client.api.exception.*;
+import tw.yukina.notion.sdk.client.api.proxy.ApiClientHandler;
 import tw.yukina.notion.sdk.model.deserializer.ZonedDateTimeDeserializer;
 import tw.yukina.notion.sdk.model.serializer.ZonedDateTimeSerializer;
 import tw.yukina.notion.sdk.support.NotionExceptionWrapper;

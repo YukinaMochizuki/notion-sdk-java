@@ -1,4 +1,4 @@
-package tw.yukina.notion.sdk.client;
+package tw.yukina.notion.sdk.client.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;

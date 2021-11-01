@@ -1,13 +1,12 @@
-package tw.yukina.notion.sdk.client.proxy;
+package tw.yukina.notion.sdk.client.api.proxy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tw.yukina.notion.sdk.client.ApiClient;
+import tw.yukina.notion.sdk.client.api.ApiClient;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.support.NotionExceptionWrapper;
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
