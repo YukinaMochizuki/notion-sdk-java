@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.file.FileObject;
+import tw.yukina.notion.sdk.model.page.Page;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
 import java.util.Map;
@@ -33,5 +34,14 @@ public class RequestUpdatePage {
 
     @JsonProperty(COVER_FIELD)
     private FileObject fileObject;
+
+    public static RequestUpdatePage of(Page page){
+        RequestUpdatePage requestUpdatePage = new RequestUpdatePage();
+        requestUpdatePage.setProperties(page.getPropertyMap());
+        requestUpdatePage.setArchived(page.isArchived());
+        requestUpdatePage.setIcon(page.getIcon());
+        requestUpdatePage.setFileObject(page.getCover());
+        return requestUpdatePage;
+    }
 
 }

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
+import tw.yukina.notion.sdk.model.database.Database;
 import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
@@ -27,4 +28,10 @@ public class RequestUpdateDatabase {
     @JsonProperty(PROPERTIES_FIELD)
     private Map<String, DatabaseProperty> properties;
 
+    public static RequestUpdateDatabase of(Database database){
+        RequestUpdateDatabase requestUpdateDatabase = new RequestUpdateDatabase();
+        requestUpdateDatabase.setTitle(database.getTitle());
+        requestUpdateDatabase.setProperties(database.getPropertyMap());
+        return requestUpdateDatabase;
+    }
 }
