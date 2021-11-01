@@ -1,16 +1,15 @@
 package tw.yukina.notion.sdk.client;
 
-import lombok.Getter;
-import lombok.Setter;
-import tw.yukina.notion.sdk.client.api.ApiClientImpl;
 
-@Getter
-@Setter
-public class NotionClient {
+import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.page.Page;
 
-    private final ApiClientImpl apiClient;
+public interface NotionClient {
 
-    public NotionClient(String token){
-        apiClient = new ApiClientImpl(token);
-    }
+    Page getPageByUuid(String uuid);
+
+    Database getDatabaseByUuid(String uuid);
+
+    void flush();
+
 }

@@ -21,6 +21,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
     implementation 'org.slf4j:slf4j-api:1.7.32'
+    implementation 'cglib:cglib:3.3.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
 
