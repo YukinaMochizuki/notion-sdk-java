@@ -85,6 +85,7 @@ public class UpdatePage extends AbstractPageEndpoint {
                                 @NotNull Request.Builder builder) {
 
         ObjectNode objectNode = getObjectNode(json);
+        preparePageRequest(objectNode);
 
         return call(uuid, objectNode.toString(), okHttpClient, builder);
     }
