@@ -1,9 +1,12 @@
 plugins {
     id 'java'
+    id 'maven'
+    id 'signing'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group = "tw.yukina.notion.sdk"
+archivesBaseName = "notion-sdk-java"
+version = "0.0.2"
 
 repositories {
     mavenCentral()
@@ -21,7 +24,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
     implementation 'org.slf4j:slf4j-api:1.7.32'
-    implementation 'cglib:cglib:3.3.0'
+    implementation 'cglib:cglib:3.2.12'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
 
@@ -34,4 +37,68 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'Notion in Java'
+                packaging 'jar'
+                description 'Notion in Java'
+                url 'https://github.com/YukinaMochizuki/notion-sdk-java'
+
+                scm {
+                    connection 'scm:git:git@github.com:YukinaMochizuki/notion-sdk-java.git'
+                    developerConnection 'scm:git:ssh@github.com:YukinaMochizuki/notion-sdk-java.git'
+                    url 'https://github.com/YukinaMochizuki/notion-sdk-java'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'yukina'
+                        name 'Mochizuki Yukina'
+                        email '1p41p4jejo@gmail.com'
+                    }
+                }
+            }
+        }
+    }
 }
