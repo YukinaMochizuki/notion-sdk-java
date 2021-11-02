@@ -48,6 +48,17 @@ public abstract class AbstractPageEndpoint extends AbstractBlockEndpoint {
             case "last_edited_time":
             case "last_edited_by":
                 return true;
+            case "select":
+                return !entry.getValue().has("select");
+            case "url":
+                return !entry.getValue().has("url");
+            case "phone_number":
+                return !entry.getValue().has("phone_number");
+            case "email":
+                return !entry.getValue().has("email");
+            case "date":
+                return !entry.getValue().has("date");
+            // TODO: 11/2/21  
         }
         return false;
     }
