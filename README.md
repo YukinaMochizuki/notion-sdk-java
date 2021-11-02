@@ -2,7 +2,7 @@
 
 Gradle:
 ```groovy
-compile 'tw.yukina.notion.sdk:notion-sdk-java:0.0.2'
+compile 'tw.yukina.notion.sdk:notion-sdk-java:0.0.1'
 ```
 
 Maven:
@@ -10,7 +10,7 @@ Maven:
 <dependency>
   <groupId>tw.yukina.notion.sdk</groupId>
   <artifactId>notion-sdk-java</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.1</version>
 </dependency>
 ```
 
