@@ -123,7 +123,7 @@ HeadingOneBlock headingOneBlock = HeadingBlockHelper
 RequestAppendChildrenBlockList requestBlocks = new RequestAppendChildrenBlockList();
 requestBlocks.getBlocks().add(headingOneBlock);
 
-apiClient.appendBlockChildren("889530e779fa4f6096ff4c5ad4edcfac", requestAppendChildrenBlockList);
+apiClient.appendBlockChildren("889530e779fa4f6096ff4c5ad4edcfac", requestBlocks);
 ```
 
 It will look [like this](https://dented-fang-21f.notion.site/Supported-block-889530e779fa4f6096ff4c5ad4edcfac#1acb276b755f48bca3bb955f4ee05e0a) after adding it.
