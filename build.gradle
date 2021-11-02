@@ -6,7 +6,7 @@ plugins {
 
 group = "tw.yukina.notion.sdk"
 archivesBaseName = "notion-sdk-java"
-version = "0.0.2"
+version = "0.0.3"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ dependencies {
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
-    testCompile 'ch.qos.logback:logback-classic:1.3.0-alpha10'
+    testCompile 'ch.qos.logback:logback-classic:1.2.6'
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
