@@ -1,10 +1,13 @@
 # Notion in Java
 
 
+### Not recommended for production environment
+The basic functions of this project are still under development, and it is only recommended to try them in non-critical applications.
+
 ## Project Structure
 This project is composed of the following parts:
 
-### Model and Static Method Define
+### Model and Static Method
 Contains all data structures and endpoint definitions used by Notion API. Most of the data structure has added static factories for use. There are also many serializers and deserializers in this package to ensure that the model meets the requirements of the Notion API.
 
 - See the [implementation status of Notion API](https://www.notion.so/Implementation-status-of-Notion-API-9d9a1e71dc4f4c75af0f173ed09bc215)
@@ -93,7 +96,12 @@ ApiClient apiClient = apiClientFactory.build();
 Then you can directly operate the Notion API endpoint like this.
 
 ```java
-ResponseBlockList responseBlockList = apiClient.retrieveBlockChildren("889530e779fa4f6096ff4c5ad4edcfac");
+import tw.yukina.notion.sdk.model.block.Block;
+import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
+
+ResponseBlockList responseBlockList = apiClient
+      .retrieveBlockChildren("889530e779fa4f6096ff4c5ad4edcfac");
+
 List<Block> blocks = responseBlockList.getBlocks();
 for(Block block: blocks)System.out.println(block.toString());
 ```
@@ -101,9 +109,16 @@ for(Block block: blocks)System.out.println(block.toString());
 Now let's add a Heading with italics and color to the page:
 
 ```java
+import tw.yukina.notion.sdk.builder.TextBuilder;
+import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
+import tw.yukina.notion.sdk.model.block.heading.HeadingBlockHelper;
+import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
+
 TextBuilder textBuilder = new TextBuilder();
 textBuilder.setContent("Hello world").setItalic().setColor(TextColor.GREEN);
-HeadingOneBlock headingOneBlock = HeadingBlockHelper.createDefaultHeadingOne(Arrays.asList(textBuilder.build()));
+
+HeadingOneBlock headingOneBlock = HeadingBlockHelper
+      .createDefaultHeadingOne(Arrays.asList(textBuilder.build()));
 
 RequestAppendChildrenBlockList requestAppendChildrenBlockList = new RequestAppendChildrenBlockList();
 requestAppendChildrenBlockList.getBlocks().add(headingOneBlock);
@@ -111,7 +126,7 @@ requestAppendChildrenBlockList.getBlocks().add(headingOneBlock);
 apiClient.appendBlockChildren("889530e779fa4f6096ff4c5ad4edcfac", requestAppendChildrenBlockList);
 ```
 
-It will look [like this](https://dented-fang-21f.notion.site/Supported-block-889530e779fa4f6096ff4c5ad4edcfac) after adding it.
+It will look [like this](https://dented-fang-21f.notion.site/Supported-block-889530e779fa4f6096ff4c5ad4edcfac#1acb276b755f48bca3bb955f4ee05e0a) after adding it.
 
 ### Known issues
 - When executing in java 11 or above, an illegal reflective access warning may appear. This is caused by our code generation library [cglib](https://github.com/cglib/cglib). In the near future, [ByteBuddy](https://github.com/raphw/byte-buddy) will be used instead of cglib to solve this problem.
