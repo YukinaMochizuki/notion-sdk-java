@@ -67,6 +67,7 @@ In Notion Client, you don't need to explicitly call update or remove methods. Ju
 
 ```java
 import tw.yukina.notion.sdk.client.NotionClient;
+import tw.yukina.notion.sdk.client.NotionClientImpl;
 import tw.yukina.notion.sdk.model.page.Page;
 import tw.yukina.notion.sdk.model.page.property.EmailProperty;
 
