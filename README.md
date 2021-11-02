@@ -5,7 +5,7 @@
 This project is composed of the following parts:
 
 ### Model and Static Method Define
-Contains all data structures and endpoint definitions used by Notion API. And most of the data structure has added static factories for use. There are also many serializers and deserializers in this package to ensure that the model meets the requirements of the Notion API.
+Contains all data structures and endpoint definitions used by Notion API. Most of the data structure has added static factories for use. There are also many serializers and deserializers in this package to ensure that the model meets the requirements of the Notion API.
 
 - See the [implementation status of Notion API](https://www.notion.so/Implementation-status-of-Notion-API-9d9a1e71dc4f4c75af0f173ed09bc215)
 
