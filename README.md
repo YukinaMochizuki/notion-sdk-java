@@ -28,7 +28,7 @@ It will package the model into an entity. Similar to the session of the ORM fram
 
 **Gradle**
 ```groovy
-compile 'tw.yukina.notion.sdk:notion-sdk-java:0.0.1'
+compile 'tw.yukina.notion.sdk:notion-sdk-java:0.0.4'
 ```
 
 **Maven**
@@ -36,7 +36,7 @@ compile 'tw.yukina.notion.sdk:notion-sdk-java:0.0.1'
 <dependency>
   <groupId>tw.yukina.notion.sdk</groupId>
   <artifactId>notion-sdk-java</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.4</version>
 </dependency>
 ```
 
