@@ -120,8 +120,8 @@ textBuilder.setContent("Hello world").setItalic().setColor(TextColor.GREEN);
 HeadingOneBlock headingOneBlock = HeadingBlockHelper
       .createDefaultHeadingOne(Arrays.asList(textBuilder.build()));
 
-RequestAppendChildrenBlockList requestAppendChildrenBlockList = new RequestAppendChildrenBlockList();
-requestAppendChildrenBlockList.getBlocks().add(headingOneBlock);
+RequestAppendChildrenBlockList requestblocks = new RequestAppendChildrenBlockList();
+requestblocks.getBlocks().add(headingOneBlock);
 
 apiClient.appendBlockChildren("889530e779fa4f6096ff4c5ad4edcfac", requestAppendChildrenBlockList);
 ```
