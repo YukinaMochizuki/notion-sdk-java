@@ -45,7 +45,7 @@ public abstract class RichTextBuilder<T extends RichText> {
     }
 
     public RichTextBuilder<T> setColor(@NotNull TextColor color){
-        this.color = TextColor.valueOf(color.getField());
+        this.color = color;
         return this;
     }
 
@@ -58,7 +58,7 @@ public abstract class RichTextBuilder<T extends RichText> {
         annotation.setStrikethrough(this.isStrikethrough);
         annotation.setUnderline(this.isUnderline);
         annotation.setCode(this.isCode);
-        annotation.setColor(TextColor.valueOf(this.color.getField()));
+        annotation.setColor(this.color);
         richText.setAnnotations(annotation);
     }
 }
