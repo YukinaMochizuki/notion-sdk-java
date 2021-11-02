@@ -1,5 +1,5 @@
 # Notion in Java
-
+An SDK focused on making [Notion API](https://developers.notion.com/reference/intro) simple.
 
 ### Not recommended for production environment
 The basic functions of this project are still under development, and it is only recommended to try them in non-critical applications.
