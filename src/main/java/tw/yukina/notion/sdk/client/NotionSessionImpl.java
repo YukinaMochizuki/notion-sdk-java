@@ -12,7 +12,9 @@ import tw.yukina.notion.sdk.client.entity.EntityInterceptor;
 import tw.yukina.notion.sdk.client.entity.Entity;
 import tw.yukina.notion.sdk.model.NotionObject;
 import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
+import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
 import tw.yukina.notion.sdk.model.page.Page;
 
@@ -48,7 +50,100 @@ public class NotionSessionImpl implements NotionSession {
             }
         }
 
-        Page target = this.apiClient.RetrievePage(uuid);
+        Page target = this.apiClient.retrievePage(uuid);
+        return getPageEntity(target);
+    }
+
+    @Override
+    public Database getDatabaseByUuid(String uuid) {
+        if(isClosed) throw new NotionSessionException("Session was already closed");
+
+        for(Entity entity : entities){
+            if(Database.class.isAssignableFrom(entity.getClass())){
+                Database database = (Database) entity;
+                if(database.getId().equals(uuid)) return database;
+            }
+        }
+
+        Database target = this.apiClient.retrieveDatabase(uuid);
+        return getDatabaseEntity(target);
+    }
+
+    @Override
+    public Page save(@NotNull Page page) {
+        if(Arrays.asList(page.getClass().getInterfaces()).contains(Entity.class)){
+            Entity entity = (Entity) page;
+            if(!entity.getSessionUuid().equals(this.sessionUuid)) throw new NotionSessionException("The target session id is incorrect");
+            else if(isDirty(page)){
+                RequestUpdatePage requestUpdatePage = RequestUpdatePage.of(page);
+                apiClient.updatePage(page.getId(), requestUpdatePage);
+                entity.setEntitySnapshot(apiClient.serialize(entity).toString());
+                return page;
+            } else return page;
+        } else {
+            RequestCreatePage requestCreatePage = new RequestCreatePage();
+            requestCreatePage.setParent(page.getParent());
+            requestCreatePage.setProperties(page.getPropertyMap());
+            requestCreatePage.setFileObject(page.getCover());
+            requestCreatePage.setIcon(page.getIcon());
+
+            Page target = this.apiClient.createPage(requestCreatePage);
+            return getPageEntity(target);
+        }
+    }
+
+    @Override
+    public Database save(@NotNull Database database) {
+        if(Arrays.asList(database.getClass().getInterfaces()).contains(Entity.class)){
+            Entity entity = (Entity) database;
+            if(!entity.getSessionUuid().equals(this.sessionUuid)) throw new NotionSessionException("The target session id is incorrect");
+            else if(isDirty(database)){
+                RequestUpdateDatabase requestUpdateDatabase = RequestUpdateDatabase.of(database);
+                apiClient.updateDatabase(database.getId(), requestUpdateDatabase);
+                entity.setEntitySnapshot(apiClient.serialize(entity).toString());
+                return database;
+            } else return database;
+        } else {
+            RequestCreateDatabase requestCreatePage = new RequestCreateDatabase();
+            requestCreatePage.setTitle(database.getTitle());
+            requestCreatePage.setProperties(database.getPropertyMap());
+            requestCreatePage.setParent(database.getParent());
+
+            Database target = this.apiClient.createDatabase(requestCreatePage);
+            return getDatabaseEntity(target);
+        }
+    }
+
+    @Override
+    public void flush() {
+        if(isClosed) throw new NotionSessionException("Session was already closed");
+
+        for(Entity entity : entities){
+            if(isDirty(entity)){
+                if(Page.class.isAssignableFrom(entity.getClass())){
+                    Page page = (Page) entity;
+                    RequestUpdatePage requestUpdatePage = RequestUpdatePage.of(page);
+                    apiClient.updatePage(page.getId(), requestUpdatePage);
+                } else if(Database.class.isAssignableFrom(entity.getClass())){
+                    Database database = (Database) entity;
+                    RequestUpdateDatabase requestUpdateDatabase = RequestUpdateDatabase.of(database);
+                    apiClient.updateDatabase(database.getId(), requestUpdateDatabase);
+                }
+            }
+            entity.setEntitySnapshot(apiClient.serialize(entity).toString());
+        }
+    }
+
+    @Override
+    public void close() {
+        if(isClosed) throw new NotionSessionException("Session was already closed");
+
+        this.entities = null;
+        this.isClosed = true;
+    }
+
+    @NotNull
+    private Page getPageEntity(Page target){
         NotionObject notionObject = NotionObject.of(target);
         Entity entity = new EntityInterceptor(apiClient.serialize(target).toString(), sessionUuid);
         DynamicType.Builder.MethodDefinition.ReceiverTypeDefinition<?> implementationDefinition =
@@ -71,18 +166,8 @@ public class NotionSessionImpl implements NotionSession {
         }
     }
 
-    @Override
-    public Database getDatabaseByUuid(String uuid) {
-        if(isClosed) throw new NotionSessionException("Session was already closed");
-
-        for(Entity entity : entities){
-            if(Database.class.isAssignableFrom(entity.getClass())){
-                Database database = (Database) entity;
-                if(database.getId().equals(uuid)) return database;
-            }
-        }
-
-        Database target = this.apiClient.RetrieveDatabase(uuid);
+    @NotNull
+    private Database getDatabaseEntity(Database target){
         NotionObject notionObject = NotionObject.of(target);
         Entity entity = new EntityInterceptor(apiClient.serialize(target).toString(), sessionUuid);
         DynamicType.Builder.MethodDefinition.ReceiverTypeDefinition<?> implementationDefinition =
@@ -103,34 +188,6 @@ public class NotionSessionImpl implements NotionSession {
         } catch (InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public void flush() {
-        if(isClosed) throw new NotionSessionException("Session was already closed");
-
-        for(Entity entity : entities){
-            if(isDirty(entity)){
-                if(Page.class.isAssignableFrom(entity.getClass())){
-                    Page page = (Page) entity;
-                    RequestUpdatePage requestUpdatePage = RequestUpdatePage.of(page);
-                    apiClient.UpdatePage(page.getId(), requestUpdatePage);
-                } else if(Database.class.isAssignableFrom(entity.getClass())){
-                    Database database = (Database) entity;
-                    RequestUpdateDatabase requestUpdateDatabase = RequestUpdateDatabase.of(database);
-                    apiClient.UpdateDatabase(database.getId(), requestUpdateDatabase);
-                }
-            }
-            entity.setEntitySnapshot(apiClient.serialize(entity).toString());
-        }
-    }
-
-    @Override
-    public void close() {
-        if(isClosed) throw new NotionSessionException("Session was already closed");
-
-        this.entities = null;
-        this.isClosed = true;
     }
 
     public boolean isDirty(Page page){

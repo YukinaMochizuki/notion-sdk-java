@@ -85,37 +85,37 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public Database CreateDatabase(@NotNull RequestCreateDatabase requestCreateDatabase) {
+    public Database createDatabase(@NotNull RequestCreateDatabase requestCreateDatabase) {
         return CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public ResponsePageList QueryDatabase(@NotNull String uuid, @NotNull QueryDatabase queryDatabase) {
+    public ResponsePageList queryDatabase(@NotNull String uuid, @NotNull QueryDatabase queryDatabase) {
         return QueryDatabase.callValue(uuid, queryDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Database RetrieveDatabase(@NotNull String uuid) {
+    public Database retrieveDatabase(@NotNull String uuid) {
         return RetrieveDatabase.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Database UpdateDatabase(@NotNull String uuid, @NotNull RequestUpdateDatabase requestUpdateDatabase) {
+    public Database updateDatabase(@NotNull String uuid, @NotNull RequestUpdateDatabase requestUpdateDatabase) {
         return UpdateDatabase.callValue(uuid, requestUpdateDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Page CreatePage(@NotNull RequestCreatePage requestCreatePage) {
+    public Page createPage(@NotNull RequestCreatePage requestCreatePage) {
         return CreatePage.callValue(requestCreatePage, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Page RetrievePage(@NotNull String uuid) {
+    public Page retrievePage(@NotNull String uuid) {
         return RetrievePage.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Page UpdatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage) {
+    public Page updatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage) {
         return UpdatePage.callValue(uuid, requestUpdatePage, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 

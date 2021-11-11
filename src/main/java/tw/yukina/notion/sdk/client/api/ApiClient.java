@@ -28,19 +28,19 @@ public interface ApiClient {
 
     Block deleteBlock(@NotNull String uuid);
 
-    Database CreateDatabase(@NotNull RequestCreateDatabase requestCreateDatabase);
+    Database createDatabase(@NotNull RequestCreateDatabase requestCreateDatabase);
 
-    ResponsePageList QueryDatabase(@NotNull String uuid, @NotNull QueryDatabase queryDatabase);
+    ResponsePageList queryDatabase(@NotNull String uuid, @NotNull QueryDatabase queryDatabase);
 
-    Database RetrieveDatabase(@NotNull String uuid);
+    Database retrieveDatabase(@NotNull String uuid);
 
-    Database UpdateDatabase(@NotNull String uuid, @NotNull RequestUpdateDatabase requestUpdateDatabase);
+    Database updateDatabase(@NotNull String uuid, @NotNull RequestUpdateDatabase requestUpdateDatabase);
 
-    Page CreatePage(@NotNull RequestCreatePage requestCreatePage);
+    Page createPage(@NotNull RequestCreatePage requestCreatePage);
 
-    Page RetrievePage(@NotNull String uuid);
+    Page retrievePage(@NotNull String uuid);
 
-    Page UpdatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage);
+    Page updatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage);
 
     <T extends JsonNode> T serialize(Object fromValue);
 }

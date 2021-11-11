@@ -4,14 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.NotionObject;
 import tw.yukina.notion.sdk.model.ObjectType;
 import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
+import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
 import java.time.ZonedDateTime;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -46,10 +49,18 @@ public class Page extends NotionObject {
     private boolean archived;
 
     @JsonProperty(PROPERTIES_FIELD)
-    private Map<String, PageProperty> propertyMap;
+    private Map<String, PageProperty> propertyMap = new HashMap<>();
 
     @JsonProperty(URL_FIELD)
     private String url;
+
+    @NotNull
+    public static Page ofDatabasePage(String databaseId){
+        DatabaseParent databaseParent = DatabaseParent.of(databaseId);
+        Page page = new Page();
+        page.setParent(databaseParent);
+        return page;
+    }
 
     @Override
     public boolean equals(Object o) {
