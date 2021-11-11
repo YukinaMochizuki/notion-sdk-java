@@ -10,6 +10,10 @@ public interface NotionClient {
 
     Database getDatabaseByUuid(String uuid);
 
+//    void save(Page page);
+//
+//    void save(Database database);
+
     void flush();
 
 }

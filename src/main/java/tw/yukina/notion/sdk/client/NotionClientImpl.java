@@ -2,19 +2,21 @@ package tw.yukina.notion.sdk.client;
 
 import lombok.Getter;
 import lombok.Setter;
-import net.sf.cglib.proxy.Enhancer;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.implementation.MethodDelegation;
 import tw.yukina.notion.sdk.client.api.ApiClient;
 import tw.yukina.notion.sdk.client.api.ApiClientFactory;
-import tw.yukina.notion.sdk.client.entity.Entity;
+import tw.yukina.notion.sdk.client.entity.EntityInterceptor;
 import tw.yukina.notion.sdk.client.entity.EntitySession;
+import tw.yukina.notion.sdk.model.NotionObject;
 import tw.yukina.notion.sdk.model.database.Database;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
 import tw.yukina.notion.sdk.model.page.Page;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+
+import static net.bytebuddy.matcher.ElementMatchers.isDeclaredBy;
 
 @Getter
 @Setter
@@ -36,38 +38,44 @@ public class NotionClientImpl implements NotionClient {
     @Override
     public Page getPageByUuid(String uuid) {
         Page target = this.apiClient.RetrievePage(uuid);
-        Entity entity = new Entity(target, apiClient.serialize(target).toString(), sessionUuid);
+        NotionObject notionObject = NotionObject.of(target);
+        EntitySession entitySession = new EntityInterceptor(apiClient.serialize(target).toString(), sessionUuid);
 
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(Page.class);
-        enhancer.setInterfaces(new Class[]{EntitySession.class});
-        enhancer.setCallback(entity);
+        Class<?> pageClass = new ByteBuddy()
+                .subclass(Page.class)
+                .implement(EntitySession.class)
+                .method(isDeclaredBy(Page.class))
+                .intercept(MethodDelegation.withDefaultConfiguration()
+                        .to(target))
+                .method(isDeclaredBy(NotionObject.class))
+                .intercept(MethodDelegation.withDefaultConfiguration()
+                        .to(notionObject))
+                .method(isDeclaredBy(EntitySession.class))
+                .intercept(MethodDelegation.withDefaultConfiguration().to(entitySession))
+                .make()
+                .load(getClass().getClassLoader())
+                .getLoaded();
 
-        Page page = (Page) enhancer.create();
-        entities.add((EntitySession) page);
+        Page page;
 
-        return page;
+        try {
+            page = (Page) pageClass.newInstance();
+            entities.add((EntitySession) page);
+            return page;
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public Database getDatabaseByUuid(String uuid) {
-        Database target = this.apiClient.RetrieveDatabase(uuid);
-        Entity entity = new Entity(target, apiClient.serialize(target).toString(), sessionUuid);
-
-        Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(Database.class);
-        enhancer.setInterfaces(new Class[]{EntitySession.class});
-        enhancer.setCallback(entity);
-
-        Database database = (Database) enhancer.create();
-        entities.add((EntitySession) database);
-
-        return database;
+        return null;
     }
 
     @Override
     public void flush() {
         for(EntitySession entitySession: entities){
+            System.out.println("In flush " + Page.class.isAssignableFrom(entitySession.getClass()));
             if(isDirty(entitySession)){
                 if(Page.class.isAssignableFrom(entitySession.getClass())){
                     Page page = (Page) entitySession;
@@ -91,7 +99,7 @@ public class NotionClientImpl implements NotionClient {
     }
 
     private boolean isDirty(Object o){
-        if(!Enhancer.isEnhanced(o.getClass())){
+        if(Arrays.stream(o.getClass().getInterfaces()).noneMatch(clazz -> clazz.equals(EntitySession.class))){
             return true;
         } else {
             String serialize = apiClient.serialize(o).toString();

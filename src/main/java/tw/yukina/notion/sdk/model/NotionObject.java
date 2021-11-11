@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.deserializer.NotionObjectDeserializer;
 
 import java.time.ZonedDateTime;
@@ -32,5 +33,15 @@ public class NotionObject {
 
     @JsonProperty(LAST_EDITED_TIME_FIELD)
     private ZonedDateTime lastEditedTime;
+
+    @NotNull
+    public static NotionObject of(@NotNull NotionObject target){
+        NotionObject notionObject = new NotionObject();
+        notionObject.setId(target.getId());
+        notionObject.setCreatedTime(target.getCreatedTime());
+        notionObject.setLastEditedTime(target.getLastEditedTime());
+        notionObject.setObjectType(target.getObjectType());
+        return notionObject;
+    }
 
 }
