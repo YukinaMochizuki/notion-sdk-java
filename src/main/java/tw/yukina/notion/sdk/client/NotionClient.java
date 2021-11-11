@@ -1,19 +1,20 @@
 package tw.yukina.notion.sdk.client;
 
+import tw.yukina.notion.sdk.client.api.ApiClient;
+import tw.yukina.notion.sdk.client.api.ApiClientFactory;
 
-import tw.yukina.notion.sdk.model.database.Database;
-import tw.yukina.notion.sdk.model.page.Page;
+public class NotionClient {
 
-public interface NotionClient {
+    private final ApiClient apiClient;
 
-    Page getPageByUuid(String uuid);
+    public NotionClient(String token){
+        ApiClientFactory apiClientFactory = new ApiClientFactory();
+        apiClientFactory.setToken(token);
+        apiClientFactory.applyDefaultSetting();
+        this.apiClient = apiClientFactory.build();
+    }
 
-    Database getDatabaseByUuid(String uuid);
-
-//    void save(Page page);
-//
-//    void save(Database database);
-
-    void flush();
-
+    public NotionSession openSession(){
+        return new NotionSessionImpl(apiClient);
+    }
 }

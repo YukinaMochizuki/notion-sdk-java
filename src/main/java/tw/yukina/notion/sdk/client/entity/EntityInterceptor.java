@@ -6,12 +6,12 @@ import lombok.Setter;
 
 
 @Getter
-@Setter
-public class EntityInterceptor implements EntitySession{
+public class EntityInterceptor implements Entity {
 
     @JsonIgnore
-    private String sessionUuid;
+    private final String sessionUuid;
 
+    @Setter
     @JsonIgnore
     private String entitySnapshot;
 
