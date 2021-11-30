@@ -6,9 +6,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.rich.Equation;
-import tw.yukina.notion.sdk.model.common.rich.RichText;
-
-import java.util.List;
 
 @Getter
 @Setter
