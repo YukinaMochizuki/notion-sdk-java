@@ -30,6 +30,5 @@ class CodeBlockTest extends ModelTest {
         assertEquals(block, codeBlock);
         assertEquals(responseJsonNode, serializedJsonNode);
         response.close();
-
     }
 }

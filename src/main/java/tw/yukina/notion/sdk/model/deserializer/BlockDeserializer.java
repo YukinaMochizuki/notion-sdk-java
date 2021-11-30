@@ -39,6 +39,7 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         addAvailableType(BlockType.FILE.getField(), FileBlock.class);
         addAvailableType(BlockType.IMAGE.getField(), ImageBlock.class);
         addAvailableType(BlockType.PDF.getField(), PDFBlock.class);
+        addAvailableType(BlockType.BOOKMARK.getField(), BookmarkBlock.class);
         addAvailableType(BlockType.VIDEO.getField(), VideoBlock.class);
 
         addAvailableType(BlockType.CHILD_PAGE.getField(), ChildPageBlock.class);
@@ -46,6 +47,11 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
 
         addAvailableType(BlockType.CALLOUT.getField(), CalloutBlock.class);
         addAvailableType(BlockType.QUOTE.getField(), QuoteBlock.class);
+        addAvailableType(BlockType.EQUATION.getField(), EquationBlock.class);
+
+        addAvailableType(BlockType.DIVIDER.getField(), DividerBlock.class);
+        addAvailableType(BlockType.TABLE_OF_CONTENTS.getField(), TableOfContentsBlock.class);
+        addAvailableType(BlockType.BREADCRUMB.getField(), BreadcrumbBlock.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }
