@@ -33,6 +33,7 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         addAvailableType(BlockType.BULLETED_LIST_ITEM.getField(), BulletedListBlock.class);
         addAvailableType(BlockType.NUMBERED_LIST_ITEM.getField(), NumberedListBlock.class);
         addAvailableType(BlockType.TOGGLE.getField(), ToggleBlock.class);
+        addAvailableType(BlockType.CODE.getField(), CodeBlock.class);
         addAvailableType(BlockType.TO_DO.getField(), TodoBlock.class);
 
         addAvailableType(BlockType.FILE.getField(), FileBlock.class);
