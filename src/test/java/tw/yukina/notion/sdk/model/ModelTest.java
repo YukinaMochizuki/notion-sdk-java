@@ -1,6 +1,7 @@
 package tw.yukina.notion.sdk.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import lombok.Getter;
 import okhttp3.Call;
@@ -84,6 +85,7 @@ public class ModelTest {
     public ObjectMapper getCommonObjectMapper(){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
+        objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
 
         return objectMapper;
     }
