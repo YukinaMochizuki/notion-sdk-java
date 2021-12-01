@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.model.common.unit.Database;
+import tw.yukina.notion.sdk.model.common.unit.DatabaseUnit;
 
 @Getter
 @Setter
@@ -18,11 +18,11 @@ import tw.yukina.notion.sdk.model.common.unit.Database;
 public class DatabaseMention extends Mention {
     private static final String DATABASE_FIELD = "database";
 
-    private Database database;
+    private DatabaseUnit database;
 
     @NotNull
     public static DatabaseMention of(String databaseId){
-        Database database = new Database();
+        DatabaseUnit database = new DatabaseUnit();
         database.setDatabaseId(databaseId);
         DatabaseMention databaseMention = new DatabaseMention();
         databaseMention.setMentionType(MentionType.DATABASE);

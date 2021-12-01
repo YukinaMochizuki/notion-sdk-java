@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Database {
+public class DatabaseUnit {
     private static final String ID_FIELD = "id";
 
     @JsonProperty(ID_FIELD)

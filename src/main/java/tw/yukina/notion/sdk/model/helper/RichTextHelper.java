@@ -3,8 +3,8 @@ package tw.yukina.notion.sdk.model.helper;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.rich.*;
 import tw.yukina.notion.sdk.model.common.rich.mention.*;
-import tw.yukina.notion.sdk.model.common.unit.Database;
-import tw.yukina.notion.sdk.model.common.unit.Page;
+import tw.yukina.notion.sdk.model.common.unit.DatabaseUnit;
+import tw.yukina.notion.sdk.model.common.unit.PageUnit;
 import tw.yukina.notion.sdk.model.common.user.PersonObject;
 import tw.yukina.notion.sdk.model.common.user.PersonUser;
 import tw.yukina.notion.sdk.model.common.user.UserType;
@@ -43,7 +43,7 @@ public final class RichTextHelper {
     @NotNull
     public static MentionText createPageMention(String title, String uuid){
         PageMention pageMention = new PageMention();
-        pageMention.setPage(Page.builder().pageId(uuid).build());
+        pageMention.setPage(PageUnit.builder().pageId(uuid).build());
         pageMention.setMentionType(MentionType.PAGE);
 
         return createDefaultMentionText(title, pageMention);
@@ -52,7 +52,7 @@ public final class RichTextHelper {
     @NotNull
     public static MentionText createDatabaseMention(String title, String uuid){
         DatabaseMention databaseMention = new DatabaseMention();
-        databaseMention.setDatabase(Database.builder().databaseId(uuid).build());
+        databaseMention.setDatabase(DatabaseUnit.builder().databaseId(uuid).build());
         databaseMention.setMentionType(MentionType.DATABASE);
 
         return createDefaultMentionText(title, databaseMention);

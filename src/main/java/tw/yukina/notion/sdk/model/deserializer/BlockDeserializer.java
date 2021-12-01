@@ -55,6 +55,8 @@ public class BlockDeserializer extends AbstractDeserializer<Block> {
         addAvailableType(BlockType.COLUMN.getField(), ColumnBlock.class);
         addAvailableType(BlockType.COLUMN_LIST.getField(), ColumnListBlock.class);
         addAvailableType(BlockType.LINK_PREVIEW.getField(), LinkPreviewBlock.class);
+        addAvailableType(BlockType.TEMPLATE.getField(), TemplateBlock.class);
+        addAvailableType(BlockType.SYNCED_BLOCK.getField(), SyncedBlock.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }
