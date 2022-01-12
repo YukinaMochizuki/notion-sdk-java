@@ -23,6 +23,7 @@ import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
+import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
 import tw.yukina.notion.sdk.model.endpoint.database.query.ResponsePageList;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
@@ -90,8 +91,8 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public ResponsePageList queryDatabase(@NotNull String uuid, @NotNull QueryDatabase queryDatabase) {
-        return QueryDatabase.callValue(uuid, queryDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+    public ResponsePageList queryDatabase(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery) {
+        return QueryDatabase.callValue(uuid, databaseQuery, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override

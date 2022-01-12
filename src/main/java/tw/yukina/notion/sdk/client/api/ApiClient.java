@@ -2,13 +2,13 @@ package tw.yukina.notion.sdk.client.api;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.endpoint.database.QueryDatabase;
 import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.database.Database;
 import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
+import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
 import tw.yukina.notion.sdk.model.endpoint.database.query.ResponsePageList;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
@@ -30,7 +30,7 @@ public interface ApiClient {
 
     Database createDatabase(@NotNull RequestCreateDatabase requestCreateDatabase);
 
-    ResponsePageList queryDatabase(@NotNull String uuid, @NotNull QueryDatabase queryDatabase);
+    ResponsePageList queryDatabase(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery);
 
     Database retrieveDatabase(@NotNull String uuid);
 

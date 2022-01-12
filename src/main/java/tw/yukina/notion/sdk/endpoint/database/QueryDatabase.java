@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
 import tw.yukina.notion.sdk.model.endpoint.database.query.ResponsePageList;
 
 import java.io.IOException;
@@ -16,12 +17,12 @@ import static tw.yukina.notion.sdk.Configuration.MEDIA_TYPE_JSON;
 public class QueryDatabase extends AbstractDatabaseEndpoint {
 
     @NotNull
-    public static ResponsePageList callValue(@NotNull String uuid, @NotNull QueryDatabase queryDatabase,
-                                              @NotNull OkHttpClient okHttpClient,
-                                              @NotNull Request.Builder builder,
-                                              @NotNull ObjectMapper objectMapper) {
+    public static ResponsePageList callValue(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery,
+                                             @NotNull OkHttpClient okHttpClient,
+                                             @NotNull Request.Builder builder,
+                                             @NotNull ObjectMapper objectMapper) {
 
-        return toPageList(callTree(uuid, queryDatabase, okHttpClient, builder, objectMapper), objectMapper);
+        return toPageList(callTree(uuid, databaseQuery, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
@@ -43,12 +44,12 @@ public class QueryDatabase extends AbstractDatabaseEndpoint {
     }
 
     @NotNull
-    public static ObjectNode callTree(@NotNull String uuid, @NotNull QueryDatabase queryDatabase,
+    public static ObjectNode callTree(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
                                       @NotNull ObjectMapper objectMapper) {
 
-        return getObjectNode(call(uuid, queryDatabase, okHttpClient, builder, objectMapper), objectMapper);
+        return getObjectNode(call(uuid, databaseQuery, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
@@ -70,12 +71,12 @@ public class QueryDatabase extends AbstractDatabaseEndpoint {
     }
 
     @NotNull
-    public static Response call(@NotNull String uuid, @NotNull QueryDatabase queryDatabase,
+    public static Response call(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
                                 @NotNull ObjectMapper objectMapper) {
 
-        return call(uuid, objectMapper.valueToTree(queryDatabase), okHttpClient, builder);
+        return call(uuid, objectMapper.valueToTree(databaseQuery), okHttpClient, builder);
     }
 
     @NotNull

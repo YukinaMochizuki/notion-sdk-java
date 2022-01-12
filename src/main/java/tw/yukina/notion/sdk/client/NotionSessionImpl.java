@@ -73,7 +73,7 @@ public class NotionSessionImpl implements NotionSession {
     public Page save(@NotNull Page page) {
         if(Arrays.asList(page.getClass().getInterfaces()).contains(Entity.class)){
             Entity entity = (Entity) page;
-            if(!entity.getSessionUuid().equals(this.sessionUuid)) throw new NotionSessionException("The target session id is incorrect");
+            if(!entity.getSessionUuid().equals(this.sessionUuid)) throw new NotionSessionException("The target session is incorrect");
             else if(isDirty(page)){
                 RequestUpdatePage requestUpdatePage = RequestUpdatePage.of(page);
                 apiClient.updatePage(page.getId(), requestUpdatePage);
@@ -96,7 +96,7 @@ public class NotionSessionImpl implements NotionSession {
     public Database save(@NotNull Database database) {
         if(Arrays.asList(database.getClass().getInterfaces()).contains(Entity.class)){
             Entity entity = (Entity) database;
-            if(!entity.getSessionUuid().equals(this.sessionUuid)) throw new NotionSessionException("The target session id is incorrect");
+            if(!entity.getSessionUuid().equals(this.sessionUuid)) throw new NotionSessionException("The target session is incorrect");
             else if(isDirty(database)){
                 RequestUpdateDatabase requestUpdateDatabase = RequestUpdateDatabase.of(database);
                 apiClient.updateDatabase(database.getId(), requestUpdateDatabase);
@@ -104,12 +104,12 @@ public class NotionSessionImpl implements NotionSession {
                 return database;
             } else return database;
         } else {
-            RequestCreateDatabase requestCreatePage = new RequestCreateDatabase();
-            requestCreatePage.setTitle(database.getTitle());
-            requestCreatePage.setProperties(database.getPropertyMap());
-            requestCreatePage.setParent(database.getParent());
+            RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
+            requestCreateDatabase.setTitle(database.getTitle());
+            requestCreateDatabase.setProperties(database.getPropertyMap());
+            requestCreateDatabase.setParent(database.getParent());
 
-            Database target = this.apiClient.createDatabase(requestCreatePage);
+            Database target = this.apiClient.createDatabase(requestCreateDatabase);
             return getDatabaseEntity(target);
         }
     }
