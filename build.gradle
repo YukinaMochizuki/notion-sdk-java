@@ -6,7 +6,7 @@ plugins {
 
 group = "tw.yukina.notion.sdk"
 archivesBaseName = "notion-sdk-java"
-version = "0.0.5"
+version = "0.0.6"
 
 repositories {
     mavenCentral()
