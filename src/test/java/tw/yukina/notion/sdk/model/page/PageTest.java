@@ -30,7 +30,7 @@ public class PageTest extends ModelTest {
         page.setUrl(responsePage.getUrl());
 
         DatabaseParent databaseParent = new DatabaseParent();
-        databaseParent.setId("cadfccdddfec4c82bbb11962bbeff38b");
+        databaseParent.setDatabaseId("cadfccdddfec4c82bbb11962bbeff38b");
         databaseParent.setParentType(ParentType.DATABASE);
         page.setParent(databaseParent);
         page.setPropertyMap(Thing.getPageProperty(responseJsonNode));

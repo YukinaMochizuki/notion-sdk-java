@@ -29,7 +29,7 @@ class RetrievePageTest extends ModelTest {
         page.setUrl(responsePage.getUrl());
 
         DatabaseParent databaseParent = new DatabaseParent();
-        databaseParent.setId("31d2e694-db36-4822-98a4-7dfa29cde551");
+        databaseParent.setDatabaseId("31d2e694-db36-4822-98a4-7dfa29cde551");
         databaseParent.setParentType(ParentType.DATABASE);
         page.setParent(databaseParent);
         page.setPropertyMap(Thing.getPageProperty(responseJsonNode));

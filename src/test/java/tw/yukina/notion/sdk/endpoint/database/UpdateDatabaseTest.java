@@ -15,7 +15,6 @@ import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.template.project.Project;
 import tw.yukina.notion.sdk.model.template.project.Thing;
 
-import java.io.IOException;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +24,7 @@ class UpdateDatabaseTest extends ModelTest {
     @Test
     void callValue() {
         PageParent pageParent = new PageParent();
-        pageParent.setPageId("73f76d1a1510408dbca93acd5ff2914f");
+        pageParent.setPageId("7b6d965aa7a34305bab6b37ec515dd1f");
         pageParent.setParentType(ParentType.PAGE);
 
         RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();

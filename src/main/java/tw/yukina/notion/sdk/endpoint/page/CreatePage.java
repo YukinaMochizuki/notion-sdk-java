@@ -87,8 +87,15 @@ public class CreatePage extends AbstractPageEndpoint {
 
         ObjectNode objectNode = getObjectNode(json);
 
+        if(objectNode.has("parent") && objectNode.get("parent").isObject()){
+            ObjectNode parent = (ObjectNode) objectNode.get("parent");
+            if(parent.has("type"))parent.remove("type");
+        }
+
         if(objectNode.has("children") && objectNode.get("children").isArray())
             preparePostBlocks((ArrayNode) objectNode.get("children"));
+
+        System.out.println(objectNode.toPrettyString());
 
         return call(objectNode.toString(), okHttpClient, builder);
     }
