@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -24,7 +25,7 @@ public class DatabaseQuery {
     private Compound compound;
 
     @JsonProperty(SORTS_FIELD)
-    private List<DatabaseSort> sorts;
+    private List<DatabaseSort> sorts = new ArrayList<>();
 
     @JsonProperty(START_CURSOR_FIELD)
     private String startCursor;

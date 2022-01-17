@@ -21,6 +21,16 @@ public final class RichTextHelper {
         throw new java.lang.UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
+    public static String textsToString(@NotNull List<RichText> texts){
+        String string = "";
+
+        for(RichText richText: texts){
+            string = string.concat(richText.getPlainText());
+        }
+
+        return string;
+    }
+
     @NotNull
     public static Text createDefaultText(String content){
         TextObject textObject = new TextObject();

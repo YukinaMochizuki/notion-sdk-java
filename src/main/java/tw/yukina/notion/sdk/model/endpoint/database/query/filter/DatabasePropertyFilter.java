@@ -17,5 +17,5 @@ public class DatabasePropertyFilter {
     public static final String PROPERTY_FIELD = "property";
 
     @JsonProperty(PROPERTY_FIELD)
-    private String property;
+    private String name;
 }

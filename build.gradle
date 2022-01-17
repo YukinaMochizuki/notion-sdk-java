@@ -6,7 +6,7 @@ plugins {
 
 group = "tw.yukina.notion.sdk"
 archivesBaseName = "notion-sdk-java"
-version = "0.0.6"
+version = "0.0.8"
 
 repositories {
     mavenCentral()
@@ -21,11 +21,11 @@ configurations {
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     implementation group: 'org.json', name: 'json', version: '20210307'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
     implementation 'org.slf4j:slf4j-api:1.7.32'
     implementation 'cglib:cglib:3.2.12'
     compile 'net.bytebuddy:byte-buddy:1.11.20'
+    compile 'com.squareup.okhttp3:okhttp:4.9.0'
     compile 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
     compile 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
 

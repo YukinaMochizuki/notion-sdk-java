@@ -11,12 +11,14 @@ import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
+import tw.yukina.notion.sdk.model.page.property.TitleProperty;
 
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -53,6 +55,13 @@ public class Page extends NotionObject {
 
     @JsonProperty(URL_FIELD)
     private String url;
+
+    public Optional<String> getTitle(){
+        TitleProperty titleProperty = (TitleProperty) propertyMap.get("Name");
+
+        if(titleProperty == null)return Optional.empty();
+        else return Optional.of(RichTextHelper.textsToString(titleProperty.getTexts()));
+    }
 
     @NotNull
     public static Page ofDatabasePage(String databaseId){
