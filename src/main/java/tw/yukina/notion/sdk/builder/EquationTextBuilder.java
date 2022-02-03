@@ -1,7 +1,9 @@
 package tw.yukina.notion.sdk.builder;
 
+import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.rich.Equation;
 import tw.yukina.notion.sdk.model.common.rich.EquationText;
+import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.common.rich.TextType;
 
 public class EquationTextBuilder extends RichTextBuilder<EquationText> {
@@ -13,8 +15,15 @@ public class EquationTextBuilder extends RichTextBuilder<EquationText> {
         return this;
     }
 
+    @NotNull
+    public static EquationTextBuilder of(String expression){
+        EquationTextBuilder equationTextBuilder = new EquationTextBuilder();
+        equationTextBuilder.setExpression(expression);
+        return equationTextBuilder;
+    }
+
     @Override
-    public EquationText build() {
+    public RichText buildSelf() {
         Equation equation = new Equation();
         equation.setExpression(expression);
 

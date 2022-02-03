@@ -5,7 +5,12 @@ import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.common.rich.Annotation;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class RichTextBuilder<T extends RichText> {
+
+    private final List<RichTextBuilder<?>> childRichText = new ArrayList<>();
 
     private boolean isBold = false;
 
@@ -49,7 +54,22 @@ public abstract class RichTextBuilder<T extends RichText> {
         return this;
     }
 
-    public abstract T build();
+    public RichTextBuilder<T> append(RichTextBuilder<?> richTextBuilder){
+        this.childRichText.add(richTextBuilder);
+        return this;
+    }
+
+    public List<RichText> build(){
+        List<RichText> richTexts = new ArrayList<>();
+        richTexts.add(buildSelf());
+
+        for(RichTextBuilder<?> richTextBuilder: childRichText){
+            richTexts.addAll(richTextBuilder.build());
+        }
+        return richTexts;
+    }
+
+    public abstract RichText buildSelf();
 
     protected void setRichTextStyle(@NotNull T richText){
         Annotation annotation = new Annotation();
