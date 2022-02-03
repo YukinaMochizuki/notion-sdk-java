@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -18,4 +19,12 @@ public class LastEditedTimePropertyFilter extends DatabasePropertyFilter {
 
     @JsonProperty(DATE_FIELD)
     private DateFilterObject dateFilterObject;
+
+    @NotNull
+    public static LastEditedTimePropertyFilter of(String property, DateFilterObject dateFilterObject){
+        LastEditedTimePropertyFilter lastEditedTimePropertyFilter = new LastEditedTimePropertyFilter();
+        lastEditedTimePropertyFilter.setName(property);
+        lastEditedTimePropertyFilter.setDateFilterObject(dateFilterObject);
+        return lastEditedTimePropertyFilter;
+    }
 }

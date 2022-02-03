@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.model.endpoint.database.query.filter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -45,4 +46,60 @@ public class NumberFilterObject {
 
     @JsonProperty(IS_NOT_EMPTY_FIELD)
     private Boolean isNotEmpty;
+
+    @NotNull
+    public static NumberFilterObject equalsOf(Double equals){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setEquals(equals);
+        return numberFilterObject;
+    }
+
+    @NotNull
+    public static NumberFilterObject doesNotEqualOf(Double doesNotEqual){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setDoesNotEqual(doesNotEqual);
+        return numberFilterObject;
+    }
+
+    @NotNull
+    public static NumberFilterObject containsOf(Double contains){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setContains(contains);
+        return numberFilterObject;
+    }
+
+    @NotNull
+    public static NumberFilterObject doesNotContainOf(Double doesNotContain){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setDoesNotContain(doesNotContain);
+        return numberFilterObject;
+    }
+
+    @NotNull
+    public static NumberFilterObject startsWithOf(Double startsWith){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setStartsWith(startsWith);
+        return numberFilterObject;
+    }
+
+    @NotNull
+    public static NumberFilterObject endsWithOf(Double endsWith){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setEndsWith(endsWith);
+        return numberFilterObject;
+    }
+
+    @NotNull
+    public static NumberFilterObject isEmptyOf(boolean isEmpty){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setIsEmpty(isEmpty);
+        return numberFilterObject;
+    }
+
+    @NotNull
+    public static NumberFilterObject isNotEmptyOf(boolean isNotEmpty){
+        NumberFilterObject numberFilterObject = new NumberFilterObject();
+        numberFilterObject.setIsNotEmpty(isNotEmpty);
+        return numberFilterObject;
+    }
 }

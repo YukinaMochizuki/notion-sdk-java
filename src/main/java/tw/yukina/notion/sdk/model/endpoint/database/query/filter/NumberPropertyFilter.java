@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -18,4 +19,12 @@ public class NumberPropertyFilter extends DatabasePropertyFilter {
 
     @JsonProperty(NUMBER_FIELD)
     private NumberFilterObject numberFilterObject;
+
+    @NotNull
+    public static NumberPropertyFilter of(String property, NumberFilterObject numberFilterObject){
+        NumberPropertyFilter numberPropertyFilter = new NumberPropertyFilter();
+        numberPropertyFilter.setName(property);
+        numberPropertyFilter.setNumberFilterObject(numberFilterObject);
+        return numberPropertyFilter;
+    }
 }

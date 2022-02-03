@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -18,4 +19,12 @@ public class RelationPropertyFilter extends DatabasePropertyFilter {
 
     @JsonProperty(RELATION_FIELD)
     private RelationFilterObject relationFilterObject;
+
+    @NotNull
+    public static RelationPropertyFilter of(String property, RelationFilterObject relationFilterObject){
+        RelationPropertyFilter relationPropertyFilter = new RelationPropertyFilter();
+        relationPropertyFilter.setName(property);
+        relationPropertyFilter.setRelationFilterObject(relationFilterObject);
+        return relationPropertyFilter;
+    }
 }

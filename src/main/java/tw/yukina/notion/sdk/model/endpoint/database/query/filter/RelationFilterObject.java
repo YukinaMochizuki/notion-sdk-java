@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.model.endpoint.database.query.filter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -29,4 +30,32 @@ public class RelationFilterObject {
 
     @JsonProperty(IS_NOT_EMPTY_FIELD)
     private Boolean isNotEmpty;
+
+    @NotNull
+    public static RelationFilterObject containsUuidOf(String containsUuid){
+        RelationFilterObject relationFilterObject = new RelationFilterObject();
+        relationFilterObject.setContainsUuid(containsUuid);
+        return relationFilterObject;
+    }
+
+    @NotNull
+    public static RelationFilterObject doesNotContainsUuidOf(String doesNotContainsUuid){
+        RelationFilterObject relationFilterObject = new RelationFilterObject();
+        relationFilterObject.setDoesNotContainsUuid(doesNotContainsUuid);
+        return relationFilterObject;
+    }
+
+    @NotNull
+    public static RelationFilterObject isEmptyOf(boolean isEmpty){
+        RelationFilterObject relationFilterObject = new RelationFilterObject();
+        relationFilterObject.setIsEmpty(isEmpty);
+        return  relationFilterObject;
+    }
+
+    @NotNull
+    public static RelationFilterObject isNotEmptyOf(boolean isNotEmpty){
+        RelationFilterObject relationFilterObject = new RelationFilterObject();
+        relationFilterObject.setIsNotEmpty(isNotEmpty);
+        return relationFilterObject;
+    }
 }

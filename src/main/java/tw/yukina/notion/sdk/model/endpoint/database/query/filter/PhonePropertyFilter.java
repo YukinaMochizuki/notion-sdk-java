@@ -18,4 +18,11 @@ public class PhonePropertyFilter extends DatabasePropertyFilter {
 
     @JsonProperty(PHONE_FIELD)
     private TextFilterObject textFilterObject;
+
+    public static PhonePropertyFilter of(String property, TextFilterObject textFilterObject){
+        PhonePropertyFilter phonePropertyFilter = new PhonePropertyFilter();
+        phonePropertyFilter.setName(property);
+        phonePropertyFilter.setTextFilterObject(textFilterObject);
+        return phonePropertyFilter;
+    }
 }

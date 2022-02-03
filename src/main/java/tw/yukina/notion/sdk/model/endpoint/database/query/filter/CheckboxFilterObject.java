@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.model.endpoint.database.query.filter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -21,4 +22,18 @@ public class CheckboxFilterObject {
 
     @JsonProperty(DOES_NOT_EQUAL_FIELD)
     private Boolean doesNotEqual;
+
+    @NotNull
+    public static CheckboxFilterObject equalsOf(boolean equals){
+        CheckboxFilterObject checkboxFilterObject = new CheckboxFilterObject();
+        checkboxFilterObject.setEquals(equals);
+        return checkboxFilterObject;
+    }
+
+    @NotNull
+    public static CheckboxFilterObject doesNotEqualOf(boolean doesNotEqual){
+        CheckboxFilterObject checkboxFilterObject = new CheckboxFilterObject();
+        checkboxFilterObject.setDoesNotEqual(doesNotEqual);
+        return checkboxFilterObject;
+    }
 }

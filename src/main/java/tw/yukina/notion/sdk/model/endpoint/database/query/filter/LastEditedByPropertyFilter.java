@@ -18,4 +18,11 @@ public class LastEditedByPropertyFilter extends DatabasePropertyFilter {
 
     @JsonProperty(CREATED_BY_FIELD)
     private RelationFilterObject relationFilterObject;
+
+    public static LastEditedByPropertyFilter of(String property, RelationFilterObject relationFilterObject){
+        LastEditedByPropertyFilter lastEditedByPropertyFilter = new LastEditedByPropertyFilter();
+        lastEditedByPropertyFilter.setName(property);
+        lastEditedByPropertyFilter.setRelationFilterObject(relationFilterObject);
+        return lastEditedByPropertyFilter;
+    }
 }

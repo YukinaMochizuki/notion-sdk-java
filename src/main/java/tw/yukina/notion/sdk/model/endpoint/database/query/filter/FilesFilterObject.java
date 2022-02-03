@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.model.endpoint.database.query.filter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -21,4 +22,18 @@ public class FilesFilterObject {
 
     @JsonProperty(IS_NOT_EMPTY_FIELD)
     private Boolean isNotEmpty;
+
+    @NotNull
+    public static FilesFilterObject isEmptyOf(boolean isEmpty){
+        FilesFilterObject filesFilterObject = new FilesFilterObject();
+        filesFilterObject.setIsEmpty(isEmpty);
+        return filesFilterObject;
+    }
+
+    @NotNull
+    public static FilesFilterObject isNotEmptyOf(boolean isNotEmpty){
+        FilesFilterObject filesFilterObject = new FilesFilterObject();
+        filesFilterObject.setIsNotEmpty(isNotEmpty);
+        return filesFilterObject;
+    }
 }

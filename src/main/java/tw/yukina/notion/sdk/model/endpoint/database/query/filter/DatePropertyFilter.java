@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -18,4 +19,12 @@ public class DatePropertyFilter extends DatabasePropertyFilter {
 
     @JsonProperty(DATE_FIELD)
     private DateFilterObject dateFilterObject;
+
+    @NotNull
+    public static DatePropertyFilter of(String property, DateFilterObject dateFilterObject){
+        DatePropertyFilter datePropertyFilter = new DatePropertyFilter();
+        datePropertyFilter.setName(property);
+        datePropertyFilter.setDateFilterObject(dateFilterObject);
+        return datePropertyFilter;
+    }
 }

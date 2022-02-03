@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -18,4 +19,12 @@ public class CheckboxPropertyFilter extends DatabasePropertyFilter {
 
     @JsonProperty(CHECKBOX_FIELD)
     private CheckboxFilterObject checkboxFilterObject;
+
+    @NotNull
+    public static CheckboxPropertyFilter of(String property, CheckboxFilterObject checkboxFilterObject){
+        CheckboxPropertyFilter checkboxPropertyFilter = new CheckboxPropertyFilter();
+        checkboxPropertyFilter.setName(property);
+        checkboxPropertyFilter.setCheckboxFilterObject(checkboxFilterObject);
+        return checkboxPropertyFilter;
+    }
 }
