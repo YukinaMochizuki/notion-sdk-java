@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.model.endpoint.database.query.filter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -29,4 +30,32 @@ public class SelectFilterObject {
 
     @JsonProperty(IS_NOT_EMPTY_FIELD)
     private Boolean isNotEmpty;
+
+    @NotNull
+    public static SelectFilterObject equalsOf(String equals){
+        SelectFilterObject selectFilterObject = new SelectFilterObject();
+        selectFilterObject.setEquals(equals);
+        return selectFilterObject;
+    }
+
+    @NotNull
+    public static SelectFilterObject doesNotEqualOf(String doesNotEqual){
+        SelectFilterObject selectFilterObject = new SelectFilterObject();
+        selectFilterObject.setDoesNotEqual(doesNotEqual);
+        return selectFilterObject;
+    }
+
+    @NotNull
+    public static SelectFilterObject isEmptyOf(boolean isEmpty){
+        SelectFilterObject selectFilterObject = new SelectFilterObject();
+        selectFilterObject.setIsEmpty(isEmpty);
+        return selectFilterObject;
+    }
+
+    @NotNull
+    public static SelectFilterObject isNotEmptyOf(boolean isNotEmpty){
+        SelectFilterObject selectFilterObject = new SelectFilterObject();
+        selectFilterObject.setIsNotEmpty(isNotEmpty);
+        return selectFilterObject;
+    }
 }

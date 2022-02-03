@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.model.endpoint.database.query.filter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 
 @Getter
 @Setter
@@ -45,4 +46,60 @@ public class TextFilterObject {
 
     @JsonProperty(IS_NOT_EMPTY_FIELD)
     private Boolean isNotEmpty;
+
+    @NotNull
+    public static TextFilterObject equalsOf(String equals){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setEquals(equals);
+        return textFilterObject;
+    }
+
+    @NotNull
+    public static TextFilterObject doesNotEqualOf(String doesNotEqual){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setDoesNotEqual(doesNotEqual);
+        return textFilterObject;
+    }
+
+    @NotNull
+    public static TextFilterObject containsOf(String contains){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setContains(contains);
+        return textFilterObject;
+    }
+
+    @NotNull
+    public static TextFilterObject doesNotContainOf(String doesNotContain){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setDoesNotContain(doesNotContain);
+        return textFilterObject;
+    }
+
+    @NotNull
+    public static TextFilterObject startsWithOf(String startsWith){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setStartsWith(startsWith);
+        return textFilterObject;
+    }
+
+    @NotNull
+    public static TextFilterObject endsWithOf(String endsWith){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setEndsWith(endsWith);
+        return textFilterObject;
+    }
+
+    @NotNull
+    public static TextFilterObject isEmptyOf(boolean isEmpty){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setIsEmpty(isEmpty);
+        return textFilterObject;
+    }
+
+    @NotNull
+    public static TextFilterObject isNotEmptyOf(boolean isNotEmpty){
+        TextFilterObject textFilterObject = new TextFilterObject();
+        textFilterObject.setIsNotEmpty(isNotEmpty);
+        return textFilterObject;
+    }
 }

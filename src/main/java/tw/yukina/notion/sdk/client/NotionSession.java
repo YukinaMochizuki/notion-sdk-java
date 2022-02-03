@@ -13,15 +13,13 @@ public interface NotionSession extends AutoCloseable {
 
     Database getDatabaseByUuid(String uuid);
 
-//    Block getBlockByUuid(String uuid
+//    Block getBlockByUuid(String uuid);
 
     Page save(Page page);
 
 //    Page save(Page page, List<Block> content);
 
     Database save(Database database);
-
-
 
     void flush();
 
