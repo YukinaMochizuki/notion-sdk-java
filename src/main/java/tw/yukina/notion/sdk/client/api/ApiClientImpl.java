@@ -9,6 +9,8 @@ import lombok.Setter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.client.api.support.DatabaseQueryCollector;
+import tw.yukina.notion.sdk.client.api.support.Pages;
 import tw.yukina.notion.sdk.endpoint.block.*;
 import tw.yukina.notion.sdk.endpoint.database.CreateDatabase;
 import tw.yukina.notion.sdk.endpoint.database.QueryDatabase;
@@ -93,6 +95,11 @@ public class ApiClientImpl implements ApiClient{
     @Override
     public ResponsePageList queryDatabase(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery) {
         return QueryDatabase.callValue(uuid, databaseQuery, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+    }
+
+    @Override
+    public Pages queryDatabaseIterable(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery) {
+        return new DatabaseQueryCollector(uuid, databaseQuery, this);
     }
 
     @Override

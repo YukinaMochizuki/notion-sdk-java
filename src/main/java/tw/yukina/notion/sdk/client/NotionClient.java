@@ -1,10 +1,12 @@
 package tw.yukina.notion.sdk.client;
 
+import lombok.Getter;
 import tw.yukina.notion.sdk.client.api.ApiClient;
 import tw.yukina.notion.sdk.client.api.ApiClientFactory;
 
 public class NotionClient {
 
+    @Getter
     private final ApiClient apiClient;
 
     public NotionClient(String token){
