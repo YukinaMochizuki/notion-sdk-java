@@ -1,21 +1,20 @@
-package tw.yukina.notion.sdk.model.block.heading;
+package tw.yukina.notion.sdk.model.database.property;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.block.Block;
 
 @Getter
 @Setter
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class HeadingTwoBlock extends Block implements HeadingBlock {
-    private static final String HEADING_ONE_FIELD = "heading_2";
+public class DualPropertyRelation extends RelationObject {
+    private static final String DUAL_PROPERTY_FIELD = "dual_property";
 
-    @JsonProperty(HEADING_ONE_FIELD)
-    private Heading heading;
+    @JsonProperty(DUAL_PROPERTY_FIELD)
+    private DualPropertyObject dualPropertyObject;
 }

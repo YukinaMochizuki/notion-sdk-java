@@ -15,11 +15,11 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = false)
 public class Template {
 
-    private static final String TEXT_FIELD = "text";
+    private static final String RICH_TEXT_FIELD = "rich_text";
 
     private static final String CHILDREN_FIELD = "children";
 
-    @JsonProperty(TEXT_FIELD)
+    @JsonProperty(RICH_TEXT_FIELD)
     private List<RichText> title;
 
     @JsonProperty(CHILDREN_FIELD)

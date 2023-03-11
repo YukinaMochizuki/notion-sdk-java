@@ -1,7 +1,9 @@
-package tw.yukina.notion.sdk.model.block.heading;
+package tw.yukina.notion.sdk.model.helper;
 
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.block.BlockType;
+import tw.yukina.notion.sdk.model.block.heading.*;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import java.util.List;
 
@@ -34,8 +36,9 @@ public class HeadingBlockHelper {
     }
 
     public static <T extends HeadingBlock> void initDefaultHeadingBlock(List<RichText> texts, @NotNull T t){
-        Heading heading = new Heading();
-        heading.setTexts(texts);
+        NotToggleHeading heading = new NotToggleHeading();
+        heading.setRichTexts(texts);
+        heading.setColor(TextColor.DEFAULT);
         t.setHeading(heading);
     }
 }

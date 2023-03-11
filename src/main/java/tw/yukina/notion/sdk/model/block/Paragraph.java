@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
@@ -15,12 +16,17 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Paragraph {
-    private static final String TEXT_FIELD = "text";
+    private static final String RICH_TEXT_FIELD = "rich_text";
+
+    private static final String COLOR_FIELD = "color";
 
     private static final String CHILDREN_FIELD = "children";
 
-    @JsonProperty(TEXT_FIELD)
+    @JsonProperty(RICH_TEXT_FIELD)
     private List<RichText> richTexts;
+
+    @JsonProperty(COLOR_FIELD)
+    private TextColor color;
 
     @Nullable
     @JsonProperty(CHILDREN_FIELD)

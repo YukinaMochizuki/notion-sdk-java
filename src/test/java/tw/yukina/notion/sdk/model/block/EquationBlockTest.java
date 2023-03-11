@@ -22,6 +22,9 @@ class EquationBlockTest extends ModelTest {
         equationBlock.setId(block.getId());
         equationBlock.setCreatedTime(block.getCreatedTime());
         equationBlock.setLastEditedTime(block.getLastEditedTime());
+        equationBlock.setParent(block.getParent());
+        equationBlock.setCreatedBy(block.getCreatedBy());
+        equationBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(equationBlock);
 
         assertEquals(block, equationBlock);

@@ -1,6 +1,7 @@
 package tw.yukina.notion.sdk.model.helper;
 
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.block.*;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
@@ -18,6 +19,7 @@ public final class BlockHelper {
     public static ParagraphBlock createDefaultParagraph(String content){
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(Collections.singletonList(RichTextHelper.createDefaultText(content)));
+        paragraph.setColor(TextColor.DEFAULT);
 
         return getDefaultParagraphBlock(paragraph);
     }
@@ -25,6 +27,7 @@ public final class BlockHelper {
     public static ParagraphBlock createDefaultParagraph(RichText richText){
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(Collections.singletonList(richText));
+        paragraph.setColor(TextColor.DEFAULT);
 
         return getDefaultParagraphBlock(paragraph);
     }
@@ -44,6 +47,7 @@ public final class BlockHelper {
         Todo todo = new Todo();
         todo.setRichTexts(texts);
         todo.setChecked(checked);
+        todo.setColor(TextColor.DEFAULT);
 
         TodoBlock todoBlock = new TodoBlock();
         todoBlock.setHasChildren(false);

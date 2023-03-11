@@ -23,6 +23,9 @@ class BookmarkBlockTest extends ModelTest {
         bookmarkBlock.setId(block.getId());
         bookmarkBlock.setCreatedTime(block.getCreatedTime());
         bookmarkBlock.setLastEditedTime(block.getLastEditedTime());
+        bookmarkBlock.setParent(block.getParent());
+        bookmarkBlock.setCreatedBy(block.getCreatedBy());
+        bookmarkBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(bookmarkBlock);
 
         assertEquals(block, bookmarkBlock);

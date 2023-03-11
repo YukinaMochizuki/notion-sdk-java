@@ -2,6 +2,7 @@ package tw.yukina.notion.sdk.model.template.project;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.OptionColor;
+import tw.yukina.notion.sdk.model.common.EmptyObject;
 import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.common.SelectOption;
 import tw.yukina.notion.sdk.model.common.date.Date;
@@ -38,7 +39,10 @@ public final class Thing {
         database.setCreatedTime(responseDatabase.getCreatedTime());
         database.setLastEditedTime(responseDatabase.getLastEditedTime());
         database.setTitle(RichTextHelper.createDefaultArrayText("Thing (Test DB)"));
+        database.setDescription(Collections.emptyList());
         database.setUrl(responseDatabase.getUrl());
+        database.setArchived(false);
+        database.setInline(false);
 
         PageParent pageParent = new PageParent();
         pageParent.setParentType(ParentType.PAGE);
@@ -52,12 +56,27 @@ public final class Thing {
         relationProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Related to Project (Test DB) (Property)"));
         relationProperty.setName("Related to Project (Test DB) (Property)");
         relationProperty.setType(PropertyType.RELATION);
-        tw.yukina.notion.sdk.model.database.property.RelationObject relationObject = new tw.yukina.notion.sdk.model.database.property.RelationObject();
-        relationObject.setDatabaseId(JsonNodeHelper.getDatabaseRelationDatabaseId(responseJsonNode, "Related to Project (Test DB) (Property)"));
-        relationObject.setSyncedPropertyName(JsonNodeHelper.getDatabaseRelationSyncedPropertyName(responseJsonNode, "Related to Project (Test DB) (Property)"));
-        relationObject.setSyncedPropertyId(JsonNodeHelper.getDatabaseRelationSyncedPropertyId(responseJsonNode, "Related to Project (Test DB) (Property)"));
-        relationProperty.setRelationObject(relationObject);
+        DualPropertyRelation dualPropertyRelation = new tw.yukina.notion.sdk.model.database.property.DualPropertyRelation();
+        dualPropertyRelation.setType(RelationPropertyType.DUAL_PROPERTY);
+        dualPropertyRelation.setDatabaseId(JsonNodeHelper.getDatabaseRelationDatabaseId(responseJsonNode, "Related to Project (Test DB) (Property)"));
+        DualPropertyObject dualPropertyObject = new DualPropertyObject();
+        dualPropertyObject.setSyncedPropertyName(JsonNodeHelper.getDatabaseRelationSyncedPropertyName(responseJsonNode, "Related to Project (Test DB) (Property)"));
+        dualPropertyObject.setSyncedPropertyId(JsonNodeHelper.getDatabaseRelationSyncedPropertyId(responseJsonNode, "Related to Project (Test DB) (Property)"));
+
+        dualPropertyRelation.setDualPropertyObject(dualPropertyObject);
+        relationProperty.setRelationObject(dualPropertyRelation);
         propertyMap.put("Related to Project (Test DB) (Property)", relationProperty);
+
+        relationProperty = new tw.yukina.notion.sdk.model.database.property.RelationProperty();
+        relationProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Project (Test DB) - single_property"));
+        relationProperty.setName("Project (Test DB) - single_property");
+        relationProperty.setType(PropertyType.RELATION);
+        SinglePropertyRelation singlePropertyRelation = new SinglePropertyRelation();
+        singlePropertyRelation.setType(RelationPropertyType.SINGLE_PROPERTY);
+        singlePropertyRelation.setEmptyObject(EmptyObject.of());
+        singlePropertyRelation.setDatabaseId(JsonNodeHelper.getDatabaseRelationDatabaseId(responseJsonNode, "Project (Test DB) - single_property"));
+        relationProperty.setRelationObject(singlePropertyRelation);
+        propertyMap.put("Project (Test DB) - single_property", relationProperty);
 
         DatabaseProperty databaseProperty = new DatabaseProperty();
         databaseProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Created"));

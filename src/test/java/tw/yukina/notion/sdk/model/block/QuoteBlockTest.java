@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
@@ -24,6 +25,7 @@ public class QuoteBlockTest extends ModelTest {
 
         List<RichText> richTexts = RichTextHelper.createDefaultArrayText("Quote String\nString new line");
         Paragraph paragraph = new Paragraph();
+        paragraph.setColor(TextColor.DEFAULT);
         paragraph.setRichTexts(richTexts);
 
         QuoteBlock quoteBlock = new QuoteBlock();
@@ -32,6 +34,9 @@ public class QuoteBlockTest extends ModelTest {
         quoteBlock.setLastEditedTime(block.getLastEditedTime());
         quoteBlock.setType(BlockType.QUOTE);
         quoteBlock.setParagraph(paragraph);
+        quoteBlock.setParent(block.getParent());
+        quoteBlock.setCreatedBy(block.getCreatedBy());
+        quoteBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(quoteBlock);
 
         assertEquals(block, quoteBlock);

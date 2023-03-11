@@ -23,6 +23,9 @@ class ColumnListBlockTest extends ModelTest {
         columnListBlock.setCreatedTime(block.getCreatedTime());
         columnListBlock.setLastEditedTime(block.getLastEditedTime());
         columnListBlock.setHasChildren(true);
+        columnListBlock.setParent(block.getParent());
+        columnListBlock.setCreatedBy(block.getCreatedBy());
+        columnListBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(columnListBlock);
 
         assertEquals(block, columnListBlock);

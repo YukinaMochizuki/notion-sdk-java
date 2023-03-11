@@ -25,6 +25,9 @@ class CodeBlockTest extends ModelTest {
         codeBlock.setId(block.getId());
         codeBlock.setCreatedTime(block.getCreatedTime());
         codeBlock.setLastEditedTime(block.getLastEditedTime());
+        codeBlock.setParent(block.getParent());
+        codeBlock.setCreatedBy(block.getCreatedBy());
+        codeBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(codeBlock);
 
         assertEquals(block, codeBlock);

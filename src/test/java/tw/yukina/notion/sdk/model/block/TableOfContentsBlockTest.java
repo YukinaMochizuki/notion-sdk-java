@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
+import tw.yukina.notion.sdk.model.TextColor;
 
 import java.util.Objects;
 
@@ -18,10 +19,13 @@ class TableOfContentsBlockTest extends ModelTest {
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Block block = readValueUseCommonObjectMapper(tree, Block.class);
 
-        TableOfContentsBlock tableOfContentsBlock = TableOfContentsBlock.of();
+        TableOfContentsBlock tableOfContentsBlock = TableOfContentsBlock.of(TextColor.GRAY);
         tableOfContentsBlock.setId(block.getId());
         tableOfContentsBlock.setCreatedTime(block.getCreatedTime());
         tableOfContentsBlock.setLastEditedTime(block.getLastEditedTime());
+        tableOfContentsBlock.setParent(block.getParent());
+        tableOfContentsBlock.setCreatedBy(block.getCreatedBy());
+        tableOfContentsBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(tableOfContentsBlock);
 
         assertEquals(block, tableOfContentsBlock);

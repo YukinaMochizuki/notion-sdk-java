@@ -5,7 +5,7 @@ import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.ModelTest;
-import tw.yukina.notion.sdk.model.block.heading.HeadingBlockHelper;
+import tw.yukina.notion.sdk.model.helper.HeadingBlockHelper;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.common.rich.Text;
@@ -38,7 +38,12 @@ public class HeadingBlockTest extends ModelTest {
         headingOneBlock.setId(block.getId());
         headingOneBlock.setCreatedTime(block.getCreatedTime());
         headingOneBlock.setLastEditedTime(block.getLastEditedTime());
+        headingOneBlock.setParent(block.getParent());
+        headingOneBlock.setCreatedBy(block.getCreatedBy());
+        headingOneBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(headingOneBlock);
+
+        System.out.println(block);
 
         assertEquals(block, headingOneBlock);
         assertEquals(responseJsonNode, serializedJsonNode);
@@ -72,6 +77,9 @@ public class HeadingBlockTest extends ModelTest {
         headingTwoBlock.setId(block.getId());
         headingTwoBlock.setCreatedTime(block.getCreatedTime());
         headingTwoBlock.setLastEditedTime(block.getLastEditedTime());
+        headingTwoBlock.setParent(block.getParent());
+        headingTwoBlock.setCreatedBy(block.getCreatedBy());
+        headingTwoBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(headingTwoBlock);
 
         assertEquals(block, headingTwoBlock);
@@ -103,6 +111,9 @@ public class HeadingBlockTest extends ModelTest {
         headingThreeBlock.setId(block.getId());
         headingThreeBlock.setCreatedTime(block.getCreatedTime());
         headingThreeBlock.setLastEditedTime(block.getLastEditedTime());
+        headingThreeBlock.setParent(block.getParent());
+        headingThreeBlock.setCreatedBy(block.getCreatedBy());
+        headingThreeBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(headingThreeBlock);
 
         assertEquals(block, headingThreeBlock);

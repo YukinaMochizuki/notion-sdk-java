@@ -21,7 +21,7 @@ class ParagraphBlockTest extends ModelTest {
 
     @Test
     void plainTextTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/847b5b2f483e4c6ba7e302e3ea27f4ec");
+        Response response = getResponse( BASE_URL + "/blocks/2adb3a1acf1f43d4a6b3d95be70e0918");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Block block = readValueUseCommonObjectMapper(tree, Block.class);
@@ -30,6 +30,9 @@ class ParagraphBlockTest extends ModelTest {
         paragraphBlock.setId(block.getId());
         paragraphBlock.setCreatedTime(block.getCreatedTime());
         paragraphBlock.setLastEditedTime(block.getLastEditedTime());
+        paragraphBlock.setParent(block.getParent());
+        paragraphBlock.setCreatedBy(block.getCreatedBy());
+        paragraphBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(paragraphBlock);
 
         assertEquals(block, paragraphBlock);
@@ -54,6 +57,9 @@ class ParagraphBlockTest extends ModelTest {
         pageMentionBlock.setId(block.getId());
         pageMentionBlock.setCreatedTime(block.getCreatedTime());
         pageMentionBlock.setLastEditedTime(block.getLastEditedTime());
+        pageMentionBlock.setParent(block.getParent());
+        pageMentionBlock.setCreatedBy(block.getCreatedBy());
+        pageMentionBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(pageMentionBlock);
 
         assertEquals(block, pageMentionBlock);
@@ -81,6 +87,9 @@ class ParagraphBlockTest extends ModelTest {
         userMentionBlock.setId(block.getId());
         userMentionBlock.setCreatedTime(block.getCreatedTime());
         userMentionBlock.setLastEditedTime(block.getLastEditedTime());
+        userMentionBlock.setParent(block.getParent());
+        userMentionBlock.setCreatedBy(block.getCreatedBy());
+        userMentionBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(userMentionBlock);
 
         assertEquals(block, userMentionBlock);
@@ -104,6 +113,9 @@ class ParagraphBlockTest extends ModelTest {
         pageMentionBlock.setId(block.getId());
         pageMentionBlock.setCreatedTime(block.getCreatedTime());
         pageMentionBlock.setLastEditedTime(block.getLastEditedTime());
+        pageMentionBlock.setParent(block.getParent());
+        pageMentionBlock.setCreatedBy(block.getCreatedBy());
+        pageMentionBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(pageMentionBlock);
 
         assertEquals(block, pageMentionBlock);
@@ -121,6 +133,9 @@ class ParagraphBlockTest extends ModelTest {
         Block dateTimeMentionBlock = getDateMentionBlock(block.getId(), "2021-08-10T12:50:00.000+08:00");
         dateTimeMentionBlock.setCreatedTime(block.getCreatedTime());
         dateTimeMentionBlock.setLastEditedTime(block.getLastEditedTime());
+        dateTimeMentionBlock.setParent(block.getParent());
+        dateTimeMentionBlock.setCreatedBy(block.getCreatedBy());
+        dateTimeMentionBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(dateTimeMentionBlock);
 
         assertEquals(block, dateTimeMentionBlock);
@@ -136,6 +151,9 @@ class ParagraphBlockTest extends ModelTest {
         Block dateMentionBlock = getDateMentionBlock(block.getId(), "2021-08-21");
         dateMentionBlock.setCreatedTime(block.getCreatedTime());
         dateMentionBlock.setLastEditedTime(block.getLastEditedTime());
+        dateMentionBlock.setParent(block.getParent());
+        dateMentionBlock.setCreatedBy(block.getCreatedBy());
+        dateMentionBlock.setLastEditedBy(block.getLastEditedBy());
         serializedJsonNode = getCommonObjectMapper().valueToTree(dateMentionBlock);
 
         assertEquals(block, dateMentionBlock);
@@ -153,6 +171,9 @@ class ParagraphBlockTest extends ModelTest {
                         "2021-08-10", "2021-08-12");
         dateIncludeEndMentionBlock.setCreatedTime(block.getCreatedTime());
         dateIncludeEndMentionBlock.setLastEditedTime(block.getLastEditedTime());
+        dateIncludeEndMentionBlock.setParent(block.getParent());
+        dateIncludeEndMentionBlock.setCreatedBy(block.getCreatedBy());
+        dateIncludeEndMentionBlock.setLastEditedBy(block.getLastEditedBy());
         serializedJsonNode = getCommonObjectMapper().valueToTree(dateIncludeEndMentionBlock);
 
         assertEquals(block, dateIncludeEndMentionBlock);
@@ -170,6 +191,9 @@ class ParagraphBlockTest extends ModelTest {
                         "2021-08-10T00:00:00.000+08:00", "2021-08-28T00:00:00.000+08:00");
         dateTimeIncludeEndMentionBlock.setCreatedTime(block.getCreatedTime());
         dateTimeIncludeEndMentionBlock.setLastEditedTime(block.getLastEditedTime());
+        dateTimeIncludeEndMentionBlock.setParent(block.getParent());
+        dateTimeIncludeEndMentionBlock.setCreatedBy(block.getCreatedBy());
+        dateTimeIncludeEndMentionBlock.setLastEditedBy(block.getLastEditedBy());
         serializedJsonNode = getCommonObjectMapper().valueToTree(dateTimeIncludeEndMentionBlock);
 
         assertEquals(block, dateTimeIncludeEndMentionBlock);
@@ -189,6 +213,9 @@ class ParagraphBlockTest extends ModelTest {
         equationBlock.setId(block.getId());
         equationBlock.setCreatedTime(block.getCreatedTime());
         equationBlock.setLastEditedTime(block.getLastEditedTime());
+        equationBlock.setParent(block.getParent());
+        equationBlock.setCreatedBy(block.getCreatedBy());
+        equationBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(equationBlock);
 
         assertEquals(block, equationBlock);

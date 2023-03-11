@@ -26,6 +26,9 @@ public class TodoBlockTest extends ModelTest {
         todoBlock.setId(block.getId());
         todoBlock.setCreatedTime(block.getCreatedTime());
         todoBlock.setLastEditedTime(block.getLastEditedTime());
+        todoBlock.setParent(block.getParent());
+        todoBlock.setCreatedBy(block.getCreatedBy());
+        todoBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(todoBlock);
 
         assertEquals(block, todoBlock);
@@ -45,6 +48,9 @@ public class TodoBlockTest extends ModelTest {
         todoBlock.setId(block.getId());
         todoBlock.setCreatedTime(block.getCreatedTime());
         todoBlock.setLastEditedTime(block.getLastEditedTime());
+        todoBlock.setParent(block.getParent());
+        todoBlock.setCreatedBy(block.getCreatedBy());
+        todoBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(todoBlock);
 
         assertEquals(block, todoBlock);

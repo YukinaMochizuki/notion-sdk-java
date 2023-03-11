@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import tw.yukina.notion.sdk.model.NotionObject;
 import tw.yukina.notion.sdk.model.ObjectType;
+import tw.yukina.notion.sdk.model.common.parent.Parent;
+import tw.yukina.notion.sdk.model.common.user.SimpleUser;
+import tw.yukina.notion.sdk.model.common.user.User;
 import tw.yukina.notion.sdk.model.deserializer.BlockDeserializer;
 
 @Getter

@@ -25,17 +25,23 @@ import java.util.Objects;
 @JsonDeserialize(using = JsonDeserializer.None.class)
 public class Database extends NotionObject {
     private static final String TITLE_FIELD = "title";
+    private static final String DESCRIPTION_FIELD = "description";
     private static final String ICON_FIELD = "icon";
     private static final String COVER_FIELD = "cover";
     private static final String PROPERTIES_FIELD = "properties";
     private static final String PARENT_FIELD = "parent";
     private static final String URL_FIELD = "url";
+    private static final String ARCHIVED_FIELD = "archived";
+    private static final String IS_INLINE_FIELD = "is_inline";
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.DATABASE;
 
     @JsonProperty(TITLE_FIELD)
     private List<RichText> title;
+
+    @JsonProperty(DESCRIPTION_FIELD)
+    private List<RichText> description;
 
     @JsonProperty(ICON_FIELD)
     private Icon icon;
@@ -52,6 +58,12 @@ public class Database extends NotionObject {
     @JsonProperty(URL_FIELD)
     private String url;
 
+    @JsonProperty(ARCHIVED_FIELD)
+    private boolean archived;
+
+    @JsonProperty(IS_INLINE_FIELD)
+    private boolean isInline;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -62,15 +74,19 @@ public class Database extends NotionObject {
                 Objects.equals(getCreatedTime(), database.getCreatedTime()) &&
                 Objects.equals(getLastEditedTime(), database.getLastEditedTime()) &&
                 Objects.equals(title, database.title) &&
+                Objects.equals(description, database.description) &&
                 Objects.equals(icon, database.icon) &&
                 Objects.equals(cover, database.cover) &&
                 propertyMap.equals(database.propertyMap) &&
                 Objects.equals(parent, database.parent) &&
-                Objects.equals(url, database.url);
+                Objects.equals(url, database.url) &&
+                Objects.equals(archived, database.archived) &&
+                Objects.equals(isInline, database.isInline);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getObjectType(), getId(), getCreatedTime(), getLastEditedTime(), title, icon, cover, propertyMap, parent, url);
+        return Objects.hash(getObjectType(), getId(), getCreatedTime(), getLastEditedTime(), title, description, icon,
+                cover, propertyMap, parent, url, archived, isInline);
     }
 }

@@ -24,14 +24,14 @@ dependencies {
     implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
     implementation 'org.slf4j:slf4j-api:1.7.32'
     implementation 'cglib:cglib:3.2.12'
-    compile 'net.bytebuddy:byte-buddy:1.11.20'
-    compile 'com.squareup.okhttp3:okhttp:4.9.0'
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
-    compile 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
+    implementation 'net.bytebuddy:byte-buddy:1.11.20'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
-    testCompile 'ch.qos.logback:logback-classic:1.2.6'
+    testImplementation 'ch.qos.logback:logback-classic:1.2.6'
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
@@ -95,7 +95,7 @@ uploadArchives {
                 developers {
                     developer {
                         id 'yukina'
-                        name 'Mochizuki Yukina'
+                        name 'Yukina Mochizuki'
                         email '1p41p4jejo@gmail.com'
                     }
                 }

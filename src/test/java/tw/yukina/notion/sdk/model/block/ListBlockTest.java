@@ -26,6 +26,9 @@ public class ListBlockTest extends ModelTest {
         bulletedListBlock.setId(block.getId());
         bulletedListBlock.setCreatedTime(block.getCreatedTime());
         bulletedListBlock.setLastEditedTime(block.getLastEditedTime());
+        bulletedListBlock.setParent(block.getParent());
+        bulletedListBlock.setCreatedBy(block.getCreatedBy());
+        bulletedListBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(bulletedListBlock);
 
         assertEquals(block, bulletedListBlock);
@@ -45,6 +48,9 @@ public class ListBlockTest extends ModelTest {
         numberedListBlock.setId(block.getId());
         numberedListBlock.setCreatedTime(block.getCreatedTime());
         numberedListBlock.setLastEditedTime(block.getLastEditedTime());
+        numberedListBlock.setParent(block.getParent());
+        numberedListBlock.setCreatedBy(block.getCreatedBy());
+        numberedListBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(numberedListBlock);
 
         assertEquals(block, numberedListBlock);
@@ -64,6 +70,9 @@ public class ListBlockTest extends ModelTest {
         toggleBlock.setId(block.getId());
         toggleBlock.setCreatedTime(block.getCreatedTime());
         toggleBlock.setLastEditedTime(block.getLastEditedTime());
+        toggleBlock.setParent(block.getParent());
+        toggleBlock.setCreatedBy(block.getCreatedBy());
+        toggleBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(toggleBlock);
 
         assertEquals(block, toggleBlock);

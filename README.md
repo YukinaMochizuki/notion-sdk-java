@@ -112,7 +112,7 @@ Now let's add a Heading with italics and color to the page:
 ```java
 import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
-import tw.yukina.notion.sdk.model.block.heading.HeadingBlockHelper;
+import tw.yukina.notion.sdk.model.helper.HeadingBlockHelper;
 import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 
 TextBuilder textBuilder = new TextBuilder();

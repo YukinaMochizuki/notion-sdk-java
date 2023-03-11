@@ -22,6 +22,9 @@ class BreadcrumbBlockTest extends ModelTest {
         breadcrumbBlock.setId(block.getId());
         breadcrumbBlock.setCreatedTime(block.getCreatedTime());
         breadcrumbBlock.setLastEditedTime(block.getLastEditedTime());
+        breadcrumbBlock.setParent(block.getParent());
+        breadcrumbBlock.setCreatedBy(block.getCreatedBy());
+        breadcrumbBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(breadcrumbBlock);
 
         assertEquals(block, breadcrumbBlock);

@@ -6,9 +6,12 @@ import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.endpoint.database.RetrieveDatabase;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.ModelTest;
+import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 import tw.yukina.notion.sdk.model.template.project.Thing;
 
 import java.io.IOException;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,12 +20,15 @@ public class DatabaseTest extends ModelTest {
 
     @Test
     void databaseTest() throws IOException, NotionAPIException {
-        Response response = getResponse( BASE_URL + "/databases/9dd0209dba4048c0872e428c8528565e", getRequestBuilder());
+        Response response = getResponse(BASE_URL + "/databases/9dd0209dba4048c0872e428c8528565e", getRequestBuilder());
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         Database responseDatabase = readValueUseCommonObjectMapper(tree, Database.class);
 
         Database database = Thing.getDatabase(responseJsonNode, responseDatabase);
+        database.setParent(responseDatabase.getParent());
+        database.setCreatedBy(responseDatabase.getCreatedBy());
+        database.setLastEditedBy(responseDatabase.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(database);
 
         assertEquals(responseDatabase, database);

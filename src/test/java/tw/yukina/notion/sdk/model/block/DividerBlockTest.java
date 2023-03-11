@@ -22,6 +22,9 @@ class DividerBlockTest extends ModelTest {
         dividerBlock.setId(block.getId());
         dividerBlock.setCreatedTime(block.getCreatedTime());
         dividerBlock.setLastEditedTime(block.getLastEditedTime());
+        dividerBlock.setParent(block.getParent());
+        dividerBlock.setCreatedBy(block.getCreatedBy());
+        dividerBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(dividerBlock);
 
         assertEquals(block, dividerBlock);

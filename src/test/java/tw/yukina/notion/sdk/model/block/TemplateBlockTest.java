@@ -24,6 +24,9 @@ class TemplateBlockTest extends ModelTest {
         templateBlock.setCreatedTime(block.getCreatedTime());
         templateBlock.setLastEditedTime(block.getLastEditedTime());
         templateBlock.setHasChildren(true);
+        templateBlock.setParent(block.getParent());
+        templateBlock.setCreatedBy(block.getCreatedBy());
+        templateBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(templateBlock);
 
         assertEquals(block, templateBlock);

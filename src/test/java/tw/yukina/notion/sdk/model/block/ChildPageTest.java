@@ -24,6 +24,9 @@ public class ChildPageTest extends ModelTest {
         childPageBlock.setId(block.getId());
         childPageBlock.setCreatedTime(block.getCreatedTime());
         childPageBlock.setLastEditedTime(block.getLastEditedTime());
+        childPageBlock.setParent(block.getParent());
+        childPageBlock.setCreatedBy(block.getCreatedBy());
+        childPageBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(childPageBlock);
 
         assertEquals(block, childPageBlock);
@@ -43,6 +46,9 @@ public class ChildPageTest extends ModelTest {
         childDatabaseBlock.setId(block.getId());
         childDatabaseBlock.setCreatedTime(block.getCreatedTime());
         childDatabaseBlock.setLastEditedTime(block.getLastEditedTime());
+        childDatabaseBlock.setParent(block.getParent());
+        childDatabaseBlock.setCreatedBy(block.getCreatedBy());
+        childDatabaseBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(childDatabaseBlock);
 
         assertEquals(block, childDatabaseBlock);

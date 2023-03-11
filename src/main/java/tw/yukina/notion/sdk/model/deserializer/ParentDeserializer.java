@@ -17,6 +17,7 @@ public class ParentDeserializer extends AbstractDeserializer<Parent> {
         addAvailableType(ParentType.PAGE.getField(), PageParent.class);
         addAvailableType(ParentType.WORKSPACE.getField(), WorkspaceParent.class);
         addAvailableType(ParentType.DATABASE.getField(), DatabaseParent.class);
+        addAvailableType(ParentType.BLOCK.getField(), BlockParent.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }

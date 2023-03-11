@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.model;
 
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -65,7 +66,7 @@ public class ModelTest {
 
         return new Request.Builder()
                 .addHeader("Authorization", properties.getProperty("Notion.test.token"))
-                .addHeader("Notion-Version", "2021-08-16");
+                .addHeader("Notion-Version", "2022-06-28");
     }
 
     public Response getResponse(@NotNull String url) throws IOException {
@@ -86,6 +87,7 @@ public class ModelTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+        objectMapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
 
         return objectMapper;
     }

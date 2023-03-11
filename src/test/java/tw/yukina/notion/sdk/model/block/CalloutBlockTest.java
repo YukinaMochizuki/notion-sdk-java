@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.common.IconEmoji;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
@@ -28,6 +29,7 @@ public class CalloutBlockTest extends ModelTest {
         Callout callout = new Callout();
         callout.setRichTexts(RichTextHelper.createDefaultArrayText("Callout\nTest"));
         callout.setIcon(iconEmoji);
+        callout.setColor(TextColor.GRAY_BACKGROUND);
 
         CalloutBlock calloutBlock = new CalloutBlock();
         calloutBlock.setId(block.getId());
@@ -36,6 +38,9 @@ public class CalloutBlockTest extends ModelTest {
         calloutBlock.setLastEditedTime(block.getLastEditedTime());
         calloutBlock.setCallout(callout);
         calloutBlock.setHasChildren(true);
+        calloutBlock.setParent(block.getParent());
+        calloutBlock.setCreatedBy(block.getCreatedBy());
+        calloutBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(calloutBlock);
 
         assertEquals(block, calloutBlock);

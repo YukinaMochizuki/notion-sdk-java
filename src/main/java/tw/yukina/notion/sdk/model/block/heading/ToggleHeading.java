@@ -5,17 +5,20 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import tw.yukina.notion.sdk.model.block.Block;
+import tw.yukina.notion.sdk.model.common.rich.RichText;
+
+import java.util.List;
 
 @Getter
 @Setter
-@ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class HeadingThreeBlock extends Block implements HeadingBlock {
-    private static final String HEADING_ONE_FIELD = "heading_3";
+public class ToggleHeading extends Heading {
+    private static final String CHILDREN_FIELD = "children";
 
-    @JsonProperty(HEADING_ONE_FIELD)
-    private Heading heading;
+    @JsonProperty(CHILDREN_FIELD)
+    private List<Block> children;
 }

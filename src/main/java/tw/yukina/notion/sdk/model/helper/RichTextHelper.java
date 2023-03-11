@@ -76,7 +76,7 @@ public final class RichTextHelper {
         dateMention.setDateTimeProperty(DateTimeDeserializer.parse(start)
                 .orElseThrow(() -> new Exception("The date " + start + " does not match any available formats")));
 
-        return createDefaultMentionText(start + " → ", dateMention);
+        return createDefaultMentionText(start, dateMention);
     }
 
     @NotNull

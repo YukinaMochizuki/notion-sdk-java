@@ -1,6 +1,7 @@
 package tw.yukina.notion.sdk.model.block.list;
 
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.block.BlockType;
 import tw.yukina.notion.sdk.model.block.Paragraph;
 import tw.yukina.notion.sdk.model.block.TextBlock;
@@ -40,6 +41,7 @@ public class ListBlockHelper {
     public static <T extends TextBlock> void initDefaultListBlock(List<RichText> texts, T t){
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(texts);
+        paragraph.setColor(TextColor.DEFAULT);
         t.setParagraph(paragraph);
     }
 }

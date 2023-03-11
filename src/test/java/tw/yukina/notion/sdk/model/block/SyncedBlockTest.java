@@ -23,6 +23,9 @@ class SyncedBlockTest extends ModelTest {
         syncedBlock.setCreatedTime(block.getCreatedTime());
         syncedBlock.setLastEditedTime(block.getLastEditedTime());
         syncedBlock.setHasChildren(true);
+        syncedBlock.setParent(block.getParent());
+        syncedBlock.setCreatedBy(block.getCreatedBy());
+        syncedBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(syncedBlock);
 
         assertEquals(block, syncedBlock);
@@ -42,6 +45,9 @@ class SyncedBlockTest extends ModelTest {
         syncedBlock.setCreatedTime(block.getCreatedTime());
         syncedBlock.setLastEditedTime(block.getLastEditedTime());
         syncedBlock.setHasChildren(true);
+        syncedBlock.setParent(block.getParent());
+        syncedBlock.setCreatedBy(block.getCreatedBy());
+        syncedBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(syncedBlock);
 
         assertEquals(block, syncedBlock);

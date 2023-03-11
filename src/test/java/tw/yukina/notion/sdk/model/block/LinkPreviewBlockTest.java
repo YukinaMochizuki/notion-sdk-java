@@ -22,6 +22,9 @@ class LinkPreviewBlockTest extends ModelTest {
         linkPreviewBlock.setId(block.getId());
         linkPreviewBlock.setCreatedTime(block.getCreatedTime());
         linkPreviewBlock.setLastEditedTime(block.getLastEditedTime());
+        linkPreviewBlock.setParent(block.getParent());
+        linkPreviewBlock.setCreatedBy(block.getCreatedBy());
+        linkPreviewBlock.setLastEditedBy(block.getLastEditedBy());
         JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(linkPreviewBlock);
 
         assertEquals(block, linkPreviewBlock);
