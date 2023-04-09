@@ -26,11 +26,13 @@ public class PageTest extends ModelTest {
         page.setId(responsePage.getId());
         page.setArchived(false);
         page.setCreatedTime(responsePage.getCreatedTime());
+        page.setCreatedBy(responsePage.getCreatedBy());
         page.setLastEditedTime(responsePage.getLastEditedTime());
+        page.setLastEditedBy(responsePage.getLastEditedBy());
         page.setUrl(responsePage.getUrl());
 
         DatabaseParent databaseParent = new DatabaseParent();
-        databaseParent.setDatabaseId("cadfccdddfec4c82bbb11962bbeff38b");
+        databaseParent.setDatabaseId("9dd0209d-ba40-48c0-872e-428c8528565e");
         databaseParent.setParentType(ParentType.DATABASE);
         page.setParent(databaseParent);
         page.setPropertyMap(Thing.getPageProperty(responseJsonNode));

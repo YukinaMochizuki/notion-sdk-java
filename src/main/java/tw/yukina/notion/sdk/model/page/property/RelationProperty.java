@@ -20,8 +20,13 @@ public class RelationProperty extends PageProperty {
 
     private static final String RELATION_FIELD = "relation";
 
+    private static final String HAS_MORE_FIELD = "has_more";
+
     @JsonProperty(RELATION_FIELD)
     private List<RelationObject> relation;
+
+    @JsonProperty(HAS_MORE_FIELD)
+    private boolean hasMore;
 
     public static RelationProperty of(String[] id){
         List<RelationObject> relationObjects = new ArrayList<>();

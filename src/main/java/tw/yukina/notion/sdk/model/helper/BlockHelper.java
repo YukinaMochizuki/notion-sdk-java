@@ -23,6 +23,7 @@ public final class BlockHelper {
 
         return getDefaultParagraphBlock(paragraph);
     }
+
     @NotNull
     public static ParagraphBlock createDefaultParagraph(RichText richText){
         Paragraph paragraph = new Paragraph();

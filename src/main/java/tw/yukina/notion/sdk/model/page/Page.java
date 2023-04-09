@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.model.page;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -56,6 +57,7 @@ public class Page extends NotionObject {
     @JsonProperty(URL_FIELD)
     private String url;
 
+    @JsonIgnore
     public Optional<String> getTitle(){
         TitleProperty titleProperty = (TitleProperty) propertyMap.get("Name");
 
