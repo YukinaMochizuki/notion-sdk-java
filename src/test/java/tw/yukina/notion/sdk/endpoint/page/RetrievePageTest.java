@@ -17,19 +17,21 @@ class RetrievePageTest extends ModelTest {
 
     @Test
     void callValue() throws IOException, NotionAPIException {
-        Page responsePage = RetrievePage.callValue("e7eb4611798b4bcc9d6d3838dc84156b", getOkHttpClient(),
-                getAnotherRequestBuilder(), getCommonObjectMapper());
+        Page responsePage = RetrievePage.callValue("e8df4eb760e047b88808974fb12b0ef3", getOkHttpClient(),
+                getRequestBuilder(), getCommonObjectMapper());
         JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(responsePage);
 
         Page page = new Page();
         page.setId(responsePage.getId());
         page.setArchived(false);
         page.setCreatedTime(responsePage.getCreatedTime());
+        page.setCreatedBy(responsePage.getCreatedBy());
         page.setLastEditedTime(responsePage.getLastEditedTime());
+        page.setLastEditedBy(responsePage.getLastEditedBy());
         page.setUrl(responsePage.getUrl());
 
         DatabaseParent databaseParent = new DatabaseParent();
-        databaseParent.setDatabaseId("31d2e694-db36-4822-98a4-7dfa29cde551");
+        databaseParent.setDatabaseId("9dd0209d-ba40-48c0-872e-428c8528565e");
         databaseParent.setParentType(ParentType.DATABASE);
         page.setParent(databaseParent);
         page.setPropertyMap(Thing.getPageProperty(responseJsonNode));

@@ -37,12 +37,15 @@ public final class Thing {
         Database database = new Database();
         database.setId(responseDatabase.getId());
         database.setCreatedTime(responseDatabase.getCreatedTime());
+        database.setCreatedBy(responseDatabase.getCreatedBy());
         database.setLastEditedTime(responseDatabase.getLastEditedTime());
+        database.setLastEditedBy(responseDatabase.getLastEditedBy());
         database.setTitle(RichTextHelper.createDefaultArrayText("Thing (Test DB)"));
         database.setDescription(Collections.emptyList());
         database.setUrl(responseDatabase.getUrl());
         database.setArchived(false);
         database.setInline(false);
+        database.setParent(responseDatabase.getParent());
 
         PageParent pageParent = new PageParent();
         pageParent.setParentType(ParentType.PAGE);
