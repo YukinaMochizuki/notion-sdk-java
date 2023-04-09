@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -19,6 +20,7 @@ import java.io.InputStream;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class ModelTest {
 
@@ -32,7 +34,10 @@ public class ModelTest {
 
     @BeforeAll
     static void setUp() {
-        okHttpClient = new OkHttpClient();
+        okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .build();
+
 
         objectMapperModule = new SimpleModule();
         objectMapperModule.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
@@ -86,6 +91,7 @@ public class ModelTest {
     public ObjectMapper getCommonObjectMapper(){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
         objectMapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
 

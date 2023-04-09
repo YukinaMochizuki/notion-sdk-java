@@ -14,6 +14,7 @@ public class ResponseList {
     private static final String OBJECT_FIELD = "object";
     private static final String NEXT_CURSOR_FIELD = "next_cursor";
     private static final String HAS_MORE_FIELD = "has_more";
+    private static final String TYPE_FIELD = "type";
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.LIST;
@@ -23,4 +24,7 @@ public class ResponseList {
 
     @JsonProperty(HAS_MORE_FIELD)
     private boolean hasMore = false;
+
+    @JsonProperty(TYPE_FIELD)
+    private ObjectType type;
 }

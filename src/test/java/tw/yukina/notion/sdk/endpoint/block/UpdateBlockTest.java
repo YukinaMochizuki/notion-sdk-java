@@ -7,36 +7,40 @@ import tw.yukina.notion.sdk.model.block.Block;
 import tw.yukina.notion.sdk.model.helper.BlockHelper;
 import tw.yukina.notion.sdk.model.block.ParagraphBlock;
 
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UpdateBlockTest extends ModelTest {
 
     @Test
     void callValue() {
-        Block editBlock = BlockHelper.createDefaultParagraph("Edited");
+        Block editBlock = BlockHelper.createDefaultParagraph("After");
 
-        Block responseBlock = UpdateBlock.callValue("842ab92d84484f2f96b522fb0563794e", editBlock,
-                getOkHttpClient(), getAnotherRequestBuilder(), getCommonObjectMapper());
+        Block responseBlock = UpdateBlock.callValue("5eef55515c284f78a43bbcc6e3a43906", editBlock,
+                getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
 
-        ParagraphBlock paragraphBlock = BlockHelper.createDefaultParagraph("Edited");
+        ParagraphBlock paragraphBlock = BlockHelper.createDefaultParagraph("After");
         paragraphBlock.setId(responseBlock.getId());
         paragraphBlock.setCreatedTime(responseBlock.getCreatedTime());
+        paragraphBlock.setCreatedBy(responseBlock.getCreatedBy());
         paragraphBlock.setLastEditedTime(responseBlock.getLastEditedTime());
+        paragraphBlock.setLastEditedBy(responseBlock.getLastEditedBy());
+        paragraphBlock.setParent(responseBlock.getParent());
 
         assertEquals(responseBlock, paragraphBlock);
 
 
-        Block restoreBlock = BlockHelper.createDefaultParagraph("Paragraph Block");
+        Block restoreBlock = BlockHelper.createDefaultParagraph("Before");
 
-        Block responseRestoreBlock = UpdateBlock.callValue("842ab92d84484f2f96b522fb0563794e", restoreBlock,
-                getOkHttpClient(), getAnotherRequestBuilder(), getCommonObjectMapper());
+        Block responseRestoreBlock = UpdateBlock.callValue("5eef55515c284f78a43bbcc6e3a43906", restoreBlock,
+                getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
 
-        paragraphBlock = BlockHelper.createDefaultParagraph("Paragraph Block");
+        paragraphBlock = BlockHelper.createDefaultParagraph("Before");
         paragraphBlock.setId(responseBlock.getId());
         paragraphBlock.setCreatedTime(responseBlock.getCreatedTime());
+        paragraphBlock.setCreatedBy(responseBlock.getCreatedBy());
         paragraphBlock.setLastEditedTime(responseBlock.getLastEditedTime());
+        paragraphBlock.setLastEditedBy(responseBlock.getLastEditedBy());
+        paragraphBlock.setParent(responseBlock.getParent());
 
         assertEquals(responseRestoreBlock, paragraphBlock);
     }
