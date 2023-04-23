@@ -38,25 +38,9 @@ public class ModelTest {
                 .connectTimeout(20, TimeUnit.SECONDS)
                 .build();
 
-
         objectMapperModule = new SimpleModule();
         objectMapperModule.addDeserializer(ZonedDateTime.class, new ZonedDateTimeDeserializer());
         objectMapperModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
-    }
-
-    public Request.Builder getAnotherRequestBuilder(){
-
-        Properties properties = new Properties();
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
-            properties.load(resourceStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return new Request.Builder()
-                .addHeader("Authorization", properties.getProperty("Notion.test.token2"))
-                .addHeader("Notion-Version", "2021-08-16");
     }
 
     public Request.Builder getRequestBuilder(){
