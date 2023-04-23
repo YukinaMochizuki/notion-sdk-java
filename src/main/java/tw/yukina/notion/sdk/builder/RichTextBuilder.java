@@ -24,28 +24,28 @@ public abstract class RichTextBuilder<T extends RichText> {
 
     private TextColor color = TextColor.DEFAULT;
 
-    public RichTextBuilder<T> setBold(){
-        this.isBold = true;
+    public RichTextBuilder<T> setBold(boolean isBold){
+        this.isBold = isBold;
         return this;
     }
 
-    public RichTextBuilder<T> setItalic(){
-        this.isItalic = true;
+    public RichTextBuilder<T> setItalic(boolean isItalic){
+        this.isItalic = isItalic;
         return this;
     }
 
-    public RichTextBuilder<T> setStrolethrough(){
-        this.isStrikethrough = true;
+    public RichTextBuilder<T> setStrolethrough(boolean isStrikethrough){
+        this.isStrikethrough = isStrikethrough;
         return this;
     }
 
-    public RichTextBuilder<T> setUnderline(){
-        this.isUnderline = true;
+    public RichTextBuilder<T> setUnderline(boolean isUnderline){
+        this.isUnderline = isUnderline;
         return this;
     }
 
-    public RichTextBuilder<T> setCodeStyle(){
-        this.isCode = true;
+    public RichTextBuilder<T> setCodeStyle(boolean isCode){
+        this.isCode = isCode;
         return this;
     }
 
