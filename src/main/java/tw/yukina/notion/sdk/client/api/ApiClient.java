@@ -15,6 +15,8 @@ import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
 import tw.yukina.notion.sdk.model.page.Page;
 
+import java.util.List;
+
 public interface ApiClient {
 
     Block retrieveBlock(@NotNull String uuid);
@@ -22,6 +24,12 @@ public interface ApiClient {
     ResponseBlockList retrieveBlockChildren(@NotNull String uuid);
 
     ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor);
+
+    ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull Block block);
+
+    ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull Block... blocks);
+
+    ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<Block> blocks);
 
     ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList);
 

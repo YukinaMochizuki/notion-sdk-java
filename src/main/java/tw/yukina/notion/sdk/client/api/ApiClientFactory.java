@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.client.api;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import okhttp3.OkHttpClient;
@@ -20,7 +21,7 @@ public class ApiClientFactory {
 
     private String token;
 
-    private static final String NOTION_VERSION = "2021-08-16";
+    private static final String NOTION_VERSION = "2022-06-28";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiClientFactory.class);
 
@@ -48,6 +49,7 @@ public class ApiClientFactory {
         addDefaultObjectMapperModule();
         addDefaultObjectMapperConfigure();
         addDefaultExceptionDefine();
+        addDefaultObjectMapperSerializationInclusion();
         return this;
     }
 
@@ -93,6 +95,10 @@ public class ApiClientFactory {
         return this;
     }
 
+    public ApiClientFactory addDefaultObjectMapperSerializationInclusion(){
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        return this;
+    }
 
     public ApiClientFactory objectMapperConfigure(@NotNull DeserializationFeature feature, boolean state){
         LOGGER.info("Changing ObjectMapper state of " + feature.name() + " to " + state);

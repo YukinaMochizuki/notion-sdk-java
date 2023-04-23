@@ -31,6 +31,8 @@ import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
 import tw.yukina.notion.sdk.model.page.Page;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class ApiClientImpl implements ApiClient{
@@ -70,6 +72,24 @@ public class ApiClientImpl implements ApiClient{
     @Override
     public ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor) {
         return RetrieveBlockChildren.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper(), startCursor);
+    }
+
+    @Override
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull Block block) {
+        List<Block> blocks = List.of(block);
+        return appendBlockChildren(uuid, blocks);
+    }
+
+    @Override
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull Block... blocks) {
+        List<Block> blockList = List.of(blocks);
+        return appendBlockChildren(uuid, blockList);
+    }
+
+    @Override
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<Block> blocks) {
+        RequestAppendChildrenBlockList requestAppendChildrenBlockList = new RequestAppendChildrenBlockList(blocks);
+        return appendBlockChildren(uuid, requestAppendChildrenBlockList);
     }
 
     @Override
