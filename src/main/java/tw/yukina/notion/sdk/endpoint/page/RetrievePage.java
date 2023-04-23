@@ -8,7 +8,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.page.Page;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
 import java.io.IOException;
 
@@ -16,10 +16,10 @@ import static tw.yukina.notion.sdk.Configuration.BASE_URL;
 
 public class RetrievePage extends AbstractPageEndpoint {
 
-    public static Page callValue(@NotNull String uuid,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) throws NotionAPIException {
+    public static PageModel callValue(@NotNull String uuid,
+                                      @NotNull OkHttpClient okHttpClient,
+                                      @NotNull Request.Builder builder,
+                                      @NotNull ObjectMapper objectMapper) throws NotionAPIException {
 
         ObjectNode objectNode = callTree(uuid, okHttpClient, builder, objectMapper);
         return toPage(objectNode, objectMapper);

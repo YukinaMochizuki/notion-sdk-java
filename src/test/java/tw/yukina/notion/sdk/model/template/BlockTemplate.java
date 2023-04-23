@@ -1,7 +1,7 @@
 package tw.yukina.notion.sdk.model.template;
 
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.model.block.Block;
+import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.helper.BlockHelper;
 import tw.yukina.notion.sdk.model.block.list.ListBlockHelper;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
@@ -12,10 +12,10 @@ import java.util.*;
 public class BlockTemplate {
 
     @NotNull
-    public static List<Block> getPageBlock() throws Exception {
-        List<Block> blocks = new ArrayList<>();
+    public static List<BlockModel> getPageBlock() throws Exception {
+        List<BlockModel> blocks = new ArrayList<>();
 
-        Block addBlock = BlockHelper.createDefaultParagraph("Text");
+        BlockModel addBlock = BlockHelper.createDefaultParagraph("Text");
         blocks.add(addBlock);
 
         addBlock = ListBlockHelper

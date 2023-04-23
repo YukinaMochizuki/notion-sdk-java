@@ -19,8 +19,8 @@ import tw.yukina.notion.sdk.endpoint.database.UpdateDatabase;
 import tw.yukina.notion.sdk.endpoint.page.CreatePage;
 import tw.yukina.notion.sdk.endpoint.page.RetrievePage;
 import tw.yukina.notion.sdk.endpoint.page.UpdatePage;
-import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.block.BlockModel;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
@@ -29,7 +29,7 @@ import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
 import tw.yukina.notion.sdk.model.endpoint.database.query.ResponsePageList;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
-import tw.yukina.notion.sdk.model.page.Page;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
 import java.util.List;
 
@@ -60,7 +60,7 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public Block retrieveBlock(@NotNull String uuid) {
+    public BlockModel retrieveBlock(@NotNull String uuid) {
         return RetrieveBlock.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
@@ -75,19 +75,19 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull Block block) {
-        List<Block> blocks = List.of(block);
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull BlockModel block) {
+        List<BlockModel> blocks = List.of(block);
         return appendBlockChildren(uuid, blocks);
     }
 
     @Override
-    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull Block... blocks) {
-        List<Block> blockList = List.of(blocks);
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull BlockModel... blocks) {
+        List<BlockModel> blockList = List.of(blocks);
         return appendBlockChildren(uuid, blockList);
     }
 
     @Override
-    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<Block> blocks) {
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<BlockModel> blocks) {
         RequestAppendChildrenBlockList requestAppendChildrenBlockList = new RequestAppendChildrenBlockList(blocks);
         return appendBlockChildren(uuid, requestAppendChildrenBlockList);
     }
@@ -98,17 +98,17 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public Block updateBlock(@NotNull String uuid, Block block) {
+    public BlockModel updateBlock(@NotNull String uuid, BlockModel block) {
         return UpdateBlock.callValue(uuid, block, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Block deleteBlock(@NotNull String uuid) {
+    public BlockModel deleteBlock(@NotNull String uuid) {
         return DeleteBlock.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Database createDatabase(@NotNull RequestCreateDatabase requestCreateDatabase) {
+    public DatabaseModel createDatabase(@NotNull RequestCreateDatabase requestCreateDatabase) {
         return CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
@@ -123,27 +123,27 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public Database retrieveDatabase(@NotNull String uuid) {
+    public DatabaseModel retrieveDatabase(@NotNull String uuid) {
         return RetrieveDatabase.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Database updateDatabase(@NotNull String uuid, @NotNull RequestUpdateDatabase requestUpdateDatabase) {
+    public DatabaseModel updateDatabase(@NotNull String uuid, @NotNull RequestUpdateDatabase requestUpdateDatabase) {
         return UpdateDatabase.callValue(uuid, requestUpdateDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Page createPage(@NotNull RequestCreatePage requestCreatePage) {
+    public PageModel createPage(@NotNull RequestCreatePage requestCreatePage) {
         return CreatePage.callValue(requestCreatePage, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Page retrievePage(@NotNull String uuid) {
+    public PageModel retrievePage(@NotNull String uuid) {
         return RetrievePage.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 
     @Override
-    public Page updatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage) {
+    public PageModel updatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage) {
         return UpdatePage.callValue(uuid, requestUpdatePage, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
     }
 

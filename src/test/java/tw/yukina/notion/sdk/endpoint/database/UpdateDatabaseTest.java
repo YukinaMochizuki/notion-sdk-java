@@ -1,13 +1,11 @@
 package tw.yukina.notion.sdk.endpoint.database;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.jupiter.api.Test;
-import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.common.parent.PageParent;
 import tw.yukina.notion.sdk.model.common.parent.ParentType;
-import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
@@ -46,27 +44,27 @@ class UpdateDatabaseTest extends ModelTest {
         requestCreateDatabase.setTitle(RichTextHelper.createDefaultArrayText("Project (Test DB)"));
         requestCreateDatabase.setProperties(Project.getCreateDatabaseProperty());
 
-        Database projectDatabase = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
-        JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(projectDatabase);
+        DatabaseModel projectDatabaseModel = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
+        JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(projectDatabaseModel);
 
-        Database database = Project.getDatabase(responseJsonNode, projectDatabase);
-        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(database);
+        DatabaseModel databaseModel = Project.getDatabase(responseJsonNode, projectDatabaseModel);
+        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(databaseModel);
 
-        assertEquals(projectDatabase, database);
+        assertEquals(projectDatabaseModel, databaseModel);
         assertEquals(responseJsonNode, serializedJsonNode);
 
 
         RequestUpdateDatabase requestUpdateDatabase = new RequestUpdateDatabase();
-        requestUpdateDatabase.setProperties(Thing.getCreateDatabaseProperty(database.getId()));
+        requestUpdateDatabase.setProperties(Thing.getCreateDatabaseProperty(databaseModel.getId()));
 
-        Database responseDatabase = UpdateDatabase.callValue(databaseUuid, requestUpdateDatabase,
+        DatabaseModel responseDatabaseModel = UpdateDatabase.callValue(databaseUuid, requestUpdateDatabase,
                 getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
-        responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabase);
+        responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabaseModel);
 
-        database = Thing.getDatabase(responseJsonNode, responseDatabase);
-        serializedJsonNode = getCommonObjectMapper().valueToTree(database);
+        databaseModel = Thing.getDatabase(responseJsonNode, responseDatabaseModel);
+        serializedJsonNode = getCommonObjectMapper().valueToTree(databaseModel);
 
-        assertEquals(responseDatabase, database);
+        assertEquals(responseDatabaseModel, databaseModel);
         assertEquals(responseJsonNode, serializedJsonNode);
     }
 }

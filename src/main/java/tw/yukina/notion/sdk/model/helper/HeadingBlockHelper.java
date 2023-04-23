@@ -9,8 +9,8 @@ import java.util.List;
 
 public class HeadingBlockHelper {
     @NotNull
-    public static HeadingOneBlock createDefaultHeadingOne(List<RichText> texts){
-        HeadingOneBlock headingOneBlock = new HeadingOneBlock();
+    public static HeadingOneBlockModel createDefaultHeadingOne(List<RichText> texts){
+        HeadingOneBlockModel headingOneBlock = new HeadingOneBlockModel();
         initDefaultHeadingBlock(texts, headingOneBlock);
         headingOneBlock.setType(BlockType.HEADING_1);
 
@@ -18,8 +18,8 @@ public class HeadingBlockHelper {
     }
 
     @NotNull
-    public static HeadingTwoBlock createDefaultHeadingTwo(List<RichText> texts){
-        HeadingTwoBlock headingTwoBlock = new HeadingTwoBlock();
+    public static HeadingTwoBlockModel createDefaultHeadingTwo(List<RichText> texts){
+        HeadingTwoBlockModel headingTwoBlock = new HeadingTwoBlockModel();
         initDefaultHeadingBlock(texts, headingTwoBlock);
         headingTwoBlock.setType(BlockType.HEADING_2);
 
@@ -27,8 +27,8 @@ public class HeadingBlockHelper {
     }
 
     @NotNull
-    public static HeadingThreeBlock createDefaultHeadingThree(List<RichText> texts){
-        HeadingThreeBlock headingThreeBlock = new HeadingThreeBlock();
+    public static HeadingThreeBlockModel createDefaultHeadingThree(List<RichText> texts){
+        HeadingThreeBlockModel headingThreeBlock = new HeadingThreeBlockModel();
         initDefaultHeadingBlock(texts, headingThreeBlock);
         headingThreeBlock.setType(BlockType.HEADING_3);
 

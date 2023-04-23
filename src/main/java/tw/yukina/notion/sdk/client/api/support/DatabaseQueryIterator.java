@@ -2,11 +2,11 @@ package tw.yukina.notion.sdk.client.api.support;
 
 import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
 import tw.yukina.notion.sdk.model.endpoint.database.query.ResponsePageList;
-import tw.yukina.notion.sdk.model.page.Page;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
 import java.util.Iterator;
 
-public class DatabaseQueryIterator implements Iterator<Page> {
+public class DatabaseQueryIterator implements Iterator<PageModel> {
 
     private final DatabaseQueryCollector collector;
 
@@ -23,15 +23,15 @@ public class DatabaseQueryIterator implements Iterator<Page> {
         if(responsePageList == null){
             responsePageList = collector.apiClient.queryDatabase(collector.uuid, collector.databaseQuery);
         }
-        return index < responsePageList.getPages().size() || responsePageList.isHasMore();
+        return index < responsePageList.getPageModels().size() || responsePageList.isHasMore();
     }
 
     @Override
-    public Page next() {
-        if(index < responsePageList.getPages().size()){
-            Page page = responsePageList.getPages().get(index);
+    public PageModel next() {
+        if(index < responsePageList.getPageModels().size()){
+            PageModel pageModel = responsePageList.getPageModels().get(index);
             index += 1;
-            return page;
+            return pageModel;
         } else if(responsePageList.isHasMore()){
             DatabaseQuery databaseQuery = new DatabaseQuery();
             databaseQuery.setCompound(collector.databaseQuery.getCompound());
@@ -42,10 +42,10 @@ public class DatabaseQueryIterator implements Iterator<Page> {
             this.responsePageList = collector.apiClient.queryDatabase(collector.uuid, databaseQuery);
             System.out.println("new call");
             index = 0;
-            if(index < responsePageList.getPages().size()) {
-                Page page = responsePageList.getPages().get(index);
+            if(index < responsePageList.getPageModels().size()) {
+                PageModel pageModel = responsePageList.getPageModels().get(index);
                 index += 1;
-                return page;
+                return pageModel;
             }
         }
 

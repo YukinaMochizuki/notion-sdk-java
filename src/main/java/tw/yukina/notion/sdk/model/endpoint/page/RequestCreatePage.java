@@ -2,7 +2,7 @@ package tw.yukina.notion.sdk.model.endpoint.page;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import tw.yukina.notion.sdk.model.block.Block;
+import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
@@ -31,7 +31,7 @@ public class RequestCreatePage {
     private Map<String, PageProperty> properties;
 
     @JsonProperty(CHILDREN_FIELD)
-    private List<Block> children = new ArrayList<>();
+    private List<BlockModel> children = new ArrayList<>();
 
     @JsonProperty(ICON_FIELD)
     private Icon icon;

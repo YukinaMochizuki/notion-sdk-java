@@ -15,15 +15,13 @@ import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.common.user.PersonObject;
 import tw.yukina.notion.sdk.model.common.user.PersonUser;
 import tw.yukina.notion.sdk.model.common.user.UserType;
-import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.database.property.*;
 import tw.yukina.notion.sdk.model.database.property.FormulaObject;
 import tw.yukina.notion.sdk.model.helper.JsonNodeHelper;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.helper.SelectOptionHelper;
 import tw.yukina.notion.sdk.model.page.property.*;
-import tw.yukina.notion.sdk.model.page.property.rollup.ArrayRollupProperty;
-import tw.yukina.notion.sdk.model.page.property.rollup.RollupType;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -33,27 +31,27 @@ import java.util.*;
 
 public final class Thing {
 
-    public static Database getDatabase(JsonNode responseJsonNode, Database responseDatabase){
-        Database database = new Database();
-        database.setId(responseDatabase.getId());
-        database.setCreatedTime(responseDatabase.getCreatedTime());
-        database.setCreatedBy(responseDatabase.getCreatedBy());
-        database.setLastEditedTime(responseDatabase.getLastEditedTime());
-        database.setLastEditedBy(responseDatabase.getLastEditedBy());
-        database.setTitle(RichTextHelper.createDefaultArrayText("Thing (Test DB)"));
-        database.setDescription(Collections.emptyList());
-        database.setUrl(responseDatabase.getUrl());
-        database.setArchived(false);
-        database.setInline(false);
-        database.setParent(responseDatabase.getParent());
+    public static DatabaseModel getDatabase(JsonNode responseJsonNode, DatabaseModel responseDatabaseModel){
+        DatabaseModel databaseModel = new DatabaseModel();
+        databaseModel.setId(responseDatabaseModel.getId());
+        databaseModel.setCreatedTime(responseDatabaseModel.getCreatedTime());
+        databaseModel.setCreatedBy(responseDatabaseModel.getCreatedBy());
+        databaseModel.setLastEditedTime(responseDatabaseModel.getLastEditedTime());
+        databaseModel.setLastEditedBy(responseDatabaseModel.getLastEditedBy());
+        databaseModel.setTitle(RichTextHelper.createDefaultArrayText("Thing (Test DB)"));
+        databaseModel.setDescription(Collections.emptyList());
+        databaseModel.setUrl(responseDatabaseModel.getUrl());
+        databaseModel.setArchived(false);
+        databaseModel.setInline(false);
+        databaseModel.setParent(responseDatabaseModel.getParent());
 
         PageParent pageParent = new PageParent();
         pageParent.setParentType(ParentType.PAGE);
         pageParent.setPageId(JsonNodeHelper.getPageParentId(responseJsonNode));
-        database.setParent(pageParent);
+        databaseModel.setParent(pageParent);
 
         Map<String, DatabaseProperty> propertyMap = new HashMap<>();
-        database.setPropertyMap(propertyMap);
+        databaseModel.setPropertyMap(propertyMap);
 
         tw.yukina.notion.sdk.model.database.property.RelationProperty relationProperty = new tw.yukina.notion.sdk.model.database.property.RelationProperty();
         relationProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Related to Project (Test DB) (Property)"));
@@ -206,7 +204,7 @@ public final class Thing {
         databaseProperty.setType(PropertyType.TITLE);
         propertyMap.put("Name", databaseProperty);
 
-        return database;
+        return databaseModel;
     }
 
     public static Map<String, DatabaseProperty> getCreateDatabaseProperty(String projectId){

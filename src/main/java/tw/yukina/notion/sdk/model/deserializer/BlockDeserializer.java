@@ -5,58 +5,57 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.block.*;
-import tw.yukina.notion.sdk.model.block.file.FileBlock;
-import tw.yukina.notion.sdk.model.block.file.ImageBlock;
-import tw.yukina.notion.sdk.model.block.file.PDFBlock;
-import tw.yukina.notion.sdk.model.block.file.VideoBlock;
-import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlock;
-import tw.yukina.notion.sdk.model.block.heading.HeadingThreeBlock;
-import tw.yukina.notion.sdk.model.block.heading.HeadingTwoBlock;
-import tw.yukina.notion.sdk.model.block.list.BulletedListBlock;
-import tw.yukina.notion.sdk.model.block.list.NumberedListBlock;
-import tw.yukina.notion.sdk.model.block.list.ToggleBlock;
+import tw.yukina.notion.sdk.model.block.file.*;
+import tw.yukina.notion.sdk.model.block.file.FileBlockModel;
+import tw.yukina.notion.sdk.model.block.file.VideoBlockModel;
+import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlockModel;
+import tw.yukina.notion.sdk.model.block.heading.HeadingThreeBlockModel;
+import tw.yukina.notion.sdk.model.block.heading.HeadingTwoBlockModel;
+import tw.yukina.notion.sdk.model.block.list.BulletedListBlockModel;
+import tw.yukina.notion.sdk.model.block.list.NumberedListBlockModel;
+import tw.yukina.notion.sdk.model.block.list.ToggleBlockModel;
 
 import java.io.IOException;
 
-public class BlockDeserializer extends AbstractDeserializer<Block> {
+public class BlockDeserializer extends AbstractDeserializer<BlockModel> {
     @Override
-    public Block deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
+    public BlockModel deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
 
-        addAvailableType(BlockType.PARAGRAPH.getField(), ParagraphBlock.class);
+        addAvailableType(BlockType.PARAGRAPH.getField(), ParagraphBlockModel.class);
 
-        addAvailableType(BlockType.HEADING_1.getField(), HeadingOneBlock.class);
-        addAvailableType(BlockType.HEADING_2.getField(), HeadingTwoBlock.class);
-        addAvailableType(BlockType.HEADING_3.getField(), HeadingThreeBlock.class);
+        addAvailableType(BlockType.HEADING_1.getField(), HeadingOneBlockModel.class);
+        addAvailableType(BlockType.HEADING_2.getField(), HeadingTwoBlockModel.class);
+        addAvailableType(BlockType.HEADING_3.getField(), HeadingThreeBlockModel.class);
 
-        addAvailableType(BlockType.BULLETED_LIST_ITEM.getField(), BulletedListBlock.class);
-        addAvailableType(BlockType.NUMBERED_LIST_ITEM.getField(), NumberedListBlock.class);
-        addAvailableType(BlockType.TOGGLE.getField(), ToggleBlock.class);
-        addAvailableType(BlockType.CODE.getField(), CodeBlock.class);
-        addAvailableType(BlockType.TO_DO.getField(), TodoBlock.class);
+        addAvailableType(BlockType.BULLETED_LIST_ITEM.getField(), BulletedListBlockModel.class);
+        addAvailableType(BlockType.NUMBERED_LIST_ITEM.getField(), NumberedListBlockModel.class);
+        addAvailableType(BlockType.TOGGLE.getField(), ToggleBlockModel.class);
+        addAvailableType(BlockType.CODE.getField(), CodeBlockModel.class);
+        addAvailableType(BlockType.TO_DO.getField(), TodoBlockModel.class);
 
-        addAvailableType(BlockType.FILE.getField(), FileBlock.class);
-        addAvailableType(BlockType.IMAGE.getField(), ImageBlock.class);
-        addAvailableType(BlockType.PDF.getField(), PDFBlock.class);
-        addAvailableType(BlockType.BOOKMARK.getField(), BookmarkBlock.class);
-        addAvailableType(BlockType.VIDEO.getField(), VideoBlock.class);
+        addAvailableType(BlockType.FILE.getField(), FileBlockModel.class);
+        addAvailableType(BlockType.IMAGE.getField(), ImageBlockModel.class);
+        addAvailableType(BlockType.PDF.getField(), PDFBlockModel.class);
+        addAvailableType(BlockType.BOOKMARK.getField(), BookmarkBlockModel.class);
+        addAvailableType(BlockType.VIDEO.getField(), VideoBlockModel.class);
 
-        addAvailableType(BlockType.CHILD_PAGE.getField(), ChildPageBlock.class);
-        addAvailableType(BlockType.CHILD_DATABASE.getField(), ChildDatabaseBlock.class);
+        addAvailableType(BlockType.CHILD_PAGE.getField(), ChildPageBlockModel.class);
+        addAvailableType(BlockType.CHILD_DATABASE.getField(), ChildDatabaseBlockModel.class);
 
-        addAvailableType(BlockType.CALLOUT.getField(), CalloutBlock.class);
-        addAvailableType(BlockType.QUOTE.getField(), QuoteBlock.class);
-        addAvailableType(BlockType.EQUATION.getField(), EquationBlock.class);
+        addAvailableType(BlockType.CALLOUT.getField(), CalloutBlockModel.class);
+        addAvailableType(BlockType.QUOTE.getField(), QuoteBlockModel.class);
+        addAvailableType(BlockType.EQUATION.getField(), EquationBlockModel.class);
 
-        addAvailableType(BlockType.DIVIDER.getField(), DividerBlock.class);
-        addAvailableType(BlockType.TABLE_OF_CONTENTS.getField(), TableOfContentsBlock.class);
-        addAvailableType(BlockType.BREADCRUMB.getField(), BreadcrumbBlock.class);
-        addAvailableType(BlockType.COLUMN.getField(), ColumnBlock.class);
-        addAvailableType(BlockType.COLUMN_LIST.getField(), ColumnListBlock.class);
-        addAvailableType(BlockType.LINK_PREVIEW.getField(), LinkPreviewBlock.class);
-        addAvailableType(BlockType.TEMPLATE.getField(), TemplateBlock.class);
-        addAvailableType(BlockType.SYNCED_BLOCK.getField(), SyncedBlock.class);
+        addAvailableType(BlockType.DIVIDER.getField(), DividerBlockModel.class);
+        addAvailableType(BlockType.TABLE_OF_CONTENTS.getField(), TableOfContentsBlockModel.class);
+        addAvailableType(BlockType.BREADCRUMB.getField(), BreadcrumbBlockModel.class);
+        addAvailableType(BlockType.COLUMN.getField(), ColumnBlockModel.class);
+        addAvailableType(BlockType.COLUMN_LIST.getField(), ColumnListBlockModel.class);
+        addAvailableType(BlockType.LINK_PREVIEW.getField(), LinkPreviewBlockModel.class);
+        addAvailableType(BlockType.TEMPLATE.getField(), TemplateBlockModel.class);
+        addAvailableType(BlockType.SYNCED_BLOCK.getField(), SyncedBlockModel.class);
 
         return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
     }

@@ -6,40 +6,34 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
-import tw.yukina.notion.sdk.model.page.Page;
-
-import java.io.IOException;
-
-import static tw.yukina.notion.sdk.Configuration.BASE_URL;
-import static tw.yukina.notion.sdk.Configuration.MEDIA_TYPE_JSON;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
 public class CreatePage extends AbstractPageEndpoint {
 
     @NotNull
-    public static Page callValue(@NotNull RequestCreatePage requestCreatePage,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+    public static PageModel callValue(@NotNull RequestCreatePage requestCreatePage,
+                                      @NotNull OkHttpClient okHttpClient,
+                                      @NotNull Request.Builder builder,
+                                      @NotNull ObjectMapper objectMapper) {
 
         return toPage(callTree(requestCreatePage, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
-    public static Page callValue(@NotNull JsonNode json,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+    public static PageModel callValue(@NotNull JsonNode json,
+                                      @NotNull OkHttpClient okHttpClient,
+                                      @NotNull Request.Builder builder,
+                                      @NotNull ObjectMapper objectMapper) {
 
         return toPage(callTree(json, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
-    public static Page callValue(@NotNull String json,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+    public static PageModel callValue(@NotNull String json,
+                                      @NotNull OkHttpClient okHttpClient,
+                                      @NotNull Request.Builder builder,
+                                      @NotNull ObjectMapper objectMapper) {
 
         return toPage(callTree(json, okHttpClient, builder, objectMapper), objectMapper);
     }

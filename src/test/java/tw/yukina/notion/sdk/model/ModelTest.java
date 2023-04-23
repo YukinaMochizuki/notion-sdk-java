@@ -75,6 +75,15 @@ public class ModelTest {
     public ObjectMapper getCommonObjectMapper(){
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
+        objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
+        objectMapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
+
+        return objectMapper;
+    }
+
+    public ObjectMapper getIncludeNullObjectMapper(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(getObjectMapperModule());
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
         objectMapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);

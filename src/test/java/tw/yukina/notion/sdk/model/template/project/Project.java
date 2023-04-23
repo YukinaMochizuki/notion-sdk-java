@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.common.parent.PageParent;
 import tw.yukina.notion.sdk.model.common.parent.ParentType;
-import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
 import tw.yukina.notion.sdk.model.database.property.SelectObject;
 import tw.yukina.notion.sdk.model.helper.JsonNodeHelper;
@@ -58,21 +58,21 @@ public final class Project {
         return propertyMap;
     }
 
-    public static Database getDatabase(JsonNode responseJsonNode, Database responseDatabase){
-        Database database = new Database();
-        database.setId(responseDatabase.getId());
-        database.setCreatedTime(responseDatabase.getCreatedTime());
-        database.setLastEditedTime(responseDatabase.getLastEditedTime());
-        database.setTitle(RichTextHelper.createDefaultArrayText("Project (Test DB)"));
-        database.setUrl(responseDatabase.getUrl());
+    public static DatabaseModel getDatabase(JsonNode responseJsonNode, DatabaseModel responseDatabaseModel){
+        DatabaseModel databaseModel = new DatabaseModel();
+        databaseModel.setId(responseDatabaseModel.getId());
+        databaseModel.setCreatedTime(responseDatabaseModel.getCreatedTime());
+        databaseModel.setLastEditedTime(responseDatabaseModel.getLastEditedTime());
+        databaseModel.setTitle(RichTextHelper.createDefaultArrayText("Project (Test DB)"));
+        databaseModel.setUrl(responseDatabaseModel.getUrl());
 
         PageParent pageParent = new PageParent();
         pageParent.setParentType(ParentType.PAGE);
         pageParent.setPageId(JsonNodeHelper.getPageParentId(responseJsonNode));
-        database.setParent(pageParent);
+        databaseModel.setParent(pageParent);
 
         Map<String, DatabaseProperty> propertyMap = new HashMap<>();
-        database.setPropertyMap(propertyMap);
+        databaseModel.setPropertyMap(propertyMap);
 
         DatabaseProperty databaseProperty = new DatabaseProperty();
         databaseProperty.setId(JsonNodeHelper.getPropertyId(responseJsonNode, "Name"));
@@ -114,6 +114,6 @@ public final class Project {
 
         multiSelectObject.setSelectOptions(JsonNodeHelper.getMultiSelectPropertyOptions(responseJsonNode, "Tags"));
 
-        return database;
+        return databaseModel;
     }
 }
