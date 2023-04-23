@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.TextColor;
-import tw.yukina.notion.sdk.model.common.EmptyObject;
 
 @Getter
 @Setter

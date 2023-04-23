@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
@@ -26,6 +27,7 @@ public class ParagraphBlock extends Block implements TextBlock {
     public static ParagraphBlock of(List<RichText> richTexts){
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(richTexts);
+        paragraph.setColor(TextColor.DEFAULT);
         ParagraphBlock paragraphBlock = new ParagraphBlock();
         paragraphBlock.setParagraph(paragraph);
         paragraphBlock.setType(BlockType.PARAGRAPH);

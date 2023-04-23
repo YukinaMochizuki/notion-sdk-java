@@ -30,7 +30,7 @@ public class QuoteBlock extends Block implements TextBlock {
         paragraph.setRichTexts(richTexts);
         QuoteBlock quoteBlock = new QuoteBlock();
         quoteBlock.setParagraph(paragraph);
-        quoteBlock.setType(BlockType.PARAGRAPH);
+        quoteBlock.setType(BlockType.QUOTE);
         return quoteBlock;
     }
 }
