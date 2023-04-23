@@ -8,6 +8,7 @@ import lombok.ToString;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import tw.yukina.notion.sdk.model.database.property.DatabaseProperty;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,4 +33,19 @@ public class RequestCreateDatabase {
     @JsonProperty(TITLE_FIELD)
     private List<RichText> title = new ArrayList<>();
 
+    public static RequestCreateDatabase of(List<RichText> title, Map<String, DatabaseProperty> properties, Parent parent){
+        RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
+        requestCreateDatabase.setTitle(title);
+        requestCreateDatabase.setProperties(properties);
+        requestCreateDatabase.setParent(parent);
+        return requestCreateDatabase;
+    }
+
+    public static RequestCreateDatabase of(String title, Map<String, DatabaseProperty> properties, Parent parent){
+        RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
+        requestCreateDatabase.setTitle(RichTextHelper.createDefaultArrayText(title));
+        requestCreateDatabase.setProperties(properties);
+        requestCreateDatabase.setParent(parent);
+        return requestCreateDatabase;
+    }
 }
