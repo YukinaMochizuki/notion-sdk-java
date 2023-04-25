@@ -18,4 +18,9 @@ public class HeadingThreeBlockModel extends BlockModel implements HeadingBlock {
 
     @JsonProperty(HEADING_ONE_FIELD)
     private Heading heading;
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

@@ -26,7 +26,7 @@ public class Paragraph {
     private List<RichText> richTexts;
 
     @JsonProperty(COLOR_FIELD)
-    private TextColor color;
+    private TextColor color = TextColor.DEFAULT;
 
     @Nullable
     @JsonProperty(CHILDREN_FIELD)

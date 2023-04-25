@@ -21,4 +21,8 @@ public class BulletedListBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(BULLETED_LIST_FIELD)
     private Paragraph paragraph;
 
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
 }

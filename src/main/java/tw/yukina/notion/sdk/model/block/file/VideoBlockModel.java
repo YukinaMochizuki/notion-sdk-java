@@ -19,4 +19,9 @@ public class VideoBlockModel extends BlockModel {
 
     @JsonProperty(VIDEO_FIELD)
     private FileObject fileObject;
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

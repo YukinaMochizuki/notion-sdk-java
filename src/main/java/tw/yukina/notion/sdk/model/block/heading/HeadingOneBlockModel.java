@@ -13,9 +13,14 @@ import tw.yukina.notion.sdk.model.block.BlockModel;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class HeadingOneBlockModel extends BlockModel implements HeadingBlock{
+public class HeadingOneBlockModel extends BlockModel implements HeadingBlock {
     private static final String HEADING_ONE_FIELD = "heading_1";
 
     @JsonProperty(HEADING_ONE_FIELD)
     private Heading heading;
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

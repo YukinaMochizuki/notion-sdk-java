@@ -21,8 +21,13 @@ public class TableOfContentsBlockModel extends BlockModel {
     @JsonProperty(TABLE_OF_CONTENTS_FIELD)
     private TableOfContents tableOfContents;
 
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
+
     @NotNull
-    public static TableOfContentsBlockModel of(){
+    public static TableOfContentsBlockModel of() {
         TableOfContentsBlockModel tableOfContentsBlock = new TableOfContentsBlockModel();
         tableOfContentsBlock.setType(BlockType.TABLE_OF_CONTENTS);
         tableOfContentsBlock.setTableOfContents(new TableOfContents(TextColor.DEFAULT));
@@ -30,7 +35,7 @@ public class TableOfContentsBlockModel extends BlockModel {
     }
 
     @NotNull
-    public static TableOfContentsBlockModel of(@NotNull TextColor textColor){
+    public static TableOfContentsBlockModel of(@NotNull TextColor textColor) {
         TableOfContentsBlockModel tableOfContentsBlock = new TableOfContentsBlockModel();
         tableOfContentsBlock.setType(BlockType.TABLE_OF_CONTENTS);
         tableOfContentsBlock.setTableOfContents(new TableOfContents(textColor));

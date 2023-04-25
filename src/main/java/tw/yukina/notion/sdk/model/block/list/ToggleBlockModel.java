@@ -20,4 +20,9 @@ public class ToggleBlockModel extends BlockModel implements TextBlock {
 
     @JsonProperty(TOGGLE_FIELD)
     private Paragraph paragraph;
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
 }

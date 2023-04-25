@@ -38,8 +38,13 @@ public class CalloutBlockModel extends BlockModel implements TextBlock {
         return callout;
     }
 
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
+
     @NotNull
-    public static CalloutBlockModel of(List<RichText> richTexts){
+    public static CalloutBlockModel of(List<RichText> richTexts) {
         Callout callout = new Callout();
         callout.setRichTexts(richTexts);
         CalloutBlockModel calloutBlock = new CalloutBlockModel();
@@ -49,7 +54,7 @@ public class CalloutBlockModel extends BlockModel implements TextBlock {
     }
 
     @NotNull
-    public static CalloutBlockModel of(List<RichText> richTexts, Icon icon){
+    public static CalloutBlockModel of(List<RichText> richTexts, Icon icon) {
         Callout callout = new Callout();
         callout.setRichTexts(richTexts);
         callout.setIcon(icon);
@@ -60,7 +65,7 @@ public class CalloutBlockModel extends BlockModel implements TextBlock {
     }
 
     @NotNull
-    public static CalloutBlockModel of(List<RichText> richTexts, String emoji){
+    public static CalloutBlockModel of(List<RichText> richTexts, String emoji) {
         IconEmoji iconEmoji = IconEmoji.of(emoji);
         Callout callout = new Callout();
         callout.setRichTexts(richTexts);

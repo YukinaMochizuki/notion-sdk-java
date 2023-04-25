@@ -1,5 +1,6 @@
 package tw.yukina.notion.sdk.model.block;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
@@ -14,7 +15,7 @@ import tw.yukina.notion.sdk.model.deserializer.BlockDeserializer;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = BlockDeserializer.class)
-public class BlockModel extends NotionObject {
+public abstract class BlockModel extends NotionObject {
 
     private static final String TYPE_FIELD = "type";
     private static final String HAS_CHILDREN_FIELD = "has_children";
@@ -31,4 +32,7 @@ public class BlockModel extends NotionObject {
 
     @JsonProperty(ARCHIVED_FIELD)
     private Boolean archived = false;
+
+    @JsonIgnore
+    public abstract boolean canHaveChildren();
 }

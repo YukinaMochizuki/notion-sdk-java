@@ -35,8 +35,13 @@ public class TodoBlockModel extends BlockModel implements TextBlock {
         return todo;
     }
 
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
+
     @NotNull
-    public static TodoBlockModel of(List<RichText> richTexts){
+    public static TodoBlockModel of(List<RichText> richTexts) {
         Todo todo = new Todo();
         todo.setRichTexts(richTexts);
         TodoBlockModel todoBlock = new TodoBlockModel();
@@ -46,7 +51,7 @@ public class TodoBlockModel extends BlockModel implements TextBlock {
     }
 
     @NotNull
-    public static TodoBlockModel of(List<RichText> richTexts, boolean check){
+    public static TodoBlockModel of(List<RichText> richTexts, boolean check) {
         Todo todo = new Todo();
         todo.setRichTexts(richTexts);
         todo.setChecked(check);

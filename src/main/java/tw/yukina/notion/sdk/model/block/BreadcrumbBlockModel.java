@@ -26,4 +26,9 @@ public class BreadcrumbBlockModel extends BlockModel {
         breadcrumbBlock.setType(BlockType.BREADCRUMB);
         return breadcrumbBlock;
     }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

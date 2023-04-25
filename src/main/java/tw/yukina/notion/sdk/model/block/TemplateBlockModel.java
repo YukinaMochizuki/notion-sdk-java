@@ -22,6 +22,11 @@ public class TemplateBlockModel extends BlockModel {
     @JsonProperty(TEMPLATE_FIELD)
     private Template template;
 
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
+
     @NotNull
     public static TemplateBlockModel of(List<RichText> title, List<BlockModel> blocks) {
         Template template = new Template(title, blocks);

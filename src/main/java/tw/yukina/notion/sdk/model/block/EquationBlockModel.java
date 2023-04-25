@@ -21,8 +21,13 @@ public class EquationBlockModel extends BlockModel {
     @JsonProperty(EQUATION_FIELD)
     private Equation equation;
 
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
+
     @NotNull
-    public static EquationBlockModel of(String expression){
+    public static EquationBlockModel of(String expression) {
         Equation equation = new Equation(expression);
         EquationBlockModel equationBlock = new EquationBlockModel();
         equationBlock.setEquation(equation);

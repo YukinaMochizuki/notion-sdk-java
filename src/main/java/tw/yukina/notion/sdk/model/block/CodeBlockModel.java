@@ -23,6 +23,11 @@ public class CodeBlockModel extends BlockModel {
     @JsonProperty(CODE_FIELD)
     private Code code;
 
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
+
     @NotNull
     public static CodeBlockModel of(List<RichText> richTexts, CodeLanguageType languageType, List<RichText> caption) {
         Code code = new Code(richTexts, languageType, caption);

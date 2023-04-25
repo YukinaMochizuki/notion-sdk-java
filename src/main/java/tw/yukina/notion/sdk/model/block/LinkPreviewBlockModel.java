@@ -20,8 +20,13 @@ public class LinkPreviewBlockModel extends BlockModel {
     @JsonProperty(LINK_PREVIEW_FIELD)
     private LinkPreview linkPreview;
 
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
+
     @NotNull
-    public static LinkPreviewBlockModel of(String url){
+    public static LinkPreviewBlockModel of(String url) {
         LinkPreview linkPreview = new LinkPreview(url);
         LinkPreviewBlockModel linkPreviewBlock = new LinkPreviewBlockModel(linkPreview);
         linkPreviewBlock.setType(BlockType.LINK_PREVIEW);

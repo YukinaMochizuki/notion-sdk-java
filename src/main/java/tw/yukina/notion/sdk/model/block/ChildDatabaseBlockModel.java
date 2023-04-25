@@ -17,4 +17,9 @@ public class ChildDatabaseBlockModel extends BlockModel {
 
     @JsonProperty(CHILD_DATABASE_FIELD)
     private ChildPage childPage;
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

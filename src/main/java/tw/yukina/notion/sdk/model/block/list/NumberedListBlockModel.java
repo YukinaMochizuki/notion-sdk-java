@@ -20,4 +20,9 @@ public class NumberedListBlockModel extends BlockModel implements TextBlock {
 
     @JsonProperty(NUMBERED_LIST_FIELD)
     private Paragraph paragraph;
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
 }

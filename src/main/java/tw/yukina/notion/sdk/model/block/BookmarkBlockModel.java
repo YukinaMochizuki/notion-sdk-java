@@ -42,4 +42,9 @@ public class BookmarkBlockModel extends BlockModel {
         bookmarkBlock.setType(BlockType.BOOKMARK);
         return bookmarkBlock;
     }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

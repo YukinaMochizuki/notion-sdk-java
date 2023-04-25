@@ -21,4 +21,8 @@ public class FileBlockModel extends BlockModel {
     @JsonProperty(FILE_FIELD)
     private FileObject fileObject;
 
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

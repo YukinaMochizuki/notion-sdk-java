@@ -22,8 +22,13 @@ public class QuoteBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(PARAGRAPH_FIELD)
     private Paragraph paragraph;
 
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
+
     @NotNull
-    public static QuoteBlockModel of(List<RichText> richTexts){
+    public static QuoteBlockModel of(List<RichText> richTexts) {
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(richTexts);
         QuoteBlockModel quoteBlock = new QuoteBlockModel();

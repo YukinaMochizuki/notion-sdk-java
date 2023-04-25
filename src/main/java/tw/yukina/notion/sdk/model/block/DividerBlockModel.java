@@ -21,8 +21,13 @@ public class DividerBlockModel extends BlockModel {
     @JsonProperty(DIVIDER_FIELD)
     private EmptyObject emptyObject;
 
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
+
     @NotNull
-    public static DividerBlockModel of(){
+    public static DividerBlockModel of() {
         DividerBlockModel dividerBlock = new DividerBlockModel(EmptyObject.of());
         dividerBlock.setType(BlockType.DIVIDER);
         return dividerBlock;

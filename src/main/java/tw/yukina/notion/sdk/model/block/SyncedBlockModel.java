@@ -23,8 +23,13 @@ public class SyncedBlockModel extends BlockModel {
     @JsonProperty(SYNCED_BLOCK_FIELD)
     private Synced synced;
 
+    @Override
+    public boolean canHaveChildren() {
+        return true;
+    }
+
     @NotNull
-    public static SyncedBlockModel of(){
+    public static SyncedBlockModel of() {
         Synced synced = new Synced();
         SyncedBlockModel syncedBlock = new SyncedBlockModel(synced);
         syncedBlock.setType(BlockType.SYNCED_BLOCK);
@@ -32,7 +37,7 @@ public class SyncedBlockModel extends BlockModel {
     }
 
     @NotNull
-    public static SyncedBlockModel of(String blockId){
+    public static SyncedBlockModel of(String blockId) {
         Synced synced = new Synced();
         synced.setBlockUnit(BlockUnit.of(blockId));
 
@@ -42,7 +47,7 @@ public class SyncedBlockModel extends BlockModel {
     }
 
     @NotNull
-    public static SyncedBlockModel of(List<BlockModel> children){
+    public static SyncedBlockModel of(List<BlockModel> children) {
         Synced synced = new Synced();
         synced.setChildren(children);
 

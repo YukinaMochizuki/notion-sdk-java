@@ -19,4 +19,9 @@ public class ImageBlockModel extends BlockModel {
 
     @JsonProperty(IMAGE_FIELD)
     private FileObject fileObject;
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

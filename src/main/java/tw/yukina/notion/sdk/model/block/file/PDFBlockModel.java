@@ -19,4 +19,9 @@ public class PDFBlockModel extends BlockModel {
 
     @JsonProperty(PDF_FIELD)
     private FileObject fileObject;
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
+    }
 }
