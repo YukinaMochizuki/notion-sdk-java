@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.Collections;
@@ -26,6 +27,19 @@ public class CodeBlockModel extends BlockModel {
     @Override
     public boolean canHaveChildren() {
         return false;
+    }
+
+    @NotNull
+    public static CodeBlockModel of(String plainText, CodeLanguageType languageType, String caption) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        List<RichText> captionRichTexts = TextBuilder.of(caption).build();
+        return of(richTexts, languageType, captionRichTexts);
+    }
+
+    @NotNull
+    public static CodeBlockModel of(String plainText, CodeLanguageType languageType) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts, languageType);
     }
 
     @NotNull

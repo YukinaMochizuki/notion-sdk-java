@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.IconEmoji;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
@@ -41,6 +42,12 @@ public class CalloutBlockModel extends BlockModel implements TextBlock {
     @Override
     public boolean canHaveChildren() {
         return true;
+    }
+
+    @NotNull
+    public static CalloutBlockModel of(String plainText) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts);
     }
 
     @NotNull

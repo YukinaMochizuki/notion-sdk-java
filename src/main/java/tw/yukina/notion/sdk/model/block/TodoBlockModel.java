@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
@@ -41,9 +42,22 @@ public class TodoBlockModel extends BlockModel implements TextBlock {
     }
 
     @NotNull
+    public static TodoBlockModel of(String plainText) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts);
+    }
+
+    @NotNull
+    public static TodoBlockModel of(String plainText, boolean check) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts, check);
+    }
+
+    @NotNull
     public static TodoBlockModel of(List<RichText> richTexts) {
         Todo todo = new Todo();
         todo.setRichTexts(richTexts);
+        todo.setChecked(false);
         TodoBlockModel todoBlock = new TodoBlockModel();
         todoBlock.setTodo(todo);
         todoBlock.setType(BlockType.TO_DO);

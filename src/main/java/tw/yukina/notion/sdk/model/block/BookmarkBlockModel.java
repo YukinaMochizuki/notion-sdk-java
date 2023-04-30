@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
@@ -30,6 +31,12 @@ public class BookmarkBlockModel extends BlockModel {
         bookmarkBlock.setBookmark(bookmark);
         bookmarkBlock.setType(BlockType.BOOKMARK);
         return bookmarkBlock;
+    }
+
+    @NotNull
+    public static BookmarkBlockModel of(String url, String caption){
+        List<RichText> richTexts = TextBuilder.of(caption).build();
+        return of(url, richTexts);
     }
 
     @NotNull

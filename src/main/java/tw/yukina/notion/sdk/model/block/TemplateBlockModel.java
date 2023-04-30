@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
@@ -25,6 +26,12 @@ public class TemplateBlockModel extends BlockModel {
     @Override
     public boolean canHaveChildren() {
         return true;
+    }
+
+    @NotNull
+    public static TemplateBlockModel of(String plainText, List<BlockModel> blocks) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts, blocks);
     }
 
     @NotNull

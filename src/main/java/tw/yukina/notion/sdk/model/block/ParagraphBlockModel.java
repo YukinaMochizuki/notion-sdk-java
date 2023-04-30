@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
@@ -44,6 +45,12 @@ public class ParagraphBlockModel extends BlockModel implements TextBlock {
     @Override
     public boolean canHaveChildren() {
         return true;
+    }
+
+    @NotNull
+    public static ParagraphBlockModel of(String plainText) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts);
     }
 
     @NotNull

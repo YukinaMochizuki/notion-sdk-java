@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
@@ -25,6 +26,12 @@ public class QuoteBlockModel extends BlockModel implements TextBlock {
     @Override
     public boolean canHaveChildren() {
         return true;
+    }
+
+    @NotNull
+    public static QuoteBlockModel of(String plainText) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts);
     }
 
     @NotNull

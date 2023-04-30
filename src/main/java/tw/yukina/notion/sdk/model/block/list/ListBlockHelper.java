@@ -9,6 +9,7 @@ import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.List;
 
+@Deprecated
 public class ListBlockHelper {
 
     @NotNull
