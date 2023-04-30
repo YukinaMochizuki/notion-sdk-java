@@ -67,16 +67,40 @@ public class RetrieveBlockChildren extends AbstractBlockEndpoint {
     }
 
     @NotNull
+    public static ResponseBlockList callValue(@NotNull String uuid,
+                                              @NotNull OkHttpClient okHttpClient,
+                                              @NotNull Request.Builder builder,
+                                              @NotNull ObjectMapper objectMapper,
+                                              @NotNull String startCursor, int pageSize) {
+
+        ObjectNode objectNode = callTree(uuid, okHttpClient, builder, objectMapper, startCursor, pageSize);
+        return toBlockList(objectNode, objectMapper);
+    }
+
+    @NotNull
+    public static ObjectNode callTree(@NotNull String uuid,
+                                      @NotNull OkHttpClient okHttpClient,
+                                      @NotNull Request.Builder builder,
+                                      @NotNull ObjectMapper objectMapper,
+                                      @NotNull String startCursor, int pageSize) {
+
+        return getObjectNode(call(uuid, okHttpClient, builder, startCursor, pageSize), objectMapper);
+    }
+
+    @NotNull
     public static Response call(@NotNull String uuid,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
                                 @NotNull String startCursor, int pageSize) {
 
-        HttpUrl httpUrl = Objects.requireNonNull(HttpUrl.parse(BASE_URL + PATH + uuid + "/children")).newBuilder()
-                .addQueryParameter("start_cursor", startCursor)
-                .addQueryParameter("page_size", String.valueOf(pageSize)).build();
+        var urlBuilder = Objects.requireNonNull(HttpUrl.parse(BASE_URL + PATH + uuid + "/children")).newBuilder()
+                .addQueryParameter("page_size", String.valueOf(pageSize));
 
-        okhttp3.Request request = builder.url(httpUrl).build();
+        if(!startCursor.equals("")) {
+            urlBuilder.addQueryParameter("start_cursor", startCursor);
+        }
+
+        okhttp3.Request request = builder.url(urlBuilder.build()).build();
         Call call = okHttpClient.newCall(request);
 
         try {

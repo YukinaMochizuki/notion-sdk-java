@@ -1,22 +1,44 @@
 package tw.yukina.notion.sdk.client;
 
-import lombok.Getter;
 import tw.yukina.notion.sdk.client.api.ApiClient;
-import tw.yukina.notion.sdk.client.api.ApiClientFactory;
+import tw.yukina.notion.sdk.model.block.BlockModel;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
-public class NotionClient {
+import java.util.List;
 
-    @Getter
-    private final ApiClient apiClient;
+public interface NotionClient {
+    DatabaseModel getDatabaseByUuid(String uuid);
 
-    public NotionClient(String token){
-        ApiClientFactory apiClientFactory = new ApiClientFactory();
-        apiClientFactory.setToken(token);
-        apiClientFactory.applyDefaultSetting();
-        this.apiClient = apiClientFactory.build();
-    }
+    DatabaseModel save(DatabaseModel databaseModel);
 
-    public NotionSession openSession(){
-        return new NotionSessionImpl(apiClient);
-    }
+    Page getPageByUuid(String uuid);
+
+    Page save(PageModel pageModel);
+
+    void remove(PageModel pageModel);
+
+    Content getContentByUuid(String uuid);
+
+    Content save(BlockModel blockModel);
+
+    void remove(BlockModel blockModel);
+
+    Contents getContentsByUuid(String uuid);
+
+    Contents getContentsByUuid(String uuid, String startCursor);
+
+    Contents getContentsByUuid(String uuid, String startCursor, Integer pageSize);
+
+    Contents save(Contents contents);
+
+    Contents append(String parentUuid, BlockModel blockModel);
+
+    Contents append(String parentUuid, List<? extends BlockModel> blockModels);
+
+    void remove(Contents contents);
+
+//    Page save(Page page, List<Block> content);
+
+    ApiClient getApiClient();
 }

@@ -25,11 +25,13 @@ public interface ApiClient {
 
     ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor);
 
+    ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor, @NotNull Integer pageSize);
+
     ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull BlockModel block);
 
     ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull BlockModel... blocks);
 
-    ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<BlockModel> blocks);
+    ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<? extends BlockModel> blocks);
 
     ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList);
 

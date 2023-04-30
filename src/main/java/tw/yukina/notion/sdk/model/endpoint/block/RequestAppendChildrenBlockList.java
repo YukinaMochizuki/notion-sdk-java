@@ -18,6 +18,6 @@ public class RequestAppendChildrenBlockList {
     private static final String CHILDREN_FIELD = "children";
 
     @JsonProperty(CHILDREN_FIELD)
-    private List<BlockModel> blocks = new ArrayList<>();
+    private List<? extends BlockModel> blocks = new ArrayList<>();
 
 }

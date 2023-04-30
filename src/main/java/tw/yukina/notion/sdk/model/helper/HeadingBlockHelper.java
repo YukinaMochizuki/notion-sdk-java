@@ -7,6 +7,7 @@ import tw.yukina.notion.sdk.model.block.heading.*;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 import java.util.List;
 
+@Deprecated
 public class HeadingBlockHelper {
     @NotNull
     public static HeadingOneBlockModel createDefaultHeadingOne(List<RichText> texts){

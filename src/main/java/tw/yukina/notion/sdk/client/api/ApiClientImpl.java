@@ -75,6 +75,11 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
+    public ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor, @NotNull Integer pageSize) {
+        return RetrieveBlockChildren.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper(), startCursor, pageSize);
+    }
+
+    @Override
     public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull BlockModel block) {
         List<BlockModel> blocks = List.of(block);
         return appendBlockChildren(uuid, blocks);
@@ -87,7 +92,7 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<BlockModel> blocks) {
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull List<? extends BlockModel> blocks) {
         RequestAppendChildrenBlockList requestAppendChildrenBlockList = new RequestAppendChildrenBlockList(blocks);
         return appendBlockChildren(uuid, requestAppendChildrenBlockList);
     }

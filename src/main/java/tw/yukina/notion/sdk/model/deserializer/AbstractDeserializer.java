@@ -12,14 +12,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@SuppressWarnings({"rawtypes", "unchecked"})
 public abstract class AbstractDeserializer<T> extends JsonDeserializer<T> {
 
     private final List<TypeUnit<T>> typeUnits = new ArrayList<>();
 
     public Optional<T> typeDeserialize(String type, JsonNode node, ObjectCodec codec) throws JsonProcessingException {
-        for(TypeUnit typeUnit: typeUnits){
-            if(Objects.equals(typeUnit.getType(), type)) return Optional.of((T)codec.treeToValue(node, typeUnit.getClazz()));
+        for(TypeUnit<T> typeUnit: typeUnits){
+            if(Objects.equals(typeUnit.getType(), type)) return Optional.of(codec.treeToValue(node, typeUnit.getClazz()));
         }
         return Optional.empty();
     }
