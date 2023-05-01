@@ -8,4 +8,6 @@ public interface Entity<T> {
     T save();
 
     void remove();
+
+    T restore();
 }

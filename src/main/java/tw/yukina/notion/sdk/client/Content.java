@@ -45,6 +45,10 @@ public class Content implements Entity<Content> {
         this.notionClient.remove(this.blockModel);
     }
 
+    public Content restore() {
+        return this.notionClient.restoreContent(this.blockModel.getId());
+    }
+
     @Override
     public Boolean isDirty() {
         String newEntitySnapshot = String.valueOf(notionClient.getApiClient().serialize(this.blockModel));

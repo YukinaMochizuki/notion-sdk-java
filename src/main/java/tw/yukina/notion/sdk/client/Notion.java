@@ -8,6 +8,8 @@ import tw.yukina.notion.sdk.model.common.parent.BlockParent;
 import tw.yukina.notion.sdk.model.common.parent.PageParent;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
+import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
+import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
 import tw.yukina.notion.sdk.model.page.PageModel;
@@ -34,8 +36,48 @@ public class Notion implements NotionClient {
     }
 
     @Override
-    public DatabaseModel getDatabaseByUuid(String uuid) {
-        return null;
+    public Database getDatabaseByUuid(String uuid) {
+        DatabaseModel databaseModel = apiClient.retrieveDatabase(uuid);
+        return wrapDatabase(databaseModel);
+    }
+
+    @Override
+    public Database save(DatabaseModel databaseModel) {
+        DatabaseModel resultModel;
+        if (databaseModel.getId() == null) {
+            if (databaseModel.getParent() == null)
+                throw new NotionClientValidationException("Parent is required when creating a new database");
+
+            if (databaseModel.getTitle() == null)
+                throw new NotionClientValidationException("Title is required when creating a new database");
+
+            RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
+            requestCreateDatabase.setTitle(databaseModel.getTitle());
+            requestCreateDatabase.setProperties(databaseModel.getPropertyMap());
+            requestCreateDatabase.setParent(databaseModel.getParent());
+            resultModel = apiClient.createDatabase(requestCreateDatabase);
+        } else {
+            RequestUpdateDatabase requestUpdateDatabase = new RequestUpdateDatabase();
+            requestUpdateDatabase.setTitle(databaseModel.getTitle());
+            requestUpdateDatabase.setProperties(databaseModel.getPropertyMap());
+            resultModel = apiClient.updateDatabase(databaseModel.getId(), requestUpdateDatabase);
+        }
+
+        return wrapDatabase(resultModel);
+    }
+
+    @Override
+    public void remove(DatabaseModel databaseModel) {
+        if (databaseModel.getId() == null)
+            throw new NotionClientValidationException("Database id is required when removing a database");
+
+        apiClient.deleteBlock(databaseModel.getId());
+    }
+
+    @Override
+    public Database restoreDatabase(String uuid) {
+        restoreContent(uuid);
+        return getDatabaseByUuid(uuid);
     }
 
     @Override
@@ -73,6 +115,14 @@ public class Notion implements NotionClient {
             throw new NotionClientValidationException("Block id is required when removing a block");
 
         apiClient.deleteBlock(blockModel.getId());
+    }
+
+    @Override
+    public Content restoreContent(String uuid) {
+        BlockModel blockModel = new BlockModel();
+        blockModel.setId(uuid);
+        blockModel.setArchived(false);
+        return save(blockModel);
     }
 
     @Override
@@ -124,6 +174,12 @@ public class Notion implements NotionClient {
     }
 
     @Override
+    public Contents restore(Contents contents) {
+        for (Content content : contents.getContents()) restoreContent(content.getBlockModel().getId());
+        return getContentsByUuid(contents.getParentUuid());
+    }
+
+    @Override
     public Page save(PageModel pageModel) {
         PageModel resultModel;
         if (pageModel.getId() == null) {
@@ -149,13 +205,20 @@ public class Notion implements NotionClient {
             throw new NotionClientValidationException("Page id is required when removing a page");
 
         RequestUpdatePage requestUpdatePage = new RequestUpdatePage();
-        requestUpdatePage.setArchived(pageModel.isArchived());
+        requestUpdatePage.setArchived(true);
         apiClient.updatePage(pageModel.getId(), requestUpdatePage);
     }
 
     @Override
-    public DatabaseModel save(DatabaseModel databaseModel) {
-        return null;
+    public Page restorePage(String uuid) {
+        RequestUpdatePage requestUpdatePage = new RequestUpdatePage();
+        requestUpdatePage.setArchived(false);
+        PageModel pageModel = apiClient.updatePage(uuid, requestUpdatePage);
+        return wrapPage(pageModel);
+    }
+
+    public Database wrapDatabase(DatabaseModel databaseModel) {
+        return new Database(this, databaseModel);
     }
 
     public Page wrapPage(PageModel pageModel) {

@@ -8,9 +8,13 @@ import tw.yukina.notion.sdk.model.page.PageModel;
 import java.util.List;
 
 public interface NotionClient {
-    DatabaseModel getDatabaseByUuid(String uuid);
+    Database getDatabaseByUuid(String uuid);
 
-    DatabaseModel save(DatabaseModel databaseModel);
+    Database save(DatabaseModel databaseModel);
+
+    void remove(DatabaseModel databaseModel);
+
+    Database restoreDatabase(String uuid);
 
     Page getPageByUuid(String uuid);
 
@@ -18,11 +22,15 @@ public interface NotionClient {
 
     void remove(PageModel pageModel);
 
+    Page restorePage(String uuid);
+
     Content getContentByUuid(String uuid);
 
     Content save(BlockModel blockModel);
 
     void remove(BlockModel blockModel);
+
+    Content restoreContent(String uuid);
 
     Contents getContentsByUuid(String uuid);
 
@@ -37,6 +45,8 @@ public interface NotionClient {
     Contents append(String parentUuid, List<? extends BlockModel> blockModels);
 
     void remove(Contents contents);
+
+    Contents restore(Contents contents);
 
 //    Page save(Page page, List<Block> content);
 

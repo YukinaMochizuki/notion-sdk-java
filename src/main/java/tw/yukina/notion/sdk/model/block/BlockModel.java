@@ -15,7 +15,7 @@ import tw.yukina.notion.sdk.model.deserializer.BlockDeserializer;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = BlockDeserializer.class)
-public abstract class BlockModel extends NotionObject {
+public class BlockModel extends NotionObject {
 
     private static final String TYPE_FIELD = "type";
     private static final String HAS_CHILDREN_FIELD = "has_children";
@@ -34,5 +34,7 @@ public abstract class BlockModel extends NotionObject {
     private Boolean archived = false;
 
     @JsonIgnore
-    public abstract boolean canHaveChildren();
+    public boolean canHaveChildren() {
+        return false;
+    }
 }

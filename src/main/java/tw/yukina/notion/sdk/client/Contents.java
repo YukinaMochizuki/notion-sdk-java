@@ -53,6 +53,11 @@ public class Contents implements Entity<Contents>, Iterable<Content> {
         this.contents.clear();
     }
 
+    @Override
+    public Contents restore() {
+        return this.notion.restore(this);
+    }
+
     public int size() {
         fetchAll();
         return contents.size();
@@ -88,10 +93,6 @@ public class Contents implements Entity<Contents>, Iterable<Content> {
     public Contents addAll(@NotNull List<? extends BlockModel> blockModels) {
         this.notion.append(parentUuid, blockModels);
         return refetch();
-    }
-
-    public boolean retainAll(@NotNull Collection<?> c) {
-        return false;
     }
 
     public Content get(int index) {
