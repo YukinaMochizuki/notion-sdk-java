@@ -2,17 +2,24 @@ package tw.yukina.notion.sdk.client;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
+import tw.yukina.notion.sdk.model.page.PageModel;
+import tw.yukina.notion.sdk.model.page.property.PageProperty;
+import tw.yukina.notion.sdk.model.page.property.TitleProperty;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Database extends DatabaseModel implements Entity<Database> {
 
-    private final NotionClient notionClient;
+    private final Notion notionClient;
 
     @Getter
     @JsonIgnore
     protected String entitySnapshot;
 
-    public Database(NotionClient notionClient, DatabaseModel databaseModel) {
+    public Database(Notion notionClient, DatabaseModel databaseModel) {
         this.notionClient = notionClient;
         this.setId(databaseModel.getId());
         this.setCreatedTime(databaseModel.getCreatedTime());
@@ -59,5 +66,21 @@ public class Database extends DatabaseModel implements Entity<Database> {
     public Boolean isDirty() {
         String newEntitySnapshot = String.valueOf(notionClient.getApiClient().serialize(this));
         return !newEntitySnapshot.equals(entitySnapshot);
+    }
+
+    public Page getEmptyPage() {
+        return getEmptyPage("");
+    }
+
+    public Page getEmptyPage(String title) {
+        PageModel pageModel = new PageModel();
+        pageModel.setParent(DatabaseParent.of(this.getId()));
+
+        Map<String, PageProperty> propertyMap = new HashMap<>();
+        TitleProperty titleProperty = TitleProperty.of(title);
+        propertyMap.put("Name", titleProperty);
+
+        pageModel.setPropertyMap(propertyMap);
+        return notionClient.wrapPage(pageModel);
     }
 }
