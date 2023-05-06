@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.client;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import tw.yukina.notion.sdk.model.page.PageModel;
+import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
 public class Page extends PageModel implements Entity<Page> {
 
@@ -54,7 +55,17 @@ public class Page extends PageModel implements Entity<Page> {
     @Override
     @JsonIgnore
     public Boolean isDirty() {
+        if (this.getId() == null) return true;
         String newEntitySnapshot = String.valueOf(notionClient.getApiClient().serialize(this));
         return !newEntitySnapshot.equals(entitySnapshot);
+    }
+
+    public Page putProperty(String name, PageProperty property) {
+        this.getPropertyMap().put(name, property);
+        return this;
+    }
+
+    public PageProperty getProperty(String name) {
+        return this.getPropertyMap().get(name);
     }
 }
