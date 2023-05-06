@@ -35,7 +35,7 @@ public class ToggleBlockModel extends BlockModel implements TextBlock {
     }
 
     @NotNull
-    public static List<ToggleBlockModel> of(String[] plainTexts) {
+    public static List<ToggleBlockModel> of(String ...plainTexts) {
         List<ToggleBlockModel> toggleBlockModels = new ArrayList<>();
         for(String plainText: plainTexts){
             toggleBlockModels.add(of(plainText));

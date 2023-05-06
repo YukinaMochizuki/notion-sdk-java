@@ -32,7 +32,7 @@ public class BulletedListBlockModel extends BlockModel implements TextBlock {
     }
 
     @NotNull
-    public static List<BulletedListBlockModel> of(String[] plainTexts) {
+    public static List<BulletedListBlockModel> of(String ...plainTexts) {
         List<BulletedListBlockModel> bulletedListBlockModels = new ArrayList<>();
         for(String plainText: plainTexts){
             bulletedListBlockModels.add(of(plainText));

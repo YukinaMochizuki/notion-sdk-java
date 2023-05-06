@@ -8,7 +8,7 @@ import java.util.List;
 
 public final class SelectOptionHelper {
 
-    public static List<SelectOption> getSelectOptions(String[] options){
+    public static List<SelectOption> getSelectOptions(String ...options){
         List<SelectOption> selectOptions = new ArrayList<>();
 
         for(String str: options){

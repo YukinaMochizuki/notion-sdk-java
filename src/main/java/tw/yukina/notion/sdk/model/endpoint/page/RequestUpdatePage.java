@@ -10,6 +10,7 @@ import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.page.PageModel;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Getter
@@ -24,7 +25,7 @@ public class RequestUpdatePage {
     private static final String COVER_FIELD = "cover";
 
     @JsonProperty(PROPERTIES_FIELD)
-    private Map<String, PageProperty> properties;
+    private Map<String, PageProperty> properties = new HashMap<>();
 
     @JsonProperty(ARCHIVED_FIELD)
     private boolean isArchived;

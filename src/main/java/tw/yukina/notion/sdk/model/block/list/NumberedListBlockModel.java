@@ -32,7 +32,7 @@ public class NumberedListBlockModel extends BlockModel implements TextBlock {
     }
 
     @NotNull
-    public static List<NumberedListBlockModel> of(String[] plainTexts) {
+    public static List<NumberedListBlockModel> of(String ...plainTexts) {
         List<NumberedListBlockModel> numberedListBlockModels = new ArrayList<>();
         for(String plainText: plainTexts){
             numberedListBlockModels.add(of(plainText));
