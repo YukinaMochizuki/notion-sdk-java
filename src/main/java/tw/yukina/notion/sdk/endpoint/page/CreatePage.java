@@ -89,8 +89,6 @@ public class CreatePage extends AbstractPageEndpoint {
         if(objectNode.has("children") && objectNode.get("children").isArray())
             preparePostBlocks((ArrayNode) objectNode.get("children"));
 
-        System.out.println(objectNode.toPrettyString());
-
         return call(objectNode.toString(), okHttpClient, builder);
     }
 
