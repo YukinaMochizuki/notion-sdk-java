@@ -2,6 +2,7 @@ package tw.yukina.notion.sdk.client;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.page.PageModel;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
@@ -67,5 +68,10 @@ public class Page extends PageModel implements Entity<Page> {
 
     public PageProperty getProperty(String name) {
         return this.getPropertyMap().get(name);
+    }
+
+    public Page setTitle(String title) {
+        this.getPropertyMap().get("Name").asTitleProperty().setTexts(RichTextHelper.createDefaultArrayText(title));
+        return this;
     }
 }

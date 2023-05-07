@@ -3,19 +3,26 @@ package tw.yukina.notion.sdk.client;
 import lombok.Getter;
 import tw.yukina.notion.sdk.client.api.ApiClient;
 import tw.yukina.notion.sdk.client.api.ApiClientFactory;
+import tw.yukina.notion.sdk.client.api.support.PageModels;
 import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.common.parent.BlockParent;
+import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
 import tw.yukina.notion.sdk.model.common.parent.PageParent;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestUpdateDatabase;
+import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
 import tw.yukina.notion.sdk.model.page.PageModel;
+import tw.yukina.notion.sdk.model.page.property.PageProperty;
+import tw.yukina.notion.sdk.model.page.property.TitleProperty;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Notion implements NotionClient {
 
@@ -78,6 +85,12 @@ public class Notion implements NotionClient {
     public Database restoreDatabase(String uuid) {
         restoreContent(uuid);
         return getDatabaseByUuid(uuid);
+    }
+
+    @Override
+    public Pages queryDatabase(String uuid, DatabaseQuery databaseQuery) {
+        PageModels pageModels = this.apiClient.queryDatabaseIterable(uuid, databaseQuery);
+        return new Pages(this, pageModels);
     }
 
     @Override
@@ -214,6 +227,24 @@ public class Notion implements NotionClient {
         RequestUpdatePage requestUpdatePage = new RequestUpdatePage();
         requestUpdatePage.setArchived(false);
         PageModel pageModel = apiClient.updatePage(uuid, requestUpdatePage);
+        return wrapPage(pageModel);
+    }
+
+    @Override
+    public Page getDatabaseEmptyPage(String parentUuid) {
+        return getDatabaseEmptyPage("", parentUuid);
+    }
+
+    @Override
+    public Page getDatabaseEmptyPage(String title, String parentUuid) {
+        PageModel pageModel = new PageModel();
+        pageModel.setParent(DatabaseParent.of(parentUuid));
+
+        Map<String, PageProperty> propertyMap = new HashMap<>();
+        TitleProperty titleProperty = TitleProperty.of(title);
+        propertyMap.put("Name", titleProperty);
+
+        pageModel.setPropertyMap(propertyMap);
         return wrapPage(pageModel);
     }
 

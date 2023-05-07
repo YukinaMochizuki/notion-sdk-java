@@ -73,14 +73,6 @@ public class Database extends DatabaseModel implements Entity<Database> {
     }
 
     public Page getEmptyPage(String title) {
-        PageModel pageModel = new PageModel();
-        pageModel.setParent(DatabaseParent.of(this.getId()));
-
-        Map<String, PageProperty> propertyMap = new HashMap<>();
-        TitleProperty titleProperty = TitleProperty.of(title);
-        propertyMap.put("Name", titleProperty);
-
-        pageModel.setPropertyMap(propertyMap);
-        return notionClient.wrapPage(pageModel);
+        return notionClient.getDatabaseEmptyPage(title, this.getId());
     }
 }

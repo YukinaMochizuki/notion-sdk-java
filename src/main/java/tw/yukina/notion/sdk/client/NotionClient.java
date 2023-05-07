@@ -3,6 +3,7 @@ package tw.yukina.notion.sdk.client;
 import tw.yukina.notion.sdk.client.api.ApiClient;
 import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
+import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
 import tw.yukina.notion.sdk.model.page.PageModel;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public interface NotionClient {
 
     Database restoreDatabase(String uuid);
 
+    Pages queryDatabase(String uuid, DatabaseQuery databaseQuery);
+
     Page getPageByUuid(String uuid);
 
     Page save(PageModel pageModel);
@@ -23,6 +26,10 @@ public interface NotionClient {
     void remove(PageModel pageModel);
 
     Page restorePage(String uuid);
+
+    Page getDatabaseEmptyPage(String parentUuid);
+
+    Page getDatabaseEmptyPage(String title, String parentUuid);
 
     Content getContentByUuid(String uuid);
 

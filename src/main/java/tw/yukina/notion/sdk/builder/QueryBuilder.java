@@ -24,7 +24,7 @@ public class QueryBuilder {
 
     private Integer pageSize;
 
-    public QueryBuilder setFirstLayerFilters(CompoundType compoundType, DatabasePropertyFilter... databasePropertyFilters){
+    public QueryBuilder setFilters(CompoundType compoundType, DatabasePropertyFilter... databasePropertyFilters){
         Compound compound = new Compound();
         compound.setCompoundType(compoundType);
         compound.getDatabasePropertyFilters().addAll(Arrays.asList(databasePropertyFilters));

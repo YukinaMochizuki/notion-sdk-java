@@ -154,22 +154,22 @@ public class CompoundBuilder {
     }
 
     public CompoundBuilder addMultiSelectFilterEquals(String property, String filter){
-        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, SelectFilterObject.equalsOf(filter)));
+        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, MultiSelectFilterObject.containsOf(filter)));
         return this;
     }
 
     public CompoundBuilder addMultiSelectFilterDoesNotEqual(String property, String filter){
-        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, SelectFilterObject.doesNotEqualOf(filter)));
+        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, MultiSelectFilterObject.doesNotContainsOf(filter)));
         return this;
     }
 
     public CompoundBuilder addMultiSelectFilterIsEmpty(String property, boolean isEmpty){
-        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, SelectFilterObject.isEmptyOf(isEmpty)));
+        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, MultiSelectFilterObject.isEmptyOf(isEmpty)));
         return this;
     }
 
     public CompoundBuilder addMultiSelectFilterIsNotEmpty(String property, boolean isNotEmpty){
-        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, SelectFilterObject.isNotEmptyOf(isNotEmpty)));
+        databasePropertyFilters.add(MultiSelectPropertyFilter.of(property, MultiSelectFilterObject.isNotEmptyOf(isNotEmpty)));
         return this;
     }
 }
