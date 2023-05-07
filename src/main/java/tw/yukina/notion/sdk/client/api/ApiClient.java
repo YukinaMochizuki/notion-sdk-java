@@ -2,7 +2,7 @@ package tw.yukina.notion.sdk.client.api;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.client.api.support.Pages;
+import tw.yukina.notion.sdk.client.api.support.PageModels;
 import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
@@ -43,7 +43,7 @@ public interface ApiClient {
 
     ResponsePageList queryDatabase(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery);
 
-    Pages queryDatabaseIterable(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery);
+    PageModels queryDatabaseIterable(@NotNull String uuid, @NotNull DatabaseQuery databaseQuery);
 
     DatabaseModel retrieveDatabase(@NotNull String uuid);
 

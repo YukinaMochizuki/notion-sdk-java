@@ -7,7 +7,7 @@ import tw.yukina.notion.sdk.model.page.PageModel;
 
 import java.util.Iterator;
 
-public class DatabaseQueryCollector extends Pages {
+public class DatabaseQueryCollector extends PageModels {
 
     protected final String uuid;
 

@@ -40,7 +40,6 @@ public class DatabaseQueryIterator implements Iterator<PageModel> {
             databaseQuery.setStartCursor(responsePageList.getNextCursor());
 
             this.responsePageList = collector.apiClient.queryDatabase(collector.uuid, databaseQuery);
-            System.out.println("new call");
             index = 0;
             if(index < responsePageList.getPageModels().size()) {
                 PageModel pageModel = responsePageList.getPageModels().get(index);
