@@ -35,6 +35,7 @@ public class PageModel extends NotionObject {
     private static final String PROPERTIES_FIELD = "properties";
     private static final String PARENT_FIELD = "parent";
     private static final String URL_FIELD = "url";
+    private static final String PUBLIC_URL_FIELD = "public_url";
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.PAGE;
@@ -56,6 +57,9 @@ public class PageModel extends NotionObject {
 
     @JsonProperty(URL_FIELD)
     private String url;
+
+    @JsonProperty(PUBLIC_URL_FIELD)
+    private String publicUrl;
 
     @JsonIgnore
     public Optional<String> getTitle(){

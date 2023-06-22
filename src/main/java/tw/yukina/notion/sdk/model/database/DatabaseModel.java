@@ -32,6 +32,7 @@ public class DatabaseModel extends NotionObject {
     private static final String URL_FIELD = "url";
     private static final String ARCHIVED_FIELD = "archived";
     private static final String IS_INLINE_FIELD = "is_inline";
+    private static final String PUBLIC_URL_FIELD = "public_url";
 
     @JsonProperty(OBJECT_FIELD)
     private ObjectType objectType = ObjectType.DATABASE;
@@ -62,6 +63,9 @@ public class DatabaseModel extends NotionObject {
 
     @JsonProperty(IS_INLINE_FIELD)
     private boolean isInline;
+
+    @JsonProperty(PUBLIC_URL_FIELD)
+    private String publicUrl;
 
     @Override
     public boolean equals(Object o) {

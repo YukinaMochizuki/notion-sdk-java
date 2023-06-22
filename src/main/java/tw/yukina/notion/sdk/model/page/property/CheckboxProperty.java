@@ -22,9 +22,8 @@ public class CheckboxProperty extends PageProperty {
     private boolean checkbox;
 
     @NotNull
-    public static CheckboxProperty of(String id, boolean checkbox){
+    public static CheckboxProperty of(boolean checkbox){
         CheckboxProperty checkboxProperty = new CheckboxProperty();
-        checkboxProperty.setId(id);
         checkboxProperty.setType(PropertyType.CHECKBOX);
         checkboxProperty.setCheckbox(checkbox);
         return checkboxProperty;
