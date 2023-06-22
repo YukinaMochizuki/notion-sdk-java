@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.block.*;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +15,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ParagraphBlock createDefaultParagraph(String content){
+    public static ParagraphBlockModel createDefaultParagraph(String content){
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(Collections.singletonList(RichTextHelper.createDefaultText(content)));
         paragraph.setColor(TextColor.DEFAULT);
@@ -25,7 +24,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ParagraphBlock createDefaultParagraph(RichText richText){
+    public static ParagraphBlockModel createDefaultParagraph(RichText richText){
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(Collections.singletonList(richText));
         paragraph.setColor(TextColor.DEFAULT);
@@ -34,8 +33,8 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ParagraphBlock getDefaultParagraphBlock(Paragraph paragraph){
-        ParagraphBlock paragraphBlock = new ParagraphBlock();
+    public static ParagraphBlockModel getDefaultParagraphBlock(Paragraph paragraph){
+        ParagraphBlockModel paragraphBlock = new ParagraphBlockModel();
         paragraphBlock.setHasChildren(false);
         paragraphBlock.setType(BlockType.PARAGRAPH);
         paragraphBlock.setParagraph(paragraph);
@@ -44,13 +43,13 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static TodoBlock createDefaultTodoBlock(List<RichText> texts, boolean checked){
+    public static TodoBlockModel createDefaultTodoBlock(List<RichText> texts, boolean checked){
         Todo todo = new Todo();
         todo.setRichTexts(texts);
         todo.setChecked(checked);
         todo.setColor(TextColor.DEFAULT);
 
-        TodoBlock todoBlock = new TodoBlock();
+        TodoBlockModel todoBlock = new TodoBlockModel();
         todoBlock.setHasChildren(false);
         todoBlock.setType(BlockType.TO_DO);
         todoBlock.setTodo(todo);
@@ -59,11 +58,11 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ChildPageBlock createDefaultChildPageBlock(String title){
+    public static ChildPageBlockModel createDefaultChildPageBlock(String title){
         ChildPage childPage = new ChildPage();
         childPage.setTitle(title);
 
-        ChildPageBlock childPageBlock = new ChildPageBlock();
+        ChildPageBlockModel childPageBlock = new ChildPageBlockModel();
         childPageBlock.setType(BlockType.CHILD_PAGE);
         childPageBlock.setChildPage(childPage);
 
@@ -71,11 +70,11 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ChildDatabaseBlock createDefaultDatabasePageBlock(String title){
+    public static ChildDatabaseBlockModel createDefaultDatabasePageBlock(String title){
         ChildPage childPage = new ChildPage();
         childPage.setTitle(title);
 
-        ChildDatabaseBlock childDatabaseBlock = new ChildDatabaseBlock();
+        ChildDatabaseBlockModel childDatabaseBlock = new ChildDatabaseBlockModel();
         childDatabaseBlock.setType(BlockType.CHILD_DATABASE);
         childDatabaseBlock.setChildPage(childPage);
 

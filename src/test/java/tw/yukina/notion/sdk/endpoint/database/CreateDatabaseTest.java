@@ -1,24 +1,15 @@
 package tw.yukina.notion.sdk.endpoint.database;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.endpoint.block.DeleteBlock;
-import tw.yukina.notion.sdk.endpoint.block.RetrieveBlockChildren;
-import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.ModelTest;
-import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.block.BlockType;
-import tw.yukina.notion.sdk.model.block.ChildDatabaseBlock;
 import tw.yukina.notion.sdk.model.common.parent.PageParent;
 import tw.yukina.notion.sdk.model.common.parent.ParentType;
-import tw.yukina.notion.sdk.model.database.Database;
-import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.template.project.Project;
 import tw.yukina.notion.sdk.model.template.project.Thing;
-
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,13 +27,13 @@ class CreateDatabaseTest extends ModelTest {
         requestCreateDatabase.setTitle(RichTextHelper.createDefaultArrayText("Project (Test DB)"));
         requestCreateDatabase.setProperties(Project.getCreateDatabaseProperty());
 
-        Database responseDatabase = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
-        JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabase);
+        DatabaseModel responseDatabaseModel = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
+        JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabaseModel);
 
-        Database database = Project.getDatabase(responseJsonNode, responseDatabase);
-        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(database);
+        DatabaseModel databaseModel = Project.getDatabase(responseJsonNode, responseDatabaseModel);
+        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(databaseModel);
 
-        assertEquals(responseDatabase, database);
+        assertEquals(responseDatabaseModel, databaseModel);
         assertEquals(responseJsonNode, serializedJsonNode);
     }
 
@@ -58,15 +49,15 @@ class CreateDatabaseTest extends ModelTest {
         requestCreateDatabase.setTitle(RichTextHelper.createDefaultArrayText("Thing (Test DB)"));
         requestCreateDatabase.setProperties(Thing.getCreateDatabaseProperty("fc0ad05fc61045378ba4c852ec930f82"));
 
-        Database responseDatabase = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
-        JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabase);
+        DatabaseModel responseDatabaseModel = CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getCommonObjectMapper());
+        JsonNode responseJsonNode = getCommonObjectMapper().valueToTree(responseDatabaseModel);
 
-        Database database = Thing.getDatabase(responseJsonNode, responseDatabase);
-        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(database);
+        DatabaseModel databaseModel = Thing.getDatabase(responseJsonNode, responseDatabaseModel);
+        JsonNode serializedJsonNode = getCommonObjectMapper().valueToTree(databaseModel);
 
-        assertEquals(responseDatabase, database);
+        assertEquals(responseDatabaseModel, databaseModel);
         assertEquals(responseJsonNode, serializedJsonNode);
 
-        DeleteBlock.call(responseDatabase.getId(), getOkHttpClient(), getRequestBuilder());
+        DeleteBlock.call(responseDatabaseModel.getId(), getOkHttpClient(), getRequestBuilder());
     }
 }

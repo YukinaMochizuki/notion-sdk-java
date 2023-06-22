@@ -7,15 +7,15 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.AbstractEndpoint;
-import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
 
 public abstract class AbstractDatabaseEndpoint extends AbstractEndpoint {
 
     public static final String PATH = "/databases/";
 
-    public static Database toDatabase(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
+    public static DatabaseModel toDatabase(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
         try {
-            return objectMapper.readValue(objectNode.toString(), Database.class);
+            return objectMapper.readValue(objectNode.toString(), DatabaseModel.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

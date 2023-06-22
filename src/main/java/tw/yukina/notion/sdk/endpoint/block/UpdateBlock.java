@@ -5,44 +5,39 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.block.Block;
-
-import java.io.IOException;
-
-import static tw.yukina.notion.sdk.Configuration.*;
+import tw.yukina.notion.sdk.model.block.BlockModel;
 
 public class UpdateBlock extends AbstractBlockEndpoint{
 
     @NotNull
-    public static Block callValue(@NotNull String uuid, @NotNull Block block,
-                                      @NotNull OkHttpClient okHttpClient,
-                                      @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) {
+    public static BlockModel callValue(@NotNull String uuid, @NotNull BlockModel block,
+                                       @NotNull OkHttpClient okHttpClient,
+                                       @NotNull Request.Builder builder,
+                                       @NotNull ObjectMapper objectMapper) {
 
         return toBlock(callTree(uuid, block, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
-    public static Block callValue(@NotNull String uuid, @NotNull JsonNode json,
-                                      @NotNull OkHttpClient okHttpClient,
-                                      @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) {
+    public static BlockModel callValue(@NotNull String uuid, @NotNull JsonNode json,
+                                       @NotNull OkHttpClient okHttpClient,
+                                       @NotNull Request.Builder builder,
+                                       @NotNull ObjectMapper objectMapper) {
 
         return toBlock(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
-    public static Block callValue(@NotNull String uuid, @NotNull String json,
-                                      @NotNull OkHttpClient okHttpClient,
-                                      @NotNull Request.Builder builder,
-                                      @NotNull ObjectMapper objectMapper) {
+    public static BlockModel callValue(@NotNull String uuid, @NotNull String json,
+                                       @NotNull OkHttpClient okHttpClient,
+                                       @NotNull Request.Builder builder,
+                                       @NotNull ObjectMapper objectMapper) {
 
         return toBlock(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
-    public static ObjectNode callTree(@NotNull String uuid, @NotNull Block block,
+    public static ObjectNode callTree(@NotNull String uuid, @NotNull BlockModel block,
                                          @NotNull OkHttpClient okHttpClient,
                                          @NotNull Request.Builder builder,
                                          @NotNull ObjectMapper objectMapper) {
@@ -69,7 +64,7 @@ public class UpdateBlock extends AbstractBlockEndpoint{
     }
 
     @NotNull
-    public static Response call(@NotNull String uuid, @NotNull Block block,
+    public static Response call(@NotNull String uuid, @NotNull BlockModel block,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
                                 @NotNull ObjectMapper objectMapper) {

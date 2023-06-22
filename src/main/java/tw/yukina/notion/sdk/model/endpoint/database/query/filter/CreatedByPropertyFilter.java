@@ -27,4 +27,20 @@ public class CreatedByPropertyFilter extends DatabasePropertyFilter {
         createdByPropertyFilter.setRelationFilterObject(relationFilterObject);
         return createdByPropertyFilter;
     }
+
+    public static CreatedByPropertyFilter containsUuidOf(String property, String containsUuid){
+        return of(property, RelationFilterObject.containsUuidOf(containsUuid));
+    }
+
+    public static CreatedByPropertyFilter doesNotContainsUuidOf(String property, String doesNotContainsUuid){
+        return of(property, RelationFilterObject.doesNotContainsUuidOf(doesNotContainsUuid));
+    }
+
+    public static CreatedByPropertyFilter isEmptyOf(String property, boolean isEmpty){
+        return of(property, RelationFilterObject.isEmptyOf(isEmpty));
+    }
+
+    public static CreatedByPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+        return of(property, RelationFilterObject.isNotEmptyOf(isNotEmpty));
+    }
 }

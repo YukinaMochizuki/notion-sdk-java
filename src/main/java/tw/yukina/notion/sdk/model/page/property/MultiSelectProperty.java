@@ -27,7 +27,7 @@ public class MultiSelectProperty extends PageProperty {
     private List<SelectOption> selectOptions;
 
     @NotNull
-    public static MultiSelectProperty of(@NotNull String[] options){
+    public static MultiSelectProperty of(String ...options){
         List<SelectOption> selectOptions = new ArrayList<>();
 
         for(String option: options){

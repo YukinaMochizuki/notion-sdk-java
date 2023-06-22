@@ -3,11 +3,11 @@ package tw.yukina.notion.sdk.client.api.support;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.client.api.ApiClient;
 import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
-import tw.yukina.notion.sdk.model.page.Page;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
 import java.util.Iterator;
 
-public class DatabaseQueryCollector extends Pages {
+public class DatabaseQueryCollector extends PageModels {
 
     protected final String uuid;
 
@@ -23,7 +23,7 @@ public class DatabaseQueryCollector extends Pages {
 
     @NotNull
     @Override
-    public Iterator<Page> iterator() {
+    public Iterator<PageModel> iterator() {
         return new DatabaseQueryIterator(this);
     }
 }

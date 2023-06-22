@@ -7,16 +7,16 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.AbstractEndpoint;
+import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
-import tw.yukina.notion.sdk.model.block.Block;
 
 public abstract class AbstractBlockEndpoint extends AbstractEndpoint {
 
     public static final String PATH = "/blocks/";
 
-    public static Block toBlock(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
+    public static BlockModel toBlock(@NotNull ObjectNode objectNode, @NotNull ObjectMapper objectMapper) {
         try {
-            return objectMapper.readValue(objectNode.toString(), Block.class);
+            return objectMapper.readValue(objectNode.toString(), BlockModel.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }

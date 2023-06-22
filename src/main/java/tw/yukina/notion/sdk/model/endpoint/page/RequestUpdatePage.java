@@ -7,9 +7,10 @@ import lombok.Setter;
 import lombok.ToString;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.file.FileObject;
-import tw.yukina.notion.sdk.model.page.Page;
+import tw.yukina.notion.sdk.model.page.PageModel;
 import tw.yukina.notion.sdk.model.page.property.PageProperty;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Getter
@@ -24,7 +25,7 @@ public class RequestUpdatePage {
     private static final String COVER_FIELD = "cover";
 
     @JsonProperty(PROPERTIES_FIELD)
-    private Map<String, PageProperty> properties;
+    private Map<String, PageProperty> properties = new HashMap<>();
 
     @JsonProperty(ARCHIVED_FIELD)
     private boolean isArchived;
@@ -35,12 +36,12 @@ public class RequestUpdatePage {
     @JsonProperty(COVER_FIELD)
     private FileObject fileObject;
 
-    public static RequestUpdatePage of(Page page){
+    public static RequestUpdatePage of(PageModel pageModel){
         RequestUpdatePage requestUpdatePage = new RequestUpdatePage();
-        requestUpdatePage.setProperties(page.getPropertyMap());
-        requestUpdatePage.setArchived(page.isArchived());
-        requestUpdatePage.setIcon(page.getIcon());
-        requestUpdatePage.setFileObject(page.getCover());
+        requestUpdatePage.setProperties(pageModel.getPropertyMap());
+        requestUpdatePage.setArchived(pageModel.isArchived());
+        requestUpdatePage.setIcon(pageModel.getIcon());
+        requestUpdatePage.setFileObject(pageModel.getCover());
         return requestUpdatePage;
     }
 

@@ -1,22 +1,63 @@
 package tw.yukina.notion.sdk.client;
 
-import lombok.Getter;
 import tw.yukina.notion.sdk.client.api.ApiClient;
-import tw.yukina.notion.sdk.client.api.ApiClientFactory;
+import tw.yukina.notion.sdk.model.block.BlockModel;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
+import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
-public class NotionClient {
+import java.util.List;
 
-    @Getter
-    private final ApiClient apiClient;
+public interface NotionClient {
+    Database getDatabaseByUuid(String uuid);
 
-    public NotionClient(String token){
-        ApiClientFactory apiClientFactory = new ApiClientFactory();
-        apiClientFactory.setToken(token);
-        apiClientFactory.applyDefaultSetting();
-        this.apiClient = apiClientFactory.build();
-    }
+    Database save(DatabaseModel databaseModel);
 
-    public NotionSession openSession(){
-        return new NotionSessionImpl(apiClient);
-    }
+    void remove(DatabaseModel databaseModel);
+
+    Database restoreDatabase(String uuid);
+
+    Pages queryDatabase(String uuid, DatabaseQuery databaseQuery);
+
+    Page getPageByUuid(String uuid);
+
+    Page save(PageModel pageModel);
+
+    void remove(PageModel pageModel);
+
+    void remove(Pages pages);
+
+    Page restorePage(String uuid);
+
+    Page getDatabaseEmptyPage(String parentUuid);
+
+    Page getDatabaseEmptyPage(String title, String parentUuid);
+
+    Content getContentByUuid(String uuid);
+
+    Content save(BlockModel blockModel);
+
+    void remove(BlockModel blockModel);
+
+    Content restoreContent(String uuid);
+
+    Contents getContentsByUuid(String uuid);
+
+    Contents getContentsByUuid(String uuid, String startCursor);
+
+    Contents getContentsByUuid(String uuid, String startCursor, Integer pageSize);
+
+    Contents save(Contents contents);
+
+    Contents append(String parentUuid, BlockModel blockModel);
+
+    Contents append(String parentUuid, List<? extends BlockModel> blockModels);
+
+    void remove(Contents contents);
+
+    Contents restore(Contents contents);
+
+//    Page save(Page page, List<Block> content);
+
+    ApiClient getApiClient();
 }

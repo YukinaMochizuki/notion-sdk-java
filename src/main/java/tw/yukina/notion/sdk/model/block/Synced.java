@@ -26,5 +26,5 @@ public class Synced {
     @Nullable
     @JsonProperty(CHILDREN_FIELD)
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Block> children;
+    private List<BlockModel> children;
 }

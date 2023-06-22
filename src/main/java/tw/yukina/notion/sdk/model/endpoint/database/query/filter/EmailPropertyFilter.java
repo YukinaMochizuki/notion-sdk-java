@@ -27,4 +27,36 @@ public class EmailPropertyFilter extends DatabasePropertyFilter {
         emailPropertyFilter.setTextFilterObject(textFilterObject);
         return emailPropertyFilter;
     }
+
+    public static EmailPropertyFilter equalsOf(String property, String equals){
+        return of(property, TextFilterObject.equalsOf(equals));
+    }
+
+    public static EmailPropertyFilter doesNotEqualOf(String property, String doesNotEqual){
+        return of(property, TextFilterObject.doesNotEqualOf(doesNotEqual));
+    }
+
+    public static EmailPropertyFilter containsOf(String property, String contains){
+        return of(property, TextFilterObject.containsOf(contains));
+    }
+
+    public static EmailPropertyFilter doesNotContainOf(String property, String doesNotContain){
+        return of(property, TextFilterObject.doesNotContainOf(doesNotContain));
+    }
+
+    public static EmailPropertyFilter startsWithOf(String property, String startsWith){
+        return of(property, TextFilterObject.startsWithOf(startsWith));
+    }
+
+    public static EmailPropertyFilter endsWithOf(String property, String endsWith){
+        return of(property, TextFilterObject.endsWithOf(endsWith));
+    }
+
+    public static EmailPropertyFilter isEmptyOf(String property, boolean isEmpty){
+        return of(property, TextFilterObject.isEmptyOf(isEmpty));
+    }
+
+    public static EmailPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+        return of(property, TextFilterObject.isNotEmptyOf(isNotEmpty));
+    }
 }

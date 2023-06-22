@@ -27,4 +27,12 @@ public class CheckboxPropertyFilter extends DatabasePropertyFilter {
         checkboxPropertyFilter.setCheckboxFilterObject(checkboxFilterObject);
         return checkboxPropertyFilter;
     }
+
+    public static CheckboxPropertyFilter equalsOf(String property, boolean equals){
+        return of(property, CheckboxFilterObject.equalsOf(equals));
+    }
+
+    public static CheckboxPropertyFilter doesNotEqualOf(String property, boolean doesNotEqual){
+        return of(property, CheckboxFilterObject.doesNotEqualOf(doesNotEqual));
+    }
 }

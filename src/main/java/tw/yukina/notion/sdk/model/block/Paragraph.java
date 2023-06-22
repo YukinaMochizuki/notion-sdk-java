@@ -26,10 +26,10 @@ public class Paragraph {
     private List<RichText> richTexts;
 
     @JsonProperty(COLOR_FIELD)
-    private TextColor color;
+    private TextColor color = TextColor.DEFAULT;
 
     @Nullable
     @JsonProperty(CHILDREN_FIELD)
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private List<Block> children;
+    private List<BlockModel> children;
 }

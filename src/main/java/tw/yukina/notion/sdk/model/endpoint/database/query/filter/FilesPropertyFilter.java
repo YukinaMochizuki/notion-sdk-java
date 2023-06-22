@@ -27,4 +27,12 @@ public class FilesPropertyFilter extends DatabasePropertyFilter {
         filesPropertyFilter.setFilesFilterObject(filesFilterObject);
         return filesPropertyFilter;
     }
+
+    public static FilesPropertyFilter isEmptyOf(String property, boolean isEmpty){
+        return of(property, FilesFilterObject.isEmptyOf(isEmpty));
+    }
+
+    public static FilesPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+        return of(property, FilesFilterObject.isNotEmptyOf(isNotEmpty));
+    }
 }

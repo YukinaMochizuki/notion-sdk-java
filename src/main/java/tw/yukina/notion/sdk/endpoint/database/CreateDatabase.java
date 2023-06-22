@@ -5,40 +5,34 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
-import tw.yukina.notion.sdk.model.database.Database;
+import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.endpoint.database.RequestCreateDatabase;
-
-import java.io.IOException;
-
-import static tw.yukina.notion.sdk.Configuration.BASE_URL;
-import static tw.yukina.notion.sdk.Configuration.MEDIA_TYPE_JSON;
 
 public class CreateDatabase extends AbstractDatabaseEndpoint {
 
     @NotNull
-    public static Database callValue(@NotNull RequestCreateDatabase requestCreateDatabase,
-                                     @NotNull OkHttpClient okHttpClient,
-                                     @NotNull Request.Builder builder,
-                                     @NotNull ObjectMapper objectMapper) {
+    public static DatabaseModel callValue(@NotNull RequestCreateDatabase requestCreateDatabase,
+                                          @NotNull OkHttpClient okHttpClient,
+                                          @NotNull Request.Builder builder,
+                                          @NotNull ObjectMapper objectMapper) {
 
         return toDatabase(callTree(requestCreateDatabase, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
-    public static Database callValue(@NotNull JsonNode json,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+    public static DatabaseModel callValue(@NotNull JsonNode json,
+                                          @NotNull OkHttpClient okHttpClient,
+                                          @NotNull Request.Builder builder,
+                                          @NotNull ObjectMapper objectMapper) {
 
         return toDatabase(callTree(json, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
-    public static Database callValue(@NotNull String json,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+    public static DatabaseModel callValue(@NotNull String json,
+                                          @NotNull OkHttpClient okHttpClient,
+                                          @NotNull Request.Builder builder,
+                                          @NotNull ObjectMapper objectMapper) {
 
         return toDatabase(callTree(json, okHttpClient, builder, objectMapper), objectMapper);
     }

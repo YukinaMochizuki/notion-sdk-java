@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import tw.yukina.notion.sdk.model.block.Block;
-import tw.yukina.notion.sdk.model.common.rich.RichText;
+import tw.yukina.notion.sdk.model.block.BlockModel;
 
 import java.util.List;
 
@@ -20,5 +19,5 @@ public class ToggleHeading extends Heading {
     private static final String CHILDREN_FIELD = "children";
 
     @JsonProperty(CHILDREN_FIELD)
-    private List<Block> children;
+    private List<BlockModel> children;
 }

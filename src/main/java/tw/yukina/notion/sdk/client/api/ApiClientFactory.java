@@ -29,14 +29,14 @@ public class ApiClientFactory {
 
     private final ObjectMapper objectMapper;
 
-    private final OkHttpClient okHttpClient;
+    private final OkHttpClient.Builder okHttpClientBuilder;
 
     private final NotionExceptionWrapper notionExceptionWrapper;
 
     public ApiClientFactory(){
         this.objectMapperModule = new SimpleModule();
         this.objectMapper = new ObjectMapper();
-        this.okHttpClient = new OkHttpClient();
+        this.okHttpClientBuilder = new OkHttpClient.Builder();
         this.notionExceptionWrapper = new NotionExceptionWrapper();
     }
 
@@ -50,6 +50,7 @@ public class ApiClientFactory {
         addDefaultObjectMapperConfigure();
         addDefaultExceptionDefine();
         addDefaultObjectMapperSerializationInclusion();
+        addLoggingInterceptor();
         return this;
     }
 
@@ -80,7 +81,7 @@ public class ApiClientFactory {
 
         apiClient.setObjectMapperModule(objectMapperModule);
         apiClient.setObjectMapper(objectMapper);
-        apiClient.setOkHttpClient(okHttpClient);
+        apiClient.setOkHttpClient(okHttpClientBuilder.build());
     }
 
     public ApiClientFactory addDefaultObjectMapperModule(){
@@ -138,6 +139,12 @@ public class ApiClientFactory {
     public <T> ApiClientFactory addSerializer(@NotNull Class<? extends T> type, @NotNull JsonSerializer<T> ser){
         LOGGER.info("Adding "+ ser.getClass().getName() +" serializer to handle " + type.getSimpleName() + " type");
         this.objectMapperModule.addSerializer(type, ser);
+        return this;
+    }
+
+    public ApiClientFactory addLoggingInterceptor(){
+        LOGGER.info("Adding logging interceptor to OkHttpClient");
+        okHttpClientBuilder.addInterceptor(new LoggingInterceptor());
         return this;
     }
 }

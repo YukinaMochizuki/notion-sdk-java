@@ -5,19 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
-import tw.yukina.notion.sdk.endpoint.exception.NotionAPIException;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestUpdatePage;
-import tw.yukina.notion.sdk.model.page.Page;
-
-import java.io.IOException;
-
-import static tw.yukina.notion.sdk.Configuration.BASE_URL;
-import static tw.yukina.notion.sdk.Configuration.MEDIA_TYPE_JSON;
+import tw.yukina.notion.sdk.model.page.PageModel;
 
 public class UpdatePage extends AbstractPageEndpoint {
 
     @NotNull
-    public static Page callValue(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage,
+    public static PageModel callValue(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
                                       @NotNull ObjectMapper objectMapper) {
@@ -26,7 +20,7 @@ public class UpdatePage extends AbstractPageEndpoint {
     }
 
     @NotNull
-    public static Page callValue(@NotNull String uuid, @NotNull JsonNode json,
+    public static PageModel callValue(@NotNull String uuid, @NotNull JsonNode json,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
                                       @NotNull ObjectMapper objectMapper) {
@@ -35,10 +29,10 @@ public class UpdatePage extends AbstractPageEndpoint {
     }
 
     @NotNull
-    public static Page callValue(@NotNull String uuid, @NotNull String json,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+    public static PageModel callValue(@NotNull String uuid, @NotNull String json,
+                                      @NotNull OkHttpClient okHttpClient,
+                                      @NotNull Request.Builder builder,
+                                      @NotNull ObjectMapper objectMapper) {
 
         return toPage(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }

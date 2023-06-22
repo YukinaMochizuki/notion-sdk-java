@@ -27,4 +27,36 @@ public class NumberPropertyFilter extends DatabasePropertyFilter {
         numberPropertyFilter.setNumberFilterObject(numberFilterObject);
         return numberPropertyFilter;
     }
+
+    public static NumberPropertyFilter equalsOf(String property, Double equals){
+        return of(property, NumberFilterObject.equalsOf(equals));
+    }
+
+    public static NumberPropertyFilter doesNotEqualOf(String property, Double doesNotEqual){
+        return of(property, NumberFilterObject.doesNotEqualOf(doesNotEqual));
+    }
+
+    public static NumberPropertyFilter containsOf(String property, Double contains){
+        return of(property, NumberFilterObject.containsOf(contains));
+    }
+
+    public static NumberPropertyFilter doesNotContainOf(String property, Double doesNotContain){
+        return of(property, NumberFilterObject.doesNotContainOf(doesNotContain));
+    }
+
+    public static NumberPropertyFilter startsWithOf(String property, Double startsWith){
+        return of(property, NumberFilterObject.startsWithOf(startsWith));
+    }
+
+    public static NumberPropertyFilter endsWithOf(String property, Double endsWith){
+        return of(property, NumberFilterObject.endsWithOf(endsWith));
+    }
+
+    public static NumberPropertyFilter isEmptyOf(String property, boolean isEmpty){
+        return of(property, NumberFilterObject.isEmptyOf(isEmpty));
+    }
+
+    public static NumberPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+        return of(property, NumberFilterObject.isNotEmptyOf(isNotEmpty));
+    }
 }
