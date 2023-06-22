@@ -20,17 +20,17 @@ configurations {
 
 dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
-    implementation group: 'org.json', name: 'json', version: '20210307'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.4'
+    implementation group: 'org.json', name: 'json', version: '20230227'
     implementation 'org.slf4j:slf4j-api:1.7.32'
     implementation 'net.bytebuddy:byte-buddy:1.11.20'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.4'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.12.4'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.15.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.15.1'
 
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
-    implementation 'ch.qos.logback:logback-classic:1.2.6'
+    implementation 'ch.qos.logback:logback-classic:1.2.9'
     testCompileOnly 'org.projectlombok:lombok:1.18.20'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
