@@ -223,6 +223,11 @@ public class Notion implements NotionClient {
     }
 
     @Override
+    public void remove(Pages pages) {
+        for (Page page : pages) remove(page);
+    }
+
+    @Override
     public Page restorePage(String uuid) {
         RequestUpdatePage requestUpdatePage = new RequestUpdatePage();
         requestUpdatePage.setArchived(false);

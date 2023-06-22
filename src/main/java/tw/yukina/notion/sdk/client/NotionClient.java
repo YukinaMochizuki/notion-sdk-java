@@ -25,6 +25,8 @@ public interface NotionClient {
 
     void remove(PageModel pageModel);
 
+    void remove(Pages pages);
+
     Page restorePage(String uuid);
 
     Page getDatabaseEmptyPage(String parentUuid);

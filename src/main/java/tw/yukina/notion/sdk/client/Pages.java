@@ -23,6 +23,10 @@ public class Pages implements Iterable<Page> {
         return new Itr(this.pageModels.iterator());
     }
 
+    public void remove() {
+        this.notion.remove(this);
+    }
+
     private class Itr implements Iterator<Page> {
 
         private final Iterator<PageModel> pageModelIterator;
