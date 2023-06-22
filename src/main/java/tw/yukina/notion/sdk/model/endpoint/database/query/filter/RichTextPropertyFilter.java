@@ -27,4 +27,36 @@ public class RichTextPropertyFilter extends DatabasePropertyFilter {
         richTextPropertyFilter.setTextFilterObject(textFilterObject);
         return richTextPropertyFilter;
     }
+    
+    public static RichTextPropertyFilter equalsOf(String property, String equals){
+        return of(property, TextFilterObject.equalsOf(equals));
+    }
+    
+    public static RichTextPropertyFilter doesNotEqualOf(String property, String doesNotEqual){
+        return of(property, TextFilterObject.doesNotEqualOf(doesNotEqual));
+    }
+    
+    public static RichTextPropertyFilter containsOf(String property, String contains){
+        return of(property, TextFilterObject.containsOf(contains));
+    }
+    
+    public static RichTextPropertyFilter doesNotContainOf(String property, String doesNotContain){
+        return of(property, TextFilterObject.doesNotContainOf(doesNotContain));
+    }
+    
+    public static RichTextPropertyFilter startsWithOf(String property, String startsWith){
+        return of(property, TextFilterObject.startsWithOf(startsWith));
+    }
+    
+    public static RichTextPropertyFilter endsWithOf(String property, String endsWith){
+        return of(property, TextFilterObject.endsWithOf(endsWith));
+    }
+    
+    public static RichTextPropertyFilter isEmptyOf(String property, boolean isEmpty){
+        return of(property, TextFilterObject.isEmptyOf(isEmpty));
+    }
+    
+    public static RichTextPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+        return of(property, TextFilterObject.isNotEmptyOf(isNotEmpty));
+    }
 }

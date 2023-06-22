@@ -27,4 +27,36 @@ public class TitlePropertyFilter extends DatabasePropertyFilter {
         titlePropertyFilter.setName("title");
         return titlePropertyFilter;
     }
+    
+    public static TitlePropertyFilter equalsOf(String equals){
+        return of(TextFilterObject.equalsOf(equals));
+    }
+    
+    public static TitlePropertyFilter doesNotEqualOf(String doesNotEqual){
+        return of(TextFilterObject.doesNotEqualOf(doesNotEqual));
+    }
+    
+    public static TitlePropertyFilter containsOf(String contains){
+        return of(TextFilterObject.containsOf(contains));
+    }
+    
+    public static TitlePropertyFilter doesNotContainOf(String doesNotContain){
+        return of(TextFilterObject.doesNotContainOf(doesNotContain));
+    }
+    
+    public static TitlePropertyFilter startsWithOf(String startsWith){
+        return of(TextFilterObject.startsWithOf(startsWith));
+    }
+    
+    public static TitlePropertyFilter endsWithOf(String endsWith){
+        return of(TextFilterObject.endsWithOf(endsWith));
+    }
+    
+    public static TitlePropertyFilter isEmptyOf(boolean isEmpty){
+        return of(TextFilterObject.isEmptyOf(isEmpty));
+    }
+    
+    public static TitlePropertyFilter isNotEmptyOf(boolean isNotEmpty){
+        return of(TextFilterObject.isNotEmptyOf(isNotEmpty));
+    }
 }

@@ -27,4 +27,36 @@ public class UrlPropertyFilter extends DatabasePropertyFilter {
         urlPropertyFilter.setTextFilterObject(textFilterObject);
         return urlPropertyFilter;
     }
+    
+    public static UrlPropertyFilter equalsOf(String property, String equals){
+        return of(property, TextFilterObject.equalsOf(equals));
+    }
+    
+    public static UrlPropertyFilter doesNotEqualOf(String property, String doesNotEqual){
+        return of(property, TextFilterObject.doesNotEqualOf(doesNotEqual));
+    }
+    
+    public static UrlPropertyFilter containsOf(String property, String contains){
+        return of(property, TextFilterObject.containsOf(contains));
+    }
+    
+    public static UrlPropertyFilter doesNotContainOf(String property, String doesNotContain){
+        return of(property, TextFilterObject.doesNotContainOf(doesNotContain));
+    }
+    
+    public static UrlPropertyFilter startsWithOf(String property, String startsWith){
+        return of(property, TextFilterObject.startsWithOf(startsWith));
+    }
+    
+    public static UrlPropertyFilter endsWithOf(String property, String endsWith){
+        return of(property, TextFilterObject.endsWithOf(endsWith));
+    }
+    
+    public static UrlPropertyFilter isEmptyOf(String property, boolean isEmpty){
+        return of(property, TextFilterObject.isEmptyOf(isEmpty));
+    }
+    
+    public static UrlPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+        return of(property, TextFilterObject.isNotEmptyOf(isNotEmpty));
+    }
 }

@@ -21,10 +21,26 @@ public class PeoplePropertyFilter extends DatabasePropertyFilter {
     private RelationFilterObject relationFilterObject;
 
     @NotNull
-    public static PeoplePropertyFilter of(String property, RelationFilterObject relationFilterObject){
+    public static PeoplePropertyFilter of(String property, RelationFilterObject relationFilterObject) {
         PeoplePropertyFilter peoplePropertyFilter = new PeoplePropertyFilter();
         peoplePropertyFilter.setName(property);
         peoplePropertyFilter.setRelationFilterObject(relationFilterObject);
         return peoplePropertyFilter;
+    }
+
+    public static PeoplePropertyFilter containsUuidOf(String property, String containsUuid) {
+        return of(property, RelationFilterObject.containsUuidOf(containsUuid));
+    }
+
+    public static PeoplePropertyFilter doesNotContainsUuidOf(String property, String doesNotContainsUuid) {
+        return of(property, RelationFilterObject.doesNotContainsUuidOf(doesNotContainsUuid));
+    }
+
+    public static PeoplePropertyFilter isEmptyOf(String property, boolean isEmpty) {
+        return of(property, RelationFilterObject.isEmptyOf(isEmpty));
+    }
+
+    public static PeoplePropertyFilter isNotEmptyOf(String property, boolean isNotEmpty) {
+        return of(property, RelationFilterObject.isNotEmptyOf(isNotEmpty));
     }
 }
