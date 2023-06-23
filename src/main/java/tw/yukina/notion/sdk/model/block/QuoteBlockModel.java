@@ -23,11 +23,6 @@ public class QuoteBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(PARAGRAPH_FIELD)
     private Paragraph paragraph;
 
-    @Override
-    public boolean canHaveChildren() {
-        return true;
-    }
-
     @NotNull
     public static QuoteBlockModel of(String plainText) {
         List<RichText> richTexts = TextBuilder.of(plainText).build();
@@ -42,5 +37,10 @@ public class QuoteBlockModel extends BlockModel implements TextBlock {
         quoteBlock.setParagraph(paragraph);
         quoteBlock.setType(BlockType.QUOTE);
         return quoteBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
     }
 }

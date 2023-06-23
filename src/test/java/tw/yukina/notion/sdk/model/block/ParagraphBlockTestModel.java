@@ -6,22 +6,22 @@ import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.common.rich.MentionText;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.helper.BlockHelper;
-import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.common.rich.mention.UserMention;
 import tw.yukina.notion.sdk.model.common.user.PersonUser;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import tw.yukina.notion.sdk.model.helper.BlockHelper;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class ParagraphBlockTestModel extends ModelTest {
 
     @Test
     void plainTextTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/2adb3a1acf1f43d4a6b3d95be70e0918");
+        Response response = getResponse(BASE_URL + "/blocks/2adb3a1acf1f43d4a6b3d95be70e0918");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -43,7 +43,7 @@ class ParagraphBlockTestModel extends ModelTest {
     @Test
     @SuppressWarnings("SpellCheckingInspection")
     void pageMentionTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/9016ca8ec5d94a39840497767f730de1");
+        Response response = getResponse(BASE_URL + "/blocks/9016ca8ec5d94a39840497767f730de1");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -70,7 +70,7 @@ class ParagraphBlockTestModel extends ModelTest {
     @Test
     @SuppressWarnings("SpellCheckingInspection")
     void personMentionTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/e996b96b6925453fa804c5742c0ca5b7");
+        Response response = getResponse(BASE_URL + "/blocks/e996b96b6925453fa804c5742c0ca5b7");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

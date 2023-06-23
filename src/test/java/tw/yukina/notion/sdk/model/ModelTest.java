@@ -43,7 +43,7 @@ public class ModelTest {
         objectMapperModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
     }
 
-    public Request.Builder getRequestBuilder(){
+    public Request.Builder getRequestBuilder() {
 
         Properties properties = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
@@ -72,7 +72,7 @@ public class ModelTest {
         return call.execute();
     }
 
-    public ObjectMapper getCommonObjectMapper(){
+    public ObjectMapper getCommonObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
@@ -81,7 +81,7 @@ public class ModelTest {
         return objectMapper;
     }
 
-    public ObjectMapper getIncludeNullObjectMapper(){
+    public ObjectMapper getIncludeNullObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);

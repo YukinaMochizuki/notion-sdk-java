@@ -2,14 +2,15 @@ package tw.yukina.notion.sdk.endpoint.block;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
+import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.ObjectType;
 import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.endpoint.block.RequestAppendChildrenBlockList;
 import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
-import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.template.BlockTemplate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AppendBlockChildrenTestModel extends ModelTest {
 
@@ -25,7 +26,7 @@ class AppendBlockChildrenTestModel extends ModelTest {
         testResponseBlockList.setBlocks(BlockTemplate.getPageBlock());
         testResponseBlockList.setType(ObjectType.BLOCK);
 
-        for(int i = 0; i < responseBlockList.getBlocks().size(); i++){
+        for (int i = 0; i < responseBlockList.getBlocks().size(); i++) {
             BlockModel testBlock = testResponseBlockList.getBlocks().get(i);
             BlockModel responseBlock = responseBlockList.getBlocks().get(i);
             testBlock.setId(responseBlock.getId());
@@ -42,7 +43,7 @@ class AppendBlockChildrenTestModel extends ModelTest {
         assertEquals(responseJsonNode, serializedJsonNode);
         assertEquals(responseBlockList, testResponseBlockList);
 
-        for(int i = 0; i < responseBlockList.getBlocks().size(); i++)
+        for (int i = 0; i < responseBlockList.getBlocks().size(); i++)
             DeleteBlock.callValue(testResponseBlockList.getBlocks().get(i).getId(),
                     getOkHttpClient(), getRequestBuilder(), getIncludeNullObjectMapper());
 

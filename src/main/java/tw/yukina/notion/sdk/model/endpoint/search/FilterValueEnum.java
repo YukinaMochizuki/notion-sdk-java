@@ -14,7 +14,7 @@ public enum FilterValueEnum {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

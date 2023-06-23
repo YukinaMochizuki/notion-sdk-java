@@ -20,21 +20,8 @@ public class DateTimeDeserializer extends JsonDeserializer<DateTimeProperty> {
 
     public static Pattern datePattern = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})\\z");
 
-    public static Pattern dateTimePattern = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2})\\:(\\d{2})\\:(\\d{2})\\.(\\d{3})\\+(\\d{2})\\:(\\d{2})\\b");
-
-    @Override
-    public DateTimeProperty deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException {
-        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
-        String start = node.get("start").asText();
-
-        Optional<DateTimeProperty> optionalDateTimeProperty;
-
-        if(node.hasNonNull("end"))optionalDateTimeProperty = parse(start, node.get("end").asText());
-        else optionalDateTimeProperty = parse(start);
-
-        return optionalDateTimeProperty
-                .orElseThrow(() -> JsonMappingException.from(jsonParser, "The date " + start + " does not match any available formats"));
-    }
+    public static Pattern dateTimePattern = Pattern
+            .compile("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2})\\:(\\d{2})\\:(\\d{2})\\.(\\d{3})\\+(\\d{2})\\:(\\d{2})\\b");
 
     public static Optional<DateTimeProperty> parse(String start) {
         if (datePattern.matcher(start).find()) {
@@ -42,7 +29,7 @@ public class DateTimeDeserializer extends JsonDeserializer<DateTimeProperty> {
             date.setStart(LocalDate.parse(start));
             date.setDateTimeType(DateTimeType.DATE);
             return Optional.of(date);
-        } else if(dateTimePattern.matcher(start).find()) {
+        } else if (dateTimePattern.matcher(start).find()) {
             DateTime dateTime = new DateTime();
             dateTime.setStart(ZonedDateTime.parse(start));
             dateTime.setDateTimeType(DateTimeType.DATE_TIME);
@@ -59,7 +46,7 @@ public class DateTimeDeserializer extends JsonDeserializer<DateTimeProperty> {
             date.setEnd(LocalDate.parse(end));
             date.setDateTimeType(DateTimeType.DATE_INCLUDE_END);
             return Optional.of(date);
-        } else if(dateTimePattern.matcher(start).find()) {
+        } else if (dateTimePattern.matcher(start).find()) {
             DateTime dateTime = new DateTime();
             dateTime.setStart(ZonedDateTime.parse(start));
             dateTime.setEnd(ZonedDateTime.parse(end));
@@ -68,5 +55,20 @@ public class DateTimeDeserializer extends JsonDeserializer<DateTimeProperty> {
         }
 
         return Optional.empty();
+    }
+
+    @Override
+    public DateTimeProperty deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException {
+        JsonNode node = jsonParser.getCodec().readTree(jsonParser);
+        String start = node.get("start").asText();
+
+        Optional<DateTimeProperty> optionalDateTimeProperty;
+
+        if (node.hasNonNull("end")) optionalDateTimeProperty = parse(start, node.get("end").asText());
+        else optionalDateTimeProperty = parse(start);
+
+        return optionalDateTimeProperty
+                .orElseThrow(() -> JsonMappingException.from(jsonParser, "The date " + start +
+                        " does not match any available formats"));
     }
 }

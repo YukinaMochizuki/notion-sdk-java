@@ -17,13 +17,14 @@ public abstract class AbstractDeserializer<T> extends JsonDeserializer<T> {
     private final List<TypeUnit<T>> typeUnits = new ArrayList<>();
 
     public Optional<T> typeDeserialize(String type, JsonNode node, ObjectCodec codec) throws JsonProcessingException {
-        for(TypeUnit<T> typeUnit: typeUnits){
-            if(Objects.equals(typeUnit.getType(), type)) return Optional.of(codec.treeToValue(node, typeUnit.getClazz()));
+        for (TypeUnit<T> typeUnit : typeUnits) {
+            if (Objects.equals(typeUnit.getType(), type))
+                return Optional.of(codec.treeToValue(node, typeUnit.getClazz()));
         }
         return Optional.empty();
     }
 
-    public void addAvailableType(String type, Class<? extends T> clazz){
+    public void addAvailableType(String type, Class<? extends T> clazz) {
         typeUnits.add(new TypeUnit<>(type, clazz));
     }
 

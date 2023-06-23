@@ -28,31 +28,31 @@ public class DateProperty extends PageProperty {
     private DateTimeProperty dateTimeProperty;
 
     @NotNull
-    public static DateProperty of(LocalDate start){
+    public static DateProperty of(LocalDate start) {
         Date date = Date.of(start);
         return DateProperty.of(date);
     }
 
     @NotNull
-    public static DateProperty of(LocalDate start, LocalDate end){
+    public static DateProperty of(LocalDate start, LocalDate end) {
         Date date = Date.of(start, end);
         return DateProperty.of(date);
     }
 
     @NotNull
-    public static DateProperty of(ZonedDateTime start){
+    public static DateProperty of(ZonedDateTime start) {
         DateTime dateTime = DateTime.of(start);
         return DateProperty.of(dateTime);
     }
 
     @NotNull
-    public static DateProperty of(ZonedDateTime start, ZonedDateTime end){
+    public static DateProperty of(ZonedDateTime start, ZonedDateTime end) {
         DateTime dateTime = DateTime.of(start, end);
         return DateProperty.of(dateTime);
     }
 
     @NotNull
-    public static DateProperty of(DateTimeProperty dateTimeProperty){
+    public static DateProperty of(DateTimeProperty dateTimeProperty) {
         DateProperty dateProperty = new DateProperty();
         dateProperty.setType(PropertyType.DATE);
         dateProperty.setDateTimeProperty(dateTimeProperty);

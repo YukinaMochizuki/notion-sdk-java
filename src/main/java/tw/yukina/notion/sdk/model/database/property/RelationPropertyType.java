@@ -14,7 +14,7 @@ public enum RelationPropertyType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 }

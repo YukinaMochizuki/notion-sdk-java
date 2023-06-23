@@ -21,7 +21,7 @@ public class IconEmoji extends Icon {
     private String emoji;
 
     @NotNull
-    public static IconEmoji of(String emoji){
+    public static IconEmoji of(String emoji) {
         IconEmoji iconEmoji = new IconEmoji();
         iconEmoji.setType("emoji");
         iconEmoji.setEmoji(emoji);

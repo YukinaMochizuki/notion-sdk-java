@@ -1,7 +1,6 @@
 package tw.yukina.notion.sdk.model.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import tw.yukina.notion.sdk.model.deserializer.TypeUnit;
 import tw.yukina.notion.sdk.model.endpoint.database.query.filter.*;
@@ -12,12 +11,13 @@ import java.util.Objects;
 public class DatabasePropertyFilterSerializer extends AbstractSerializer<DatabasePropertyFilter> {
 
     @Override
-    public void serialize(DatabasePropertyFilter value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+    public void serialize(DatabasePropertyFilter value, JsonGenerator gen, SerializerProvider serializers)
+            throws IOException {
         addAutoSerializeFilter();
         typeSerialize(value, gen);
     }
 
-    public void addAutoSerializeFilter(){
+    public void addAutoSerializeFilter() {
         addAvailableType("TitlePropertyFilter", TitlePropertyFilter.class);
         addAvailableType("RichTextPropertyFilter", RichTextPropertyFilter.class);
         addAvailableType("UrlPropertyFilter", UrlPropertyFilter.class);

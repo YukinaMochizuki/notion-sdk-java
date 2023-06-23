@@ -23,14 +23,14 @@ public class CreatedTimePropertyFilter extends DatabasePropertyFilter {
     private DateFilterObject dateFilterObject;
 
     @NotNull
-    public static CreatedTimePropertyFilter of(String property, DateFilterObject dateFilterObject){
+    public static CreatedTimePropertyFilter of(String property, DateFilterObject dateFilterObject) {
         CreatedTimePropertyFilter createdTimePropertyFilter = new CreatedTimePropertyFilter();
         createdTimePropertyFilter.setName(property);
         createdTimePropertyFilter.setDateFilterObject(dateFilterObject);
         return createdTimePropertyFilter;
     }
-    
-        public static CreatedTimePropertyFilter ofEquals(String property, ZonedDateTime zonedDateTime) {
+
+    public static CreatedTimePropertyFilter ofEquals(String property, ZonedDateTime zonedDateTime) {
         return of(property, DateFilterObject.ofEquals(zonedDateTime));
     }
 
@@ -49,35 +49,35 @@ public class CreatedTimePropertyFilter extends DatabasePropertyFilter {
     public static CreatedTimePropertyFilter ofIsEmpty(String property) {
         return of(property, DateFilterObject.ofIsEmpty());
     }
-    
+
     public static CreatedTimePropertyFilter ofIsNotEmpty(String property) {
         return of(property, DateFilterObject.ofIsNotEmpty());
     }
-    
+
     public static CreatedTimePropertyFilter ofOnOrAfter(String property, ZonedDateTime zonedDateTime) {
         return of(property, DateFilterObject.ofOnOrAfter(zonedDateTime));
     }
-    
+
     public static CreatedTimePropertyFilter ofPastWeek(String property) {
         return of(property, DateFilterObject.ofPastWeek());
     }
-    
+
     public static CreatedTimePropertyFilter ofPastMonth(String property) {
         return of(property, DateFilterObject.ofPastMonth());
     }
-    
+
     public static CreatedTimePropertyFilter ofPastYear(String property) {
         return of(property, DateFilterObject.ofPastYear());
     }
-    
+
     public static CreatedTimePropertyFilter ofNextWeek(String property) {
         return of(property, DateFilterObject.ofNextWeek());
     }
-    
+
     public static CreatedTimePropertyFilter ofNextMonth(String property) {
         return of(property, DateFilterObject.ofNextMonth());
     }
-    
+
     public static CreatedTimePropertyFilter ofNextYear(String property) {
         return of(property, DateFilterObject.ofNextYear());
     }

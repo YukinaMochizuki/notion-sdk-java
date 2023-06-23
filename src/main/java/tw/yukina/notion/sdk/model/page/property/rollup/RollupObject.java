@@ -15,12 +15,12 @@ import tw.yukina.notion.sdk.model.deserializer.RollupDeserializer;
 public class RollupObject {
 
     private static final String TYPE_FIELD = "type";
-    private static final String Function_FIELD = "function";
+    private static final String FUNCTION_FIELD = "function";
 
     @JsonProperty(TYPE_FIELD)
     private RollupType rollupType;
 
-    @JsonProperty(Function_FIELD)
+    @JsonProperty(FUNCTION_FIELD)
     private RollupFunctionType rollupFunctionType;
 
 }

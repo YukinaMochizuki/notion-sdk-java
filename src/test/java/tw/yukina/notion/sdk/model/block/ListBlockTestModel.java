@@ -16,7 +16,7 @@ public class ListBlockTestModel extends ModelTest {
 
     @Test
     void bulletedListTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/c8d94808dba84ffebc4841feaf3f5880");
+        Response response = getResponse(BASE_URL + "/blocks/c8d94808dba84ffebc4841feaf3f5880");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -38,7 +38,7 @@ public class ListBlockTestModel extends ModelTest {
 
     @Test
     void numberedListTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/b9c51fd99154434ea677c62bb97482ad");
+        Response response = getResponse(BASE_URL + "/blocks/b9c51fd99154434ea677c62bb97482ad");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -60,7 +60,7 @@ public class ListBlockTestModel extends ModelTest {
 
     @Test
     void toggleListTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/bc143264521b4388ad71eeb2de463b57");
+        Response response = getResponse(BASE_URL + "/blocks/bc143264521b4388ad71eeb2de463b57");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

@@ -19,6 +19,6 @@ public class CreatedTimeProperty extends PageProperty {
     private static final String CREATED_TIME_FIELD = "created_time";
 
     @JsonProperty(CREATED_TIME_FIELD)
-    private ZonedDateTime createdTime;;
+    private ZonedDateTime createdTime;
 
 }

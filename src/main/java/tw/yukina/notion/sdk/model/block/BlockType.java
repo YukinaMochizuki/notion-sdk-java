@@ -41,7 +41,7 @@ public enum BlockType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

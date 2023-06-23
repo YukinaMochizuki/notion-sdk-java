@@ -14,7 +14,7 @@ public enum FileType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

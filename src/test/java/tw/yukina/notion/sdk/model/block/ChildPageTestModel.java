@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ChildPageTestModel extends ModelTest {
     @Test
     void childPageTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/3ddec0b97fcb46fcae784afb2406ce90");
+        Response response = getResponse(BASE_URL + "/blocks/3ddec0b97fcb46fcae784afb2406ce90");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -36,7 +36,7 @@ public class ChildPageTestModel extends ModelTest {
 
     @Test
     void childDatabaseTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/287e5fe937aa4fbd91073e9ebe6295a1");
+        Response response = getResponse(BASE_URL + "/blocks/287e5fe937aa4fbd91073e9ebe6295a1");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

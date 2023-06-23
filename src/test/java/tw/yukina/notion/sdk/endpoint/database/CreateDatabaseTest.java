@@ -11,11 +11,11 @@ import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.template.project.Project;
 import tw.yukina.notion.sdk.model.template.project.Thing;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CreateDatabaseTest extends ModelTest {
 
-//    @Test
+    //    @Test
     void createProjectDatabase() {
 
         PageParent pageParent = new PageParent();
@@ -37,7 +37,7 @@ class CreateDatabaseTest extends ModelTest {
         assertEquals(responseJsonNode, serializedJsonNode);
     }
 
-//    @Test
+    //    @Test
     void createThingDatabase() {
 
         PageParent pageParent = new PageParent();

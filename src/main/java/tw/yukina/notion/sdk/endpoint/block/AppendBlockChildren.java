@@ -17,12 +17,14 @@ import static tw.yukina.notion.sdk.Configuration.MEDIA_TYPE_JSON;
 public class AppendBlockChildren extends AbstractBlockEndpoint {
 
     @NotNull
-    public static ResponseBlockList callValue(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
+    public static ResponseBlockList callValue(@NotNull String uuid,
+                                              @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
                                               @NotNull OkHttpClient okHttpClient,
                                               @NotNull Request.Builder builder,
                                               @NotNull ObjectMapper objectMapper) {
 
-        return toBlockList(callTree(uuid, requestAppendChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
+        return toBlockList(callTree(uuid, requestAppendChildrenBlockList, okHttpClient, builder, objectMapper),
+                objectMapper);
     }
 
     @NotNull
@@ -44,12 +46,14 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     }
 
     @NotNull
-    public static ObjectNode callTree(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
+    public static ObjectNode callTree(@NotNull String uuid,
+                                      @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
                                       @NotNull OkHttpClient okHttpClient,
                                       @NotNull Request.Builder builder,
                                       @NotNull ObjectMapper objectMapper) {
 
-        return getObjectNode(call(uuid, requestAppendChildrenBlockList, okHttpClient, builder, objectMapper), objectMapper);
+        return getObjectNode(call(uuid, requestAppendChildrenBlockList, okHttpClient, builder, objectMapper),
+                objectMapper);
     }
 
     @NotNull
@@ -71,7 +75,8 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
     }
 
     @NotNull
-    public static Response call(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
+    public static Response call(@NotNull String uuid,
+                                @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList,
                                 @NotNull OkHttpClient okHttpClient,
                                 @NotNull Request.Builder builder,
                                 @NotNull ObjectMapper objectMapper) {
@@ -86,7 +91,7 @@ public class AppendBlockChildren extends AbstractBlockEndpoint {
 
         ObjectNode objectNode = getObjectNode(json);
         ArrayNode arrayNode = (ArrayNode) objectNode.get("children");
-        for(JsonNode jsonNode : arrayNode) preparePostBlock((ObjectNode) jsonNode);
+        for (JsonNode jsonNode : arrayNode) preparePostBlock((ObjectNode) jsonNode);
 
         return call(uuid, objectNode.toString(), okHttpClient, builder);
     }

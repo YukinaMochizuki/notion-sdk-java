@@ -22,7 +22,7 @@ public class BlockUnit {
     private String type = "block_id";
 
     @NotNull
-    public static BlockUnit of(String id){
+    public static BlockUnit of(String id) {
         BlockUnit blockUnit = new BlockUnit();
         blockUnit.setBlockId(id);
         return blockUnit;

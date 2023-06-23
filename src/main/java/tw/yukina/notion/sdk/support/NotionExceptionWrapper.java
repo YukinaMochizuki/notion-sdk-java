@@ -16,13 +16,13 @@ public class NotionExceptionWrapper {
 
     private Map<String, Class<? extends NotionAPIException>> exceptionDefine;
 
-    public NotionExceptionWrapper(){
+    public NotionExceptionWrapper() {
         this.exceptionDefine = new HashMap<>();
     }
 
     @SneakyThrows
-    public NotionAPIException wrapException(@NotNull NotionAPIException notionAPIException){
-        if(exceptionDefine.containsKey(notionAPIException.getCode())){
+    public NotionAPIException wrapException(@NotNull NotionAPIException notionAPIException) {
+        if (exceptionDefine.containsKey(notionAPIException.getCode())) {
             return exceptionDefine.get(notionAPIException.getCode()).getDeclaredConstructor(ObjectNode.class)
                     .newInstance(notionAPIException.getObjectNode());
         } else {

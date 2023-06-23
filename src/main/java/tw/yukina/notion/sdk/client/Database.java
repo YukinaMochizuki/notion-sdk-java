@@ -2,14 +2,7 @@ package tw.yukina.notion.sdk.client;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
-import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
-import tw.yukina.notion.sdk.model.page.PageModel;
-import tw.yukina.notion.sdk.model.page.property.PageProperty;
-import tw.yukina.notion.sdk.model.page.property.TitleProperty;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Database extends DatabaseModel implements Entity<Database> {
 

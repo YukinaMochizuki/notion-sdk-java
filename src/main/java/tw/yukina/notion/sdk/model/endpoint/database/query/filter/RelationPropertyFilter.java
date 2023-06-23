@@ -21,7 +21,7 @@ public class RelationPropertyFilter extends DatabasePropertyFilter {
     private RelationFilterObject relationFilterObject;
 
     @NotNull
-    public static RelationPropertyFilter of(String property, RelationFilterObject relationFilterObject){
+    public static RelationPropertyFilter of(String property, RelationFilterObject relationFilterObject) {
         RelationPropertyFilter relationPropertyFilter = new RelationPropertyFilter();
         relationPropertyFilter.setName(property);
         relationPropertyFilter.setRelationFilterObject(relationFilterObject);

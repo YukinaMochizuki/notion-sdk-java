@@ -16,8 +16,8 @@ import tw.yukina.notion.sdk.model.common.user.PersonObject;
 import tw.yukina.notion.sdk.model.common.user.PersonUser;
 import tw.yukina.notion.sdk.model.common.user.UserType;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
-import tw.yukina.notion.sdk.model.database.property.*;
 import tw.yukina.notion.sdk.model.database.property.FormulaObject;
+import tw.yukina.notion.sdk.model.database.property.*;
 import tw.yukina.notion.sdk.model.helper.JsonNodeHelper;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.helper.SelectOptionHelper;
@@ -31,7 +31,7 @@ import java.util.*;
 
 public final class Thing {
 
-    public static DatabaseModel getDatabase(JsonNode responseJsonNode, DatabaseModel responseDatabaseModel){
+    public static DatabaseModel getDatabase(JsonNode responseJsonNode, DatabaseModel responseDatabaseModel) {
         DatabaseModel databaseModel = new DatabaseModel();
         databaseModel.setId(responseDatabaseModel.getId());
         databaseModel.setCreatedTime(responseDatabaseModel.getCreatedTime());
@@ -207,7 +207,7 @@ public final class Thing {
         return databaseModel;
     }
 
-    public static Map<String, DatabaseProperty> getCreateDatabaseProperty(String projectId){
+    public static Map<String, DatabaseProperty> getCreateDatabaseProperty(String projectId) {
 
         Map<String, DatabaseProperty> propertyMap = new HashMap<>();
 
@@ -242,7 +242,7 @@ public final class Thing {
         selectProperty.setSelectObject(selectObject);
         propertyMap.put("Type", selectProperty);
 
-        selectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Doc", "Todo", "Event"}));
+        selectObject.setSelectOptions(SelectOptionHelper.getSelectOptions("Doc", "Todo", "Event"));
 
         databaseProperty = new DatabaseProperty();
         databaseProperty.setName("Files");
@@ -293,7 +293,7 @@ public final class Thing {
         multiSelectProperty.setSelectObject(multiSelectObject);
         propertyMap.put("Tags", multiSelectProperty);
 
-        multiSelectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Index", "Coding", "Listener", "Outdated"}));
+        multiSelectObject.setSelectOptions(SelectOptionHelper.getSelectOptions("Index", "Coding", "Listener", "Outdated"));
 
         databaseProperty = new DatabaseProperty();
         databaseProperty.setName("Last Edited By");

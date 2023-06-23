@@ -14,7 +14,7 @@ public enum TextType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 }

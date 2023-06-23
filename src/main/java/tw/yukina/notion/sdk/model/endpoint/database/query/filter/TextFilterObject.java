@@ -48,56 +48,56 @@ public class TextFilterObject {
     private Boolean isNotEmpty;
 
     @NotNull
-    public static TextFilterObject equalsOf(String equals){
+    public static TextFilterObject equalsOf(String equals) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setEquals(equals);
         return textFilterObject;
     }
 
     @NotNull
-    public static TextFilterObject doesNotEqualOf(String doesNotEqual){
+    public static TextFilterObject doesNotEqualOf(String doesNotEqual) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setDoesNotEqual(doesNotEqual);
         return textFilterObject;
     }
 
     @NotNull
-    public static TextFilterObject containsOf(String contains){
+    public static TextFilterObject containsOf(String contains) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setContains(contains);
         return textFilterObject;
     }
 
     @NotNull
-    public static TextFilterObject doesNotContainOf(String doesNotContain){
+    public static TextFilterObject doesNotContainOf(String doesNotContain) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setDoesNotContain(doesNotContain);
         return textFilterObject;
     }
 
     @NotNull
-    public static TextFilterObject startsWithOf(String startsWith){
+    public static TextFilterObject startsWithOf(String startsWith) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setStartsWith(startsWith);
         return textFilterObject;
     }
 
     @NotNull
-    public static TextFilterObject endsWithOf(String endsWith){
+    public static TextFilterObject endsWithOf(String endsWith) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setEndsWith(endsWith);
         return textFilterObject;
     }
 
     @NotNull
-    public static TextFilterObject isEmptyOf(boolean isEmpty){
+    public static TextFilterObject isEmptyOf(boolean isEmpty) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setIsEmpty(isEmpty);
         return textFilterObject;
     }
 
     @NotNull
-    public static TextFilterObject isNotEmptyOf(boolean isNotEmpty){
+    public static TextFilterObject isNotEmptyOf(boolean isNotEmpty) {
         TextFilterObject textFilterObject = new TextFilterObject();
         textFilterObject.setIsNotEmpty(isNotEmpty);
         return textFilterObject;

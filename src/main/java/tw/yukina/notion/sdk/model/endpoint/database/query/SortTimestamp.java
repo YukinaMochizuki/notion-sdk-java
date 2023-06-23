@@ -14,7 +14,7 @@ public enum SortTimestamp {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 }

@@ -21,15 +21,15 @@ public class ColumnListBlockModel extends BlockModel {
     @JsonProperty(COLUMN_LIST_FIELD)
     private EmptyObject emptyObject;
 
-    @Override
-    public boolean canHaveChildren() {
-        return false;
-    }
-
     @NotNull
     public static ColumnListBlockModel of() {
         ColumnListBlockModel columnListBlock = new ColumnListBlockModel(EmptyObject.of());
         columnListBlock.setType(BlockType.COLUMN_LIST);
         return columnListBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
     }
 }

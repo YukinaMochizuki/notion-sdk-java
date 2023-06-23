@@ -24,23 +24,6 @@ public class TodoBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(TO_DO_FIELD)
     private Todo todo;
 
-    @Override
-    public void setParagraph(Paragraph paragraph) {
-        this.todo.setRichTexts(paragraph.getRichTexts());
-        this.todo.setChildren(paragraph.getChildren());
-    }
-
-    @Override
-    @JsonIgnore
-    public Paragraph getParagraph() {
-        return todo;
-    }
-
-    @Override
-    public boolean canHaveChildren() {
-        return true;
-    }
-
     @NotNull
     public static TodoBlockModel of(String plainText) {
         List<RichText> richTexts = TextBuilder.of(plainText).build();
@@ -73,5 +56,22 @@ public class TodoBlockModel extends BlockModel implements TextBlock {
         todoBlock.setTodo(todo);
         todoBlock.setType(BlockType.TO_DO);
         return todoBlock;
+    }
+
+    @Override
+    @JsonIgnore
+    public Paragraph getParagraph() {
+        return todo;
+    }
+
+    @Override
+    public void setParagraph(Paragraph paragraph) {
+        this.todo.setRichTexts(paragraph.getRichTexts());
+        this.todo.setChildren(paragraph.getChildren());
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
     }
 }

@@ -3,7 +3,6 @@ package tw.yukina.notion.sdk.model.database.property;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
-import org.jetbrains.annotations.Nullable;
 import tw.yukina.notion.sdk.model.deserializer.DatabaseRelationDeserializer;
 
 @Getter

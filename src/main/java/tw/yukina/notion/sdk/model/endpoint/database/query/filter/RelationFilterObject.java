@@ -32,28 +32,28 @@ public class RelationFilterObject {
     private Boolean isNotEmpty;
 
     @NotNull
-    public static RelationFilterObject containsUuidOf(String containsUuid){
+    public static RelationFilterObject containsUuidOf(String containsUuid) {
         RelationFilterObject relationFilterObject = new RelationFilterObject();
         relationFilterObject.setContainsUuid(containsUuid);
         return relationFilterObject;
     }
 
     @NotNull
-    public static RelationFilterObject doesNotContainsUuidOf(String doesNotContainsUuid){
+    public static RelationFilterObject doesNotContainsUuidOf(String doesNotContainsUuid) {
         RelationFilterObject relationFilterObject = new RelationFilterObject();
         relationFilterObject.setDoesNotContainsUuid(doesNotContainsUuid);
         return relationFilterObject;
     }
 
     @NotNull
-    public static RelationFilterObject isEmptyOf(boolean isEmpty){
+    public static RelationFilterObject isEmptyOf(boolean isEmpty) {
         RelationFilterObject relationFilterObject = new RelationFilterObject();
         relationFilterObject.setIsEmpty(isEmpty);
-        return  relationFilterObject;
+        return relationFilterObject;
     }
 
     @NotNull
-    public static RelationFilterObject isNotEmptyOf(boolean isNotEmpty){
+    public static RelationFilterObject isNotEmptyOf(boolean isNotEmpty) {
         RelationFilterObject relationFilterObject = new RelationFilterObject();
         relationFilterObject.setIsNotEmpty(isNotEmpty);
         return relationFilterObject;

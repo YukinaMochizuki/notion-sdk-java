@@ -6,7 +6,7 @@ import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.database.DatabaseModel;
 import tw.yukina.notion.sdk.model.template.project.Thing;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RetrieveDatabaseTestModel extends ModelTest {
 

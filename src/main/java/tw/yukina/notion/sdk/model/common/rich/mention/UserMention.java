@@ -15,7 +15,7 @@ import tw.yukina.notion.sdk.model.common.user.User;
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class UserMention extends Mention{
+public class UserMention extends Mention {
     private static final String USER_FIELD = "user";
 
     @JsonProperty(USER_FIELD)

@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class ResponsePageList  extends ResponseList {
+public class ResponsePageList extends ResponseList {
     private static final String RESULTS_FIELD = "results";
 
     @JsonProperty(RESULTS_FIELD)

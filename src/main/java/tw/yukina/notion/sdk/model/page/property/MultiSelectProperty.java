@@ -9,7 +9,6 @@ import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.common.SelectOption;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @Getter
@@ -27,10 +26,10 @@ public class MultiSelectProperty extends PageProperty {
     private List<SelectOption> selectOptions;
 
     @NotNull
-    public static MultiSelectProperty of(String ...options){
+    public static MultiSelectProperty of(String... options) {
         List<SelectOption> selectOptions = new ArrayList<>();
 
-        for(String option: options){
+        for (String option : options) {
             SelectOption selectOption = new SelectOption();
             selectOption.setName(option);
             selectOptions.add(selectOption);

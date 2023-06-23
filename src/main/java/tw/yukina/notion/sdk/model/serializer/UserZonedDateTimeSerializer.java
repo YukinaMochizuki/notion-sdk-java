@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
 public class UserZonedDateTimeSerializer extends JsonSerializer<ZonedDateTime> {
     @Override

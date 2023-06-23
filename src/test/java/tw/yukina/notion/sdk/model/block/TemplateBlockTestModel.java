@@ -8,13 +8,13 @@ import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TemplateBlockTestModel extends ModelTest {
 
     @Test
     void templateBlock() throws Exception {
-        Response response = getResponse( BASE_URL + "/blocks/f43a5316ff03445cb8de1bb24d6fe80b");
+        Response response = getResponse(BASE_URL + "/blocks/f43a5316ff03445cb8de1bb24d6fe80b");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

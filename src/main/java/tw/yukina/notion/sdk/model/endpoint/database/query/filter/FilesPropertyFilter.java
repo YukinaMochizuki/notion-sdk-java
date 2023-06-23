@@ -21,18 +21,18 @@ public class FilesPropertyFilter extends DatabasePropertyFilter {
     private FilesFilterObject filesFilterObject;
 
     @NotNull
-    public static FilesPropertyFilter of(String property, FilesFilterObject filesFilterObject){
+    public static FilesPropertyFilter of(String property, FilesFilterObject filesFilterObject) {
         FilesPropertyFilter filesPropertyFilter = new FilesPropertyFilter();
         filesPropertyFilter.setName(property);
         filesPropertyFilter.setFilesFilterObject(filesFilterObject);
         return filesPropertyFilter;
     }
 
-    public static FilesPropertyFilter isEmptyOf(String property, boolean isEmpty){
+    public static FilesPropertyFilter isEmptyOf(String property, boolean isEmpty) {
         return of(property, FilesFilterObject.isEmptyOf(isEmpty));
     }
 
-    public static FilesPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+    public static FilesPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty) {
         return of(property, FilesFilterObject.isNotEmptyOf(isNotEmpty));
     }
 }

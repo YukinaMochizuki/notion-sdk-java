@@ -8,8 +8,8 @@ import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.NotionObject;
 import tw.yukina.notion.sdk.model.ObjectType;
-import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.Icon;
+import tw.yukina.notion.sdk.model.common.file.FileObject;
 import tw.yukina.notion.sdk.model.common.parent.DatabaseParent;
 import tw.yukina.notion.sdk.model.common.parent.Parent;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
@@ -61,20 +61,20 @@ public class PageModel extends NotionObject {
     @JsonProperty(PUBLIC_URL_FIELD)
     private String publicUrl;
 
-    @JsonIgnore
-    public Optional<String> getTitle(){
-        TitleProperty titleProperty = (TitleProperty) propertyMap.get("Name");
-
-        if(titleProperty == null)return Optional.empty();
-        else return Optional.of(RichTextHelper.textsToString(titleProperty.getTexts()));
-    }
-
     @NotNull
-    public static PageModel ofDatabasePage(String databaseId){
+    public static PageModel ofDatabasePage(String databaseId) {
         DatabaseParent databaseParent = DatabaseParent.of(databaseId);
         PageModel pageModel = new PageModel();
         pageModel.setParent(databaseParent);
         return pageModel;
+    }
+
+    @JsonIgnore
+    public Optional<String> getTitle() {
+        TitleProperty titleProperty = (TitleProperty) propertyMap.get("Name");
+
+        if (titleProperty == null) return Optional.empty();
+        else return Optional.of(RichTextHelper.textsToString(titleProperty.getTexts()));
     }
 
     @Override
@@ -96,6 +96,7 @@ public class PageModel extends NotionObject {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getObjectType(), getId(), getCreatedTime(), getLastEditedTime(), archived, icon, cover, propertyMap, parent, url);
+        return Objects.hash(getObjectType(), getId(), getCreatedTime(), getLastEditedTime(),
+                archived, icon, cover, propertyMap, parent, url);
     }
 }

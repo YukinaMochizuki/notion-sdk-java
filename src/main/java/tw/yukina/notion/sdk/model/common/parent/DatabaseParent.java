@@ -21,7 +21,7 @@ public class DatabaseParent extends Parent {
     private String databaseId;
 
     @NotNull
-    public static DatabaseParent of(String databaseId){
+    public static DatabaseParent of(String databaseId) {
         DatabaseParent databaseParent = new DatabaseParent();
         databaseParent.setParentType(ParentType.DATABASE);
         databaseParent.setDatabaseId(databaseId);

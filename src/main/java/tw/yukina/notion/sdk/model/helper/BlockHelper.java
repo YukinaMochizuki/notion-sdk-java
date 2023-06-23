@@ -15,7 +15,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ParagraphBlockModel createDefaultParagraph(String content){
+    public static ParagraphBlockModel createDefaultParagraph(String content) {
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(Collections.singletonList(RichTextHelper.createDefaultText(content)));
         paragraph.setColor(TextColor.DEFAULT);
@@ -24,7 +24,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ParagraphBlockModel createDefaultParagraph(RichText richText){
+    public static ParagraphBlockModel createDefaultParagraph(RichText richText) {
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(Collections.singletonList(richText));
         paragraph.setColor(TextColor.DEFAULT);
@@ -33,7 +33,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ParagraphBlockModel getDefaultParagraphBlock(Paragraph paragraph){
+    public static ParagraphBlockModel getDefaultParagraphBlock(Paragraph paragraph) {
         ParagraphBlockModel paragraphBlock = new ParagraphBlockModel();
         paragraphBlock.setHasChildren(false);
         paragraphBlock.setType(BlockType.PARAGRAPH);
@@ -43,7 +43,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static TodoBlockModel createDefaultTodoBlock(List<RichText> texts, boolean checked){
+    public static TodoBlockModel createDefaultTodoBlock(List<RichText> texts, boolean checked) {
         Todo todo = new Todo();
         todo.setRichTexts(texts);
         todo.setChecked(checked);
@@ -58,7 +58,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ChildPageBlockModel createDefaultChildPageBlock(String title){
+    public static ChildPageBlockModel createDefaultChildPageBlock(String title) {
         ChildPage childPage = new ChildPage();
         childPage.setTitle(title);
 
@@ -70,7 +70,7 @@ public final class BlockHelper {
     }
 
     @NotNull
-    public static ChildDatabaseBlockModel createDefaultDatabasePageBlock(String title){
+    public static ChildDatabaseBlockModel createDefaultDatabasePageBlock(String title) {
         ChildPage childPage = new ChildPage();
         childPage.setTitle(title);
 

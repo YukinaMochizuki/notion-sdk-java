@@ -21,17 +21,17 @@ public abstract class AbstractDatabaseEndpoint extends AbstractEndpoint {
         }
     }
 
-    public static void prepareRequestUpdateDatabase(ObjectNode objectNode){
-        if(!objectNode.hasNonNull("title"))objectNode.remove("title");
+    public static void prepareRequestUpdateDatabase(ObjectNode objectNode) {
+        if (!objectNode.hasNonNull("title")) objectNode.remove("title");
     }
 
-    public static void prepareCreateProperties(ObjectNode objectNode){
-        for(JsonNode jsonNode: objectNode.get("properties")) prepareCreateProperty((ObjectNode) jsonNode);
+    public static void prepareCreateProperties(ObjectNode objectNode) {
+        for (JsonNode jsonNode : objectNode.get("properties")) prepareCreateProperty((ObjectNode) jsonNode);
     }
 
-    public static void prepareCreateProperty(ObjectNode property){
+    public static void prepareCreateProperty(ObjectNode property) {
 
-        if(!property.hasNonNull("id"))property.remove("id");
+        if (!property.hasNonNull("id")) property.remove("id");
 
         switch (property.get("type").asText()) {
             case "multi_select":
@@ -45,11 +45,13 @@ public abstract class AbstractDatabaseEndpoint extends AbstractEndpoint {
                 if (!objectNode.hasNonNull("synced_property_name")) objectNode.remove("synced_property_name");
                 if (!objectNode.hasNonNull("synced_property_id")) objectNode.remove("synced_property_id");
                 break;
+            default:
+                break;
         }
     }
 
-    public static void prepareCreateOptions(ArrayNode options){
-        for(JsonNode jsonNode: options){
+    public static void prepareCreateOptions(ArrayNode options) {
+        for (JsonNode jsonNode : options) {
             ObjectNode option = (ObjectNode) jsonNode;
             option.remove("id");
         }

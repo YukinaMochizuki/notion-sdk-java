@@ -25,7 +25,7 @@ public class NumberProperty extends DatabaseProperty {
     private NumberObject numberObject;
 
     @NotNull
-    public static NumberProperty of(String name, NumberFormat numberFormat){
+    public static NumberProperty of(String name, NumberFormat numberFormat) {
         NumberObject numberObject = new NumberObject();
         numberObject.setNumberFormat(numberFormat);
         NumberProperty numberProperty = new NumberProperty();

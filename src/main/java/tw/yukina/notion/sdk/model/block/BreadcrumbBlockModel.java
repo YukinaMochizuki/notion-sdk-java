@@ -1,4 +1,5 @@
 package tw.yukina.notion.sdk.model.block;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -21,7 +22,7 @@ public class BreadcrumbBlockModel extends BlockModel {
     private EmptyObject emptyObject;
 
     @NotNull
-    public static BreadcrumbBlockModel of(){
+    public static BreadcrumbBlockModel of() {
         BreadcrumbBlockModel breadcrumbBlock = new BreadcrumbBlockModel(EmptyObject.of());
         breadcrumbBlock.setType(BlockType.BREADCRUMB);
         return breadcrumbBlock;

@@ -68,79 +68,79 @@ public class DateFilterObject {
     @JsonProperty(NEXT_YEAR_FIELD)
     private Boolean enableNextYearFilter;
 
-    public static DateFilterObject ofEquals(ZonedDateTime zonedDateTime){
+    public static DateFilterObject ofEquals(ZonedDateTime zonedDateTime) {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setEqualDate(zonedDateTime);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofBefore(ZonedDateTime zonedDateTime){
+    public static DateFilterObject ofBefore(ZonedDateTime zonedDateTime) {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setBeforeDate(zonedDateTime);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofAfter(ZonedDateTime zonedDateTime){
+    public static DateFilterObject ofAfter(ZonedDateTime zonedDateTime) {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setAfterDate(zonedDateTime);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofOnOrBefore(ZonedDateTime zonedDateTime){
+    public static DateFilterObject ofOnOrBefore(ZonedDateTime zonedDateTime) {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setOnOrBeforeDate(zonedDateTime);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofIsEmpty(){
+    public static DateFilterObject ofIsEmpty() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setIsEmpty(true);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofIsNotEmpty(){
+    public static DateFilterObject ofIsNotEmpty() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setIsNotEmpty(true);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofOnOrAfter(ZonedDateTime zonedDateTime){
+    public static DateFilterObject ofOnOrAfter(ZonedDateTime zonedDateTime) {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setOnOrAfterDate(zonedDateTime);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofPastWeek(){
+    public static DateFilterObject ofPastWeek() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setEnablePastWeekFilter(true);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofPastMonth(){
+    public static DateFilterObject ofPastMonth() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setEnablePastMonthFilter(true);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofPastYear(){
+    public static DateFilterObject ofPastYear() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setEnablePastYearFilter(true);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofNextWeek(){
+    public static DateFilterObject ofNextWeek() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setEnableNextWeekFilter(true);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofNextMonth(){
+    public static DateFilterObject ofNextMonth() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setEnableNextMonthFilter(true);
         return dateFilterObject;
     }
 
-    public static DateFilterObject ofNextYear(){
+    public static DateFilterObject ofNextYear() {
         DateFilterObject dateFilterObject = new DateFilterObject();
         dateFilterObject.setEnableNextYearFilter(true);
         return dateFilterObject;

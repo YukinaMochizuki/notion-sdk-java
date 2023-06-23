@@ -28,9 +28,9 @@ public class RelationProperty extends PageProperty {
     @JsonProperty(HAS_MORE_FIELD)
     private boolean hasMore;
 
-    public static RelationProperty of(String ...id){
+    public static RelationProperty of(String... id) {
         List<RelationObject> relationObjects = new ArrayList<>();
-        for(String s: id){
+        for (String s : id) {
             RelationObject relationObject = new RelationObject();
             relationObject.setId(s);
             relationObjects.add(relationObject);

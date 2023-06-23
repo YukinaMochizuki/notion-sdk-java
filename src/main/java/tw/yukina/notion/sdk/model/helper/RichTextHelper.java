@@ -21,10 +21,10 @@ public final class RichTextHelper {
         throw new java.lang.UnsupportedOperationException("This is a utility class and cannot be instantiated");
     }
 
-    public static String textsToString(@NotNull List<RichText> texts){
+    public static String textsToString(@NotNull List<RichText> texts) {
         String string = "";
 
-        for(RichText richText: texts){
+        for (RichText richText : texts) {
             string = string.concat(richText.getPlainText());
         }
 
@@ -32,7 +32,7 @@ public final class RichTextHelper {
     }
 
     @NotNull
-    public static Text createDefaultText(String content){
+    public static Text createDefaultText(String content) {
         TextObject textObject = new TextObject();
         textObject.setContent(content);
 
@@ -46,12 +46,12 @@ public final class RichTextHelper {
     }
 
     @NotNull
-    public static List<RichText> createDefaultArrayText(String content){
+    public static List<RichText> createDefaultArrayText(String content) {
         return new ArrayList<>(Collections.singleton(createDefaultText(content)));
     }
 
     @NotNull
-    public static MentionText createPageMention(String title, String uuid){
+    public static MentionText createPageMention(String title, String uuid) {
         PageMention pageMention = new PageMention();
         pageMention.setPage(PageUnit.builder().pageId(uuid).build());
         pageMention.setMentionType(MentionType.PAGE);
@@ -60,7 +60,7 @@ public final class RichTextHelper {
     }
 
     @NotNull
-    public static MentionText createDatabaseMention(String title, String uuid){
+    public static MentionText createDatabaseMention(String title, String uuid) {
         DatabaseMention databaseMention = new DatabaseMention();
         databaseMention.setDatabase(DatabaseUnit.builder().databaseId(uuid).build());
         databaseMention.setMentionType(MentionType.DATABASE);
@@ -91,7 +91,7 @@ public final class RichTextHelper {
     }
 
     @NotNull
-    public static MentionText createPersonMention(String name, String uuid){
+    public static MentionText createPersonMention(String name, String uuid) {
         PersonUser personUser = new PersonUser();
         personUser.setPerson(new PersonObject());
         personUser.setId(uuid);
@@ -106,7 +106,7 @@ public final class RichTextHelper {
     }
 
     @NotNull
-    public static EquationText createEquationText(String expression){
+    public static EquationText createEquationText(String expression) {
         Equation equation = new Equation();
         equation.setExpression(expression);
 
@@ -119,7 +119,7 @@ public final class RichTextHelper {
     }
 
     @NotNull
-    public static MentionText createDefaultMentionText(String plainText, Mention mention){
+    public static MentionText createDefaultMentionText(String plainText, Mention mention) {
         MentionText mentionText = new MentionText();
         mentionText.setMention(mention);
         mentionText.setAnnotations(createDefaultAnnotation());
@@ -129,13 +129,13 @@ public final class RichTextHelper {
     }
 
     @NotNull
-    public static Annotation createDefaultAnnotation(){
+    public static Annotation createDefaultAnnotation() {
         Annotation annotation = new Annotation();
         annotation.setAllDefault();
         return annotation;
     }
 
-    public static void setLinkToText(@NotNull Text text, URL url){
+    public static void setLinkToText(@NotNull Text text, URL url) {
         Link link = new Link();
         link.setUrl(url);
 

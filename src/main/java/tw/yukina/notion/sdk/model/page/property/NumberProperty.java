@@ -22,7 +22,7 @@ public class NumberProperty extends PageProperty {
     private double number;
 
     @NotNull
-    public static NumberProperty of(double number){
+    public static NumberProperty of(double number) {
         NumberProperty numberProperty = new NumberProperty();
         numberProperty.setType(PropertyType.NUMBER);
         numberProperty.setNumber(number);

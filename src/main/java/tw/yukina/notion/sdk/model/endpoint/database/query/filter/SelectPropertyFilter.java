@@ -21,26 +21,26 @@ public class SelectPropertyFilter extends DatabasePropertyFilter {
     private SelectFilterObject selectFilterObject;
 
     @NotNull
-    public static SelectPropertyFilter of(String property, SelectFilterObject selectFilterObject){
+    public static SelectPropertyFilter of(String property, SelectFilterObject selectFilterObject) {
         SelectPropertyFilter selectPropertyFilter = new SelectPropertyFilter();
         selectPropertyFilter.setName(property);
         selectPropertyFilter.setSelectFilterObject(selectFilterObject);
         return selectPropertyFilter;
     }
 
-    public static SelectPropertyFilter equalsOf(String property, String equals){
+    public static SelectPropertyFilter equalsOf(String property, String equals) {
         return of(property, SelectFilterObject.equalsOf(equals));
     }
 
-    public static SelectPropertyFilter doesNotEqualOf(String property, String doesNotEqual){
+    public static SelectPropertyFilter doesNotEqualOf(String property, String doesNotEqual) {
         return of(property, SelectFilterObject.doesNotEqualOf(doesNotEqual));
     }
 
-    public static SelectPropertyFilter isEmptyOf(String property, boolean isEmpty){
+    public static SelectPropertyFilter isEmptyOf(String property, boolean isEmpty) {
         return of(property, SelectFilterObject.isEmptyOf(isEmpty));
     }
 
-    public static SelectPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+    public static SelectPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty) {
         return of(property, SelectFilterObject.isNotEmptyOf(isNotEmpty));
     }
 }

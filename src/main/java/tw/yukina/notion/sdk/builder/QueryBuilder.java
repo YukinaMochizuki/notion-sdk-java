@@ -1,7 +1,6 @@
 package tw.yukina.notion.sdk.builder;
 
 import lombok.Getter;
-import tw.yukina.notion.sdk.endpoint.database.QueryDatabase;
 import tw.yukina.notion.sdk.model.endpoint.database.query.Compound;
 import tw.yukina.notion.sdk.model.endpoint.database.query.CompoundType;
 import tw.yukina.notion.sdk.model.endpoint.database.query.DatabaseQuery;
@@ -15,16 +14,14 @@ import java.util.List;
 public class QueryBuilder {
 
     @Getter
-    private Compound compound;
-
-    @Getter
     private final List<DatabaseSort> sorts = new ArrayList<>();
-
+    @Getter
+    private Compound compound;
     private String startCursor;
 
     private Integer pageSize;
 
-    public QueryBuilder setFilters(CompoundType compoundType, DatabasePropertyFilter... databasePropertyFilters){
+    public QueryBuilder setFilters(CompoundType compoundType, DatabasePropertyFilter... databasePropertyFilters) {
         Compound compound = new Compound();
         compound.setCompoundType(compoundType);
         compound.getDatabasePropertyFilters().addAll(Arrays.asList(databasePropertyFilters));
@@ -33,27 +30,27 @@ public class QueryBuilder {
         return this;
     }
 
-    public QueryBuilder setFilters(Compound compound){
+    public QueryBuilder setFilters(Compound compound) {
         this.compound = compound;
         return this;
     }
 
-    public QueryBuilder addSort(DatabaseSort databaseSort){
+    public QueryBuilder addSort(DatabaseSort databaseSort) {
         this.sorts.add(databaseSort);
         return this;
     }
 
-    public QueryBuilder setStartCursor(String startCursor){
+    public QueryBuilder setStartCursor(String startCursor) {
         this.startCursor = startCursor;
         return this;
     }
 
-    public QueryBuilder setPageSize(Integer pageSize){
+    public QueryBuilder setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
     }
 
-    public DatabaseQuery build(){
+    public DatabaseQuery build() {
         DatabaseQuery databaseQuery = new DatabaseQuery();
         databaseQuery.setCompound(this.compound);
         databaseQuery.setPageSize(this.pageSize);

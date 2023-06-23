@@ -24,14 +24,14 @@ public class CheckboxFilterObject {
     private Boolean doesNotEqual;
 
     @NotNull
-    public static CheckboxFilterObject equalsOf(boolean equals){
+    public static CheckboxFilterObject equalsOf(boolean equals) {
         CheckboxFilterObject checkboxFilterObject = new CheckboxFilterObject();
         checkboxFilterObject.setEquals(equals);
         return checkboxFilterObject;
     }
 
     @NotNull
-    public static CheckboxFilterObject doesNotEqualOf(boolean doesNotEqual){
+    public static CheckboxFilterObject doesNotEqualOf(boolean doesNotEqual) {
         CheckboxFilterObject checkboxFilterObject = new CheckboxFilterObject();
         checkboxFilterObject.setDoesNotEqual(doesNotEqual);
         return checkboxFilterObject;

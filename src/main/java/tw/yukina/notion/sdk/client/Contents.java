@@ -5,7 +5,9 @@ import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.block.BlockModel;
 
-import java.util.*;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
 public class Contents implements Entity<Contents>, Iterable<Content> {
 

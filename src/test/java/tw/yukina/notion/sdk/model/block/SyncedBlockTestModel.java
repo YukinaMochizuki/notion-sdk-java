@@ -7,13 +7,13 @@ import tw.yukina.notion.sdk.model.ModelTest;
 
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SyncedBlockTestModel extends ModelTest {
 
     @Test
     void syncedBlockTestSource() throws Exception {
-        Response response = getResponse( BASE_URL + "/blocks/849d8f51aa2e4999bb629be7b2ff6e92");
+        Response response = getResponse(BASE_URL + "/blocks/849d8f51aa2e4999bb629be7b2ff6e92");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -35,7 +35,7 @@ class SyncedBlockTestModel extends ModelTest {
 
     @Test
     void syncedBlockTestReference() throws Exception {
-        Response response = getResponse( BASE_URL + "/blocks/16561c55621f436cae34175f5cb82389");
+        Response response = getResponse(BASE_URL + "/blocks/16561c55621f436cae34175f5cb82389");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

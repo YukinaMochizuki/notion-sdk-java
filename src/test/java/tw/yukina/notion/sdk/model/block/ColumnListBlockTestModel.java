@@ -7,13 +7,13 @@ import tw.yukina.notion.sdk.model.ModelTest;
 
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ColumnListBlockTestModel extends ModelTest {
 
     @Test
     void columnListBlockTest() throws Exception {
-        Response response = getResponse( BASE_URL + "/blocks/df5ff62a3aec4a999ce9568beb353f15");
+        Response response = getResponse(BASE_URL + "/blocks/df5ff62a3aec4a999ce9568beb353f15");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

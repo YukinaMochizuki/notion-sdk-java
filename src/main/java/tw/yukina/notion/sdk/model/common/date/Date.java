@@ -37,7 +37,7 @@ public class Date extends DateTimeProperty {
     private String timeZone;
 
     @NotNull
-    public static Date of(LocalDate start){
+    public static Date of(LocalDate start) {
         Date date = new Date();
         date.setDateTimeType(DateTimeType.DATE);
         date.setStart(start);
@@ -45,7 +45,7 @@ public class Date extends DateTimeProperty {
     }
 
     @NotNull
-    public static Date of(LocalDate start, LocalDate end){
+    public static Date of(LocalDate start, LocalDate end) {
         Date date = new Date();
         date.setDateTimeType(DateTimeType.DATE);
         date.setStart(start);

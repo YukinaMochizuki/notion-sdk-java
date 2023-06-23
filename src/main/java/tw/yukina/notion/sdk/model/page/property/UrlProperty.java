@@ -24,7 +24,7 @@ public class UrlProperty extends PageProperty {
     private URL url;
 
     @NotNull
-    public static UrlProperty of(URL url){
+    public static UrlProperty of(URL url) {
         UrlProperty urlProperty = new UrlProperty();
         urlProperty.setType(PropertyType.URL);
         urlProperty.setUrl(url);

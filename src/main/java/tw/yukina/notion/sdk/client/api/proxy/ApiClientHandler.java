@@ -17,7 +17,7 @@ public class ApiClientHandler implements InvocationHandler {
 
     private final Object target;
 
-    public ApiClientHandler(Object target, NotionExceptionWrapper notionExceptionWrapper){
+    public ApiClientHandler(Object target, NotionExceptionWrapper notionExceptionWrapper) {
         this.target = target;
         this.notionExceptionWrapper = notionExceptionWrapper;
     }
@@ -30,7 +30,7 @@ public class ApiClientHandler implements InvocationHandler {
         } catch (Exception e) {
             Throwable exception = getRootCause(e);
 
-            if(exception instanceof NotionAPIException){
+            if (exception instanceof NotionAPIException) {
                 throw notionExceptionWrapper.wrapException((NotionAPIException) exception);
             } else throw exception;
         }
@@ -38,9 +38,9 @@ public class ApiClientHandler implements InvocationHandler {
         return result;
     }
 
-    private Throwable getRootCause(Throwable exception){
+    private Throwable getRootCause(Throwable exception) {
         Throwable cause;
-        while(null != (cause = exception.getCause()) && (exception != cause) ) exception = cause;
+        while (null != (cause = exception.getCause()) && (exception != cause)) exception = cause;
         return exception;
     }
 }

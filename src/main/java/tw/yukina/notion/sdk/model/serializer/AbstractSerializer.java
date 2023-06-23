@@ -17,34 +17,34 @@ public abstract class AbstractSerializer<T> extends JsonSerializer<T> {
     public void typeSerialize(T value, JsonGenerator gen) throws IOException {
         boolean typeAvailableFlag = false;
 
-        for(TypeUnit<T> typeUnit: typeUnits){
-            if(checkTypeEquals(typeUnit, value)) {
+        for (TypeUnit<T> typeUnit : typeUnits) {
+            if (checkTypeEquals(typeUnit, value)) {
                 gen.writeObject(value);
                 typeAvailableFlag = true;
             }
         }
 
-        if(!typeAvailableFlag)throw throwTypeNotFound(value.getClass().getSimpleName(), gen);
+        if (!typeAvailableFlag) throw throwTypeNotFound(value.getClass().getSimpleName(), gen);
     }
 
     public void typeSerializeRaw(T value, JsonGenerator gen, ObjectMapper mapper) throws IOException {
         boolean typeAvailableFlag = false;
 
-        for(TypeUnit<T> typeUnit: typeUnits){
-            if(checkTypeEquals(typeUnit, value)) {
+        for (TypeUnit<T> typeUnit : typeUnits) {
+            if (checkTypeEquals(typeUnit, value)) {
                 gen.writeRawValue(mapper.writeValueAsString(value));
                 typeAvailableFlag = true;
             }
         }
 
-        if(!typeAvailableFlag)throw throwTypeNotFound(value.getClass().getSimpleName(), gen);
+        if (!typeAvailableFlag) throw throwTypeNotFound(value.getClass().getSimpleName(), gen);
     }
 
-    protected boolean checkTypeEquals(TypeUnit<T> typeUnit, T value){
+    protected boolean checkTypeEquals(TypeUnit<T> typeUnit, T value) {
         return false;
     }
 
-    protected void addAvailableType(String type, Class<? extends T> clazz){
+    protected void addAvailableType(String type, Class<? extends T> clazz) {
         typeUnits.add(new TypeUnit<>(type, clazz));
     }
 

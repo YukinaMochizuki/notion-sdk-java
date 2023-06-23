@@ -23,11 +23,6 @@ public class TemplateBlockModel extends BlockModel {
     @JsonProperty(TEMPLATE_FIELD)
     private Template template;
 
-    @Override
-    public boolean canHaveChildren() {
-        return true;
-    }
-
     @NotNull
     public static TemplateBlockModel of(String plainText, List<BlockModel> blocks) {
         List<RichText> richTexts = TextBuilder.of(plainText).build();
@@ -49,5 +44,10 @@ public class TemplateBlockModel extends BlockModel {
         TemplateBlockModel templateBlock = new TemplateBlockModel(template);
         templateBlock.setType(BlockType.TEMPLATE);
         return templateBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
     }
 }

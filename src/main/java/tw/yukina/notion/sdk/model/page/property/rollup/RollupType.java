@@ -2,7 +2,7 @@ package tw.yukina.notion.sdk.model.page.property.rollup;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum  RollupType {
+public enum RollupType {
     NUMBER("number"),
     DATE("date"),
     ARRAY("array");
@@ -14,7 +14,7 @@ public enum  RollupType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

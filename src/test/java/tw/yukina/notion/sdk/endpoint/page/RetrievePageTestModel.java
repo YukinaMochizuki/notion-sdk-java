@@ -11,7 +11,7 @@ import tw.yukina.notion.sdk.model.template.project.Thing;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RetrievePageTestModel extends ModelTest {
 

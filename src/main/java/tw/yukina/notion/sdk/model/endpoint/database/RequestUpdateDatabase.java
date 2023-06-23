@@ -27,7 +27,7 @@ public class RequestUpdateDatabase {
     @JsonProperty(PROPERTIES_FIELD)
     private Map<String, DatabaseProperty> properties;
 
-    public static RequestUpdateDatabase of(DatabaseModel databaseModel){
+    public static RequestUpdateDatabase of(DatabaseModel databaseModel) {
         RequestUpdateDatabase requestUpdateDatabase = new RequestUpdateDatabase();
         requestUpdateDatabase.setTitle(databaseModel.getTitle());
         requestUpdateDatabase.setProperties(databaseModel.getPropertyMap());

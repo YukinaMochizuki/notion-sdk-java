@@ -13,7 +13,7 @@ import java.io.IOException;
 
 import static tw.yukina.notion.sdk.Configuration.BASE_URL;
 
-public class DeleteBlock extends AbstractBlockEndpoint{
+public class DeleteBlock extends AbstractBlockEndpoint {
 
     public static BlockModel callValue(@NotNull String uuid,
                                        @NotNull OkHttpClient okHttpClient,

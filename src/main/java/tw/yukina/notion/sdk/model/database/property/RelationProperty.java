@@ -25,7 +25,7 @@ public class RelationProperty extends DatabaseProperty {
     private RelationObject relationObject;
 
     @NotNull
-    public static RelationProperty of(String name, String databaseId){
+    public static RelationProperty of(String name, String databaseId) {
         RelationObject relationObject = new RelationObject();
         relationObject.setDatabaseId(databaseId);
         RelationProperty relationProperty = new RelationProperty();

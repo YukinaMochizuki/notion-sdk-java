@@ -25,7 +25,7 @@ public class EmailProperty extends PageProperty {
     private String email;
 
     @NotNull
-    public static EmailProperty of(String email){
+    public static EmailProperty of(String email) {
         EmailProperty emailProperty = new EmailProperty();
         emailProperty.setType(PropertyType.EMAIL);
         emailProperty.setEmail(email);
@@ -33,7 +33,8 @@ public class EmailProperty extends PageProperty {
     }
 
     public boolean isValidEmailAddress(String email) {
-        String patternString = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        String patternString = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]" +
+                "+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         Pattern pattern = Pattern.compile(patternString);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();

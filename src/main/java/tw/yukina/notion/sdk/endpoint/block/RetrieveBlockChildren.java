@@ -13,6 +13,8 @@ import static tw.yukina.notion.sdk.Configuration.BASE_URL;
 
 public class RetrieveBlockChildren extends AbstractBlockEndpoint {
 
+    public static final int DEFAULT_PAGE_SIZE = 100;
+
     public static ResponseBlockList callValue(@NotNull String uuid,
                                               @NotNull OkHttpClient okHttpClient,
                                               @NotNull Request.Builder builder,
@@ -63,7 +65,7 @@ public class RetrieveBlockChildren extends AbstractBlockEndpoint {
                                       @NotNull ObjectMapper objectMapper,
                                       @NotNull String startCursor) {
 
-        return getObjectNode(call(uuid, okHttpClient, builder, startCursor, 100), objectMapper);
+        return getObjectNode(call(uuid, okHttpClient, builder, startCursor, DEFAULT_PAGE_SIZE), objectMapper);
     }
 
     @NotNull
@@ -96,7 +98,7 @@ public class RetrieveBlockChildren extends AbstractBlockEndpoint {
         var urlBuilder = Objects.requireNonNull(HttpUrl.parse(BASE_URL + PATH + uuid + "/children")).newBuilder()
                 .addQueryParameter("page_size", String.valueOf(pageSize));
 
-        if(!startCursor.equals("")) {
+        if (!startCursor.equals("")) {
             urlBuilder.addQueryParameter("start_cursor", startCursor);
         }
 

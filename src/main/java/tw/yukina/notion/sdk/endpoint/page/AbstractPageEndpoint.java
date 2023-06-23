@@ -8,7 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.endpoint.block.AbstractBlockEndpoint;
 import tw.yukina.notion.sdk.model.page.PageModel;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractPageEndpoint extends AbstractBlockEndpoint {
 
@@ -22,7 +25,7 @@ public abstract class AbstractPageEndpoint extends AbstractBlockEndpoint {
         }
     }
 
-    public static void preparePageRequest(ObjectNode objectNode){
+    public static void preparePageRequest(ObjectNode objectNode) {
         ObjectNode properties = (ObjectNode) objectNode.get("properties");
         Iterator<Map.Entry<String, JsonNode>> nodes = properties.fields();
 
@@ -30,15 +33,15 @@ public abstract class AbstractPageEndpoint extends AbstractBlockEndpoint {
 
         while (nodes.hasNext()) {
             Map.Entry<String, JsonNode> entry = nodes.next();
-            if(propertyRequestNeedRemove(entry)) propertyNeedRemove.add(entry.getKey());
+            if (propertyRequestNeedRemove(entry)) propertyNeedRemove.add(entry.getKey());
         }
 
-        for(String propertyName: propertyNeedRemove){
+        for (String propertyName : propertyNeedRemove) {
             properties.remove(propertyName);
         }
     }
 
-    public static boolean propertyRequestNeedRemove(Map.Entry<String, JsonNode> entry){
+    public static boolean propertyRequestNeedRemove(Map.Entry<String, JsonNode> entry) {
         switch (entry.getValue().get("type").asText()) {
             case "formula":
             case "rollup":
@@ -57,7 +60,8 @@ public abstract class AbstractPageEndpoint extends AbstractBlockEndpoint {
                 return !entry.getValue().has("email");
             case "date":
                 return !entry.getValue().has("date");
-            // TODO: 11/2/21  
+            default:
+                break; // TODO: 11/2/21
         }
         return false;
     }

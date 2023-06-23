@@ -2,7 +2,7 @@ package tw.yukina.notion.sdk.model.block.heading;
 
 public interface HeadingBlock {
 
-    public void setHeading(Heading heading);
+    Heading getHeading();
 
-    public Heading getHeading();
+    void setHeading(Heading heading);
 }

@@ -2,7 +2,7 @@ package tw.yukina.notion.sdk.model.page.property;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum  FormulaType {
+public enum FormulaType {
     STRING("string"),
     NUMBER("number"),
     BOOLEAN("boolean"),
@@ -15,7 +15,7 @@ public enum  FormulaType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

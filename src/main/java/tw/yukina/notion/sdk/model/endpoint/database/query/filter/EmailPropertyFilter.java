@@ -21,42 +21,42 @@ public class EmailPropertyFilter extends DatabasePropertyFilter {
     private TextFilterObject textFilterObject;
 
     @NotNull
-    public static EmailPropertyFilter of(String property, TextFilterObject textFilterObject){
+    public static EmailPropertyFilter of(String property, TextFilterObject textFilterObject) {
         EmailPropertyFilter emailPropertyFilter = new EmailPropertyFilter();
         emailPropertyFilter.setName(property);
         emailPropertyFilter.setTextFilterObject(textFilterObject);
         return emailPropertyFilter;
     }
 
-    public static EmailPropertyFilter equalsOf(String property, String equals){
+    public static EmailPropertyFilter equalsOf(String property, String equals) {
         return of(property, TextFilterObject.equalsOf(equals));
     }
 
-    public static EmailPropertyFilter doesNotEqualOf(String property, String doesNotEqual){
+    public static EmailPropertyFilter doesNotEqualOf(String property, String doesNotEqual) {
         return of(property, TextFilterObject.doesNotEqualOf(doesNotEqual));
     }
 
-    public static EmailPropertyFilter containsOf(String property, String contains){
+    public static EmailPropertyFilter containsOf(String property, String contains) {
         return of(property, TextFilterObject.containsOf(contains));
     }
 
-    public static EmailPropertyFilter doesNotContainOf(String property, String doesNotContain){
+    public static EmailPropertyFilter doesNotContainOf(String property, String doesNotContain) {
         return of(property, TextFilterObject.doesNotContainOf(doesNotContain));
     }
 
-    public static EmailPropertyFilter startsWithOf(String property, String startsWith){
+    public static EmailPropertyFilter startsWithOf(String property, String startsWith) {
         return of(property, TextFilterObject.startsWithOf(startsWith));
     }
 
-    public static EmailPropertyFilter endsWithOf(String property, String endsWith){
+    public static EmailPropertyFilter endsWithOf(String property, String endsWith) {
         return of(property, TextFilterObject.endsWithOf(endsWith));
     }
 
-    public static EmailPropertyFilter isEmptyOf(String property, boolean isEmpty){
+    public static EmailPropertyFilter isEmptyOf(String property, boolean isEmpty) {
         return of(property, TextFilterObject.isEmptyOf(isEmpty));
     }
 
-    public static EmailPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty){
+    public static EmailPropertyFilter isNotEmptyOf(String property, boolean isNotEmpty) {
         return of(property, TextFilterObject.isNotEmptyOf(isNotEmpty));
     }
 }

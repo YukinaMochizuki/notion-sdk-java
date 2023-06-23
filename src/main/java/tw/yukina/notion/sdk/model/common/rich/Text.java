@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class Text extends RichText{
+public class Text extends RichText {
 
     private static final String TEXT_FIELD = "text";
 

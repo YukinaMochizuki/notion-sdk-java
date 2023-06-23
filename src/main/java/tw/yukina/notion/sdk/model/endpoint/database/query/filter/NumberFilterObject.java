@@ -48,56 +48,56 @@ public class NumberFilterObject {
     private Boolean isNotEmpty;
 
     @NotNull
-    public static NumberFilterObject equalsOf(Double equals){
+    public static NumberFilterObject equalsOf(Double equals) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setEquals(equals);
         return numberFilterObject;
     }
 
     @NotNull
-    public static NumberFilterObject doesNotEqualOf(Double doesNotEqual){
+    public static NumberFilterObject doesNotEqualOf(Double doesNotEqual) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setDoesNotEqual(doesNotEqual);
         return numberFilterObject;
     }
 
     @NotNull
-    public static NumberFilterObject containsOf(Double contains){
+    public static NumberFilterObject containsOf(Double contains) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setContains(contains);
         return numberFilterObject;
     }
 
     @NotNull
-    public static NumberFilterObject doesNotContainOf(Double doesNotContain){
+    public static NumberFilterObject doesNotContainOf(Double doesNotContain) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setDoesNotContain(doesNotContain);
         return numberFilterObject;
     }
 
     @NotNull
-    public static NumberFilterObject startsWithOf(Double startsWith){
+    public static NumberFilterObject startsWithOf(Double startsWith) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setStartsWith(startsWith);
         return numberFilterObject;
     }
 
     @NotNull
-    public static NumberFilterObject endsWithOf(Double endsWith){
+    public static NumberFilterObject endsWithOf(Double endsWith) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setEndsWith(endsWith);
         return numberFilterObject;
     }
 
     @NotNull
-    public static NumberFilterObject isEmptyOf(boolean isEmpty){
+    public static NumberFilterObject isEmptyOf(boolean isEmpty) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setIsEmpty(isEmpty);
         return numberFilterObject;
     }
 
     @NotNull
-    public static NumberFilterObject isNotEmptyOf(boolean isNotEmpty){
+    public static NumberFilterObject isNotEmptyOf(boolean isNotEmpty) {
         NumberFilterObject numberFilterObject = new NumberFilterObject();
         numberFilterObject.setIsNotEmpty(isNotEmpty);
         return numberFilterObject;
