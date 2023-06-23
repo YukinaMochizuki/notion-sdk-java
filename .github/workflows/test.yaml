@@ -25,4 +25,7 @@ jobs:
         run: ./gradlew build
 
       - name: Test with JUnit
-        run: ./gradlew test
+        run: |
+          echo Notion.test.token=${{ secrets.NOTION_TEST_TOKEN }} >> src/test/resources/application.properties
+          ./gradlew test
+          echo "JUnit tests completed"
