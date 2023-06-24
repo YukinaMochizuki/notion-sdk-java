@@ -1,12 +1,12 @@
-name: Java Unit Tests
+name: Build and Test
 
 on:
   pull_request:
-    branches: [main, develop]
+    branches: [ main, develop ]
 
 jobs:
   build:
-    name: Test Project
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -22,6 +22,15 @@ jobs:
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: current
+
+      - name: Restore gradle.properties
+        env:
+          GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
+        shell: bash
+        run: |
+          mkdir -p ~/.gradle/
+          echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
+          echo "${GRADLE_PROPERTIES}" > ~/.gradle/gradle.properties
 
       - name: Execute Gradle build
         run: gradle build
