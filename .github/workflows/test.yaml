@@ -2,7 +2,7 @@ name: Build and Test
 
 on:
   pull_request:
-    branches: [ main, develop ]
+    branches: [main, develop]
 
 jobs:
   build:
@@ -28,9 +28,9 @@ jobs:
           GRADLE_PROPERTIES: ${{ secrets.GRADLE_PROPERTIES }}
         shell: bash
         run: |
-          mkdir -p ~/.gradle/
-          echo "GRADLE_USER_HOME=${HOME}/.gradle" >> $GITHUB_ENV
-          echo "${GRADLE_PROPERTIES}" > ~/.gradle/gradle.properties
+          mkdir -p "${HOME}/.gradle/"
+          echo "GRADLE_USER_HOME=${HOME}/.gradle" >> "$GITHUB_ENV"
+          echo "${GRADLE_PROPERTIES}" > "${HOME}/.gradle/gradle.properties"
 
       - name: Execute Gradle build
         run: gradle build
