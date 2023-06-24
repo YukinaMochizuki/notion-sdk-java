@@ -1,27 +1,26 @@
 package tw.yukina.notion.sdk.model.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
 import tw.yukina.notion.sdk.model.common.Property;
 import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.database.property.*;
 import tw.yukina.notion.sdk.model.deserializer.TypeUnit;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class DatabasePropertySerializer extends AbstractSerializer<DatabaseProperty> {
 
     @Override
-    public void serialize(DatabaseProperty value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+    public void serialize(DatabaseProperty value, JsonGenerator gen, SerializerProvider serializers)
+            throws IOException {
 
         gen.writeStartObject();
 
-        if(value.getType().getField().matches("title|rich_text|date|people|files|checkbox|url|email|" +
-                "phone_number|created_time|created_by|last_edited_time|last_edited_by")){
+        if (value.getType().getField().matches("title|rich_text|date|people|files|checkbox|url|email|" +
+                "phone_number|created_time|created_by|last_edited_time|last_edited_by")) {
             packageEmptyObjectType(value, gen);
             gen.writeEndObject();
             return;

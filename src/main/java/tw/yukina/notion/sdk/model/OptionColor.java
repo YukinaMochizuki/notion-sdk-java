@@ -19,18 +19,13 @@ public enum OptionColor {
     PINK("pink"),
     RED("red");
 
-    private final String field;
     private static final List<OptionColor> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
     private static final int SIZE = VALUES.size();
     private static final Random RANDOM = new Random();
+    private final String field;
 
     OptionColor(String field) {
         this.field = field;
-    }
-
-    @JsonValue
-    public String getField(){
-        return field;
     }
 
     public static OptionColor getEnum(String value) {
@@ -47,7 +42,12 @@ public enum OptionColor {
         return null;
     }
 
-    public static OptionColor randomColor()  {
+    public static OptionColor randomColor() {
         return VALUES.get(RANDOM.nextInt(SIZE));
+    }
+
+    @JsonValue
+    public String getField() {
+        return field;
     }
 }

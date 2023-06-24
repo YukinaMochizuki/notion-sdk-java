@@ -26,7 +26,7 @@ public enum RollupFunctionType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 }

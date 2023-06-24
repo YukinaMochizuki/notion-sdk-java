@@ -32,28 +32,28 @@ public class SelectFilterObject {
     private Boolean isNotEmpty;
 
     @NotNull
-    public static SelectFilterObject equalsOf(String equals){
+    public static SelectFilterObject equalsOf(String equals) {
         SelectFilterObject selectFilterObject = new SelectFilterObject();
         selectFilterObject.setEquals(equals);
         return selectFilterObject;
     }
 
     @NotNull
-    public static SelectFilterObject doesNotEqualOf(String doesNotEqual){
+    public static SelectFilterObject doesNotEqualOf(String doesNotEqual) {
         SelectFilterObject selectFilterObject = new SelectFilterObject();
         selectFilterObject.setDoesNotEqual(doesNotEqual);
         return selectFilterObject;
     }
 
     @NotNull
-    public static SelectFilterObject isEmptyOf(boolean isEmpty){
+    public static SelectFilterObject isEmptyOf(boolean isEmpty) {
         SelectFilterObject selectFilterObject = new SelectFilterObject();
         selectFilterObject.setIsEmpty(isEmpty);
         return selectFilterObject;
     }
 
     @NotNull
-    public static SelectFilterObject isNotEmptyOf(boolean isNotEmpty){
+    public static SelectFilterObject isNotEmptyOf(boolean isNotEmpty) {
         SelectFilterObject selectFilterObject = new SelectFilterObject();
         selectFilterObject.setIsNotEmpty(isNotEmpty);
         return selectFilterObject;

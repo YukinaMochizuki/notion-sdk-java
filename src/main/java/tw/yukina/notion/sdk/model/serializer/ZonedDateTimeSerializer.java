@@ -9,8 +9,11 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatterBuilder;
 
 public class ZonedDateTimeSerializer extends JsonSerializer<ZonedDateTime> {
+
+    public static final int FRAC_DIGITS = 3;
+
     @Override
     public void serialize(ZonedDateTime value, JsonGenerator gen, SerializerProvider serializers) throws IOException {
-        gen.writeString(value.format(new DateTimeFormatterBuilder().appendInstant(3).toFormatter()));
+        gen.writeString(value.format(new DateTimeFormatterBuilder().appendInstant(FRAC_DIGITS).toFormatter()));
     }
 }

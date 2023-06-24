@@ -17,7 +17,7 @@ public enum ObjectType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

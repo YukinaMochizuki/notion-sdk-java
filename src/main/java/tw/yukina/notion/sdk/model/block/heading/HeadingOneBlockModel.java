@@ -26,11 +26,6 @@ public class HeadingOneBlockModel extends BlockModel implements HeadingBlock {
     @JsonProperty(HEADING_ONE_FIELD)
     private Heading heading;
 
-    @Override
-    public boolean canHaveChildren() {
-        return false;
-    }
-
     @NotNull
     public static HeadingOneBlockModel of(String plainText) {
         List<RichText> richTexts = TextBuilder.of(plainText).build();
@@ -47,5 +42,10 @@ public class HeadingOneBlockModel extends BlockModel implements HeadingBlock {
         headingOneBlockModel.setHeading(heading);
         headingOneBlockModel.setType(BlockType.HEADING_1);
         return headingOneBlockModel;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
     }
 }

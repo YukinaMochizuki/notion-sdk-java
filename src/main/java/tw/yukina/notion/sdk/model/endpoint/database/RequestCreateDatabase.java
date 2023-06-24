@@ -33,7 +33,8 @@ public class RequestCreateDatabase {
     @JsonProperty(TITLE_FIELD)
     private List<RichText> title = new ArrayList<>();
 
-    public static RequestCreateDatabase of(List<RichText> title, Map<String, DatabaseProperty> properties, Parent parent){
+    public static RequestCreateDatabase of(List<RichText> title, Map<String, DatabaseProperty> properties,
+                                           Parent parent) {
         RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
         requestCreateDatabase.setTitle(title);
         requestCreateDatabase.setProperties(properties);
@@ -41,7 +42,7 @@ public class RequestCreateDatabase {
         return requestCreateDatabase;
     }
 
-    public static RequestCreateDatabase of(String title, Map<String, DatabaseProperty> properties, Parent parent){
+    public static RequestCreateDatabase of(String title, Map<String, DatabaseProperty> properties, Parent parent) {
         RequestCreateDatabase requestCreateDatabase = new RequestCreateDatabase();
         requestCreateDatabase.setTitle(RichTextHelper.createDefaultArrayText(title));
         requestCreateDatabase.setProperties(properties);

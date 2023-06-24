@@ -24,11 +24,6 @@ public class CodeBlockModel extends BlockModel {
     @JsonProperty(CODE_FIELD)
     private Code code;
 
-    @Override
-    public boolean canHaveChildren() {
-        return false;
-    }
-
     @NotNull
     public static CodeBlockModel of(String plainText, CodeLanguageType languageType, String caption) {
         List<RichText> richTexts = TextBuilder.of(plainText).build();
@@ -56,5 +51,10 @@ public class CodeBlockModel extends BlockModel {
         CodeBlockModel codeBlock = new CodeBlockModel(code);
         codeBlock.setType(BlockType.CODE);
         return codeBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
     }
 }

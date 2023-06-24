@@ -27,23 +27,6 @@ public class CalloutBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(CALLOUT_FIELD)
     private Callout callout;
 
-    @Override
-    public void setParagraph(@NotNull Paragraph paragraph) {
-        callout.setChildren(paragraph.getChildren());
-        callout.setRichTexts(paragraph.getRichTexts());
-    }
-
-    @Override
-    @JsonIgnore
-    public Paragraph getParagraph() {
-        return callout;
-    }
-
-    @Override
-    public boolean canHaveChildren() {
-        return true;
-    }
-
     @NotNull
     public static CalloutBlockModel of(String plainText) {
         List<RichText> richTexts = TextBuilder.of(plainText).build();
@@ -81,5 +64,22 @@ public class CalloutBlockModel extends BlockModel implements TextBlock {
         calloutBlock.setCallout(callout);
         calloutBlock.setType(BlockType.CALLOUT);
         return calloutBlock;
+    }
+
+    @Override
+    @JsonIgnore
+    public Paragraph getParagraph() {
+        return callout;
+    }
+
+    @Override
+    public void setParagraph(@NotNull Paragraph paragraph) {
+        callout.setChildren(paragraph.getChildren());
+        callout.setRichTexts(paragraph.getRichTexts());
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
     }
 }

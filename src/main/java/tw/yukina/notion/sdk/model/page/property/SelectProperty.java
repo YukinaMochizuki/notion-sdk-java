@@ -23,7 +23,7 @@ public class SelectProperty extends PageProperty {
     private SelectOption selectOption;
 
     @NotNull
-    public static SelectProperty of(String option){
+    public static SelectProperty of(String option) {
         SelectOption selectOption = new SelectOption();
         selectOption.setName(option);
         SelectProperty selectProperty = new SelectProperty();

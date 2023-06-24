@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
-import tw.yukina.notion.sdk.model.common.Property;
 import tw.yukina.notion.sdk.model.common.PropertyType;
 import tw.yukina.notion.sdk.model.database.property.*;
 
@@ -13,12 +12,13 @@ import java.io.IOException;
 public class DatabasePropertyDeserializer extends AbstractDeserializer<DatabaseProperty> {
 
     @Override
-    public DatabaseProperty deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
+    public DatabaseProperty deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException {
 
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
 
-        if(type.matches("title|rich_text|date|people|files|checkbox|url|email|phone_number|created_time|created_by|last_edited_time|last_edited_by")){
+        if (type.matches("title|rich_text|date|people|files|checkbox|url|email|phone_number|" +
+                "created_time|created_by|last_edited_time|last_edited_by")) {
             return deserialize(jsonParser, node);
         }
 
@@ -29,7 +29,8 @@ public class DatabasePropertyDeserializer extends AbstractDeserializer<DatabaseP
         addAvailableType("relation", RelationProperty.class);
         addAvailableType("rollup", RollupProperty.class);
 
-        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
+        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() ->
+                throwTypeNotFound(type, jsonParser));
     }
 
     private DatabaseProperty deserialize(JsonParser jsonParser, JsonNode node) throws JsonProcessingException {

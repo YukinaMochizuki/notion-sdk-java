@@ -25,7 +25,7 @@ public class RichTextProperty extends PageProperty {
     private List<RichText> texts;
 
     @NotNull
-    public static RichTextProperty of(List<RichText> texts){
+    public static RichTextProperty of(List<RichText> texts) {
         RichTextProperty richTextProperty = new RichTextProperty();
         richTextProperty.setType(PropertyType.RICH_TEXT);
         richTextProperty.setTexts(texts);

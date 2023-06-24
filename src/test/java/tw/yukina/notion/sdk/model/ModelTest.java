@@ -43,18 +43,25 @@ public class ModelTest {
         objectMapperModule.addSerializer(ZonedDateTime.class, new ZonedDateTimeSerializer());
     }
 
-    public Request.Builder getRequestBuilder(){
+    public Request.Builder getRequestBuilder() {
 
-        Properties properties = new Properties();
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
-            properties.load(resourceStream);
-        } catch (IOException e) {
-            e.printStackTrace();
+        String token = null;
+        if (System.getenv("NOTION_TOKEN") != null) {
+            token = System.getenv("NOTION_TOKEN");
+        } else {
+            Properties properties = new Properties();
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
+                properties.load(resourceStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            token = properties.getProperty("Notion.test.token");
         }
 
         return new Request.Builder()
-                .addHeader("Authorization", properties.getProperty("Notion.test.token"))
+                .addHeader("Authorization", token)
                 .addHeader("Notion-Version", "2022-06-28");
     }
 
@@ -72,7 +79,7 @@ public class ModelTest {
         return call.execute();
     }
 
-    public ObjectMapper getCommonObjectMapper(){
+    public ObjectMapper getCommonObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
         objectMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
@@ -81,7 +88,7 @@ public class ModelTest {
         return objectMapper;
     }
 
-    public ObjectMapper getIncludeNullObjectMapper(){
+    public ObjectMapper getIncludeNullObjectMapper() {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(getObjectMapperModule());
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);

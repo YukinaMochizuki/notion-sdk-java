@@ -19,6 +19,8 @@ public class Content implements Entity<Content> {
 
     @Getter
     private final BlockModel blockModel;
+    @Getter
+    protected String entitySnapshot;
 
     public Content(NotionClient notionClient, BlockModel blockModel) {
         this.notionClient = notionClient;
@@ -26,9 +28,6 @@ public class Content implements Entity<Content> {
 
         this.entitySnapshot = String.valueOf(notionClient.getApiClient().serialize(this.blockModel));
     }
-
-    @Getter
-    protected String entitySnapshot;
 
     @Override
     public Content refetch() {
@@ -55,107 +54,107 @@ public class Content implements Entity<Content> {
         return !newEntitySnapshot.equals(entitySnapshot);
     }
 
-    public BookmarkBlockModel asBookmarkBlock(){
+    public BookmarkBlockModel asBookmarkBlock() {
         return (BookmarkBlockModel) blockModel;
     }
 
-    public BreadcrumbBlockModel asBreadcrumbBlock(){
+    public BreadcrumbBlockModel asBreadcrumbBlock() {
         return (BreadcrumbBlockModel) blockModel;
     }
 
-    public BulletedListBlockModel asBulletedListBlock(){
+    public BulletedListBlockModel asBulletedListBlock() {
         return (BulletedListBlockModel) blockModel;
     }
 
-    public CalloutBlockModel asCalloutBlock(){
+    public CalloutBlockModel asCalloutBlock() {
         return (CalloutBlockModel) blockModel;
     }
 
-    public ChildDatabaseBlockModel asChildDatabaseBlock(){
+    public ChildDatabaseBlockModel asChildDatabaseBlock() {
         return (ChildDatabaseBlockModel) blockModel;
     }
 
-    public ChildPageBlockModel asChildPageBlock(){
+    public ChildPageBlockModel asChildPageBlock() {
         return (ChildPageBlockModel) blockModel;
     }
 
-    public ColumnBlockModel asColumnBlock(){
+    public ColumnBlockModel asColumnBlock() {
         return (ColumnBlockModel) blockModel;
     }
 
-    public ColumnListBlockModel asColumnListBlock(){
+    public ColumnListBlockModel asColumnListBlock() {
         return (ColumnListBlockModel) blockModel;
     }
 
-    public DividerBlockModel asDividerBlock(){
+    public DividerBlockModel asDividerBlock() {
         return (DividerBlockModel) blockModel;
     }
 
-    public EquationBlockModel asEquationBlock(){
+    public EquationBlockModel asEquationBlock() {
         return (EquationBlockModel) blockModel;
     }
 
-    public FileBlockModel asFileBlock(){
+    public FileBlockModel asFileBlock() {
         return (FileBlockModel) blockModel;
     }
 
-    public HeadingOneBlockModel asHeadingOneBlock(){
+    public HeadingOneBlockModel asHeadingOneBlock() {
         return (HeadingOneBlockModel) blockModel;
     }
 
-    public HeadingTwoBlockModel asHeadingTwoBlock(){
+    public HeadingTwoBlockModel asHeadingTwoBlock() {
         return (HeadingTwoBlockModel) blockModel;
     }
 
-    public HeadingThreeBlockModel asHeadingThreeBlock(){
+    public HeadingThreeBlockModel asHeadingThreeBlock() {
         return (HeadingThreeBlockModel) blockModel;
     }
 
-    public ImageBlockModel asImageBlock(){
+    public ImageBlockModel asImageBlock() {
         return (ImageBlockModel) blockModel;
     }
 
-    public LinkPreviewBlockModel asLinkPreviewBlock(){
+    public LinkPreviewBlockModel asLinkPreviewBlock() {
         return (LinkPreviewBlockModel) blockModel;
     }
 
-    public NumberedListBlockModel asNumberedListBlock(){
+    public NumberedListBlockModel asNumberedListBlock() {
         return (NumberedListBlockModel) blockModel;
     }
 
-    public ParagraphBlockModel asParagraphBlock(){
+    public ParagraphBlockModel asParagraphBlock() {
         return (ParagraphBlockModel) blockModel;
     }
 
-    public PDFBlockModel asPDFBlock(){
+    public PDFBlockModel asPDFBlock() {
         return (PDFBlockModel) blockModel;
     }
 
-    public QuoteBlockModel asQuoteBlock(){
+    public QuoteBlockModel asQuoteBlock() {
         return (QuoteBlockModel) blockModel;
     }
 
-    public SyncedBlockModel asSyncedBlock(){
+    public SyncedBlockModel asSyncedBlock() {
         return (SyncedBlockModel) blockModel;
     }
 
-    public TableOfContentsBlockModel asTableOfContentsBlock(){
+    public TableOfContentsBlockModel asTableOfContentsBlock() {
         return (TableOfContentsBlockModel) blockModel;
     }
 
-    public TemplateBlockModel asTemplateBlock(){
+    public TemplateBlockModel asTemplateBlock() {
         return (TemplateBlockModel) blockModel;
     }
 
-    public TodoBlockModel asToDoBlock(){
+    public TodoBlockModel asToDoBlock() {
         return (TodoBlockModel) blockModel;
     }
 
-    public ToggleBlockModel asToggleBlock(){
+    public ToggleBlockModel asToggleBlock() {
         return (ToggleBlockModel) blockModel;
     }
 
-    public VideoBlockModel asVideoBlock(){
+    public VideoBlockModel asVideoBlock() {
         return (VideoBlockModel) blockModel;
     }
 }

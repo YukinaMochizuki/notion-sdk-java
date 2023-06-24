@@ -2,7 +2,7 @@ package tw.yukina.notion.sdk.model.block;
 
 public interface TextBlock {
 
-    public void setParagraph(Paragraph paragraph);
+    Paragraph getParagraph();
 
-    public Paragraph getParagraph();
+    void setParagraph(Paragraph paragraph);
 }

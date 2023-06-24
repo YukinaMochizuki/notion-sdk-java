@@ -15,7 +15,7 @@ public class DatabaseQueryCollector extends PageModels {
 
     protected final ApiClient apiClient;
 
-    public DatabaseQueryCollector(String uuid, DatabaseQuery databaseQuery, ApiClient apiClient){
+    public DatabaseQueryCollector(String uuid, DatabaseQuery databaseQuery, ApiClient apiClient) {
         this.uuid = uuid;
         this.databaseQuery = databaseQuery;
         this.apiClient = apiClient;

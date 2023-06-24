@@ -11,7 +11,7 @@ public class MentionTextBuilder extends RichTextBuilder<MentionText> {
     private Mention mention;
 
     @NotNull
-    public static MentionTextBuilder of(@NotNull Mention mention){
+    public static MentionTextBuilder of(@NotNull Mention mention) {
         MentionTextBuilder mentionTextBuilder = new MentionTextBuilder();
         mentionTextBuilder.mention = mention;
         return mentionTextBuilder;
@@ -19,7 +19,7 @@ public class MentionTextBuilder extends RichTextBuilder<MentionText> {
 
     @Override
     public RichText buildSelf() {
-        if(this.mention == null) throw new RuntimeException("Mention can not be null");
+        if (this.mention == null) throw new RuntimeException("Mention can not be null");
 
         MentionText mentionText = new MentionText();
         mentionText.setType(TextType.MENTION);

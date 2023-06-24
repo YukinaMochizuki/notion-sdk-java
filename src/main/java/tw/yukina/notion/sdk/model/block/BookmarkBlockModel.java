@@ -24,7 +24,7 @@ public class BookmarkBlockModel extends BlockModel {
     private Bookmark bookmark;
 
     @NotNull
-    public static BookmarkBlockModel of(String url){
+    public static BookmarkBlockModel of(String url) {
         Bookmark bookmark = new Bookmark();
         bookmark.setUrl(url);
         BookmarkBlockModel bookmarkBlock = new BookmarkBlockModel();
@@ -34,13 +34,13 @@ public class BookmarkBlockModel extends BlockModel {
     }
 
     @NotNull
-    public static BookmarkBlockModel of(String url, String caption){
+    public static BookmarkBlockModel of(String url, String caption) {
         List<RichText> richTexts = TextBuilder.of(caption).build();
         return of(url, richTexts);
     }
 
     @NotNull
-    public static BookmarkBlockModel of(String url, List<RichText> caption){
+    public static BookmarkBlockModel of(String url, List<RichText> caption) {
         Bookmark bookmark = new Bookmark();
         bookmark.setUrl(url);
         bookmark.setRichTexts(caption);

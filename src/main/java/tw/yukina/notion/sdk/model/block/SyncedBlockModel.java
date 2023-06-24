@@ -23,11 +23,6 @@ public class SyncedBlockModel extends BlockModel {
     @JsonProperty(SYNCED_BLOCK_FIELD)
     private Synced synced;
 
-    @Override
-    public boolean canHaveChildren() {
-        return true;
-    }
-
     @NotNull
     public static SyncedBlockModel of() {
         Synced synced = new Synced();
@@ -54,5 +49,10 @@ public class SyncedBlockModel extends BlockModel {
         SyncedBlockModel syncedBlock = new SyncedBlockModel(synced);
         syncedBlock.setType(BlockType.SYNCED_BLOCK);
         return syncedBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
     }
 }

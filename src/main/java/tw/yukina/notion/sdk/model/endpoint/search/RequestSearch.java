@@ -16,6 +16,8 @@ import tw.yukina.notion.sdk.model.common.query.DirectionEnum;
 @EqualsAndHashCode
 public class RequestSearch {
 
+    public static final int MAX_PAGE_SIZE = 100;
+
     private static final String QUERY_FIELD = "query";
     private static final String SORT_FIELD = "sort";
     private static final String FILTER_FIELD = "filter";
@@ -39,30 +41,30 @@ public class RequestSearch {
     private String startCursor;
 
     @JsonProperty(PAGE_SIZE_FIELD)
-    private int pageSize = 100;
+    private int pageSize = MAX_PAGE_SIZE;
 
     @NotNull
     @Contract(" -> new")
-    public static RequestSearch of(){
+    public static RequestSearch of() {
         return new RequestSearch();
     }
 
     @NotNull
-    public static RequestSearch of(FilterValueEnum filterValueEnum){
+    public static RequestSearch of(FilterValueEnum filterValueEnum) {
         RequestSearch requestSearch = new RequestSearch();
         requestSearch.setSearchFilter(SearchFilter.of(filterValueEnum));
         return requestSearch;
     }
 
     @NotNull
-    public static RequestSearch of(DirectionEnum directionEnum){
+    public static RequestSearch of(DirectionEnum directionEnum) {
         RequestSearch requestSearch = new RequestSearch();
         requestSearch.setSort(SearchSort.of(directionEnum));
         return requestSearch;
     }
 
     @NotNull
-    public static RequestSearch of(FilterValueEnum filterValueEnum, DirectionEnum directionEnum){
+    public static RequestSearch of(FilterValueEnum filterValueEnum, DirectionEnum directionEnum) {
         RequestSearch requestSearch = new RequestSearch();
         requestSearch.setSort(SearchSort.of(directionEnum));
         requestSearch.setSearchFilter(SearchFilter.of(filterValueEnum));
@@ -70,14 +72,14 @@ public class RequestSearch {
     }
 
     @NotNull
-    public static RequestSearch of(String title){
+    public static RequestSearch of(String title) {
         RequestSearch requestSearch = new RequestSearch();
         requestSearch.setQuery(title);
         return requestSearch;
     }
 
     @NotNull
-    public static RequestSearch of(String title, FilterValueEnum filterValueEnum){
+    public static RequestSearch of(String title, FilterValueEnum filterValueEnum) {
         RequestSearch requestSearch = new RequestSearch();
         requestSearch.setQuery(title);
         requestSearch.setSearchFilter(SearchFilter.of(filterValueEnum));
@@ -85,7 +87,7 @@ public class RequestSearch {
     }
 
     @NotNull
-    public static RequestSearch of(String title, DirectionEnum directionEnum){
+    public static RequestSearch of(String title, DirectionEnum directionEnum) {
         RequestSearch requestSearch = new RequestSearch();
         requestSearch.setQuery(title);
         requestSearch.setSort(SearchSort.of(directionEnum));
@@ -93,7 +95,7 @@ public class RequestSearch {
     }
 
     @NotNull
-    public static RequestSearch of(String title, FilterValueEnum filterValueEnum, DirectionEnum directionEnum){
+    public static RequestSearch of(String title, FilterValueEnum filterValueEnum, DirectionEnum directionEnum) {
         RequestSearch requestSearch = new RequestSearch();
         requestSearch.setQuery(title);
         requestSearch.setSort(SearchSort.of(directionEnum));

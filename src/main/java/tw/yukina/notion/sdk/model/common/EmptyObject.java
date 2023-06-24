@@ -11,8 +11,8 @@ public class EmptyObject {
 
     @NotNull
     @Contract(value = " -> new", pure = true)
-    public static EmptyObject of(){
-        if(emptyObject == null){
+    public static EmptyObject of() {
+        if (emptyObject == null) {
             emptyObject = new EmptyObject();
         }
         return emptyObject;

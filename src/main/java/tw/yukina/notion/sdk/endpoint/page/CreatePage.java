@@ -4,7 +4,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import okhttp3.*;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.endpoint.page.RequestCreatePage;
 import tw.yukina.notion.sdk.model.page.PageModel;
@@ -81,12 +83,12 @@ public class CreatePage extends AbstractPageEndpoint {
 
         ObjectNode objectNode = getObjectNode(json);
 
-        if(objectNode.has("parent") && objectNode.get("parent").isObject()){
+        if (objectNode.has("parent") && objectNode.get("parent").isObject()) {
             ObjectNode parent = (ObjectNode) objectNode.get("parent");
-            if(parent.has("type"))parent.remove("type");
+            if (parent.has("type")) parent.remove("type");
         }
 
-        if(objectNode.has("children") && objectNode.get("children").isArray())
+        if (objectNode.has("children") && objectNode.get("children").isArray())
             preparePostBlocks((ArrayNode) objectNode.get("children"));
 
         return call(objectNode.toString(), okHttpClient, builder);

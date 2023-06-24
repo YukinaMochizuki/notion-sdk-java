@@ -49,7 +49,7 @@ public class NotionObject {
     private SimpleUser lastEditedBy;
 
     @NotNull
-    public static NotionObject of(@NotNull NotionObject target){
+    public static NotionObject of(@NotNull NotionObject target) {
         NotionObject notionObject = new NotionObject();
         notionObject.setId(target.getId());
         notionObject.setCreatedTime(target.getCreatedTime());

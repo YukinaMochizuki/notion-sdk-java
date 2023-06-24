@@ -9,8 +9,8 @@ import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.block.BlockType;
-import tw.yukina.notion.sdk.model.block.TextBlock;
 import tw.yukina.notion.sdk.model.block.Paragraph;
+import tw.yukina.notion.sdk.model.block.TextBlock;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.ArrayList;
@@ -29,15 +29,10 @@ public class ToggleBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(TOGGLE_FIELD)
     private Paragraph paragraph;
 
-    @Override
-    public boolean canHaveChildren() {
-        return true;
-    }
-
     @NotNull
-    public static List<ToggleBlockModel> of(String ...plainTexts) {
+    public static List<ToggleBlockModel> of(String... plainTexts) {
         List<ToggleBlockModel> toggleBlockModels = new ArrayList<>();
-        for(String plainText: plainTexts){
+        for (String plainText : plainTexts) {
             toggleBlockModels.add(of(plainText));
         }
         return toggleBlockModels;
@@ -58,5 +53,10 @@ public class ToggleBlockModel extends BlockModel implements TextBlock {
         toggleBlock.setParagraph(paragraph);
         toggleBlock.setType(BlockType.TOGGLE);
         return toggleBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
     }
 }

@@ -35,25 +35,21 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ApiClientImpl implements ApiClient{
-
-    private OkHttpClient okHttpClient;
-
-    private ObjectMapper objectMapper;
-
-    private SimpleModule objectMapperModule;
+public class ApiClientImpl implements ApiClient {
 
     @Getter(AccessLevel.PRIVATE)
     private final String authorization;
-
+    private OkHttpClient okHttpClient;
+    private ObjectMapper objectMapper;
+    private SimpleModule objectMapperModule;
     private String notionVersion;
 
-    public ApiClientImpl(String token){
+    public ApiClientImpl(String token) {
         this.authorization = token;
     }
 
     @NotNull
-    private Request.Builder getRequestBuilder(){
+    private Request.Builder getRequestBuilder() {
         return new Request.Builder()
                 .addHeader("Authorization", this.authorization)
                 .addHeader("Notion-Version", this.notionVersion);
@@ -71,12 +67,15 @@ public class ApiClientImpl implements ApiClient{
 
     @Override
     public ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor) {
-        return RetrieveBlockChildren.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper(), startCursor);
+        return RetrieveBlockChildren.callValue(uuid, getOkHttpClient(), getRequestBuilder(),
+                getObjectMapper(), startCursor);
     }
 
     @Override
-    public ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor, @NotNull Integer pageSize) {
-        return RetrieveBlockChildren.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper(), startCursor, pageSize);
+    public ResponseBlockList retrieveBlockChildren(@NotNull String uuid, @NotNull String startCursor,
+                                                   @NotNull Integer pageSize) {
+        return RetrieveBlockChildren.callValue(uuid, getOkHttpClient(), getRequestBuilder(), getObjectMapper(),
+                startCursor, pageSize);
     }
 
     @Override
@@ -98,8 +97,11 @@ public class ApiClientImpl implements ApiClient{
     }
 
     @Override
-    public ResponseBlockList appendBlockChildren(@NotNull String uuid, @NotNull RequestAppendChildrenBlockList requestAppendChildrenBlockList) {
-        return AppendBlockChildren.callValue(uuid, requestAppendChildrenBlockList, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+    public ResponseBlockList appendBlockChildren(@NotNull String uuid,
+                                                 @NotNull RequestAppendChildrenBlockList
+                                                         requestAppendChildrenBlockList) {
+        return AppendBlockChildren.callValue(uuid, requestAppendChildrenBlockList, getOkHttpClient(),
+                getRequestBuilder(), getObjectMapper());
     }
 
     @Override
@@ -114,7 +116,8 @@ public class ApiClientImpl implements ApiClient{
 
     @Override
     public DatabaseModel createDatabase(@NotNull RequestCreateDatabase requestCreateDatabase) {
-        return CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+        return CreateDatabase.callValue(requestCreateDatabase, getOkHttpClient(),
+                getRequestBuilder(), getObjectMapper());
     }
 
     @Override
@@ -134,7 +137,8 @@ public class ApiClientImpl implements ApiClient{
 
     @Override
     public DatabaseModel updateDatabase(@NotNull String uuid, @NotNull RequestUpdateDatabase requestUpdateDatabase) {
-        return UpdateDatabase.callValue(uuid, requestUpdateDatabase, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+        return UpdateDatabase.callValue(uuid, requestUpdateDatabase, getOkHttpClient(),
+                getRequestBuilder(), getObjectMapper());
     }
 
     @Override
@@ -149,7 +153,8 @@ public class ApiClientImpl implements ApiClient{
 
     @Override
     public PageModel updatePage(@NotNull String uuid, @NotNull RequestUpdatePage requestUpdatePage) {
-        return UpdatePage.callValue(uuid, requestUpdatePage, getOkHttpClient(), getRequestBuilder(), getObjectMapper());
+        return UpdatePage.callValue(uuid, requestUpdatePage, getOkHttpClient(),
+                getRequestBuilder(), getObjectMapper());
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.util.List;
 public class ListBlockHelper {
 
     @NotNull
-    public static BulletedListBlockModel createDefaultBulletedList(List<RichText> texts){
+    public static BulletedListBlockModel createDefaultBulletedList(List<RichText> texts) {
         BulletedListBlockModel bulletedListBlock = new BulletedListBlockModel();
         initDefaultListBlock(texts, bulletedListBlock);
         bulletedListBlock.setType(BlockType.BULLETED_LIST_ITEM);
@@ -22,7 +22,7 @@ public class ListBlockHelper {
     }
 
     @NotNull
-    public static NumberedListBlockModel createDefaultNumberedList(List<RichText> texts){
+    public static NumberedListBlockModel createDefaultNumberedList(List<RichText> texts) {
         NumberedListBlockModel numberedListBlock = new NumberedListBlockModel();
         initDefaultListBlock(texts, numberedListBlock);
         numberedListBlock.setType(BlockType.NUMBERED_LIST_ITEM);
@@ -31,7 +31,7 @@ public class ListBlockHelper {
     }
 
     @NotNull
-    public static ToggleBlockModel createDefaultToggle(List<RichText> texts){
+    public static ToggleBlockModel createDefaultToggle(List<RichText> texts) {
         ToggleBlockModel toggleBlock = new ToggleBlockModel();
         initDefaultListBlock(texts, toggleBlock);
         toggleBlock.setType(BlockType.TOGGLE);
@@ -39,7 +39,7 @@ public class ListBlockHelper {
         return toggleBlock;
     }
 
-    public static <T extends TextBlock> void initDefaultListBlock(List<RichText> texts, T t){
+    public static <T extends TextBlock> void initDefaultListBlock(List<RichText> texts, T t) {
         Paragraph paragraph = new Paragraph();
         paragraph.setRichTexts(texts);
         paragraph.setColor(TextColor.DEFAULT);

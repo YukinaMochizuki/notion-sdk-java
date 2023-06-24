@@ -84,7 +84,7 @@ public enum CodeLanguageType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

@@ -2,14 +2,14 @@ package tw.yukina.notion.sdk.endpoint.block;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.jupiter.api.Test;
-import tw.yukina.notion.sdk.model.block.BlockModel;
-import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
-import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.ModelTest;
-import tw.yukina.notion.sdk.model.helper.BlockHelper;
-import tw.yukina.notion.sdk.model.helper.HeadingBlockHelper;
+import tw.yukina.notion.sdk.model.TextColor;
+import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.block.list.ListBlockHelper;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
+import tw.yukina.notion.sdk.model.endpoint.block.ResponseBlockList;
+import tw.yukina.notion.sdk.model.helper.BlockHelper;
+import tw.yukina.notion.sdk.model.helper.HeadingBlockHelper;
 import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.util.ArrayList;

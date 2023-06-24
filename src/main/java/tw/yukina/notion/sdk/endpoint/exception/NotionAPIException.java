@@ -16,7 +16,7 @@ public class NotionAPIException extends RuntimeException {
     private String message;
     private ObjectNode objectNode;
 
-    public NotionAPIException(@NotNull ObjectNode errorObject){
+    public NotionAPIException(@NotNull ObjectNode errorObject) {
         this.objectNode = errorObject;
 
         status = errorObject.get("status").asInt();

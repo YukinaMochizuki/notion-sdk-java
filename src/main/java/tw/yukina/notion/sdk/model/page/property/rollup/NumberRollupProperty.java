@@ -12,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class NumberRollupProperty extends RollupObject{
+public class NumberRollupProperty extends RollupObject {
 
     private static final String NUMBER_FIELD = "number";
 

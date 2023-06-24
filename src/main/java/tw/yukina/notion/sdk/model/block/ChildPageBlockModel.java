@@ -19,11 +19,6 @@ public class ChildPageBlockModel extends BlockModel {
     @JsonProperty(CHILD_PAGE_FIELD)
     private ChildPage childPage;
 
-    @Override
-    public boolean canHaveChildren() {
-        return false;
-    }
-
     @NotNull
     public static ChildPageBlockModel of(String title) {
         ChildPage childPage = new ChildPage();
@@ -32,5 +27,10 @@ public class ChildPageBlockModel extends BlockModel {
         childPageBlock.setChildPage(childPage);
         childPageBlock.setType(BlockType.CHILD_PAGE);
         return childPageBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
     }
 }

@@ -36,7 +36,7 @@ public class RequestUpdatePage {
     @JsonProperty(COVER_FIELD)
     private FileObject fileObject;
 
-    public static RequestUpdatePage of(PageModel pageModel){
+    public static RequestUpdatePage of(PageModel pageModel) {
         RequestUpdatePage requestUpdatePage = new RequestUpdatePage();
         requestUpdatePage.setProperties(pageModel.getPropertyMap());
         requestUpdatePage.setArchived(pageModel.isArchived());

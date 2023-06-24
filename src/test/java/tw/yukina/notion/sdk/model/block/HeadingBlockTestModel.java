@@ -3,12 +3,12 @@ package tw.yukina.notion.sdk.model.block;
 import com.fasterxml.jackson.databind.JsonNode;
 import okhttp3.Response;
 import org.junit.jupiter.api.Test;
-import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.ModelTest;
-import tw.yukina.notion.sdk.model.helper.HeadingBlockHelper;
+import tw.yukina.notion.sdk.model.TextColor;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
-import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 import tw.yukina.notion.sdk.model.common.rich.Text;
+import tw.yukina.notion.sdk.model.helper.HeadingBlockHelper;
+import tw.yukina.notion.sdk.model.helper.RichTextHelper;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HeadingBlockTestModel extends ModelTest {
     @Test
     void headingOneTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/24f5d147619a4dbc88348250a1f4744e");
+        Response response = getResponse(BASE_URL + "/blocks/24f5d147619a4dbc88348250a1f4744e");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -52,7 +52,7 @@ public class HeadingBlockTestModel extends ModelTest {
 
     @Test
     void headingTwoTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/d8c81d20cb2941c7a4a9e658fdcdfc58");
+        Response response = getResponse(BASE_URL + "/blocks/d8c81d20cb2941c7a4a9e658fdcdfc58");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -90,7 +90,7 @@ public class HeadingBlockTestModel extends ModelTest {
     @Test
     @SuppressWarnings("SpellCheckingInspection")
     void headingThreeTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/7ea5d830f4354a8c814738c45dbbaa76");
+        Response response = getResponse(BASE_URL + "/blocks/7ea5d830f4354a8c814738c45dbbaa76");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

@@ -21,7 +21,7 @@ public class FormulaPropertyFilter extends DatabasePropertyFilter {
     private FormulaFilterObject formulaFilterObject;
 
     @NotNull
-    public static FormulaPropertyFilter of(String property, FormulaFilterObject formulaFilterObject){
+    public static FormulaPropertyFilter of(String property, FormulaFilterObject formulaFilterObject) {
         FormulaPropertyFilter formulaPropertyFilter = new FormulaPropertyFilter();
         formulaPropertyFilter.setName(property);
         formulaPropertyFilter.setFormulaFilterObject(formulaFilterObject);

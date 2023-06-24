@@ -26,7 +26,7 @@ public class PeopleProperty extends PageProperty {
     private List<User> users;
 
     @NotNull
-    public static PeopleProperty of(User[] users){
+    public static PeopleProperty of(User[] users) {
         List<User> userList = Arrays.asList(users);
         PeopleProperty peopleProperty = new PeopleProperty();
         peopleProperty.setType(PropertyType.PEOPLE);

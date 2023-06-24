@@ -7,7 +7,10 @@ import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.builder.TextBuilder;
 import tw.yukina.notion.sdk.model.TextColor;
-import tw.yukina.notion.sdk.model.block.*;
+import tw.yukina.notion.sdk.model.block.BlockModel;
+import tw.yukina.notion.sdk.model.block.BlockType;
+import tw.yukina.notion.sdk.model.block.Paragraph;
+import tw.yukina.notion.sdk.model.block.TextBlock;
 import tw.yukina.notion.sdk.model.common.rich.RichText;
 
 import java.util.ArrayList;
@@ -26,15 +29,10 @@ public class NumberedListBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(NUMBERED_LIST_FIELD)
     private Paragraph paragraph;
 
-    @Override
-    public boolean canHaveChildren() {
-        return true;
-    }
-
     @NotNull
-    public static List<NumberedListBlockModel> of(String ...plainTexts) {
+    public static List<NumberedListBlockModel> of(String... plainTexts) {
         List<NumberedListBlockModel> numberedListBlockModels = new ArrayList<>();
-        for(String plainText: plainTexts){
+        for (String plainText : plainTexts) {
             numberedListBlockModels.add(of(plainText));
         }
         return numberedListBlockModels;
@@ -55,5 +53,10 @@ public class NumberedListBlockModel extends BlockModel implements TextBlock {
         numberedListBlock.setParagraph(paragraph);
         numberedListBlock.setType(BlockType.NUMBERED_LIST_ITEM);
         return numberedListBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return true;
     }
 }

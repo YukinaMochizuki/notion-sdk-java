@@ -18,7 +18,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class DateTime extends DateTimeProperty{
+public class DateTime extends DateTimeProperty {
     private static final String START_FIELD = "start";
     private static final String END_FIELD = "end";
     private static final String TIME_ZONE_FIELD = "time_zone";

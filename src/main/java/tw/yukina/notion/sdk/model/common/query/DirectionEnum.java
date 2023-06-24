@@ -15,7 +15,7 @@ public enum DirectionEnum {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 

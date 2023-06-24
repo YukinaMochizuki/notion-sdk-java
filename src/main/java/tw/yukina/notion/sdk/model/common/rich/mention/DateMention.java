@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.common.date.Date;
 import tw.yukina.notion.sdk.model.common.date.DateTime;
 import tw.yukina.notion.sdk.model.common.date.DateTimeProperty;
-import tw.yukina.notion.sdk.model.common.date.DateTimeType;
 
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
@@ -22,14 +21,14 @@ import java.time.ZonedDateTime;
 @EqualsAndHashCode(callSuper = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class DateMention extends Mention{
+public class DateMention extends Mention {
     private static final String DATE_FIELD = "date";
 
     @JsonProperty(DATE_FIELD)
     private DateTimeProperty dateTimeProperty;
 
     @NotNull
-    public static DateMention of(LocalDate start){
+    public static DateMention of(LocalDate start) {
         Date date = Date.of(start);
         DateMention dateMention = new DateMention();
         dateMention.setMentionType(MentionType.DATE);
@@ -38,7 +37,7 @@ public class DateMention extends Mention{
     }
 
     @NotNull
-    public static DateMention of(LocalDate start, LocalDate end){
+    public static DateMention of(LocalDate start, LocalDate end) {
         Date date = Date.of(start, end);
         DateMention dateMention = new DateMention();
         dateMention.setMentionType(MentionType.DATE);
@@ -47,7 +46,7 @@ public class DateMention extends Mention{
     }
 
     @NotNull
-    public static DateMention of(ZonedDateTime start){
+    public static DateMention of(ZonedDateTime start) {
         DateTime dateTime = DateTime.of(start);
         DateMention dateMention = new DateMention();
         dateMention.setMentionType(MentionType.DATE);
@@ -56,7 +55,7 @@ public class DateMention extends Mention{
     }
 
     @NotNull
-    public static DateMention of(ZonedDateTime start, ZonedDateTime end){
+    public static DateMention of(ZonedDateTime start, ZonedDateTime end) {
         DateTime dateTime = DateTime.of(start, end);
         DateMention dateMention = new DateMention();
         dateMention.setMentionType(MentionType.DATE);

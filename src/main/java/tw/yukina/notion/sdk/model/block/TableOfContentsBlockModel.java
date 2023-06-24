@@ -21,11 +21,6 @@ public class TableOfContentsBlockModel extends BlockModel {
     @JsonProperty(TABLE_OF_CONTENTS_FIELD)
     private TableOfContents tableOfContents;
 
-    @Override
-    public boolean canHaveChildren() {
-        return false;
-    }
-
     @NotNull
     public static TableOfContentsBlockModel of() {
         TableOfContentsBlockModel tableOfContentsBlock = new TableOfContentsBlockModel();
@@ -40,5 +35,10 @@ public class TableOfContentsBlockModel extends BlockModel {
         tableOfContentsBlock.setType(BlockType.TABLE_OF_CONTENTS);
         tableOfContentsBlock.setTableOfContents(new TableOfContents(textColor));
         return tableOfContentsBlock;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
     }
 }

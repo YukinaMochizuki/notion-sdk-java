@@ -32,28 +32,28 @@ public class MultiSelectFilterObject {
     private Boolean isNotEmpty;
 
     @NotNull
-    public static MultiSelectFilterObject containsOf(String equals){
+    public static MultiSelectFilterObject containsOf(String equals) {
         MultiSelectFilterObject selectFilterObject = new MultiSelectFilterObject();
         selectFilterObject.setContains(equals);
         return selectFilterObject;
     }
 
     @NotNull
-    public static MultiSelectFilterObject doesNotContainsOf(String doesNotEqual){
+    public static MultiSelectFilterObject doesNotContainsOf(String doesNotEqual) {
         MultiSelectFilterObject selectFilterObject = new MultiSelectFilterObject();
         selectFilterObject.setDoesNotContains(doesNotEqual);
         return selectFilterObject;
     }
 
     @NotNull
-    public static MultiSelectFilterObject isEmptyOf(boolean isEmpty){
+    public static MultiSelectFilterObject isEmptyOf(boolean isEmpty) {
         MultiSelectFilterObject selectFilterObject = new MultiSelectFilterObject();
         selectFilterObject.setIsEmpty(isEmpty);
         return selectFilterObject;
     }
 
     @NotNull
-    public static MultiSelectFilterObject isNotEmptyOf(boolean isNotEmpty){
+    public static MultiSelectFilterObject isNotEmptyOf(boolean isNotEmpty) {
         MultiSelectFilterObject selectFilterObject = new MultiSelectFilterObject();
         selectFilterObject.setIsNotEmpty(isNotEmpty);
         return selectFilterObject;

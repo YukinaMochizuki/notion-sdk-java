@@ -21,7 +21,8 @@ public abstract class AbstractEndpoint {
     public static ObjectNode getObjectNode(@NotNull Response response, @NotNull ObjectMapper objectMapper) {
         ObjectNode objectNode = null;
         try {
-            objectNode = checkJsonErrorAndGetObjectNode(objectMapper.readTree(Objects.requireNonNull(response.body()).charStream()));
+            objectNode = checkJsonErrorAndGetObjectNode(objectMapper.readTree(Objects
+                    .requireNonNull(response.body()).charStream()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -35,7 +36,7 @@ public abstract class AbstractEndpoint {
     public static ObjectNode getObjectNode(@NotNull JsonNode jsonNode) {
         ObjectNode objectNode;
 
-        if(jsonNode instanceof ObjectNode){
+        if (jsonNode instanceof ObjectNode) {
             objectNode = (ObjectNode) jsonNode;
         } else throw new UnsupportedJsonFormatException(jsonNode);
 
@@ -46,10 +47,10 @@ public abstract class AbstractEndpoint {
     public static ObjectNode checkJsonErrorAndGetObjectNode(@NotNull JsonNode jsonNode) {
         ObjectNode objectNode;
 
-        if(jsonNode instanceof ObjectNode){
+        if (jsonNode instanceof ObjectNode) {
             objectNode = (ObjectNode) jsonNode;
         } else throw new NotionAPIException("Unexpected error, body is not object");
-        if(objectNode.get("object").asText().equals("error")) throw new NotionAPIException(objectNode);
+        if (objectNode.get("object").asText().equals("error")) throw new NotionAPIException(objectNode);
 
         return objectNode;
     }

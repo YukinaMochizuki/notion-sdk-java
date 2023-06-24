@@ -7,13 +7,13 @@ import tw.yukina.notion.sdk.model.ModelTest;
 
 import java.util.Objects;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DividerBlockTestModel extends ModelTest {
 
     @Test
     void dividerBlockTest() throws Exception {
-        Response response = getResponse( BASE_URL + "/blocks/99edf98ff9544ad48df27cd8cb480958");
+        Response response = getResponse(BASE_URL + "/blocks/99edf98ff9544ad48df27cd8cb480958");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

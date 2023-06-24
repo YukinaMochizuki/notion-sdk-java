@@ -24,6 +24,23 @@ public class ParagraphBlockModel extends BlockModel implements TextBlock {
     @JsonProperty(PARAGRAPH_FIELD)
     private Paragraph paragraph;
 
+    @NotNull
+    public static ParagraphBlockModel of(String plainText) {
+        List<RichText> richTexts = TextBuilder.of(plainText).build();
+        return of(richTexts);
+    }
+
+    @NotNull
+    public static ParagraphBlockModel of(List<RichText> richTexts) {
+        Paragraph paragraph = new Paragraph();
+        paragraph.setRichTexts(richTexts);
+        paragraph.setColor(TextColor.DEFAULT);
+        ParagraphBlockModel paragraphBlock = new ParagraphBlockModel();
+        paragraphBlock.setParagraph(paragraph);
+        paragraphBlock.setType(BlockType.PARAGRAPH);
+        return paragraphBlock;
+    }
+
     public ParagraphBlockModel setText(List<RichText> richTexts) {
         if (paragraph == null) paragraph = new Paragraph();
         paragraph.setRichTexts(richTexts);
@@ -45,22 +62,5 @@ public class ParagraphBlockModel extends BlockModel implements TextBlock {
     @Override
     public boolean canHaveChildren() {
         return true;
-    }
-
-    @NotNull
-    public static ParagraphBlockModel of(String plainText) {
-        List<RichText> richTexts = TextBuilder.of(plainText).build();
-        return of(richTexts);
-    }
-
-    @NotNull
-    public static ParagraphBlockModel of(List<RichText> richTexts) {
-        Paragraph paragraph = new Paragraph();
-        paragraph.setRichTexts(richTexts);
-        paragraph.setColor(TextColor.DEFAULT);
-        ParagraphBlockModel paragraphBlock = new ParagraphBlockModel();
-        paragraphBlock.setParagraph(paragraph);
-        paragraphBlock.setType(BlockType.PARAGRAPH);
-        return paragraphBlock;
     }
 }

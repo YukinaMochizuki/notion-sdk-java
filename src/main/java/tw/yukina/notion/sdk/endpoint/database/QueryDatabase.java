@@ -27,9 +27,9 @@ public class QueryDatabase extends AbstractDatabaseEndpoint {
 
     @NotNull
     public static ResponsePageList callValue(@NotNull String uuid, @NotNull JsonNode json,
-                                              @NotNull OkHttpClient okHttpClient,
-                                              @NotNull Request.Builder builder,
-                                              @NotNull ObjectMapper objectMapper) {
+                                             @NotNull OkHttpClient okHttpClient,
+                                             @NotNull Request.Builder builder,
+                                             @NotNull ObjectMapper objectMapper) {
 
         return toPageList(callTree(uuid, json, okHttpClient, builder, objectMapper), objectMapper);
     }

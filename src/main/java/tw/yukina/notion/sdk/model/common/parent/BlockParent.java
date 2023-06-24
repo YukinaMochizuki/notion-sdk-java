@@ -19,9 +19,9 @@ public class BlockParent extends Parent {
 
     @JsonProperty(BLOCK_ID_FIELD)
     private String blockId;
-    
+
     @NotNull
-    public static BlockParent of(String blockId){
+    public static BlockParent of(String blockId) {
         BlockParent pageParent = new BlockParent();
         pageParent.setParentType(ParentType.PAGE);
         pageParent.setBlockId(blockId);

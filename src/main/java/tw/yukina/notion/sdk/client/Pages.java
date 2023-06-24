@@ -31,7 +31,7 @@ public class Pages implements Iterable<Page> {
 
         private final Iterator<PageModel> pageModelIterator;
 
-        public Itr(Iterator<PageModel> pageModelIterator) {
+        Itr(Iterator<PageModel> pageModelIterator) {
             this.pageModelIterator = pageModelIterator;
         }
 

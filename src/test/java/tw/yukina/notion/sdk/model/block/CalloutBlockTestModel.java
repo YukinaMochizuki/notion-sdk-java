@@ -17,7 +17,7 @@ public class CalloutBlockTestModel extends ModelTest {
 
     @Test
     void calloutTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/7f1650a2ee8747f4aedb15b876be7eb1");
+        Response response = getResponse(BASE_URL + "/blocks/7f1650a2ee8747f4aedb15b876be7eb1");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

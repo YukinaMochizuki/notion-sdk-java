@@ -24,14 +24,14 @@ public class FilesFilterObject {
     private Boolean isNotEmpty;
 
     @NotNull
-    public static FilesFilterObject isEmptyOf(boolean isEmpty){
+    public static FilesFilterObject isEmptyOf(boolean isEmpty) {
         FilesFilterObject filesFilterObject = new FilesFilterObject();
         filesFilterObject.setIsEmpty(isEmpty);
         return filesFilterObject;
     }
 
     @NotNull
-    public static FilesFilterObject isNotEmptyOf(boolean isNotEmpty){
+    public static FilesFilterObject isNotEmptyOf(boolean isNotEmpty) {
         FilesFilterObject filesFilterObject = new FilesFilterObject();
         filesFilterObject.setIsNotEmpty(isNotEmpty);
         return filesFilterObject;

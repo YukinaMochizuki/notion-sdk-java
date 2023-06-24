@@ -17,7 +17,7 @@ import java.util.Map;
 
 public final class Project {
 
-    public static Map<String, DatabaseProperty> getCreateDatabaseProperty(){
+    public static Map<String, DatabaseProperty> getCreateDatabaseProperty() {
         Map<String, DatabaseProperty> propertyMap = new HashMap<>();
 
         DatabaseProperty databaseProperty = new DatabaseProperty();
@@ -43,7 +43,7 @@ public final class Project {
         selectProperty.setSelectObject(selectObject);
         propertyMap.put("Type", selectProperty);
 
-        selectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Milestone", "Study Plan", "Interest", "Trivia"}));
+        selectObject.setSelectOptions(SelectOptionHelper.getSelectOptions("Milestone", "Study Plan", "Interest", "Trivia"));
 
         tw.yukina.notion.sdk.model.database.property.MultiSelectProperty multiSelectProperty = new tw.yukina.notion.sdk.model.database.property.MultiSelectProperty();
         multiSelectProperty.setName("Tags");
@@ -53,12 +53,12 @@ public final class Project {
         multiSelectProperty.setSelectObject(multiSelectObject);
         propertyMap.put("Tags", multiSelectProperty);
 
-        multiSelectObject.setSelectOptions(SelectOptionHelper.getSelectOptions(new String[]{"Tag1", "Tag2", "Tag3"}));
+        multiSelectObject.setSelectOptions(SelectOptionHelper.getSelectOptions("Tag1", "Tag2", "Tag3"));
 
         return propertyMap;
     }
 
-    public static DatabaseModel getDatabase(JsonNode responseJsonNode, DatabaseModel responseDatabaseModel){
+    public static DatabaseModel getDatabase(JsonNode responseJsonNode, DatabaseModel responseDatabaseModel) {
         DatabaseModel databaseModel = new DatabaseModel();
         databaseModel.setId(responseDatabaseModel.getId());
         databaseModel.setCreatedTime(responseDatabaseModel.getCreatedTime());

@@ -15,29 +15,29 @@ public class TextBuilder extends RichTextBuilder<Text> {
 
     private URL url;
 
-    public TextBuilder setContent(String content){
-        this.content = content;
-        return this;
-    }
-
-    public TextBuilder setLink(URL url){
-        this.url = url;
-        return this;
-    }
-
     @NotNull
-    public static TextBuilder of(String content){
+    public static TextBuilder of(String content) {
         TextBuilder textBuilder = new TextBuilder();
         textBuilder.setContent(content);
         return textBuilder;
     }
 
     @NotNull
-    public static TextBuilder of(String content, URL url){
+    public static TextBuilder of(String content, URL url) {
         TextBuilder textBuilder = new TextBuilder();
         textBuilder.setContent(content);
         textBuilder.setLink(url);
         return textBuilder;
+    }
+
+    public TextBuilder setContent(String content) {
+        this.content = content;
+        return this;
+    }
+
+    public TextBuilder setLink(URL url) {
+        this.url = url;
+        return this;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TextBuilder extends RichTextBuilder<Text> {
         text.setPlainText(this.content);
         setRichTextStyle(text);
 
-        if(this.url != null){
+        if (this.url != null) {
             RichTextHelper.setLinkToText(text, this.url);
         }
 

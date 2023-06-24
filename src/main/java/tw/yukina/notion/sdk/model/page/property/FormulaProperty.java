@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonDeserialize(using = JsonDeserializer.None.class)
-public class FormulaProperty extends PageProperty{
+public class FormulaProperty extends PageProperty {
 
     private static final String FORMULA_FIELD = "formula";
 

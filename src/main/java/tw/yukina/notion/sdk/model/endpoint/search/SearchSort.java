@@ -24,7 +24,7 @@ public class SearchSort {
     private String timestamp = "last_edited_time";
 
     @NotNull
-    public static SearchSort of(DirectionEnum direction){
+    public static SearchSort of(DirectionEnum direction) {
         SearchSort searchSort = new SearchSort();
         searchSort.setDirection(direction);
         return searchSort;

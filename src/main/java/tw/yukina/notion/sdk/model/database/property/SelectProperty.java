@@ -29,11 +29,11 @@ public class SelectProperty extends DatabaseProperty {
     private SelectObject selectObject;
 
     @NotNull
-    public static SelectProperty of(String name, @NotNull String ...options) {
+    public static SelectProperty of(String name, @NotNull String... options) {
         SelectObject selectObject = new SelectObject();
         List<SelectOption> selectOptions = new ArrayList<>();
         selectObject.setSelectOptions(selectOptions);
-        for(String option: options) selectOptions.add(SelectOption.of(option));
+        for (String option : options) selectOptions.add(SelectOption.of(option));
 
         SelectProperty selectProperty = new SelectProperty();
         selectProperty.setName(name);

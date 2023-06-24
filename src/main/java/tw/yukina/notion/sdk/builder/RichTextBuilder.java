@@ -24,46 +24,46 @@ public abstract class RichTextBuilder<T extends RichText> {
 
     private TextColor color = TextColor.DEFAULT;
 
-    public RichTextBuilder<T> setBold(boolean isBold){
+    public RichTextBuilder<T> setBold(boolean isBold) {
         this.isBold = isBold;
         return this;
     }
 
-    public RichTextBuilder<T> setItalic(boolean isItalic){
+    public RichTextBuilder<T> setItalic(boolean isItalic) {
         this.isItalic = isItalic;
         return this;
     }
 
-    public RichTextBuilder<T> setStrolethrough(boolean isStrikethrough){
+    public RichTextBuilder<T> setStrolethrough(boolean isStrikethrough) {
         this.isStrikethrough = isStrikethrough;
         return this;
     }
 
-    public RichTextBuilder<T> setUnderline(boolean isUnderline){
+    public RichTextBuilder<T> setUnderline(boolean isUnderline) {
         this.isUnderline = isUnderline;
         return this;
     }
 
-    public RichTextBuilder<T> setCodeStyle(boolean isCode){
+    public RichTextBuilder<T> setCodeStyle(boolean isCode) {
         this.isCode = isCode;
         return this;
     }
 
-    public RichTextBuilder<T> setColor(@NotNull TextColor color){
+    public RichTextBuilder<T> setColor(@NotNull TextColor color) {
         this.color = color;
         return this;
     }
 
-    public RichTextBuilder<T> append(RichTextBuilder<?> richTextBuilder){
+    public RichTextBuilder<T> append(RichTextBuilder<?> richTextBuilder) {
         this.childRichText.add(richTextBuilder);
         return this;
     }
 
-    public List<RichText> build(){
+    public List<RichText> build() {
         List<RichText> richTexts = new ArrayList<>();
         richTexts.add(buildSelf());
 
-        for(RichTextBuilder<?> richTextBuilder: childRichText){
+        for (RichTextBuilder<?> richTextBuilder : childRichText) {
             richTexts.addAll(richTextBuilder.build());
         }
         return richTexts;
@@ -71,7 +71,7 @@ public abstract class RichTextBuilder<T extends RichText> {
 
     public abstract RichText buildSelf();
 
-    protected void setRichTextStyle(@NotNull T richText){
+    protected void setRichTextStyle(@NotNull T richText) {
         Annotation annotation = new Annotation();
         annotation.setBold(this.isBold);
         annotation.setItalic(this.isItalic);

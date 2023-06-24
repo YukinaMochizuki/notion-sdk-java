@@ -2,7 +2,6 @@ package tw.yukina.notion.sdk.model.deserializer;
 
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.common.PropertyType;
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 public class PagePropertyDeserializer extends AbstractDeserializer<PageProperty> {
     @Override
-    public PageProperty deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
+    public PageProperty deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
 
@@ -37,6 +36,7 @@ public class PagePropertyDeserializer extends AbstractDeserializer<PageProperty>
         addAvailableType(PropertyType.LAST_EDITED_TIME.getField(), LastEditedTimeProperty.class);
         addAvailableType(PropertyType.LAST_EDITED_BY.getField(), LastEditedByProperty.class);
 
-        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
+        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() ->
+                throwTypeNotFound(type, jsonParser));
     }
 }

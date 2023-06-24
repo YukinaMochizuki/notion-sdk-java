@@ -19,9 +19,9 @@ public class PageParent extends Parent {
 
     @JsonProperty(PAGE_ID_FIELD)
     private String pageId;
-    
+
     @NotNull
-    public static PageParent of(String pageId){
+    public static PageParent of(String pageId) {
         PageParent pageParent = new PageParent();
         pageParent.setParentType(ParentType.PAGE);
         pageParent.setPageId(pageId);

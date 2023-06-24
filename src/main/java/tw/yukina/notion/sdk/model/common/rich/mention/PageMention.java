@@ -21,7 +21,7 @@ public class PageMention extends Mention {
     private PageUnit page;
 
     @NotNull
-    public static PageMention of(String pageId){
+    public static PageMention of(String pageId) {
         PageUnit page = new PageUnit();
         page.setPageId(pageId);
         PageMention pageMention = new PageMention();

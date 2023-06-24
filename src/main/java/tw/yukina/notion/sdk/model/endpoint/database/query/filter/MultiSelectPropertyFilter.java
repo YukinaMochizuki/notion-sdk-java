@@ -21,7 +21,7 @@ public class MultiSelectPropertyFilter extends DatabasePropertyFilter {
     private MultiSelectFilterObject selectFilterObject;
 
     @NotNull
-    public static MultiSelectPropertyFilter of(String property, MultiSelectFilterObject selectFilterObject){
+    public static MultiSelectPropertyFilter of(String property, MultiSelectFilterObject selectFilterObject) {
         MultiSelectPropertyFilter multiSelectPropertyFilter = new MultiSelectPropertyFilter();
         multiSelectPropertyFilter.setName(property);
         multiSelectPropertyFilter.setSelectFilterObject(selectFilterObject);
@@ -29,22 +29,22 @@ public class MultiSelectPropertyFilter extends DatabasePropertyFilter {
     }
 
     @NotNull
-    public static MultiSelectPropertyFilter containsOf(String property, String value){
+    public static MultiSelectPropertyFilter containsOf(String property, String value) {
         return of(property, MultiSelectFilterObject.containsOf(value));
     }
 
     @NotNull
-    public static MultiSelectPropertyFilter doesNotEqualOf(String property, String value){
+    public static MultiSelectPropertyFilter doesNotEqualOf(String property, String value) {
         return of(property, MultiSelectFilterObject.doesNotContainsOf(value));
     }
 
     @NotNull
-    public static MultiSelectPropertyFilter isEmptyOf(String property){
+    public static MultiSelectPropertyFilter isEmptyOf(String property) {
         return of(property, MultiSelectFilterObject.isEmptyOf(true));
     }
 
     @NotNull
-    public static MultiSelectPropertyFilter isNotEmptyOf(String property){
+    public static MultiSelectPropertyFilter isNotEmptyOf(String property) {
         return of(property, MultiSelectFilterObject.isNotEmptyOf(true));
     }
 }

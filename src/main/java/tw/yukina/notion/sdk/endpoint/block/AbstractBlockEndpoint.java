@@ -30,16 +30,16 @@ public abstract class AbstractBlockEndpoint extends AbstractEndpoint {
         }
     }
 
-    public static void preparePostBlocks(@NotNull ArrayNode arrayNode){
-        for(JsonNode jsonNode : arrayNode){
-            if(jsonNode.isObject()){
+    public static void preparePostBlocks(@NotNull ArrayNode arrayNode) {
+        for (JsonNode jsonNode : arrayNode) {
+            if (jsonNode.isObject()) {
                 preparePostBlock((ObjectNode) jsonNode);
             }
         }
     }
 
-    public static void preparePostBlock(@NotNull ObjectNode block){
-        if(!block.hasNonNull("id"))block.remove("id");
+    public static void preparePostBlock(@NotNull ObjectNode block) {
+        if (!block.hasNonNull("id")) block.remove("id");
         block.remove("created_time");
         block.remove("last_edited_time");
     }

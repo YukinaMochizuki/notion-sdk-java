@@ -26,11 +26,6 @@ public class HeadingThreeBlockModel extends BlockModel implements HeadingBlock {
     @JsonProperty(HEADING_ONE_FIELD)
     private Heading heading;
 
-    @Override
-    public boolean canHaveChildren() {
-        return false;
-    }
-
     @NotNull
     public static HeadingThreeBlockModel of(String plainText) {
         List<RichText> richTexts = TextBuilder.of(plainText).build();
@@ -47,5 +42,10 @@ public class HeadingThreeBlockModel extends BlockModel implements HeadingBlock {
         headingThreeBlockModel.setHeading(heading);
         headingThreeBlockModel.setType(BlockType.HEADING_3);
         return headingThreeBlockModel;
+    }
+
+    @Override
+    public boolean canHaveChildren() {
+        return false;
     }
 }

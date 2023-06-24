@@ -10,16 +10,16 @@ public class EquationTextBuilder extends RichTextBuilder<EquationText> {
 
     private String expression = "";
 
-    public EquationTextBuilder setExpression(String expression){
-        this.expression = expression;
-        return this;
-    }
-
     @NotNull
-    public static EquationTextBuilder of(String expression){
+    public static EquationTextBuilder of(String expression) {
         EquationTextBuilder equationTextBuilder = new EquationTextBuilder();
         equationTextBuilder.setExpression(expression);
         return equationTextBuilder;
+    }
+
+    public EquationTextBuilder setExpression(String expression) {
+        this.expression = expression;
+        return this;
     }
 
     @Override

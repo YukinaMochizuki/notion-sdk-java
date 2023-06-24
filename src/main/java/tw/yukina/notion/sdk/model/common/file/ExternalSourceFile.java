@@ -23,7 +23,7 @@ public class ExternalSourceFile extends FileObject {
     private ExternalSourceFileObject externalSourceFileObject;
 
     @NotNull
-    public static ExternalSourceFile of(String name, URL url){
+    public static ExternalSourceFile of(String name, URL url) {
         ExternalSourceFileObject externalSourceFileObject = new ExternalSourceFileObject();
         externalSourceFileObject.setUrl(url);
         ExternalSourceFile externalSourceFile = new ExternalSourceFile();

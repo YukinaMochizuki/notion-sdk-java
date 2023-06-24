@@ -8,10 +8,10 @@ import java.util.List;
 
 public final class SelectOptionHelper {
 
-    public static List<SelectOption> getSelectOptions(String ...options){
+    public static List<SelectOption> getSelectOptions(String... options) {
         List<SelectOption> selectOptions = new ArrayList<>();
 
-        for(String str: options){
+        for (String str : options) {
             SelectOption selectOption = new SelectOption();
             selectOption.setName(str);
             selectOption.setColor(OptionColor.randomColor());

@@ -16,7 +16,7 @@ public class TodoBlockTestModel extends ModelTest {
 
     @Test
     void todoTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/a643395e3b694f4b935929837299ba8e");
+        Response response = getResponse(BASE_URL + "/blocks/a643395e3b694f4b935929837299ba8e");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);
@@ -38,7 +38,7 @@ public class TodoBlockTestModel extends ModelTest {
 
     @Test
     void todoCheckedTest() throws IOException {
-        Response response = getResponse( BASE_URL + "/blocks/526a61e5cfdb4ddc906fe842a6760fd4");
+        Response response = getResponse(BASE_URL + "/blocks/526a61e5cfdb4ddc906fe842a6760fd4");
         String tree = Objects.requireNonNull(response.body()).string();
         JsonNode responseJsonNode = getCommonObjectMapper().readTree(tree);
         BlockModel block = readValueUseCommonObjectMapper(tree, BlockModel.class);

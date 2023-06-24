@@ -32,28 +32,28 @@ public class FormulaFilterObject {
     private DateFilterObject dateFilterObject;
 
     @NotNull
-    public static FormulaFilterObject textFilterOf(TextFilterObject textFilterObject){
+    public static FormulaFilterObject textFilterOf(TextFilterObject textFilterObject) {
         FormulaFilterObject formulaFilterObject = new FormulaFilterObject();
         formulaFilterObject.setTextFilterObject(textFilterObject);
         return formulaFilterObject;
     }
 
     @NotNull
-    public static FormulaFilterObject checkboxFilterOf(CheckboxFilterObject checkboxFilterObject){
+    public static FormulaFilterObject checkboxFilterOf(CheckboxFilterObject checkboxFilterObject) {
         FormulaFilterObject formulaFilterObject = new FormulaFilterObject();
         formulaFilterObject.setCheckboxFilterObject(checkboxFilterObject);
         return formulaFilterObject;
     }
 
     @NotNull
-    public static FormulaFilterObject numberFilterOf(NumberFilterObject numberFilterObject){
+    public static FormulaFilterObject numberFilterOf(NumberFilterObject numberFilterObject) {
         FormulaFilterObject formulaFilterObject = new FormulaFilterObject();
         formulaFilterObject.setNumberFilterObject(numberFilterObject);
         return formulaFilterObject;
     }
 
     @NotNull
-    public static FormulaFilterObject dateFilterOf(DateFilterObject dateFilterObject){
+    public static FormulaFilterObject dateFilterOf(DateFilterObject dateFilterObject) {
         FormulaFilterObject formulaFilterObject = new FormulaFilterObject();
         formulaFilterObject.setDateFilterObject(dateFilterObject);
         return formulaFilterObject;

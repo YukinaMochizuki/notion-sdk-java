@@ -23,7 +23,7 @@ public class SearchFilter {
     private String filterProperty = "object";
 
     @NotNull
-    public static SearchFilter of(FilterValueEnum filterValue){
+    public static SearchFilter of(FilterValueEnum filterValue) {
         SearchFilter searchFilter = new SearchFilter();
         searchFilter.setFilterValue(filterValue);
         return searchFilter;

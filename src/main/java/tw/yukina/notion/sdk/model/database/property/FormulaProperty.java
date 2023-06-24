@@ -25,7 +25,7 @@ public class FormulaProperty extends DatabaseProperty {
     private FormulaObject formulaObject;
 
     @NotNull
-    public static FormulaProperty of(String name, String expression){
+    public static FormulaProperty of(String name, String expression) {
         FormulaObject formulaObject = new FormulaObject();
         formulaObject.setExpression(expression);
         FormulaProperty formulaProperty = new FormulaProperty();

@@ -12,7 +12,7 @@ public class UnsupportedJsonFormatException extends RuntimeException {
 
     private JsonNode jsonNode;
 
-    public UnsupportedJsonFormatException(JsonNode jsonNode){
+    public UnsupportedJsonFormatException(JsonNode jsonNode) {
         this.jsonNode = jsonNode;
     }
 }

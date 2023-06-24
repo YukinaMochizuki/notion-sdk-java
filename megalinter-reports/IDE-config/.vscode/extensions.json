@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "shengchen.vscode-checkstyle",
+        "AquaSecurityOfficial.trivy-vulnerability-scanner"
+    ]
+}

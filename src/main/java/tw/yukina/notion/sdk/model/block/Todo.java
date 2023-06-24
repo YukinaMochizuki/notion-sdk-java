@@ -16,7 +16,7 @@ public class Todo extends Paragraph {
     @JsonProperty(CHECKED_FIELD)
     private boolean checked = false;
 
-    public Todo(@NotNull Paragraph paragraph){
+    public Todo(@NotNull Paragraph paragraph) {
         this.setChildren(paragraph.getChildren());
         this.setRichTexts(paragraph.getRichTexts());
     }

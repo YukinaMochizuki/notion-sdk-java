@@ -21,18 +21,18 @@ public class CheckboxPropertyFilter extends DatabasePropertyFilter {
     private CheckboxFilterObject checkboxFilterObject;
 
     @NotNull
-    public static CheckboxPropertyFilter of(String property, CheckboxFilterObject checkboxFilterObject){
+    public static CheckboxPropertyFilter of(String property, CheckboxFilterObject checkboxFilterObject) {
         CheckboxPropertyFilter checkboxPropertyFilter = new CheckboxPropertyFilter();
         checkboxPropertyFilter.setName(property);
         checkboxPropertyFilter.setCheckboxFilterObject(checkboxFilterObject);
         return checkboxPropertyFilter;
     }
 
-    public static CheckboxPropertyFilter equalsOf(String property, boolean equals){
+    public static CheckboxPropertyFilter equalsOf(String property, boolean equals) {
         return of(property, CheckboxFilterObject.equalsOf(equals));
     }
 
-    public static CheckboxPropertyFilter doesNotEqualOf(String property, boolean doesNotEqual){
+    public static CheckboxPropertyFilter doesNotEqualOf(String property, boolean doesNotEqual) {
         return of(property, CheckboxFilterObject.doesNotEqualOf(doesNotEqual));
     }
 }

@@ -3,8 +3,8 @@ package tw.yukina.notion.sdk.endpoint.block;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.block.BlockModel;
-import tw.yukina.notion.sdk.model.helper.BlockHelper;
 import tw.yukina.notion.sdk.model.block.ParagraphBlockModel;
+import tw.yukina.notion.sdk.model.helper.BlockHelper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

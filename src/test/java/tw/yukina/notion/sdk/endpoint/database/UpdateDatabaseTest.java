@@ -15,11 +15,11 @@ import tw.yukina.notion.sdk.model.template.project.Thing;
 
 import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UpdateDatabaseTest extends ModelTest {
 
-//    @Test
+    //    @Test
     void callValue() {
         PageParent pageParent = new PageParent();
         pageParent.setPageId("7b6d965aa7a34305bab6b37ec515dd1f");

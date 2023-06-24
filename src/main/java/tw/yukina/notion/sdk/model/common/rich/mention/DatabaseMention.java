@@ -21,7 +21,7 @@ public class DatabaseMention extends Mention {
     private DatabaseUnit database;
 
     @NotNull
-    public static DatabaseMention of(String databaseId){
+    public static DatabaseMention of(String databaseId) {
         DatabaseUnit database = new DatabaseUnit();
         database.setDatabaseId(databaseId);
         DatabaseMention databaseMention = new DatabaseMention();

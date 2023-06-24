@@ -31,7 +31,7 @@ public enum PropertyType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 }

@@ -2,7 +2,10 @@ package tw.yukina.notion.sdk.model.common.date;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import tw.yukina.notion.sdk.model.deserializer.DateTimeDeserializer;
 
 

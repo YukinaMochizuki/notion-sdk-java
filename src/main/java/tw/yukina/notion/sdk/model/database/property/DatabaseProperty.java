@@ -26,7 +26,7 @@ public class DatabaseProperty extends Property {
     private String name;
 
     @NotNull
-    public static DatabaseProperty of(String name, PropertyType propertyType){
+    public static DatabaseProperty of(String name, PropertyType propertyType) {
         DatabaseProperty databaseProperty = new DatabaseProperty();
         databaseProperty.setName(name);
         databaseProperty.setType(propertyType);

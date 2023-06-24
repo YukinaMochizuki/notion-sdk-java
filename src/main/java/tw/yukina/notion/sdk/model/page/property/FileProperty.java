@@ -29,7 +29,7 @@ public class FileProperty extends PageProperty {
     private List<FileObject> fileObjects;
 
     @NotNull
-    public static FileProperty of(@NotNull Map<String, URL> externalFile){
+    public static FileProperty of(@NotNull Map<String, URL> externalFile) {
         List<FileObject> fileObjects = new ArrayList<>();
         externalFile.forEach(((s, url) -> {
             fileObjects.add(ExternalSourceFile.of(s, url));

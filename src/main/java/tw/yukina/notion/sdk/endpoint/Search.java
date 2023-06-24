@@ -4,7 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import okhttp3.*;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import tw.yukina.notion.sdk.model.endpoint.search.RequestSearch;
 import tw.yukina.notion.sdk.model.endpoint.search.ResponseObjectList;
@@ -16,18 +18,18 @@ public class Search extends AbstractEndpoint {
 
     @NotNull
     public static ResponseObjectList callValue(@NotNull RequestSearch requestSearch,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+                                               @NotNull OkHttpClient okHttpClient,
+                                               @NotNull Request.Builder builder,
+                                               @NotNull ObjectMapper objectMapper) {
 
         return toObjectList(callTree(requestSearch, okHttpClient, builder, objectMapper), objectMapper);
     }
 
     @NotNull
     public static ResponseObjectList callValue(@NotNull JsonNode json,
-                                 @NotNull OkHttpClient okHttpClient,
-                                 @NotNull Request.Builder builder,
-                                 @NotNull ObjectMapper objectMapper) {
+                                               @NotNull OkHttpClient okHttpClient,
+                                               @NotNull Request.Builder builder,
+                                               @NotNull ObjectMapper objectMapper) {
 
         return toObjectList(callTree(json, okHttpClient, builder, objectMapper), objectMapper);
     }
@@ -105,10 +107,10 @@ public class Search extends AbstractEndpoint {
         }
     }
 
-    public static void preparePostSearch(@NotNull ObjectNode requestSearch){
-        if(!requestSearch.hasNonNull("query"))requestSearch.remove("query");
-        if(!requestSearch.hasNonNull("sort"))requestSearch.remove("sort");
-        if(!requestSearch.hasNonNull("filter"))requestSearch.remove("filter");
-        if(!requestSearch.hasNonNull("start_cursor"))requestSearch.remove("start_cursor");
+    public static void preparePostSearch(@NotNull ObjectNode requestSearch) {
+        if (!requestSearch.hasNonNull("query")) requestSearch.remove("query");
+        if (!requestSearch.hasNonNull("sort")) requestSearch.remove("sort");
+        if (!requestSearch.hasNonNull("filter")) requestSearch.remove("filter");
+        if (!requestSearch.hasNonNull("start_cursor")) requestSearch.remove("start_cursor");
     }
 }

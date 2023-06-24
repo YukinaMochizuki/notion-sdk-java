@@ -27,7 +27,7 @@ public class SelectOption {
     private OptionColor color;
 
     @NotNull
-    public static SelectOption of(String name){
+    public static SelectOption of(String name) {
         SelectOption selectOption = new SelectOption();
         selectOption.setName(name);
         selectOption.setColor(OptionColor.randomColor());

@@ -15,7 +15,7 @@ public enum ParentType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 }

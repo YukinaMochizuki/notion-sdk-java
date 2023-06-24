@@ -26,7 +26,7 @@ public class TitleProperty extends PageProperty {
     private List<RichText> texts;
 
     @NotNull
-    public static TitleProperty of(String text){
+    public static TitleProperty of(String text) {
         TitleProperty titleProperty = new TitleProperty();
         titleProperty.setType(PropertyType.TITLE);
         titleProperty.setTexts(RichTextHelper.createDefaultArrayText(text));

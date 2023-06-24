@@ -1,12 +1,12 @@
 package tw.yukina.notion.sdk.model.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import tw.yukina.notion.sdk.model.block.*;
-import tw.yukina.notion.sdk.model.block.file.*;
 import tw.yukina.notion.sdk.model.block.file.FileBlockModel;
+import tw.yukina.notion.sdk.model.block.file.ImageBlockModel;
+import tw.yukina.notion.sdk.model.block.file.PDFBlockModel;
 import tw.yukina.notion.sdk.model.block.file.VideoBlockModel;
 import tw.yukina.notion.sdk.model.block.heading.HeadingOneBlockModel;
 import tw.yukina.notion.sdk.model.block.heading.HeadingThreeBlockModel;
@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class BlockDeserializer extends AbstractDeserializer<BlockModel> {
     @Override
-    public BlockModel deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JsonProcessingException {
+    public BlockModel deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String type = node.get("type").asText();
 
@@ -57,6 +57,7 @@ public class BlockDeserializer extends AbstractDeserializer<BlockModel> {
         addAvailableType(BlockType.TEMPLATE.getField(), TemplateBlockModel.class);
         addAvailableType(BlockType.SYNCED_BLOCK.getField(), SyncedBlockModel.class);
 
-        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() -> throwTypeNotFound(type, jsonParser));
+        return typeDeserialize(type, node, jsonParser.getCodec()).orElseThrow(() ->
+                throwTypeNotFound(type, jsonParser));
     }
 }

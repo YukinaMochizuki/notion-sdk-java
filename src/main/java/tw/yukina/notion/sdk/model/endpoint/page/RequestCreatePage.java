@@ -1,7 +1,10 @@
 package tw.yukina.notion.sdk.model.endpoint.page;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import tw.yukina.notion.sdk.model.block.BlockModel;
 import tw.yukina.notion.sdk.model.common.Icon;
 import tw.yukina.notion.sdk.model.common.file.FileObject;

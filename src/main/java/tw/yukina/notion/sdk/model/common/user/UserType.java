@@ -13,7 +13,7 @@ public enum UserType {
     }
 
     @JsonValue
-    public String getField(){
+    public String getField() {
         return field;
     }
 }
