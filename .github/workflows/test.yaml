@@ -35,8 +35,8 @@ jobs:
       - name: Execute Gradle build
         run: gradle build
         env:
-          ORG_GRADLE_PROJECT_signingKey=${{ secrets.PGP_SECRET }}
-          ORG_GRADLE_PROJECT_signingPassword=${{ secrets.PGP_PASSPHRASE }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
 
       - name: Test with JUnit
         run: |
@@ -44,5 +44,5 @@ jobs:
           gradle test
           echo "JUnit tests completed"
         env:
-          ORG_GRADLE_PROJECT_signingKey=${{ secrets.PGP_SECRET }}
-          ORG_GRADLE_PROJECT_signingPassword=${{ secrets.PGP_PASSPHRASE }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
