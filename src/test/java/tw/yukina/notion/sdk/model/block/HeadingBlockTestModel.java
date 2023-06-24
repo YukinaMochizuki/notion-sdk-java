@@ -60,7 +60,7 @@ public class HeadingBlockTestModel extends ModelTest {
         List<RichText> richTexts = RichTextHelper.createDefaultArrayText("Heading ");
 
         Text text = RichTextHelper.createDefaultText("2 ");
-        RichTextHelper.setLinkToText(text, new URL("https://www.google.com"));
+        RichTextHelper.setLinkToText(text, new URL("https://www.google.com/"));
         richTexts.add(text);
 
         RichText text1 = RichTextHelper.createDefaultText("Two ");

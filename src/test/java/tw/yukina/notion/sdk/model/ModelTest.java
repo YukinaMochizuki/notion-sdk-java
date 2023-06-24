@@ -35,7 +35,7 @@ public class ModelTest {
     @BeforeAll
     static void setUp() {
         okHttpClient = new OkHttpClient.Builder()
-                .connectTimeout(20, TimeUnit.SECONDS)
+                .connectTimeout(30, TimeUnit.SECONDS)
                 .build();
 
         objectMapperModule = new SimpleModule();
