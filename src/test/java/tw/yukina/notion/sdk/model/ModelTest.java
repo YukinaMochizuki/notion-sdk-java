@@ -53,8 +53,13 @@ public class ModelTest {
             e.printStackTrace();
         }
 
+        String token = properties.getProperty("Notion.test.token");
+        if (token == null) {
+            token = System.getenv("NOTION_TOKEN");
+        }
+
         return new Request.Builder()
-                .addHeader("Authorization", properties.getProperty("Notion.test.token"))
+                .addHeader("Authorization", token)
                 .addHeader("Notion-Version", "2022-06-28");
     }
 

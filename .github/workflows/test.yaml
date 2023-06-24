@@ -37,12 +37,4 @@ jobs:
         env:
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
-
-      - name: Test with JUnit
-        run: |
-          echo Notion.test.token=${{ secrets.NOTION_TEST_TOKEN }} >> src/test/resources/application.properties
-          gradle test
-          echo "JUnit tests completed"
-        env:
-          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
-          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TEST_TOKEN }}
