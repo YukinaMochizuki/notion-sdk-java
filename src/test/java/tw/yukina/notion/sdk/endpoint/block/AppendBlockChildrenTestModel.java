@@ -1,6 +1,7 @@
 package tw.yukina.notion.sdk.endpoint.block;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import tw.yukina.notion.sdk.model.ModelTest;
 import tw.yukina.notion.sdk.model.ObjectType;
@@ -13,6 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AppendBlockChildrenTestModel extends ModelTest {
+
+    @BeforeEach
+    void deleteBlocks() throws Exception {
+        ResponseBlockList responseBlockList = RetrieveBlockChildren.callValue("944dba913ddc4153bf592ed5d78c8bac",
+                getOkHttpClient(), getRequestBuilder(), getIncludeNullObjectMapper());
+
+        for (int i = 0; i < responseBlockList.getBlocks().size(); i++)
+            DeleteBlock.callValue(responseBlockList.getBlocks().get(i).getId(),
+                    getOkHttpClient(), getRequestBuilder(), getIncludeNullObjectMapper());
+    }
 
     @Test
     void callValue() throws Exception {
