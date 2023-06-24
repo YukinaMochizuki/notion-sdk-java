@@ -45,17 +45,19 @@ public class ModelTest {
 
     public Request.Builder getRequestBuilder() {
 
-        Properties properties = new Properties();
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
-            properties.load(resourceStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        String token = properties.getProperty("Notion.test.token");
-        if (token == null) {
+        String token = null;
+        if (System.getenv("NOTION_TOKEN") != null) {
             token = System.getenv("NOTION_TOKEN");
+        } else {
+            Properties properties = new Properties();
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
+            try (InputStream resourceStream = loader.getResourceAsStream("application.properties")) {
+                properties.load(resourceStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            token = properties.getProperty("Notion.test.token");
         }
 
         return new Request.Builder()
