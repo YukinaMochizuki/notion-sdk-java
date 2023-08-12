@@ -8,7 +8,8 @@ public enum ObjectType {
     BLOCK("block"),
     USER("user"),
     WORKSPACE("workspace"),
-    LIST("list");
+    LIST("list"),
+    PAGE_OR_DATABASE("page_or_database");
 
     private final String field;
 
