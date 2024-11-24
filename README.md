@@ -35,11 +35,12 @@ compile 'tw.yukina.notion.sdk:notion-sdk-java:0.0.4'
 ```
 
 **Maven**
+https://mvnrepository.com/artifact/tw.yukina.notion.sdk/notion-sdk-java
 ```xml
 <dependency>
   <groupId>tw.yukina.notion.sdk</groupId>
   <artifactId>notion-sdk-java</artifactId>
-  <version>0.0.4</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
