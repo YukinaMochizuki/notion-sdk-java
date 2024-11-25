@@ -9,6 +9,7 @@ public enum PropertyType {
     NUMBER("number"),
     SELECT("select"),
     MULTI_SELECT("multi_select"),
+    STATUS("status"),
     DATE("date"),
     PEOPLE("people"),
     FILES("files"),
